@@ -1,0 +1,67 @@
+Reference=https://docs.djangoproject.com/en/6.0/ref/contrib/gis/install/geolibs/
+
+STEP 1 — INSTALL SYSTEM GDAL
+🟢 Ubuntu / WSL (MOST COMMON)
+sudo apt update
+sudo apt install gdal-bin libgdal-dev
+
+Also install dependencies:
+
+sudo apt install binutils libproj-dev
+🪟 WINDOWS FIX
+
+If you're on Windows:
+
+Option 1 (recommended)
+
+Install via OSGeo4W:
+
+👉 https://trac.osgeo.org/osgeo4w/
+
+https://medium.com/@limeira.felipe94/gdal-configuration-and-installation-on-windows-for-django-projects-538171db5ccc
+
+Install:
+
+GDAL
+PROJ
+GEOS
+Option 2 (easier)
+
+Use prebuilt wheel:
+
+pip install GDAL
+
+BUT version must match Python → often tricky.
+
+🍎 MAC FIX
+brew install gdal
+✅ STEP 2 — FIND GDAL PATH
+
+After install, run:
+
+gdal-config --version
+
+If it prints version → OK.
+
+✅ STEP 3 — SET GDAL PATH IN DJANGO (IMPORTANT)
+
+If Django still cannot find it:
+
+Linux/Mac:
+
+Add to .env:
+
+GDAL_LIBRARY_PATH=/usr/lib/libgdal.so
+
+OR find it:
+
+find /usr -name "libgdal.so*"
+Windows example:
+GDAL_LIBRARY_PATH=C:\OSGeo4W\bin\gdal.dll
+✅ STEP 4 — ADD TO SETTINGS (IF NEEDED)
+
+In settings.py:
+
+from decouple import config
+
+GDAL_LIBRARY_PATH = config("GDAL_LIBRARY_PATH", default=None)

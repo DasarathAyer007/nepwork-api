@@ -1,0 +1,100 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.pyd
+
+# Virtual Environment
+venv/
+.venv/
+.env/
+env/
+ENV/
+
+# Django
+*.log
+db.sqlite3
+media/
+staticfiles/
+
+# Environment Variables
+.env
+
+# VS Code
+.vscode/
+
+# PyCharm
+.idea/
+
+# Mac
+.DS_Store
+
+# Linux
+*~
+
+# Windows
+Thumbs.db
+
+# Coverage / Testing
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Migrations (optional)
+# Uncomment only if you do NOT want migrations tracked
+# */migrations/*
+# !*/migrations/__init__.py
+
+# Node
+node_modules/
+
+# Build files
+dist/
+build/
+
+# Celery
+celerybeat-schedule
+
+# Redis dump
+dump.rdb
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+tmp/
+temp/
+
+# PostgreSQL
+*.pgsql
+
+# Docker
+*.pid
+
+# Static collected files
+static_cdn/
+
+# Uploaded files
+uploads/
+
+# OS generated
+Desktop.ini
+
+# Jupyter
+.ipynb_checkpoints/
+
+# mypy
+.mypy_cache/
+
+# Ruff
+.ruff_cache/
+
+# dotenv
+.env.*
+
+# pytest
+.cache/
+
+# local settings
+local_settings.py
