@@ -1,0 +1,129 @@
+target-version = "py311"
+
+line-length = 88
+
+exclude = [
+    ".git",
+    ".ruff_cache",
+    ".pytest_cache",
+    ".mypy_cache",
+    "__pycache__",
+    "venv",
+    ".venv",
+    "node_modules",
+    "staticfiles",
+    "media",
+    "migrations",
+]
+
+fix = false
+show-fixes = true
+
+[lint]
+
+select = [
+    # pycodestyle
+    "E",
+
+    # pyflakes
+    "F",
+
+    # import sorting
+    "I",
+
+    # pyupgrade
+    "UP",
+
+    # bug detection
+    "B",
+
+    # django
+    "DJ",
+
+    # security
+    "S",
+
+    # simplify
+    "SIM",
+
+    # performance
+    "PERF",
+
+    # return consistency
+    "RET",
+
+    # comprehensions
+    "C4",
+
+    # Ruff-specific rules
+    "RUF",
+]
+
+ignore = [
+    # handled by formatter
+    "E501",
+
+    # DRF/Django practicality
+    "B904",
+    "DJ008",
+
+    # tests
+    "S101",
+
+    # serializer/view argument counts
+    "PLR0913",
+
+    # magic values
+    "PLR2004",
+]
+
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*))$"
+
+[lint.per-file-ignores]
+
+"*/migrations/*.py" = [
+    "E501",
+    "F401",
+    "F811",
+]
+
+"*/tests/*.py" = [
+    "S101",
+    "PLR2004",
+]
+
+"*/settings/*.py" = [
+    "F403",
+    "F405",
+]
+
+"manage.py" = [
+    "INP001",
+]
+
+[lint.isort]
+
+known-first-party = [
+    "apps",
+    "config",
+]
+
+combine-as-imports = true
+split-on-trailing-comma = true
+
+section-order = [
+    "future",
+    "standard-library",
+    "third-party",
+    "first-party",
+    "local-folder",
+]
+
+[format]
+
+quote-style = "double"
+indent-style = "space"
+line-ending = "lf"
+
+docstring-code-format = true
+docstring-code-line-length = 88

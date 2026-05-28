@@ -98,3 +98,5 @@ Desktop.ini
 
 # local settings
 local_settings.py
+
+uv.lock

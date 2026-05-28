@@ -6,6 +6,27 @@ Built with **Django REST Framework**, **PostgreSQL**, and **PostGIS**.
 
 ---
 
+## Table of Contents
+
+- [Overview](#overview)
+- [Features](#features)
+- [Architecture](#architecture)
+- [Tech Stack](#tech-stack)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Running the Project](#running-the-project)
+- [Database Migrations](#database-migrations)
+- [Dev Tools](#dev-tools)
+- [Troubleshooting](#troubleshooting)
+
+---
+
+## Overview
+
+NepWork API is a location-aware job marketplace backend designed for the Nepali market. It supports multiple user roles, geospatial job discovery powered by PostGIS, escrow-based payments via eSewa and Khalti, real-time chat, and an intelligent recommendation engine — all exposed through a clean REST API.
+
+---
+
 ## Features
 
 ### 👤 User System
@@ -14,9 +35,9 @@ Built with **Django REST Framework**, **PostgreSQL**, and **PostGIS**.
 - Availability status: Online / Offline / Busy
 
 ### 💼 Job System
-- Full-time, Part-time, Freelance, and One-time job types
-- Remote, On-site, and Hybrid support
-- Apply, save, and share jobs
+- Job types: Full-time, Part-time, Freelance, One-time
+- Work modes: Remote, On-site, Hybrid
+- Apply, save, share jobs
 - Job status tracking
 
 ### 🗺️ Map System (PostGIS)
@@ -78,105 +99,190 @@ Django REST Framework (API Layer)
 
 ---
 
-## Getting Started
+## Prerequisites
+
+This project uses [`uv`](https://docs.astral.sh/uv/) for fast, reliable Python package management. Install it before getting started.
+
+**Linux / macOS**
+```bash
+curl -Ls https://astral.sh/uv/install.sh | sh
+```
+
+**Windows (PowerShell)**
+```powershell
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+
+Verify installation:
+```bash
+uv --version
+```
+
+> 📖 Official docs: https://docs.astral.sh/uv/
+
+---
+
+## Installation
 
 ### 1. Clone the Repository
 
 ```bash
-git clone <your-repo-url>
+git clone <repo-url>
 cd nepwork-api
 ```
 
-### 2. Create & Activate Virtual Environment
+### 2. Create Virtual Environment
 
-**Linux / macOS**
 ```bash
-python3 -m venv venv
-source venv/bin/activate
+uv venv
 ```
 
-**Windows**
+> Creates a `.venv/` directory. No manual activation required — `uv run` handles it automatically.
+
+### 3. Install Dependencies
+
+**Development (recommended for local work):**
 ```bash
-python -m venv .venv
-.venv\Scripts\activate
+uv sync
 ```
 
-### 3. Install Python Dependencies
+**Production dependencies only:**
+```bash
+uv sync --no-dev
+```
+
+### 4. Install Pre-commit Hooks
 
 ```bash
-pip install -r requirements.txt
+uv run pre-commit install
+```
+
+### 5. Configure Environment Variables
+
+Copy the example environment file and fill in your values:
+
+```bash
+cp .env.example .env
+```
+
+Make sure your `.env` matches your local PostgreSQL credentials and any required API keys.
+
+### 6. Set Up the Database
+
+Connect to PostgreSQL and enable the PostGIS extension:
+
+```sql
+CREATE EXTENSION postgis;
+```
+
+Then apply migrations:
+
+```bash
+uv run python manage.py migrate
 ```
 
 ---
 
-## System Dependencies
+## Running the Project
 
-> ⚠️ PostGIS and GeoDjango require GDAL, PROJ, and GEOS to be installed at the OS level.
-
-**Ubuntu / Debian**
+**Start the development server:**
 ```bash
-sudo apt update && sudo apt install -y gdal-bin libgdal-dev libproj-dev binutils
+uv run python manage.py runserver
 ```
 
-**Fedora**
+**Create a superuser:**
 ```bash
-sudo dnf install -y gdal gdal-devel proj proj-devel geos geos-devel
-```
-
-**macOS**
-```bash
-brew install gdal
-```
-
-**Windows**
-Install [OSGeo4W](https://trac.osgeo.org/osgeo4w/) and include GDAL, PROJ, and GEOS during setup.
-
- Windows Guide : [Medium Artical](https://medium.com/@limeira.felipe94/gdal-configuration-and-installation-on-windows-for-django-projects-538171db5ccc/).
----
-
-## Configuration
-
-Create a `.env` file in the project root and set your environment variables:
-
-```env
-DATABASE_NAME=nepwork
-DATABASE_USER=your_db_user
-DATABASE_PASSWORD=your_db_password
-DATABASE_HOST=localhost
-DATABASE_PORT=5432
-SECRET_KEY=your_django_secret_key
+uv run python manage.py createsuperuser
 ```
 
 ---
 
-## Run the Project
+## Database Migrations
 
-### Apply Migrations
-
+**Generate migration files after model changes:**
 ```bash
-python manage.py makemigrations
-python manage.py migrate
+uv run python manage.py makemigrations
 ```
 
-### Create a Superuser
-
+**Apply pending migrations:**
 ```bash
-python manage.py createsuperuser
-```
-
-### Start the Development Server
-
-```bash
-python manage.py runserver
+uv run python manage.py migrate
 ```
 
 ---
 
-## Common Issues
+## Managing Dependencies
+
+**Add a production dependency:**
+```bash
+uv add <package-name>
+```
+
+**Add a dev dependency** (linting, testing, etc.):
+```bash
+uv add --dev <package-name>
+```
+
+**Remove a dependency:**
+```bash
+uv remove <package-name>
+```
+
+---
+
+## Dev Tools
+
+### Linting & Formatting
+
+This project uses [Ruff](https://docs.astral.sh/ruff/) for fast linting and formatting.
+
+```bash
+# Check for issues
+uv run ruff check .
+
+# Auto-fix issues
+uv run ruff check . --fix
+
+# Watch mode (re-lint on file change)
+ruff check --watch
+
+# Format code
+uv run ruff format .
+```
+
+### Type Checking
+
+```bash
+mypy .
+```
+
+### Pre-commit
+
+Run all hooks against every file:
+
+```bash
+uv run pre-commit run --all-files
+```
+
+Clean the pre-commit cache if needed:
+
+```bash
+uv run pre-commit clean
+```
+
+Pre-commit runs the following checks automatically on each commit:
+
+- `ruff` — lint and fix
+- `mypy` — type checking
+- Standard file checks (trailing whitespace, end-of-file, etc.)
+
+---
+
+## Troubleshooting
 
 ### GDAL Not Found
 
-Install the system-level GDAL package for your OS (see [System Dependencies](#system-dependencies)) and set the library path in your `.env` or `settings.py`:
+Install the system-level GDAL package for your OS, then set the library path in your `.env` or `settings.py`:
 
 ```python
 GDAL_LIBRARY_PATH = "/usr/lib/libgdal.so"  # adjust path as needed
@@ -192,7 +298,4 @@ CREATE EXTENSION postgis;
 
 ### Database Connection Fails
 
-Double-check the values in your `.env` file match your local PostgreSQL setup.
-
----
-
+Double-check that the values in your `.env` file match your local PostgreSQL setup (host, port, name, user, password).

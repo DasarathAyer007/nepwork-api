@@ -65,3 +65,17 @@ In settings.py:
 from decouple import config
 
 GDAL_LIBRARY_PATH = config("GDAL_LIBRARY_PATH", default=None)
+
+
+
+| Package                     | Purpose                       |
+| --------------------------- | ----------------------------- |
+| `mypy`                      | static type checking          |
+| `django-stubs`              | type support for Django       |
+| `djangorestframework-stubs` | type support for DRF          |
+| `pytest`                    | testing framework             |
+| `pytest-django`             | Django integration for pytest |
+| `pytest-cov`                | test coverage                 |
+| `factory-boy`               | test data factories           |
+| `faker`                     | fake test data                |
+| `pre-commit`                | automatic lint/test hooks     |
