@@ -142,3 +142,5 @@ USE_TZ = True
 STATIC_URL = "static/"
 
 GDAL_LIBRARY_PATH = config("GDAL_LIBRARY_PATH", default=None)
+
+# AUTH_USER_MODEL = "users.User"
