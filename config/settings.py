@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
+from datetime import timedelta
 from pathlib import Path
 
 from decouple import config
@@ -46,6 +47,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "corsheaders",
     "django.contrib.gis",
+    "drf_spectacular",
     # local apps
     "apps.users",
     "apps.jobs",
@@ -56,6 +58,24 @@ INSTALLED_APPS = [
     "apps.admin_panel",
     "apps.services",
 ]
+
+REST_FRAMEWORK = {
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ),
+}
+
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(
+        minutes=30
+    ),  # ⬅ change access token time
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=7),  # ⬅ change refresh token time
+    "ROTATE_REFRESH_TOKENS": False,
+    "BLACKLIST_AFTER_ROTATION": True,
+    "AUTH_HEADER_TYPES": ("Bearer",),
+}
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -143,4 +163,4 @@ STATIC_URL = "static/"
 
 GDAL_LIBRARY_PATH = config("GDAL_LIBRARY_PATH", default=None)
 
-# AUTH_USER_MODEL = "users.User"
+AUTH_USER_MODEL = "users.User"

@@ -1,12 +1,12 @@
 from uuid import uuid7
 
-from django.contrib.auth.hashers import make_password
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-from apps.utils.models import SoftDeleteModel, TimeStampedModel
+from apps.utils.models import TimeStampedModel
 
 
-class User(TimeStampedModel, SoftDeleteModel):
+class User(AbstractUser, TimeStampedModel):
     class AccountType(models.TextChoices):
         PERSONAL = "personal", "Personal"
         ORGANIZATION = "organization", "Organization"
@@ -69,9 +69,6 @@ class User(TimeStampedModel, SoftDeleteModel):
     failed_login_attempts = models.PositiveIntegerField(default=0)
 
     is_locked = models.BooleanField(default=False)
-
-    def set_password(self, raw_password: str) -> None:
-        self.password = make_password(raw_password)
 
     def __str__(self) -> str:
         return self.full_name if self.full_name else self.username

@@ -75,6 +75,8 @@ ignore = [
 
     # magic values
     "PLR2004",
+
+    "RUF012",
 ]
 
 dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*))$"
