@@ -15,18 +15,33 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
+from django_scalar import views as scalar_views
 from drf_spectacular.views import (
     SpectacularAPIView,
     SpectacularRedocView,
     SpectacularSwaggerView,
 )
 
+from config import settings
+
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/users/", include("apps.users.urls")),
-    path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
-    path("api/docs/", SpectacularSwaggerView.as_view(url_name="schema")),
-    path("api/redoc/", SpectacularRedocView.as_view(url_name="schema")),
+    path("api/skills/", include("apps.skill.urls")),
 ]
+
+# API Documentation
+urlpatterns += [
+    # Scalar API Documentation,
+    path("api/docs/", scalar_views.scalar_viewer, name="scalar_api_docs"),
+    # Swagger UI Documentation
+    path("api/docs/", SpectacularSwaggerView.as_view(url_name="schema")),
+    # redoc and schema endpoints
+    path("api/redoc/", SpectacularRedocView.as_view(url_name="schema")),
+    path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
+]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

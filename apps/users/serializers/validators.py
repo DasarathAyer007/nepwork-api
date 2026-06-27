@@ -7,7 +7,7 @@ from apps.users.models.user import User
 
 
 def validate_password_strength(password: str) -> str:
-    if len(password) < 5:
+    if len(password) < 3:
         raise serializers.ValidationError(
             "Password must be at least 5 characters."
         )

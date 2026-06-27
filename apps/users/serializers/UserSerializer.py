@@ -15,9 +15,10 @@ from .validators import (
 
 class UserRegisterSerializer(serializers.ModelSerializer[User]):
     password = serializers.CharField(
-        write_only=True, min_length=8, max_length=128
+        write_only=True,
+        min_length=3,
+        max_length=128,
     )
-
     confirm_password = serializers.CharField(write_only=True)
 
     class Meta:
@@ -35,20 +36,26 @@ class UserRegisterSerializer(serializers.ModelSerializer[User]):
         return validate_full_name(value)
 
     def validate_email(self, value: str) -> str:
-        return validate_email(value)
+        value = validate_email(value)
+        if User.objects.filter(email__iexact=value).exists():
+            raise serializers.ValidationError("Email already exists.")
+        return value
 
     def validate_username(self, value: str) -> str:
-        return validate_username(value)
+        value = validate_username(value)
+        if User.objects.filter(username__iexact=value).exists():
+            raise serializers.ValidationError("Username already exists.")
+        return value
 
     def validate_password(self, value: str) -> str:
         return validate_password_strength(value)
 
     def validate_account_type(self, value: str) -> str:
-        if value not in [
-            User.AccountType.PERSONAL,
-            User.AccountType.ORGANIZATION,
-        ]:
-            raise serializers.ValidationError("Invalid account type.")
+        allowed = [User.AccountType.PERSONAL, User.AccountType.ORGANIZATION]
+        if value not in allowed:
+            raise serializers.ValidationError(
+                f"Account type must be one of: {', '.join(allowed)}."
+            )
         return value
 
     def validate(self, data: dict[str, Any]) -> dict[str, Any]:
@@ -56,11 +63,21 @@ class UserRegisterSerializer(serializers.ModelSerializer[User]):
             raise serializers.ValidationError(
                 {"confirm_password": "Passwords do not match."}
             )
+        data.pop("confirm_password")
         return data
 
-    def create(self, validated_data: dict[str, Any]) -> User:
-        validated_data.pop("confirm_password")
-        return UserService.create_user(**validated_data)
+    def create(self, validated_data: dict) -> User:
+        """
+        Serializer owns the create() call.
+        View just calls serializer.save() and reads the result.
+        """
+        return UserService.register_user(
+            full_name=validated_data["full_name"],
+            email=validated_data["email"],
+            username=validated_data["username"],
+            password=validated_data["password"],
+            account_type=validated_data["account_type"],
+        )
 
 
 class UpdateUserSerializer(serializers.ModelSerializer[User]):

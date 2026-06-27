@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "django.contrib.gis",
     "drf_spectacular",
+    "django_scalar",
     # local apps
     "apps.users",
     "apps.jobs",
@@ -57,6 +58,7 @@ INSTALLED_APPS = [
     "apps.notifications",
     "apps.admin_panel",
     "apps.services",
+    "apps.skill",
 ]
 
 REST_FRAMEWORK = {
@@ -69,15 +71,18 @@ REST_FRAMEWORK = {
 
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(
-        minutes=30
+        minutes=int(config("ACCESS_TOKEN_LIFETIME_MINUTES", default=15))
     ),  # ⬅ change access token time
-    "REFRESH_TOKEN_LIFETIME": timedelta(days=7),  # ⬅ change refresh token time
+    "REFRESH_TOKEN_LIFETIME": timedelta(
+        days=int(config("REFRESH_TOKEN_LIFETIME_DAYS", default=7))
+    ),  # ⬅ change refresh token time
     "ROTATE_REFRESH_TOKENS": False,
     "BLACKLIST_AFTER_ROTATION": True,
     "AUTH_HEADER_TYPES": ("Bearer",),
 }
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -164,3 +169,9 @@ STATIC_URL = "static/"
 GDAL_LIBRARY_PATH = config("GDAL_LIBRARY_PATH", default=None)
 
 AUTH_USER_MODEL = "users.User"
+
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"

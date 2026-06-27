@@ -1,11 +1,12 @@
-# Create your views here.
-# If Statement
-number = 10
-if number > 5:
-    print("The number is greater than 5.")
-else:
-    print("The number is 5 or less.")
+from rest_framework import viewsets
 
-# For Loop
-for i in range(3):
-    print(f"Loop iteration: {i}")
+from apps.jobs.permissions import IsJobOwnerOrAdmin
+from apps.jobs.serializers.job_serializers import JobSerializer
+
+from .models import Job
+
+
+class JobViewSet(viewsets.ModelViewSet[Job]):
+    queryset = Job.objects.all()
+    serializer_class = JobSerializer
+    permission_classes = [IsJobOwnerOrAdmin]

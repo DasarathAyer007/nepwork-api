@@ -18,6 +18,11 @@ class User(AbstractUser, TimeStampedModel):
         SUSPENDED = "suspended", "Suspended"
         BLOCKED = "blocked", "Blocked"
 
+    class ProfileVisibility(models.TextChoices):
+        PUBLIC = "public", "Public"
+        PRIVATE = "private", "Private"
+        LIMITED = "limited", "Limited"
+
     id = models.UUIDField(primary_key=True, default=uuid7, editable=False)
 
     full_name = models.CharField(max_length=100, blank=True)
@@ -50,6 +55,8 @@ class User(AbstractUser, TimeStampedModel):
         upload_to="cover_photos/", blank=True, null=True
     )
 
+    bio = models.TextField(blank=True)
+
     two_factor_enabled = models.BooleanField(default=False)
 
     last_login_at = models.DateTimeField(null=True, blank=True)
@@ -70,5 +77,20 @@ class User(AbstractUser, TimeStampedModel):
 
     is_locked = models.BooleanField(default=False)
 
+    profile_visibility = models.CharField(
+        max_length=20,
+        choices=ProfileVisibility.choices,
+        default=ProfileVisibility.PUBLIC,
+    )
+
+    social_links = models.JSONField(default=dict, blank=True)
+
     def __str__(self) -> str:
         return self.full_name if self.full_name else self.username
+
+    def is_onboarded(self) -> bool:
+        return (
+            hasattr(self, "personal_profile")
+            or hasattr(self, "organization_profile")
+            or hasattr(self, "admin_profile")
+        )
