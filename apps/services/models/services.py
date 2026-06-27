@@ -3,6 +3,7 @@ from uuid import uuid7
 
 from django.db import models
 
+from apps.skill.models import Skill
 from apps.utils.models import (
     SoftDeleteModel,
     TimeStampedModel,
@@ -93,7 +94,7 @@ class Service(TimeStampedModel, SoftDeleteModel):
         max_digits=10, decimal_places=2, null=True, blank=True
     )
     currency = models.CharField(max_length=10, default="USD")
-    skills = models.JSONField(default=list, blank=True)
+    skills = models.ManyToManyField(Skill, blank=True)
     radius_km = models.PositiveIntegerField(null=True, blank=True)
     available_from = models.TimeField()
 

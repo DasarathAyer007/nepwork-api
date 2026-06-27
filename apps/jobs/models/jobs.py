@@ -3,6 +3,7 @@ from uuid import uuid7
 
 from django.db import models
 
+from apps.skill.models import Skill
 from apps.utils.models import (
     SoftDeleteModel,
     TimeStampedModel,
@@ -91,7 +92,7 @@ class Job(TimeStampedModel, SoftDeleteModel):
         db_index=True,
     )
 
-    skills_required = models.JSONField(default=list, blank=True)
+    skills_required = models.ManyToManyField(Skill, blank=True)
 
     requirements = models.JSONField(default=list, blank=True)
 

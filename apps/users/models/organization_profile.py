@@ -16,10 +16,6 @@ class OrganizationProfile(TimeStampedModel):
         related_name="organization_profile",
     )
 
-    organization_name = models.CharField(max_length=50)
-
-    description = models.TextField(blank=True)
-
     industry = models.CharField(max_length=50, blank=True)
 
     logo = models.ImageField(upload_to="org_logos/", blank=True)
@@ -32,9 +28,7 @@ class OrganizationProfile(TimeStampedModel):
 
     tax_id = models.CharField(max_length=50, blank=True)
 
-    social_links = models.JSONField(default=dict, blank=True)
-
     is_verified = models.BooleanField(default=False)
 
     def __str__(self) -> str:
-        return self.organization_name
+        return f"OrganizationProfile({self.user.username})"

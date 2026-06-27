@@ -30,42 +30,50 @@ NepWork API is a location-aware job marketplace backend designed for the Nepali 
 ## Features
 
 ### 👤 User System
+
 - Multi-role accounts: Job Seeker, Employer, Freelancer, Worker
 - Profile management with skills & resume upload
 - Availability status: Online / Offline / Busy
 
 ### 💼 Job System
+
 - Job types: Full-time, Part-time, Freelance, One-time
 - Work modes: Remote, On-site, Hybrid
 - Apply, save, share jobs
 - Job status tracking
 
 ### 🗺️ Map System (PostGIS)
+
 - Nearby job search via radius queries
 - Worker location tracking
 - Map-based discovery
 - Geo filtering by city, country, or distance
 
 ### 💳 Payments (Escrow)
+
 - Stripe, eSewa, and Khalti integration
 - Milestone-based payments
 - Refund system
 
 ### 💬 Chat System
+
 - Real-time messaging
 - Job-based chat rooms
 - File sharing
 
 ### ⭐ Rating System
+
 - Employer & worker reviews
 - Trust score system
 
 ### 🤖 Recommendation System
+
 - Skill-based matching
 - Location-based ranking
 - Behavioral recommendations
 
 ### 🛡️ Admin Panel
+
 - Permission-based admin system
 - User & job moderation
 - Analytics dashboard with heatmaps
@@ -89,13 +97,13 @@ Django REST Framework (API Layer)
 
 ## Tech Stack
 
-| Layer | Technology |
-|---|---|
-| Backend | Django 6, Django REST Framework |
-| Database | PostgreSQL, PostGIS |
-| Geospatial | GeoDjango (GDAL, PROJ, GEOS) |
-| Task Queue | Celery |
-| Auth | JWT |
+| Layer      | Technology                      |
+| ---------- | ------------------------------- |
+| Backend    | Django 6, Django REST Framework |
+| Database   | PostgreSQL, PostGIS             |
+| Geospatial | GeoDjango (GDAL, PROJ, GEOS)    |
+| Task Queue | Celery                          |
+| Auth       | JWT                             |
 
 ---
 
@@ -104,16 +112,19 @@ Django REST Framework (API Layer)
 This project uses [`uv`](https://docs.astral.sh/uv/) for fast, reliable Python package management. Install it before getting started.
 
 **Linux / macOS**
+
 ```bash
 curl -Ls https://astral.sh/uv/install.sh | sh
 ```
 
 **Windows (PowerShell)**
+
 ```powershell
 powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
 ```
 
 Verify installation:
+
 ```bash
 uv --version
 ```
@@ -142,11 +153,13 @@ uv venv
 ### 3. Install Dependencies
 
 **Development (recommended for local work):**
+
 ```bash
 uv sync
 ```
 
 **Production dependencies only:**
+
 ```bash
 uv sync --no-dev
 ```
@@ -186,11 +199,13 @@ uv run python manage.py migrate
 ## Running the Project
 
 **Start the development server:**
+
 ```bash
 uv run python manage.py runserver
 ```
 
 **Create a superuser:**
+
 ```bash
 uv run python manage.py createsuperuser
 ```
@@ -200,11 +215,13 @@ uv run python manage.py createsuperuser
 ## Database Migrations
 
 **Generate migration files after model changes:**
+
 ```bash
 uv run python manage.py makemigrations
 ```
 
 **Apply pending migrations:**
+
 ```bash
 uv run python manage.py migrate
 ```
@@ -214,16 +231,19 @@ uv run python manage.py migrate
 ## Managing Dependencies
 
 **Add a production dependency:**
+
 ```bash
 uv add <package-name>
 ```
 
 **Add a dev dependency** (linting, testing, etc.):
+
 ```bash
 uv add --dev <package-name>
 ```
 
 **Remove a dependency:**
+
 ```bash
 uv remove <package-name>
 ```

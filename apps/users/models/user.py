@@ -1,12 +1,12 @@
 from uuid import uuid7
 
-from django.contrib.auth.hashers import make_password
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-from apps.utils.models import SoftDeleteModel, TimeStampedModel
+from apps.utils.models import TimeStampedModel
 
 
-class User(TimeStampedModel, SoftDeleteModel):
+class User(AbstractUser, TimeStampedModel):
     class AccountType(models.TextChoices):
         PERSONAL = "personal", "Personal"
         ORGANIZATION = "organization", "Organization"
@@ -17,6 +17,11 @@ class User(TimeStampedModel, SoftDeleteModel):
         INACTIVE = "inactive", "Inactive"
         SUSPENDED = "suspended", "Suspended"
         BLOCKED = "blocked", "Blocked"
+
+    class ProfileVisibility(models.TextChoices):
+        PUBLIC = "public", "Public"
+        PRIVATE = "private", "Private"
+        LIMITED = "limited", "Limited"
 
     id = models.UUIDField(primary_key=True, default=uuid7, editable=False)
 
@@ -50,6 +55,8 @@ class User(TimeStampedModel, SoftDeleteModel):
         upload_to="cover_photos/", blank=True, null=True
     )
 
+    bio = models.TextField(blank=True)
+
     two_factor_enabled = models.BooleanField(default=False)
 
     last_login_at = models.DateTimeField(null=True, blank=True)
@@ -70,8 +77,20 @@ class User(TimeStampedModel, SoftDeleteModel):
 
     is_locked = models.BooleanField(default=False)
 
-    def set_password(self, raw_password: str) -> None:
-        self.password = make_password(raw_password)
+    profile_visibility = models.CharField(
+        max_length=20,
+        choices=ProfileVisibility.choices,
+        default=ProfileVisibility.PUBLIC,
+    )
+
+    social_links = models.JSONField(default=dict, blank=True)
 
     def __str__(self) -> str:
         return self.full_name if self.full_name else self.username
+
+    def is_onboarded(self) -> bool:
+        return (
+            hasattr(self, "personal_profile")
+            or hasattr(self, "organization_profile")
+            or hasattr(self, "admin_profile")
+        )

@@ -40,8 +40,9 @@ class Location(TimeStampedModel, SoftDeleteModel):
         help_text="e.g. Home, Office, Client location",
     )
 
-    visibility_level = models.CharField(
-        max_length=20, choices=VisibilityLevel.choices
+    visibility_level = models.IntegerField(
+        choices=VisibilityLevel.choices,
+        default=VisibilityLevel.CITY,
     )
 
     def __str__(self) -> str:

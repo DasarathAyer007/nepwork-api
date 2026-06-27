@@ -18,12 +18,12 @@ class Permission(TimeStampedModel, SoftDeleteModel):
 
 class UserPermission(TimeStampedModel):
     user = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="user_permissions"
+        User, on_delete=models.CASCADE, related_name="custom_permissions"
     )
     permission = models.ForeignKey(
         Permission,
         on_delete=models.CASCADE,
-        related_name="user_permissions",
+        related_name="custom_permissions",
     )
     permission_given_by = models.ForeignKey(
         User,
