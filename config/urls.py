@@ -31,6 +31,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/users/", include("apps.users.urls")),
     path("api/skills/", include("apps.skill.urls")),
+    path("api/locations/", include("apps.locations.urls")),
 ]
 
 # API Documentation

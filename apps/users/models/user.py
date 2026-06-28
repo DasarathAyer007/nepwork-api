@@ -65,7 +65,7 @@ class User(AbstractUser, TimeStampedModel):
 
     last_login_ip = models.GenericIPAddressField(null=True, blank=True)
 
-    location = models.ForeignKey(
+    location = models.OneToOneField(
         "locations.Location",
         on_delete=models.SET_NULL,
         null=True,

@@ -69,7 +69,7 @@ class ServiceRequest(TimeStampedModel, SoftDeleteModel):
         blank=True,
     )
 
-    location = models.ForeignKey(
+    location = models.OneToOneField(
         "locations.Location",
         on_delete=models.SET_NULL,
         null=True,

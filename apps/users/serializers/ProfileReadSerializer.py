@@ -3,6 +3,7 @@ from typing import Any
 from rest_framework import serializers
 
 from apps.locations.serializer import LocationSerializer
+from apps.skill.serializer import SkillSerializer
 from apps.users.models.admin_profile import AdminProfile
 from apps.users.models.organization_profile import OrganizationProfile
 from apps.users.models.personal_profile import PersonalProfile
@@ -25,6 +26,7 @@ class UserSerializer(serializers.ModelSerializer):
             "bio",
             "date_joined",
             "last_login",
+            "social_links",
         )
 
 
@@ -51,6 +53,7 @@ class BaseProfileSerializer(serializers.ModelSerializer):
             "username",
             "full_name",
             "profile_picture",
+            "cover_photo",
             "bio",
             "location",
             "social_links",
@@ -107,6 +110,7 @@ class PersonalProfileSerializer(BaseProfileSerializer):
         "limited": ("gender", "skills"),
         "private": (),
     }
+    skills = SkillSerializer(many=True, read_only=True)
 
     class Meta:
         model = PersonalProfile
@@ -168,7 +172,7 @@ class ProfileReadSerializer(serializers.Serializer):
     """Only entry point. Routes to the correct subclass."""
 
     serializer: BaseProfileSerializer
-    profile_type: str
+    account_type: str
 
     def to_representation(self, instance) -> dict[str, Any]:
         # instance is always a User object
@@ -179,13 +183,13 @@ class ProfileReadSerializer(serializers.Serializer):
                 instance.personal_profile,
                 context=self.context,
             )
-            profile_type = "personal"
+            account_type = "personal"
         elif account_type == User.AccountType.ORGANIZATION:
             serializer = OrganizationProfileSerializer(
                 instance.organization_profile,
                 context=self.context,
             )
-            profile_type = "organization"
+            account_type = "organization"
         elif account_type == User.AccountType.ADMIN and hasattr(
             instance,
             "admin_profile",
@@ -194,8 +198,8 @@ class ProfileReadSerializer(serializers.Serializer):
                 instance.admin_profile,
                 context=self.context,
             )
-            profile_type = "admin"
+            account_type = "admin"
         else:
             return {"error": "Profile not found for the given user."}
 
-        return {**serializer.data, "profile_type": profile_type}
+        return {**serializer.data, "account_type": account_type}

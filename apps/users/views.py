@@ -1,13 +1,23 @@
 from rest_framework import status
-from rest_framework.exceptions import PermissionDenied, ValidationError
+from rest_framework.exceptions import (
+    NotFound,
+    PermissionDenied,
+    ValidationError,
+)
 from rest_framework.generics import (
     CreateAPIView,
+    GenericAPIView,
     RetrieveAPIView,
+    get_object_or_404,
 )
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework_simplejwt.views import TokenObtainPairView
 
+from apps.locations.serializer import (
+    LocationSerializer,
+    LocationWriteSerializer,
+)
 from apps.users.models.user import User
 from apps.users.serializers.ProfileWriteSerializer import (
     OrganizationProfileWriteSerializer,
@@ -15,7 +25,7 @@ from apps.users.serializers.ProfileWriteSerializer import (
 )
 from apps.utils.users_utils import get_auth_user
 
-from .schemas import ONBOARDING_SCHEMA
+from .schemas import ONBOARDING_SCHEMA, USER_LOCATION_SCHEMA
 from .serializers import (
     CustomTokenObtainPairSerializer,
     ProfileReadSerializer,
@@ -103,4 +113,69 @@ class ProfileDetailView(RetrieveAPIView):
         "organization_profile",
     )
     serializer_class = ProfileReadSerializer
-    lookup_field = "id"
+
+    def get_object(self):
+        queryset = self.get_queryset()
+        # decide filter based on which kwarg is present in the URL
+        if "username" in self.kwargs:
+            obj = get_object_or_404(queryset, username=self.kwargs["username"])
+            print(f"Retrieved user by username: {obj.username}")
+        elif "id" in self.kwargs:
+            obj = get_object_or_404(queryset, id=self.kwargs["id"])
+            print(f"Retrieved user by ID: {obj.id}")
+        else:
+            raise NotFound("No lookup field provided.")
+
+        self.check_object_permissions(self.request, obj)
+        return obj
+
+
+@USER_LOCATION_SCHEMA
+class UserLocationView(GenericAPIView):
+    # permission_classes = [IsAuthenticated]
+    def get_object(self, user_id):
+        user = get_object_or_404(User, id=user_id)
+        return user.location
+
+    def get(self, request, user_id):
+        location = self.get_object(user_id)
+        if not location:
+            return Response(
+                {"detail": "Location not found"},
+                status=status.HTTP_404_NOT_FOUND,
+            )
+        serializer = LocationSerializer(location, context={"request": request})
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def post(self, request, user_id):
+        user = get_object_or_404(User, id=user_id)
+        serializer = LocationWriteSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
+        location = serializer.save()
+
+        user.location = location
+        user.save(update_fields=["location"])
+
+        return Response(
+            LocationSerializer(location, context={"request": request}).data,
+            status=status.HTTP_200_OK,
+        )
+
+    def put(self, request, user_id, *args, **kwargs):
+        location = self.get_object(user_id)
+        if not location:
+            return Response(
+                {"message": "Location not found."},
+                status=status.HTTP_404_NOT_FOUND,
+            )
+        serializer = LocationWriteSerializer(location, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(
+            {
+                "message": "Location updated successfully.",
+                "data": serializer.data,
+            },
+            status=status.HTTP_200_OK,
+        )

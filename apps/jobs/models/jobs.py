@@ -104,7 +104,7 @@ class Job(TimeStampedModel, SoftDeleteModel):
 
     experience_years = models.PositiveIntegerField(null=True, blank=True)
 
-    location = models.ForeignKey(
+    location = models.OneToOneField(
         "locations.Location",
         on_delete=models.SET_NULL,
         null=True,

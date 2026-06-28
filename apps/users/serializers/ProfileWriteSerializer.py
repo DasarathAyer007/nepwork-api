@@ -64,7 +64,6 @@ class BaseProfileWriteSerializer(
         write_only=True,
     )
 
-    # ── Shared validation ──
     def validate_bio(self, value: str) -> str:
         if not value.strip():
             raise serializers.ValidationError("Bio cannot be blank.")
