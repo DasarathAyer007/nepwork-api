@@ -96,9 +96,8 @@ class Service(TimeStampedModel, SoftDeleteModel):
     currency = models.CharField(max_length=10, default="USD")
     skills = models.ManyToManyField(Skill, blank=True)
     radius_km = models.PositiveIntegerField(null=True, blank=True)
-    available_from = models.TimeField()
-
-    available_to = models.TimeField()
+    available_from = models.TimeField(null=True, blank=True)
+    available_to = models.TimeField(null=True, blank=True)
 
     def __str__(self) -> str:
         return (

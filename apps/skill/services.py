@@ -3,7 +3,7 @@ from apps.skill.models import Skill
 
 class SkillService:
     @staticmethod
-    def get_or_create_skills(skill_names):
+    def get_or_create_skills(skill_names) -> list:
         skills = []
 
         print(f"Skill names received: {skill_names}")  # Debugging line
