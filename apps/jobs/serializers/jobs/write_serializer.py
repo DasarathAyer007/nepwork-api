@@ -1,74 +1,82 @@
 from rest_framework import serializers
 
-from apps.locations.serializers import (
-    LocationWriteSerializer,
-)
+from apps.locations.serializers import LocationWriteSerializer
 from apps.skill.services import SkillService
 
-from ...models import Service
+from ...models import Job
 
 
-class ServiceWriteSerializer(serializers.ModelSerializer):
+class JobWriteSerializer(serializers.ModelSerializer):
     location = LocationWriteSerializer(required=False, write_only=True)
-    skills = serializers.ListField(
+    skills_required = serializers.ListField(
         child=serializers.CharField(trim_whitespace=True),
         required=True,
         write_only=True,
     )
-    available_from = serializers.TimeField(required=False, allow_null=True)
-    available_to = serializers.TimeField(required=False, allow_null=True)
 
     class Meta:
-        model = Service
+        model = Job
         fields = [
             "title",
             "slug",
             "description",
             "thumbnail",
-            "category",
-            "availability_status",
-            "location",
-            "price_type",
+            "organization",
+            "job_type",
+            "work_mode",
             "status",
-            "price",
+            "category",
+            "skills_required",
+            "requirements",
+            "experience_level",
+            "experience_years",
+            "location",
+            "salary_min",
+            "salary_max",
             "currency",
-            "skills",
-            "radius_km",
-            "available_from",
-            "available_to",
+            "contact_email",
+            "contact_phone",
+            "benefits",
+            "deadline",
         ]
         extra_kwargs = {"slug": {"required": False}}
 
     def validate(self, attrs):
-        if attrs.get("price_type") == Service.PriceType.FIXED and not attrs.get(
-            "price"
+        if (
+            attrs.get("salary_min")
+            and attrs.get("salary_max")
+            and attrs["salary_min"] > attrs["salary_max"]
         ):
             raise serializers.ValidationError(
-                {"price": "Required for fixed price."}
+                {"salary_min": "Min must be <= max."}
             )
         return attrs
 
     def create(self, validated_data):
         location_data = validated_data.pop("location", None)
-        skills = validated_data.pop("skills", [])
-        service = Service.objects.create(**validated_data)
-        if skills:
-            service.skills.set(SkillService.get_or_create_skills(skills))
+        skills_required = validated_data.pop("skills_required", [])
+        job = Job.objects.create(**validated_data)
+        if skills_required:
+            job.skills_required.set(
+                SkillService.get_or_create_skills(skills_required)
+            )
         if location_data:
             loc_serializer = LocationWriteSerializer(data=location_data)
             loc_serializer.is_valid(raise_exception=True)
-            service.location = loc_serializer.save()
-            service.save(update_fields=["location"])
-        return service
+            job.location = loc_serializer.save()
+            job.save(update_fields=["location"])
+        return job
 
     def update(self, instance, validated_data):
         location_data = validated_data.pop("location", None)
-        skills = validated_data.pop("skills", None)
+        skills_required = validated_data.pop("skills_required", None)
 
         instance = super().update(instance, validated_data)
 
-        if skills is not None:
-            instance.skills.set(skills)
+        if skills_required is not None:
+            instance.skills_required.set(
+                SkillService.get_or_create_skills(skills_required)
+            )
 
         if location_data is not None:
             if location_data:

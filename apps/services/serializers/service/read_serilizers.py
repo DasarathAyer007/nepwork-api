@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
-from apps.locations.serializer import LocationReadSerializer
+from apps.locations.serializers import LocationReadSerializer
 
 from ...models import Service
 from ..category_serializers import CategorySerializer

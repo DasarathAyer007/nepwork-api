@@ -8,7 +8,7 @@ from ..models import ServiceSaved
 from ..serializers import ServiceSavedCreateSerializer, ServiceSavedSerializer
 
 
-@extend_schema(tags=["Save Services"])
+@extend_schema(tags=["Services/Saved"])
 class ServiceSavedViewSet(viewsets.ModelViewSet):
     """
     Save / unsave a service.

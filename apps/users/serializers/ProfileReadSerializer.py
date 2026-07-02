@@ -2,7 +2,7 @@ from typing import Any
 
 from rest_framework import serializers
 
-from apps.locations.serializer import LocationSerializer
+from apps.locations.serializers import LocationSerializer
 from apps.skill.serializer import SkillSerializer
 from apps.users.models.admin_profile import AdminProfile
 from apps.users.models.organization_profile import OrganizationProfile

@@ -7,7 +7,7 @@ from drf_spectacular.utils import (
     extend_schema_view,
 )
 
-from apps.locations.serializer import (
+from apps.locations.serializers import (
     LocationSerializer,
     LocationWriteSerializer,
 )

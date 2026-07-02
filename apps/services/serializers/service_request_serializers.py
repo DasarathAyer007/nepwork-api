@@ -1,7 +1,6 @@
-# services/serializers_requests.py
 from rest_framework import serializers
 
-from apps.locations.serializer import (
+from apps.locations.serializers import (
     LocationSerializer,
     LocationWriteSerializer,
 )

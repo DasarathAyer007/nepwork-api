@@ -2,8 +2,16 @@ from rest_framework import serializers
 
 from apps.locations.serializers import LocationWriteSerializer
 
+from ...models import Job
 
-class ServiceLocationUpdateSerializer(serializers.Serializer):
+
+class JobSalarySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Job
+        fields = ["salary_min", "salary_max", "currency"]
+
+
+class JobLocationUpdateSerializer(serializers.Serializer):
     location = LocationWriteSerializer(write_only=True)
 
     def update(self, instance, validated_data):
