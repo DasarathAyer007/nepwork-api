@@ -32,6 +32,7 @@ urlpatterns = [
     path("api/users/", include("apps.users.urls")),
     path("api/skills/", include("apps.skill.urls")),
     path("api/locations/", include("apps.locations.urls")),
+    path("api/services/", include("apps.services.urls")),
 ]
 
 # API Documentation
