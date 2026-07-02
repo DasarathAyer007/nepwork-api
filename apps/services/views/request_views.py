@@ -18,7 +18,7 @@ from ..services.service_requests_services import (
 )
 
 
-@extend_schema(tags=["service requests"])
+@extend_schema(tags=["Services/Requests"])
 class ServiceRequestViewSet(viewsets.ModelViewSet):
     """
     Full CRUD for service requests + status transitions.
