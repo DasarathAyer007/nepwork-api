@@ -106,6 +106,30 @@ class LocationSerializer(serializers.ModelSerializer):
         return None
 
 
+class LocationReadSerializer(serializers.ModelSerializer):
+    point = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Location
+        fields = (
+            "point",
+            "address",
+            "city",
+            "state",
+            "country",
+            "postal_code",
+            "label",
+        )
+
+    def get_point(self, obj):
+        if obj.point is None:
+            return None
+        return {
+            "lat": obj.point.y,
+            "lng": obj.point.x,
+        }
+
+
 class LocationWriteSerializer(serializers.ModelSerializer):
     lat = serializers.FloatField(write_only=True, min_value=-90, max_value=90)
     lng = serializers.FloatField(write_only=True, min_value=-180, max_value=180)
