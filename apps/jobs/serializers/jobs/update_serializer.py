@@ -1,0 +1,28 @@
+from rest_framework import serializers
+
+from apps.locations.serializers import LocationWriteSerializer
+
+from ...models import Job
+
+
+class JobSalarySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Job
+        fields = ["salary_min", "salary_max", "currency"]
+
+
+class JobLocationUpdateSerializer(serializers.Serializer):
+    location = LocationWriteSerializer(write_only=True)
+
+    def update(self, instance, validated_data):
+        loc_data = validated_data["location"]
+        if instance.location:
+            loc_serializer = LocationWriteSerializer(
+                instance.location, data=loc_data, partial=True
+            )
+        else:
+            loc_serializer = LocationWriteSerializer(data=loc_data)
+        loc_serializer.is_valid(raise_exception=True)
+        instance.location = loc_serializer.save()
+        instance.save(update_fields=["location"])
+        return instance
