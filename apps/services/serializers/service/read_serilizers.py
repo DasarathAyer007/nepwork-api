@@ -19,7 +19,9 @@ class ServiceListSerializer(serializers.ModelSerializer):
     location = LocationReadSerializer(read_only=True, allow_null=True)
     user = serializers.StringRelatedField()
     category = CategorySerializer(read_only=True)
-    skills = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+    skills = serializers.SlugRelatedField(
+        many=True, read_only=True, slug_field="name"
+    )
     is_currently_available = serializers.BooleanField(read_only=True)
     avg_rating = serializers.FloatField(read_only=True)
     total_applies = serializers.IntegerField(read_only=True)

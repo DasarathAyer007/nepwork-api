@@ -11,11 +11,12 @@ from .views import (
     ServiceViewSet,
 )
 
-router = DefaultRouter(trailing_slash=False)
-router.register("", ServiceViewSet)
+router = DefaultRouter()
+router.register(r"category", ServiceCategoryViewSet, basename="category")
 router.register(r"saved", ServiceSavedViewSet, basename="saved")
 router.register(r"requests", ServiceRequestViewSet, basename="request")
-router.register(r"category", ServiceCategoryViewSet, basename="category")
+router.register("", ServiceViewSet)
+
 
 urlpatterns = [
     path("", include(router.urls)),

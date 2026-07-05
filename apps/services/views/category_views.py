@@ -10,3 +10,4 @@ from ..serializers import CategorySerializer
 class ServiceCategoryViewSet(viewsets.ModelViewSet):
     queryset = ServiceCategory.objects.filter(is_active=True)
     serializer_class = CategorySerializer
+    pagination_class = None
