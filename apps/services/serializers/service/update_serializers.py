@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from apps.locations.serializer import LocationWriteSerializer
+from apps.locations.serializers import LocationWriteSerializer
 
 
 class ServiceLocationUpdateSerializer(serializers.Serializer):

@@ -6,7 +6,8 @@ from ..models import ServiceCategory
 from ..serializers import CategorySerializer
 
 
-@extend_schema(tags=["Services Category"])
+@extend_schema(tags=["Services/Category"])
 class ServiceCategoryViewSet(viewsets.ModelViewSet):
     queryset = ServiceCategory.objects.filter(is_active=True)
     serializer_class = CategorySerializer
+    pagination_class = None

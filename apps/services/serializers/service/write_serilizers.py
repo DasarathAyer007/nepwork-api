@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from apps.locations.serializer import (
+from apps.locations.serializers import (
     LocationWriteSerializer,
 )
 from apps.skill.services import SkillService

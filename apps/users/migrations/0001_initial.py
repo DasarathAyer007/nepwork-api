@@ -23,12 +23,12 @@ class Migration(migrations.Migration):
             name='Permission',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('deleted_at', models.DateTimeField(blank=True, null=True)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
                 ('name', models.CharField(max_length=100, unique=True)),
                 ('code', models.CharField(max_length=100, unique=True)),
                 ('description', models.TextField(blank=True)),
+                ('deleted_at', models.DateTimeField(blank=True, null=True)),
+                ('created_at', models.DateTimeField(auto_now_add=True)),
+                ('updated_at', models.DateTimeField(auto_now=True)),
             ],
             options={
                 'abstract': False,
@@ -40,12 +40,12 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='User',
             fields=[
-                ('last_login', models.DateTimeField(blank=True, null=True, verbose_name='last login')),
-                ('is_superuser', models.BooleanField(default=False, help_text='Designates that this user has all permissions without explicitly assigning them.', verbose_name='superuser status')),
                 ('first_name', models.CharField(blank=True, max_length=150, verbose_name='first name')),
                 ('last_name', models.CharField(blank=True, max_length=150, verbose_name='last name')),
                 ('is_staff', models.BooleanField(default=False, help_text='Designates whether the user can log into this admin site.', verbose_name='staff status')),
                 ('is_active', models.BooleanField(default=True, help_text='Designates whether this user should be treated as active. Unselect this instead of deleting accounts.', verbose_name='active')),
+                ('last_login', models.DateTimeField(blank=True, null=True, verbose_name='last login')),
+                ('is_superuser', models.BooleanField(default=False, help_text='Designates that this user has all permissions without explicitly assigning them.', verbose_name='superuser status')),
                 ('date_joined', models.DateTimeField(default=django.utils.timezone.now, verbose_name='date joined')),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
@@ -81,8 +81,6 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='AdminProfile',
             fields=[
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
                 ('id', models.UUIDField(default=uuid.uuid7, editable=False, primary_key=True, serialize=False)),
                 ('role', models.CharField(blank=True, max_length=20)),
                 ('ip_address', models.GenericIPAddressField(blank=True, null=True)),
@@ -91,6 +89,8 @@ class Migration(migrations.Migration):
                 ('notes', models.TextField(blank=True)),
                 ('created_by', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='created_admin_profiles', to=settings.AUTH_USER_MODEL)),
                 ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='admin_profile', to=settings.AUTH_USER_MODEL)),
+                ('created_at', models.DateTimeField(auto_now_add=True)),
+                ('updated_at', models.DateTimeField(auto_now=True)),
             ],
             options={
                 'abstract': False,
@@ -99,8 +99,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='OrganizationProfile',
             fields=[
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
+
                 ('id', models.UUIDField(default=uuid.uuid7, editable=False, primary_key=True, serialize=False)),
                 ('organization_name', models.CharField(max_length=50)),
                 ('description', models.TextField(blank=True)),
@@ -113,6 +112,8 @@ class Migration(migrations.Migration):
                 ('social_links', models.JSONField(blank=True, default=dict)),
                 ('is_verified', models.BooleanField(default=False)),
                 ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='organization_profile', to=settings.AUTH_USER_MODEL)),
+                ('created_at', models.DateTimeField(auto_now_add=True)),
+                ('updated_at', models.DateTimeField(auto_now=True)),
             ],
             options={
                 'abstract': False,
@@ -121,8 +122,6 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='PersonalProfile',
             fields=[
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
                 ('id', models.UUIDField(default=uuid.uuid7, editable=False, primary_key=True, serialize=False)),
                 ('bio', models.TextField(blank=True)),
                 ('date_of_birth', models.DateField(blank=True, null=True)),
@@ -132,6 +131,8 @@ class Migration(migrations.Migration):
                 ('profile_visibility', models.CharField(choices=[('public', 'Public'), ('private', 'Private'), ('limited', 'Limited')], default='public', max_length=20)),
                 ('social_links', models.JSONField(blank=True, default=dict)),
                 ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='personal_profile', to=settings.AUTH_USER_MODEL)),
+                ('created_at', models.DateTimeField(auto_now_add=True)),
+                ('updated_at', models.DateTimeField(auto_now=True)),
             ],
             options={
                 'abstract': False,
@@ -141,11 +142,11 @@ class Migration(migrations.Migration):
             name='UserPermission',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
                 ('permission', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='custom_permissions', to='users.permission')),
                 ('permission_given_by', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='permissions_given', to=settings.AUTH_USER_MODEL)),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='custom_permissions', to=settings.AUTH_USER_MODEL)),
+                ('created_at', models.DateTimeField(auto_now_add=True)),
+                ('updated_at', models.DateTimeField(auto_now=True)),
             ],
             options={
                 'abstract': False,

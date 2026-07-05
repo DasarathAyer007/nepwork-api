@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     "drf_spectacular",
     "django_scalar",
     # local apps
+    "apps.utils",
     "apps.users",
     "apps.jobs",
     "apps.locations",

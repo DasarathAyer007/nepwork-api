@@ -1,0 +1,471 @@
+{
+  "categories": [
+    { "name": "Cleaning", "icon": "spray-can" },
+    { "name": "Plumbing", "icon": "wrench" },
+    { "name": "Electrical", "icon": "zap" },
+    { "name": "HVAC", "icon": "snowflake" },
+    { "name": "Electronics Repair", "icon": "smartphone" },
+    { "name": "Home Maintenance", "icon": "hammer" },
+    { "name": "Painting", "icon": "paint-roller" },
+    { "name": "Carpentry", "icon": "ruler" },
+    { "name": "Gardening", "icon": "sprout" },
+    { "name": "Pest Control", "icon": "bug" },
+    { "name": "Moving", "icon": "truck" },
+    { "name": "Automotive", "icon": "car" },
+    { "name": "Appliance Repair", "icon": "microwave" },
+    { "name": "Security", "icon": "shield" },
+    { "name": "Smart Home", "icon": "home" }
+  ],
+  "services": [
+    {
+      "title": "House Cleaning",
+      "category": "Cleaning",
+      "skills": ["cleaning", "sanitization", "dusting"]
+    },
+    {
+      "title": "Deep Cleaning",
+      "category": "Cleaning",
+      "skills": ["deep-cleaning", "disinfection", "sanitization"]
+    },
+    {
+      "title": "Bathroom Cleaning",
+      "category": "Cleaning",
+      "skills": ["cleaning", "toilet-scrubbing", "disinfection"]
+    },
+    {
+      "title": "Kitchen Cleaning",
+      "category": "Cleaning",
+      "skills": ["grease-removal", "cleaning", "sanitization"]
+    },
+    {
+      "title": "Carpet Cleaning",
+      "category": "Cleaning",
+      "skills": ["vacuuming", "stain-removal", "washing"]
+    },
+    {
+      "title": "Sofa Cleaning",
+      "category": "Cleaning",
+      "skills": ["fabric-cleaning", "stain-removal", "vacuuming"]
+    },
+    {
+      "title": "Window Cleaning",
+      "category": "Cleaning",
+      "skills": ["glass-cleaning", "streak-free", "high-rise"]
+    },
+    {
+      "title": "Tile & Grout Cleaning",
+      "category": "Cleaning",
+      "skills": ["scrubbing", "stain-removal", "sealing"]
+    },
+    {
+      "title": "Bathroom Plumbing",
+      "category": "Plumbing",
+      "skills": ["pipe-repair", "installation", "maintenance"]
+    },
+    {
+      "title": "Kitchen Plumbing",
+      "category": "Plumbing",
+      "skills": ["sink-repair", "pipe-fixing", "installation"]
+    },
+    {
+      "title": "Pipe Leakage Repair",
+      "category": "Plumbing",
+      "skills": ["leak-detection", "sealing", "repair"]
+    },
+    {
+      "title": "Drain Cleaning",
+      "category": "Plumbing",
+      "skills": ["clog-removal", "drain-unblocking", "cleaning"]
+    },
+    {
+      "title": "Water Tank Cleaning",
+      "category": "Plumbing",
+      "skills": ["tank-cleaning", "sanitization", "maintenance"]
+    },
+    {
+      "title": "Water Tank Repair",
+      "category": "Plumbing",
+      "skills": ["repair", "sealing", "maintenance"]
+    },
+    {
+      "title": "Toilet Installation",
+      "category": "Plumbing",
+      "skills": ["installation", "plumbing", "sealing"]
+    },
+    {
+      "title": "Water Heater Installation",
+      "category": "Plumbing",
+      "skills": ["installation", "plumbing", "electrical"]
+    },
+    {
+      "title": "Sump Pump Installation",
+      "category": "Plumbing",
+      "skills": ["installation", "plumbing", "pumping"]
+    },
+    {
+      "title": "Electrical Repair",
+      "category": "Electrical",
+      "skills": ["wiring", "repair", "diagnostics"]
+    },
+    {
+      "title": "Ceiling Fan Installation",
+      "category": "Electrical",
+      "skills": ["installation", "mounting", "wiring"]
+    },
+    {
+      "title": "Light Fixture Installation",
+      "category": "Electrical",
+      "skills": ["installation", "wiring", "setup"]
+    },
+    {
+      "title": "Wiring Installation",
+      "category": "Electrical",
+      "skills": ["wiring", "electrical-design", "installation"]
+    },
+    {
+      "title": "Circuit Breaker Repair",
+      "category": "Electrical",
+      "skills": ["repair", "diagnostics", "replacement"]
+    },
+    {
+      "title": "Outlet Installation",
+      "category": "Electrical",
+      "skills": ["installation", "wiring", "safety"]
+    },
+    {
+      "title": "Lighting Installation",
+      "category": "Electrical",
+      "skills": ["installation", "wiring", "design"]
+    },
+    {
+      "title": "Generator Installation",
+      "category": "Electrical",
+      "skills": ["installation", "wiring", "power-systems"]
+    },
+    {
+      "title": "AC Installation",
+      "category": "HVAC",
+      "skills": ["installation", "cooling-systems", "mounting"]
+    },
+    {
+      "title": "AC Repair",
+      "category": "HVAC",
+      "skills": ["repair", "gas-refill", "cooling"]
+    },
+    {
+      "title": "AC Servicing",
+      "category": "HVAC",
+      "skills": ["maintenance", "cleaning", "inspection"]
+    },
+    {
+      "title": "Heater Repair",
+      "category": "HVAC",
+      "skills": ["repair", "heating-systems", "maintenance"]
+    },
+    {
+      "title": "Furnace Installation",
+      "category": "HVAC",
+      "skills": ["installation", "heating-systems", "gas"]
+    },
+    {
+      "title": "Air Duct Cleaning",
+      "category": "HVAC",
+      "skills": ["cleaning", "inspection", "ventilation"]
+    },
+    {
+      "title": "Thermostat Installation",
+      "category": "HVAC",
+      "skills": ["installation", "programming", "smart-home"]
+    },
+    {
+      "title": "HVAC System Design",
+      "category": "HVAC",
+      "skills": ["design", "installation", "consultation"]
+    },
+    {
+      "title": "Laptop Repair",
+      "category": "Electronics Repair",
+      "skills": ["diagnostics", "hardware-repair", "software-troubleshooting"]
+    },
+    {
+      "title": "Computer Setup",
+      "category": "Electronics Repair",
+      "skills": ["installation", "configuration", "network-setup"]
+    },
+    {
+      "title": "Mobile Screen Replacement",
+      "category": "Electronics Repair",
+      "skills": ["screen-repair", "disassembly", "replacement"]
+    },
+    {
+      "title": "Mobile Battery Replacement",
+      "category": "Electronics Repair",
+      "skills": ["battery-replacement", "diagnostics", "repair"]
+    },
+    {
+      "title": "WiFi Router Setup",
+      "category": "Electronics Repair",
+      "skills": ["network-setup", "configuration", "troubleshooting"]
+    },
+    {
+      "title": "Data Recovery",
+      "category": "Electronics Repair",
+      "skills": ["data-recovery", "backup", "storage"]
+    },
+    {
+      "title": "Printer Repair",
+      "category": "Electronics Repair",
+      "skills": ["repair", "maintenance", "diagnostics"]
+    },
+    {
+      "title": "Tablet Repair",
+      "category": "Electronics Repair",
+      "skills": ["screen-repair", "battery-replacement", "diagnostics"]
+    },
+    {
+      "title": "Furniture Assembly",
+      "category": "Home Maintenance",
+      "skills": ["assembly", "woodwork", "installation"]
+    },
+    {
+      "title": "TV Wall Mount Installation",
+      "category": "Home Maintenance",
+      "skills": ["mounting", "drilling", "installation"]
+    },
+    {
+      "title": "Roof Leak Repair",
+      "category": "Home Maintenance",
+      "skills": ["waterproofing", "repair", "inspection"]
+    },
+    {
+      "title": "Curtain Installation",
+      "category": "Home Maintenance",
+      "skills": ["drilling", "mounting", "installation"]
+    },
+    {
+      "title": "Washing Machine Repair",
+      "category": "Home Maintenance",
+      "skills": ["motor-repair", "diagnostics", "installation"]
+    },
+    {
+      "title": "Refrigerator Repair",
+      "category": "Home Maintenance",
+      "skills": ["cooling-repair", "gas-refill", "maintenance"]
+    },
+    {
+      "title": "Door Installation",
+      "category": "Home Maintenance",
+      "skills": ["installation", "carpentry", "hardware"]
+    },
+    {
+      "title": "Cabinet Repair",
+      "category": "Home Maintenance",
+      "skills": ["repair", "woodwork", "refinishing"]
+    },
+    {
+      "title": "Drywall Repair",
+      "category": "Home Maintenance",
+      "skills": ["patching", "sanding", "painting"]
+    },
+    {
+      "title": "Ceiling Repair",
+      "category": "Home Maintenance",
+      "skills": ["repair", "plastering", "painting"]
+    },
+    {
+      "title": "Interior Painting",
+      "category": "Painting",
+      "skills": ["painting", "surface-prep", "color-mixing"]
+    },
+    {
+      "title": "Exterior Painting",
+      "category": "Painting",
+      "skills": ["painting", "surface-prep", "weatherproofing"]
+    },
+    {
+      "title": "Wallpaper Installation",
+      "category": "Painting",
+      "skills": ["installation", "surface-prep", "design"]
+    },
+    {
+      "title": "Fence Painting",
+      "category": "Painting",
+      "skills": ["painting", "surface-prep", "weatherproofing"]
+    },
+    {
+      "title": "Deck Staining",
+      "category": "Painting",
+      "skills": ["staining", "surface-prep", "wood-care"]
+    },
+    {
+      "title": "Custom Woodwork",
+      "category": "Carpentry",
+      "skills": ["woodworking", "design", "installation"]
+    },
+    {
+      "title": "Cabinet Installation",
+      "category": "Carpentry",
+      "skills": ["installation", "measurement", "woodwork"]
+    },
+    {
+      "title": "Deck Building",
+      "category": "Carpentry",
+      "skills": ["construction", "woodworking", "design"]
+    },
+    {
+      "title": "Garden Maintenance",
+      "category": "Gardening",
+      "skills": ["gardening", "pruning", "plant-care"]
+    },
+    {
+      "title": "Lawn Mowing",
+      "category": "Gardening",
+      "skills": ["grass-cutting", "maintenance", "landscaping"]
+    },
+    {
+      "title": "Tree Trimming",
+      "category": "Gardening",
+      "skills": ["pruning", "tree-care", "removal"]
+    },
+    {
+      "title": "Landscaping Design",
+      "category": "Gardening",
+      "skills": ["design", "planting", "hardscaping"]
+    },
+    {
+      "title": "Irrigation Installation",
+      "category": "Gardening",
+      "skills": ["installation", "plumbing", "watering"]
+    },
+    {
+      "title": "Pest Control",
+      "category": "Pest Control",
+      "skills": ["fumigation", "spraying", "extermination"]
+    },
+    {
+      "title": "Rodent Control",
+      "category": "Pest Control",
+      "skills": ["trapping", "extermination", "prevention"]
+    },
+    {
+      "title": "Termite Treatment",
+      "category": "Pest Control",
+      "skills": ["inspection", "treatment", "prevention"]
+    },
+    {
+      "title": "Mosquito Control",
+      "category": "Pest Control",
+      "skills": ["spraying", "fumigation", "prevention"]
+    },
+    {
+      "title": "Home Moving Service",
+      "category": "Moving",
+      "skills": ["packing", "lifting", "transportation"]
+    },
+    {
+      "title": "Office Moving",
+      "category": "Moving",
+      "skills": ["packing", "lifting", "transportation"]
+    },
+    {
+      "title": "Packing Services",
+      "category": "Moving",
+      "skills": ["packing", "organization", "labeling"]
+    },
+    {
+      "title": "Storage Solutions",
+      "category": "Moving",
+      "skills": ["organization", "storage", "packing"]
+    },
+    {
+      "title": "Car Wash",
+      "category": "Automotive",
+      "skills": ["washing", "detailing", "cleaning"]
+    },
+    {
+      "title": "Bike Servicing",
+      "category": "Automotive",
+      "skills": ["repair", "maintenance", "engine-check"]
+    },
+    {
+      "title": "Car Detailing",
+      "category": "Automotive",
+      "skills": ["detailing", "cleaning", "polishing"]
+    },
+    {
+      "title": "Oil Change",
+      "category": "Automotive",
+      "skills": ["oil-change", "maintenance", "filter-replacement"]
+    },
+    {
+      "title": "Tire Replacement",
+      "category": "Automotive",
+      "skills": ["tire-replacement", "balance", "alignment"]
+    },
+    {
+      "title": "Washing Machine Repair",
+      "category": "Appliance Repair",
+      "skills": ["motor-repair", "diagnostics", "installation"]
+    },
+    {
+      "title": "Refrigerator Repair",
+      "category": "Appliance Repair",
+      "skills": ["cooling-repair", "gas-refill", "maintenance"]
+    },
+    {
+      "title": "Oven Repair",
+      "category": "Appliance Repair",
+      "skills": ["repair", "diagnostics", "heating"]
+    },
+    {
+      "title": "Dishwasher Repair",
+      "category": "Appliance Repair",
+      "skills": ["repair", "diagnostics", "installation"]
+    },
+    {
+      "title": "Dryer Repair",
+      "category": "Appliance Repair",
+      "skills": ["repair", "diagnostics", "venting"]
+    },
+    {
+      "title": "Microwave Repair",
+      "category": "Appliance Repair",
+      "skills": ["repair", "diagnostics", "magnetron"]
+    },
+    {
+      "title": "Security Camera Installation",
+      "category": "Security",
+      "skills": ["installation", "wiring", "configuration"]
+    },
+    {
+      "title": "Alarm System Installation",
+      "category": "Security",
+      "skills": ["installation", "wiring", "configuration"]
+    },
+    {
+      "title": "Lock Installation",
+      "category": "Security",
+      "skills": ["installation", "hardware", "security"]
+    },
+    {
+      "title": "Smart Lock Installation",
+      "category": "Security",
+      "skills": ["installation", "smart-home", "security"]
+    },
+    {
+      "title": "Home Automation",
+      "category": "Smart Home",
+      "skills": ["automation", "programming", "smart-devices"]
+    },
+    {
+      "title": "Smart Lighting Installation",
+      "category": "Smart Home",
+      "skills": ["installation", "wiring", "programming"]
+    },
+    {
+      "title": "Smart Speaker Setup",
+      "category": "Smart Home",
+      "skills": ["setup", "configuration", "network"]
+    }
+  ]
+}

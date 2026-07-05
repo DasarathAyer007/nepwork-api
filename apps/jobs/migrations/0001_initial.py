@@ -18,9 +18,6 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='JobApplication',
             fields=[
-                ('deleted_at', models.DateTimeField(blank=True, null=True)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
                 ('id', models.UUIDField(default=uuid.uuid7, editable=False, primary_key=True, serialize=False)),
                 ('resume', models.FileField(blank=True, null=True, upload_to='resumes/')),
                 ('cover_letter', models.TextField(blank=True)),
@@ -28,6 +25,10 @@ class Migration(migrations.Migration):
                 ('expected_salary', models.DecimalField(blank=True, decimal_places=2, max_digits=10, null=True)),
                 ('years_of_experience', models.PositiveIntegerField(blank=True, null=True)),
                 ('notes', models.TextField(blank=True)),
+                ('created_at', models.DateTimeField(auto_now_add=True)),
+                ('updated_at', models.DateTimeField(auto_now=True)),
+                ('deleted_at', models.DateTimeField(blank=True, null=True)),
+
             ],
             options={
                 'abstract': False,
@@ -39,14 +40,15 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='JobCategory',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('deleted_at', models.DateTimeField(blank=True, null=True)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
+                ('id', models.UUIDField(default=uuid.uuid7, editable=False, primary_key=True, serialize=False)),
                 ('name', models.CharField(max_length=50, unique=True)),
                 ('description', models.TextField(blank=True)),
                 ('is_active', models.BooleanField(default=True)),
                 ('icon', models.CharField(blank=True, help_text='Optional icon name or identifier', max_length=100)),
+                ('created_at', models.DateTimeField(auto_now_add=True)),
+                ('updated_at', models.DateTimeField(auto_now=True)),
+                ('deleted_at', models.DateTimeField(blank=True, null=True)),
+
             ],
             options={
                 'abstract': False,
@@ -58,9 +60,6 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Job',
             fields=[
-                ('deleted_at', models.DateTimeField(blank=True, null=True)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
                 ('id', models.UUIDField(default=uuid.uuid7, editable=False, primary_key=True, serialize=False)),
                 ('title', models.CharField(max_length=100)),
                 ('slug', models.SlugField(blank=True, max_length=150, unique=True)),
@@ -81,6 +80,9 @@ class Migration(migrations.Migration):
                 ('benefits', models.JSONField(blank=True, default=list)),
                 ('deadline', models.DateField(blank=True, null=True)),
                 ('location', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='jobs', to='locations.location')),
+                ('created_at', models.DateTimeField(auto_now_add=True)),
+                ('updated_at', models.DateTimeField(auto_now=True)),
+                ('deleted_at', models.DateTimeField(blank=True, null=True)),
             ],
             options={
                 'abstract': False,
