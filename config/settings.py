@@ -38,6 +38,7 @@ ALLOWED_HOSTS = config(
 # Application definition
 
 INSTALLED_APPS = [
+    "daphne",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
+    "channels",
     "corsheaders",
     "django.contrib.gis",
     "drf_spectacular",
@@ -60,6 +62,7 @@ INSTALLED_APPS = [
     "apps.admin_panel",
     "apps.services",
     "apps.skill",
+    "apps.websockets",
 ]
 
 REST_FRAMEWORK = {
@@ -70,7 +73,7 @@ REST_FRAMEWORK = {
     "DEFAULT_PAGINATION_CLASS": "apps.utils.pagination.CustomPageNumberPagination",
     "PAGE_SIZE": 20,
 }
-
+# "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
 
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(
@@ -112,7 +115,25 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "config.wsgi.application"
+ASGI_APPLICATION = "config.asgi.application"
+
+# WSGI_APPLICATION = "config.wsgi.application"
+
+
+# CHANNEL_LAYERS = {
+#     "default": {
+#         "BACKEND": "channels_redis.core.RedisChannelLayer",
+#         "CONFIG": {
+#             "hosts": [("127.0.0.1", 6379)],
+#         },
+#     },
+# }
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer",
+    },
+}
 
 
 # Database
