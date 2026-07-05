@@ -1,5 +1,4 @@
 import random
-from typing import cast
 
 from factory.declarations import (
     Iterator,
@@ -15,38 +14,11 @@ from apps.services.models import Service
 from apps.services.models.service_category import ServiceCategory
 from apps.skill.models import Skill
 from apps.users.models.user import User
+from apps.utils.json_loader import load_json
 
-# ruff: noqa: S311
-SERVICE_TITLES = [
-    "House Cleaning",
-    "Deep Cleaning",
-    "Bathroom Plumbing",
-    "Kitchen Plumbing",
-    "Electrical Repair",
-    "Ceiling Fan Installation",
-    "AC Installation",
-    "AC Repair",
-    "Laptop Repair",
-    "Computer Setup",
-    "Mobile Screen Replacement",
-    "Car Wash",
-    "Garden Maintenance",
-    "Interior Painting",
-    "Roof Leak Repair",
-    "Furniture Assembly",
-    "Home Moving Service",
-    "Pest Control",
-    "TV Wall Mount Installation",
-    "Water Heater Repair",
-]
-
-SERVICE_SKILLS_MAP = {
-    "AC Repair": ["repair", "installation", "cooling"],
-    "Plumbing Fix": ["repair", "plumbing", "maintenance"],
-    "House Cleaning": ["cleaning", "sanitization", "maintenance"],
-    "Electrical Work": ["wiring", "repair", "installation"],
-    "Laptop Repair": ["repair", "diagnostics", "hardware"],
-}
+data = load_json("apps/services/tests/seed_data.json")
+categories = data["categories"]
+SERVICES = data["services"]
 
 
 class ServiceCategoryFactory(DjangoModelFactory):
@@ -54,46 +26,21 @@ class ServiceCategoryFactory(DjangoModelFactory):
         model = ServiceCategory
         django_get_or_create = ("name",)
 
-    name = Iterator(
-        [
-            "Plumbing",
-            "Electrical",
-            "Cleaning",
-            "Painting",
-            "Carpentry",
-            "HVAC",
-            "Appliance Repair",
-            "Pest Control",
-            "Gardening",
-            "Moving",
-        ]
-    )
-
+    name = Iterator([c["name"] for c in categories])
+    icon = Iterator([c["icon"] for c in categories])
     description = Faker("sentence", nb_words=10)
 
-    icon = Iterator(
-        [
-            "plumbing",
-            "bolt",
-            "cleaning_services",
-            "format_paint",
-            "carpenter",
-            "ac_unit",
-            "home_repair_service",
-            "pest_control",
-            "yard",
-            "local_shipping",
-        ]
-    )
-
     is_active = Faker("boolean", chance_of_getting_true=95)
+
+
+# ruff: noqa: S311
 
 
 class ServiceFactory(DjangoModelFactory):
     class Meta:
         model = Service
 
-    title = Faker("random_element", elements=SERVICE_TITLES)
+    title = LazyFunction(lambda: random.choice(SERVICES)["title"])
 
     description = Faker("paragraph", nb_sentences=4)
 
@@ -160,13 +107,14 @@ class ServiceFactory(DjangoModelFactory):
         if not create:
             return
 
-        skill_names = []
+        service = next((s for s in SERVICES if s["title"] == self.title), None)
 
-        title = cast(str, self.title)
-        skill_names = extracted or SERVICE_SKILLS_MAP.get(title, [])
+        if not service:
+            return
+
+        skill_names = service.get("skills", [])
 
         skill_objs = []
-
         for name in skill_names:
             skill, _ = Skill.objects.get_or_create(name=name.strip().lower())
             skill_objs.append(skill)

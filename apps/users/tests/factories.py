@@ -6,6 +6,7 @@ from factory.declarations import (
     LazyAttribute,
     LazyFunction,
     PostGenerationMethodCall,
+    Sequence,
 )
 from factory.django import DjangoModelFactory
 from factory.faker import Faker
@@ -26,16 +27,18 @@ class UserFactory(DjangoModelFactory):
 
     full_name = Faker("name")
 
-    username = Faker("user_name", unique=True)
+    username = Sequence(lambda n: f"u{n}")
 
-    email = Faker("email")
+    email = Sequence(lambda n: f"u{n}@test.com")
 
     password = PostGenerationMethodCall(
         "set_password",
         "test",
     )
 
-    phone_number = Faker("phone_number")
+    phone_number = LazyFunction(
+        lambda: str(random.randint(1000000000, 9999999999))
+    )
 
     account_type = Faker(
         "random_element",

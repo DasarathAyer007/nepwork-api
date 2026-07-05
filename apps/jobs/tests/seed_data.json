@@ -1,0 +1,101 @@
+{
+  "categories": [
+    {"name": "Software Development", "icon": "code"},
+    {"name": "Design", "icon": "palette"},
+    {"name": "Marketing", "icon": "megaphone"},
+    {"name": "Sales", "icon": "chart-bar"},
+    {"name": "Customer Support", "icon": "headset"},
+    {"name": "Finance", "icon": "bank"},
+    {"name": "Operations", "icon": "cogs"},
+    {"name": "HR", "icon": "users"},
+    {"name": "Education", "icon": "graduation-cap"},
+    {"name": "Healthcare", "icon": "heart"},
+    {"name": "Construction", "icon": "hard-hat"},
+    {"name": "Logistics", "icon": "truck"},
+    {"name": "Hospitality", "icon": "hotel"},
+    {"name": "Media", "icon": "camera"},
+    {"name": "Security", "icon": "shield"}
+  ],
+  "jobs": [
+    {
+      "title": "Backend Developer",
+      "skills": ["python", "django", "api-development"]
+    },
+    {
+      "title": "Frontend Developer",
+      "skills": ["javascript", "react", "ui-development"]
+    },
+    {
+      "title": "Full Stack Developer",
+      "skills": ["python", "javascript", "django", "react"]
+    },
+    {
+      "title": "UI/UX Designer",
+      "skills": ["figma", "wireframing", "user-research"]
+    },
+    {
+      "title": "Graphic Designer",
+      "skills": ["photoshop", "illustration", "branding"]
+    },
+    {
+      "title": "Digital Marketing Specialist",
+      "skills": ["seo", "content-marketing", "social-media"]
+    },
+    {
+      "title": "Sales Executive",
+      "skills": ["negotiation", "crm", "customer-engagement"]
+    },
+    {
+      "title": "Account Manager",
+      "skills": ["client-management", "communication", "sales"]
+    },
+    {
+      "title": "Customer Support Representative",
+      "skills": ["support", "communication", "troubleshooting"]
+    },
+    {
+      "title": "Finance Analyst",
+      "skills": ["excel", "financial-modeling", "reporting"]
+    },
+    {
+      "title": "Operations Coordinator",
+      "skills": ["coordination", "process-improvement", "planning"]
+    },
+    {
+      "title": "HR Assistant",
+      "skills": ["recruitment", "documentation", "hr-management"]
+    },
+    {
+      "title": "Teacher",
+      "skills": ["teaching", "lesson-planning", "communication"]
+    },
+    {
+      "title": "Nurse",
+      "skills": ["patient-care", "healthcare", "documentation"]
+    },
+    {
+      "title": "Civil Engineer",
+      "skills": ["engineering", "site-management", "design"]
+    },
+    {
+      "title": "Warehouse Supervisor",
+      "skills": ["inventory", "supervision", "logistics"]
+    },
+    {
+      "title": "Hotel Receptionist",
+      "skills": ["guest-service", "front-desk", "communication"]
+    },
+    {
+      "title": "Content Creator",
+      "skills": ["video-editing", "content-writing", "social-media"]
+    },
+    {
+      "title": "Security Guard",
+      "skills": ["surveillance", "patrolling", "safety"]
+    },
+    {
+      "title": "DevOps Engineer",
+      "skills": ["docker", "kubernetes", "ci-cd"]
+    }
+  ]
+}
