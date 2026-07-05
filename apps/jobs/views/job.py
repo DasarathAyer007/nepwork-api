@@ -17,7 +17,7 @@ from ..services.job import JobQueryService
 
 @extend_schema(tags=["Jobs"])
 class JobViewSet(viewsets.ModelViewSet):
-    queryset = Job.objects.filter(deleted_at__isnull=True)
+    queryset = Job.objects
     permission_classes = [IsJobOwnerOrAdminReadOnly]
     lookup_field = "pk"
 

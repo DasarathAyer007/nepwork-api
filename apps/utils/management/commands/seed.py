@@ -9,6 +9,8 @@ from apps.skill.models import Skill
 from apps.users.models.user import User
 from apps.users.tests.factories import UserFactory
 
+# python manage.py seed --services 30
+
 
 class Command(BaseCommand):
     help = "Seed database"
@@ -17,7 +19,7 @@ class Command(BaseCommand):
         parser.add_argument("--users", type=int, default=0)
         parser.add_argument("--services", type=int, default=0)
         parser.add_argument("--jobs", type=int, default=0)
-        parser.add_argument("--categories", type=int, default=0)
+        parser.add_argument("--service-categories", type=int, default=0)
         parser.add_argument("--job-categories", type=int, default=0)
         parser.add_argument("--reset", action="store_true")
 
@@ -25,7 +27,7 @@ class Command(BaseCommand):
         users_count = options["users"]
         services_count = options["services"]
         jobs_count = options["jobs"]
-        categories_count = options["categories"]
+        service_categories_count = options["service_categories"]
         job_categories_count = options["job_categories"]
         reset = options["reset"]
 
@@ -42,11 +44,11 @@ class Command(BaseCommand):
             Skill.objects.all().delete()
 
         # SERVICE CATEGORIES
-        if categories_count > 0:
+        if service_categories_count > 0:
             self.stdout.write(
-                f" Creating {categories_count} service categories..."
+                f" Creating {service_categories_count} service categories..."
             )
-            ServiceCategoryFactory.create_batch(categories_count)
+            ServiceCategoryFactory.create_batch(service_categories_count)
 
         # JOB CATEGORIES
         if job_categories_count > 0:

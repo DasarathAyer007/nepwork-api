@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from apps.locations.serializers import LocationReadSerializer
-from apps.skill.serializer import SkillSerializer
+from apps.users.serializers.ProfileReadSerializer import ProfileReadSerializer
 
 from ...models import Job, JobCategory
 
@@ -16,7 +16,9 @@ class JobListSerializer(serializers.ModelSerializer):
     location = LocationReadSerializer(read_only=True, allow_null=True)
     posted_by = serializers.StringRelatedField()
     category = JobCategorySerializer(read_only=True)
-    skills_required = SkillSerializer(many=True, read_only=True)
+    skills_required = serializers.SlugRelatedField(
+        many=True, read_only=True, slug_field="name"
+    )
     organization = serializers.StringRelatedField()
     total_applications = serializers.IntegerField(read_only=True)
     is_saved = serializers.BooleanField(read_only=True)
@@ -55,6 +57,7 @@ class JobDetailSerializer(JobListSerializer):
     benefits = serializers.JSONField()
     contact_email = serializers.EmailField()
     contact_phone = serializers.CharField()
+    employer = ProfileReadSerializer(source="posted_by", read_only=True)
     created_at = serializers.DateTimeField()
     updated_at = serializers.DateTimeField()
 
@@ -68,4 +71,5 @@ class JobDetailSerializer(JobListSerializer):
             "contact_phone",
             "created_at",
             "updated_at",
+            "employer",
         ]
