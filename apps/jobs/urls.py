@@ -11,12 +11,12 @@ from .views import (
 )
 
 router = DefaultRouter()
-router.register(r"jobs", JobViewSet, basename="job")
-router.register(r"job-categories", JobCategoryViewSet, basename="jobcategory")
+router.register(r"category", JobCategoryViewSet, basename="jobcategory")
 router.register(
-    r"job-applications", JobApplicationViewSet, basename="jobapplication"
+    r"applications", JobApplicationViewSet, basename="jobapplication"
 )
-router.register(r"job-saved", JobSavedViewSet, basename="jobsaved")
+router.register(r"saved", JobSavedViewSet, basename="jobsaved")
+router.register(r"", JobViewSet, basename="job")
 
 urlpatterns = [
     path("", include(router.urls)),

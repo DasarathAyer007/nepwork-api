@@ -28,12 +28,12 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='ServiceSaved',
             fields=[
-                ('deleted_at', models.DateTimeField(blank=True, null=True)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
                 ('id', models.UUIDField(default=uuid.uuid7, editable=False, primary_key=True, serialize=False)),
                 ('service', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='saved_by', to='services.service')),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='saved_services', to=settings.AUTH_USER_MODEL)),
+                ('created_at', models.DateTimeField(auto_now_add=True)),
+                ('updated_at', models.DateTimeField(auto_now=True)),
+                ('deleted_at', models.DateTimeField(blank=True, null=True)),
             ],
             options={
                 'unique_together': {('user', 'service')},

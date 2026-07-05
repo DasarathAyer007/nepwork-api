@@ -18,14 +18,14 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='ServiceCategory',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('deleted_at', models.DateTimeField(blank=True, null=True)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
+                ('id', models.UUIDField(default=uuid.uuid7, editable=False, primary_key=True, serialize=False)),
                 ('name', models.CharField(db_index=True, max_length=50, unique=True)),
                 ('description', models.TextField(blank=True)),
                 ('icon', models.CharField(blank=True, help_text='Optional icon name or identifier', max_length=50)),
                 ('is_active', models.BooleanField(default=True)),
+                ('created_at', models.DateTimeField(auto_now_add=True)),
+                ('updated_at', models.DateTimeField(auto_now=True)),
+                ('deleted_at', models.DateTimeField(blank=True, null=True)),
             ],
             options={
                 'abstract': False,
@@ -37,9 +37,6 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='ServiceRequest',
             fields=[
-                ('deleted_at', models.DateTimeField(blank=True, null=True)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
                 ('id', models.UUIDField(default=uuid.uuid7, editable=False, primary_key=True, serialize=False)),
                 ('request_message', models.TextField(blank=True)),
                 ('response_message', models.TextField(blank=True, help_text='Provider response or negotiation message')),
@@ -52,6 +49,10 @@ class Migration(migrations.Migration):
                 ('estimated_duration_hours', models.PositiveIntegerField(blank=True, null=True)),
                 ('is_negotiable', models.BooleanField(default=True)),
                 ('completed_at', models.DateTimeField(blank=True, null=True)),
+                ('created_at', models.DateTimeField(auto_now_add=True)),
+                ('updated_at', models.DateTimeField(auto_now=True)),
+                ('deleted_at', models.DateTimeField(blank=True, null=True)),
+
             ],
             options={
                 'abstract': False,
@@ -63,9 +64,6 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Service',
             fields=[
-                ('deleted_at', models.DateTimeField(blank=True, null=True)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
                 ('id', models.UUIDField(default=uuid.uuid7, editable=False, primary_key=True, serialize=False)),
                 ('title', models.CharField(max_length=100)),
                 ('slug', models.SlugField(blank=True, max_length=150, unique=True)),
@@ -81,6 +79,9 @@ class Migration(migrations.Migration):
                 ('available_from', models.TimeField()),
                 ('available_to', models.TimeField()),
                 ('location', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='services', to='locations.location')),
+                ('created_at', models.DateTimeField(auto_now_add=True)),
+                ('updated_at', models.DateTimeField(auto_now=True)),
+                ('deleted_at', models.DateTimeField(blank=True, null=True)),
             ],
             options={
                 'abstract': False,

@@ -81,7 +81,7 @@ class JobViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
 
 
-# Separate partial update views
+@extend_schema(tags=["Jobs"])
 class JobSalaryUpdateView(generics.UpdateAPIView):
     serializer_class = JobSalarySerializer
     permission_classes = [IsJobOwnerOrAdminReadOnly]
@@ -89,6 +89,7 @@ class JobSalaryUpdateView(generics.UpdateAPIView):
     lookup_field = "pk"
 
 
+@extend_schema(tags=["Jobs"])
 class JobLocationUpdateView(generics.UpdateAPIView):
     serializer_class = JobLocationUpdateSerializer
     permission_classes = [IsJobOwnerOrAdminReadOnly]

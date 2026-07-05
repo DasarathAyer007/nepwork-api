@@ -22,6 +22,8 @@ class SkillListView(ListAPIView):
         "total_count",
     ]
 
+    pagination_class = None
+
     ordering = ["name"]
 
     def get_queryset(self):

@@ -9,3 +9,4 @@ from ..serializers.job_category import JobCategorySerializer
 class JobCategoryViewSet(viewsets.ModelViewSet):
     queryset = JobCategory.objects.filter(deleted_at__isnull=True)
     serializer_class = JobCategorySerializer
+    pagination_class = None

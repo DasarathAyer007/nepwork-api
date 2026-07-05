@@ -17,9 +17,6 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Location',
             fields=[
-                ('deleted_at', models.DateTimeField(blank=True, null=True)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
                 ('id', models.UUIDField(default=uuid.uuid7, editable=False, primary_key=True, serialize=False)),
                 ('point', django.contrib.gis.db.models.fields.PointField(geography=True, srid=4326)),
                 ('address', models.TextField(blank=True)),
@@ -29,6 +26,10 @@ class Migration(migrations.Migration):
                 ('postal_code', models.CharField(blank=True, max_length=20)),
                 ('label', models.CharField(blank=True, help_text='e.g. Home, Office, Client location', max_length=50)),
                 ('visibility_level', models.IntegerField(choices=[(0, 'Exact'), (1, 'Street'), (2, 'Area'), (3, 'City'), (4, 'State'), (5, 'Country'), (6, 'Hidden'), (7, 'Private')], default=3)),
+                ('created_at', models.DateTimeField(auto_now_add=True)),
+                ('updated_at', models.DateTimeField(auto_now=True)),
+                ('deleted_at', models.DateTimeField(blank=True, null=True)),
+
             ],
             options={
                 'abstract': False,
