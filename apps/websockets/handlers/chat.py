@@ -1,8 +1,8 @@
 import logging
 
 from apps.chat.services import ChatService
-from apps.notifications.services import NotificationService
 
+# from apps.notifications.services import NotificationService
 from .base import BaseHandler
 
 logger = logging.getLogger(__name__)
@@ -13,6 +13,7 @@ class ChatHandler(BaseHandler):
     Handles all inbound chat-related WebSocket messages.
 
     Supported msg types:
+        chat.start   - user starts a new chat
         chat.send    - user sends a message to a conversation
         chat.typing  - user is typing / stopped typing
         chat.read    - user has read up to a certain message
@@ -21,6 +22,7 @@ class ChatHandler(BaseHandler):
     async def handle(self, data: dict):
         action = data.get("type")
         dispatch = {
+            "chat.start": self._handle_start,
             "chat.send": self._handle_send,
             "chat.typing": self._handle_typing,
             "chat.read": self._handle_read,
@@ -30,6 +32,94 @@ class ChatHandler(BaseHandler):
             await handler_fn(data)
         else:
             await self.send_error(f"Unknown chat action: {action}")
+
+    async def _handle_start(self, data: dict):
+        member_ids = data.get("member_ids") or []
+        content = (data.get("content") or "").strip()
+        client_ref = data.get(
+            "client_ref"
+        )  # lets the sender's own UI match the reply
+
+        if not member_ids or not content:
+            await self.send_error(
+                "member_ids and content are required", "validation_error"
+            )
+            return
+
+        # Direct chats are strictly two-person: dedupe out self-references
+        # and reject anything that doesn't resolve to exactly one other
+        # member (0 -> self-chat request, 2+ -> group chat request).
+        other_member_ids = {str(m) for m in member_ids} - {str(self.user.id)}
+        if len(other_member_ids) != 1:
+            await self.send_error(
+                "Direct chat requires exactly one other member",
+                "validation_error",
+            )
+            return
+
+        all_member_ids = [str(self.user.id), *other_member_ids]
+
+        # MUST be concurrency-safe (unique constraint on a sorted member-set
+        # hash, or select_for_update inside a transaction) — otherwise two
+        # near-simultaneous first messages (double click, two tabs) still
+        # race past a plain "does this chat exist" SELECT and create two rows.
+        chat, created = await ChatService.get_or_create_direct_chat(
+            all_member_ids
+        )
+
+        if not await ChatService.is_member(self.user, chat.id):
+            await self.send_error(
+                "You are not a member of this chat", "forbidden"
+            )
+            return
+
+        message = await ChatService.create_message(
+            sender=self.user,
+            chat_id=chat.id,
+            content=content,
+        )
+
+        member_ids_final = await ChatService.get_member_ids(chat.id)
+
+        for member_id in member_ids_final:
+            if created:
+                # Every member — sender included — needs the chat object
+                # itself so their sidebar can render it with zero refetch.
+                await self.send_to_user(
+                    user_id=member_id,
+                    event_type="chat_created",  # → AppConsumer.chat_created()
+                    payload=chat,
+                )
+
+            await self.send_to_user(
+                user_id=member_id,
+                event_type="chat_message",
+                payload=message,
+            )
+
+            if member_id == self.user.id:
+                continue
+
+            # notification = await NotificationService.create_notification(
+            #     recipient_id=member_id,
+            #     sender=self.user,
+            #     title=f"New message from {self.user.username}",
+            #     message=content[:100],
+            #     action_url=f"/chats/{chat.id}/",
+            # )
+            # await self.send_to_user(
+            #     user_id=member_id,
+            #     event_type="notification_new",
+            #     payload=notification,
+            # )
+
+        # Direct ack to the sender, tied to client_ref, so their own UI can
+        # resolve the draft→existing transition immediately instead of
+        # waiting on the fan-out loop / a second event.
+        await self.reply(
+            "chat.started",
+            {"chat": chat, "message": message, "client_ref": client_ref},
+        )
 
     # ------------------------------------------------------------------ #
     #  chat.send                                                           #
@@ -76,18 +166,18 @@ class ChatHandler(BaseHandler):
             if member_id == self.user.id:
                 continue  # don't notify yourself
 
-            notification = await NotificationService.create_notification(
-                recipient_id=member_id,
-                sender=self.user,
-                title=f"New message from {self.user.username}",
-                message=content[:100],
-                action_url=f"/chats/{chat_id}/",
-            )
-            await self.send_to_user(
-                user_id=member_id,
-                event_type="notification_new",  # → AppConsumer.notification_new()
-                payload=notification,
-            )
+            # notification = await NotificationService.create_notification(
+            #     recipient_id=member_id,
+            #     sender=self.user,
+            #     title=f"New message from {self.user.username}",
+            #     message=content[:100],
+            #     action_url=f"/chats/{chat_id}/",
+            # )
+            # await self.send_to_user(
+            #     user_id=member_id,
+            #     event_type="notification_new",
+            #     payload=notification,
+            # )
 
     # ------------------------------------------------------------------ #
     #  chat.typing                                                         #
@@ -132,6 +222,13 @@ class ChatHandler(BaseHandler):
 
         if not chat_id:
             await self.send_error("chat_id is required", "validation_error")
+            return
+
+        is_member = await ChatService.is_member(self.user, chat_id)
+        if not is_member:
+            await self.send_error(
+                "You are not a member of this chat", "forbidden"
+            )
             return
 
         updated_count = await ChatService.mark_messages_read(

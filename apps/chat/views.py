@@ -82,6 +82,8 @@ class ChatListCreateView(generics.ListCreateAPIView):
     serializer_class = ChatSerializer
     permission_classes = [IsAuthenticated]
 
+    pagination_class = None  # Disable pagination for chat list
+
     def get_queryset(self):
         return (
             self.request.user.chats.prefetch_related("members")
@@ -104,6 +106,7 @@ class ChatDetailView(generics.RetrieveUpdateDestroyAPIView):
 
     serializer_class = ChatSerializer
     permission_classes = [IsAuthenticated, IsChatMember]
+    pagination_class = None
 
     def get_queryset(self):
         return self.request.user.chats.prefetch_related("members")
@@ -116,6 +119,7 @@ class MessageListView(generics.ListAPIView):
 
     serializer_class = MessageSerializer
     permission_classes = [IsAuthenticated, IsChatMember]
+    pagination_class = None
 
     def get_queryset(self):
         chat_id = self.kwargs["chat_id"]
@@ -192,3 +196,19 @@ class ChatWithUserView(generics.RetrieveAPIView):
             raise NotFound("Chat not found.")
 
         return chat
+
+
+class MessageUnreadCountView(APIView):
+    """
+    GET /api/chats/count/   get the total number of unread messages across all chats
+    """
+
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        unread_count = (
+            Message.objects.filter(chat__members=request.user, is_read=False)
+            .exclude(sender=request.user)
+            .count()
+        )
+        return Response({"unread_count": unread_count})

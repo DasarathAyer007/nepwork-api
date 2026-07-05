@@ -14,10 +14,16 @@ from .views import (
     MarkChatReadView,
     MessageListView,
     MessageSendView,
+    MessageUnreadCountView,
 )
 
 urlpatterns = [
     path("", ChatListCreateView.as_view(), name="chat-list"),
+    path(
+        "unread-count/",
+        MessageUnreadCountView.as_view(),
+        name="message-unread-count",
+    ),
     path("<uuid:pk>/", ChatDetailView.as_view(), name="chat-detail"),
     path(
         "<uuid:chat_id>/messages/",

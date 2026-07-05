@@ -2,11 +2,15 @@ import logging
 from typing import Any
 
 from channels.db import database_sync_to_async
+from django.contrib.auth import get_user_model
+from django.db import transaction
+from django.db.models import Count
 
 from .models import Chat, Message
 from .serializers import MessageSerializer
 
 logger = logging.getLogger(__name__)
+User = get_user_model()
 
 
 class ChatService:
@@ -77,3 +81,41 @@ class ChatService:
             .order_by("created_at")[offset : offset + limit]
         )
         return MessageSerializer(messages, many=True).data
+
+    @staticmethod
+    @database_sync_to_async
+    def get_or_create_direct_chat(users):
+        if len(set(users)) != 2:
+            raise ValueError(
+                "Direct chat requires exactly two distinct members"
+            )
+
+        # Sorted, stable order so two concurrent calls for the same pair
+        # always lock the same rows in the same order (no deadlocks) and
+        # actually serialize against each other, instead of both passing
+        # a plain "does this chat exist" SELECT and creating duplicate chats.
+        user_a, user_b = sorted(str(u) for u in set(users))
+
+        with transaction.atomic():
+            list(
+                User.objects.filter(id__in=[user_a, user_b])
+                .order_by("id")
+                .select_for_update()
+            )
+
+            chat = (
+                Chat.objects.filter(members=user_a)
+                .filter(members=user_b)
+                .annotate(member_count=Count("members"))
+                .filter(member_count=2)
+                .first()
+            )
+
+            created = False
+
+            if chat is None:
+                chat = Chat.objects.create()
+                chat.members.add(user_a, user_b)
+                created = True
+
+        return chat, created
