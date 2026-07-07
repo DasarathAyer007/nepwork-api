@@ -4,12 +4,17 @@ from apps.locations.serializers import (
     LocationWriteSerializer,
 )
 from apps.skill.services import SkillService
+from apps.utils.serializers import MultipartJSONFieldsMixin
 
 from ...models import Service
 
 
-class ServiceWriteSerializer(serializers.ModelSerializer):
-    location = LocationWriteSerializer(required=False, write_only=True)
+class ServiceWriteSerializer(
+    MultipartJSONFieldsMixin, serializers.ModelSerializer
+):
+    json_fields = ("skills",)
+
+    location = serializers.JSONField(required=False, write_only=True)
     skills = serializers.ListField(
         child=serializers.CharField(trim_whitespace=True),
         required=True,
@@ -68,7 +73,7 @@ class ServiceWriteSerializer(serializers.ModelSerializer):
         instance = super().update(instance, validated_data)
 
         if skills is not None:
-            instance.skills.set(skills)
+            instance.skills.set(SkillService.get_or_create_skills(skills))
 
         if location_data is not None:
             if location_data:

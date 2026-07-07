@@ -2,12 +2,15 @@ from rest_framework import serializers
 
 from apps.locations.serializers import LocationWriteSerializer
 from apps.skill.services import SkillService
+from apps.utils.serializers import MultipartJSONFieldsMixin
 
 from ...models import Job
 
 
-class JobWriteSerializer(serializers.ModelSerializer):
-    location = LocationWriteSerializer(required=False, write_only=True)
+class JobWriteSerializer(MultipartJSONFieldsMixin, serializers.ModelSerializer):
+    json_fields = ("skills_required",)
+
+    location = serializers.JSONField(required=False, write_only=True)
     skills_required = serializers.ListField(
         child=serializers.CharField(trim_whitespace=True),
         required=True,
