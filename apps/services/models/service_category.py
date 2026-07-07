@@ -22,6 +22,12 @@ class ServiceCategory(TimeStampedModel, SoftDeleteModel):
         help_text="Optional icon name or identifier",
     )
 
+    color = models.CharField(
+        max_length=10,
+        blank=True,
+        help_text="Optional color code in hex format (e.g., #RRGGBB)",
+    )
+
     is_active = models.BooleanField(default=True)
 
     def __str__(self) -> str:

@@ -15,6 +15,11 @@ class JobCategory(TimeStampedModel, SoftDeleteModel):
         blank=True,
         help_text="Optional icon name or identifier",
     )
+    color = models.CharField(
+        max_length=10,
+        blank=True,
+        help_text="Optional color code in hex format (e.g., #RRGGBB)",
+    )
 
     def __str__(self) -> str:
         return self.name
