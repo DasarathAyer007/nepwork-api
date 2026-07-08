@@ -6,7 +6,7 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 
 WORKDIR /app
 
-# System dependencies required to build/install Python packages
+# System dependencies required to build Python packages
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     gcc \
@@ -20,22 +20,23 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Install uv
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
-# Copy dependency files first for better Docker cache
+# Copy dependency files first for Docker cache optimization
 COPY pyproject.toml uv.lock ./
 COPY README.md ./
 
-# Install dependencies only (not the project) — cached unless deps change
+# Install dependencies only
 RUN uv sync --frozen --no-dev --no-install-project
 
 # Copy application source
 COPY . .
 
-# Install the project itself into the virtual environment
+# Install project
 RUN uv sync --frozen --no-dev
 
 
 # Runtime Stage
-FROM python:3.14-slim
+FROM python:3.14-slim AS runtime
+
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
@@ -44,6 +45,7 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 WORKDIR /app
 
 
+# Runtime dependencies for Django GIS/PostGIS
 RUN apt-get update && apt-get install -y --no-install-recommends \
     binutils \
     gdal-bin \
@@ -55,20 +57,21 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libpq5 \
     && rm -rf /var/lib/apt/lists/*
 
-# Non-root user
+# Create non-root user
 RUN useradd -m -u 1000 appuser
 
-# Copy virtual environment from builder
+# Copy virtual environment
 COPY --from=builder /app/.venv /app/.venv
 
-# Copy application source with correct ownership
+# Copy application
 COPY --chown=appuser:appuser . .
 
-# Collect static files (remove if not using Django static/admin)
-RUN python manage.py collectstatic --noinput
 
 USER appuser
 
 EXPOSE 8000
 
-CMD ["sh", "-c", "daphne -b 0.0.0.0 -p ${PORT:-8000} config.asgi:application"]
+
+# Render provides environment variables at runtime
+# collectstatic runs after SECRET_KEY/DATABASE_URL are available
+CMD ["sh", "-c", "python manage.py collectstatic --noinput && exec daphne -b 0.0.0.0 -p ${PORT:-8000} config.asgi:application"]
