@@ -66,6 +66,8 @@ COPY --from=builder /app/.venv /app/.venv
 # Copy application
 COPY --chown=appuser:appuser . .
 
+RUN mkdir -p /app/staticfiles && chown -R appuser:appuser /app
+
 
 USER appuser
 
