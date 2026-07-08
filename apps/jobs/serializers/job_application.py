@@ -38,6 +38,8 @@ class JobApplicationWriteSerializer(serializers.ModelSerializer):
             "cover_letter",
             "expected_salary",
             "years_of_experience",
+            "notes",
+            "expected_salary",
         ]
 
     def validate_job(self, value):
