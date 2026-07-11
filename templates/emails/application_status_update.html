@@ -1,0 +1,40 @@
+{% extends "emails/base.html" %}
+
+{% block title %}Update on your application for {{ job_title }}{% endblock %}
+{% block preheader %}Your application status changed to {{ status_label }}{% endblock %}
+
+{% block content %}
+  <h1 style="margin:0 0 16px 0; font-size:24px; line-height:32px; color:#141d20; font-weight:700;">
+    Application update
+  </h1>
+
+  <p style="margin:0 0 20px 0; font-size:16px; line-height:24px; color:#40484b;">
+    Hi {{ name }},
+  </p>
+
+  <p style="margin:0 0 24px 0; font-size:16px; line-height:24px; color:#40484b;">
+    Your application for <strong style="color:#004f60;">{{ job_title }}</strong> has been updated.
+  </p>
+
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 24px 0;">
+    <tr>
+      <td align="center" style="background-color:#a8e6fd; border-radius:12px; padding:20px;">
+        <p style="margin:0 0 4px 0; font-size:12px; letter-spacing:0.05em; text-transform:uppercase; color:#004e5f; font-weight:600;">
+          New status
+        </p>
+        <p style="margin:0; font-size:22px; line-height:28px; font-weight:700; color:#001f27;">
+          {{ status_label }}
+        </p>
+      </td>
+    </tr>
+  </table>
+
+  <p style="margin:0 0 8px 0; font-size:14px; letter-spacing:0.03em; text-transform:uppercase; color:#737c80; font-weight:600;">
+    Message from the employer
+  </p>
+  <p style="margin:0 0 24px 0; font-size:16px; line-height:24px; color:#141d20; white-space:pre-line;">{{ message }}</p>
+
+  <p style="margin:24px 0 0 0; font-size:14px; line-height:20px; color:#737c80;">
+    Log in to NepWork to view the full details of your application.
+  </p>
+{% endblock %}

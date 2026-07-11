@@ -5,12 +5,12 @@ from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
-from ..models import JobApplication
 from ..selectors.application import get_applications_base
 from ..serializers.job_application import (
+    EmptyActionSerializer,
     JobApplicationReadSerializer,
     JobApplicationWriteSerializer,
-    StatusTransitionSerializer,
+    StatusChangeSerializer,
 )
 from ..services.job_application import (
     ApplicationTransitionService,
@@ -26,16 +26,10 @@ class JobApplicationViewSet(viewsets.ModelViewSet):
     def get_serializer_class(self):
         if self.action in ("create", "update", "partial_update"):
             return JobApplicationWriteSerializer
-        if self.action in (
-            "shortlist",
-            "under_review",
-            "schedule_interview",
-            "mark_interviewed",
-            "offer",
-            "reject",
-            "withdraw",
-        ):
-            return StatusTransitionSerializer
+        if self.action == "change_status":
+            return StatusChangeSerializer
+        if self.action == "withdraw":
+            return EmptyActionSerializer
         return JobApplicationReadSerializer
 
     def get_queryset(self):
@@ -49,46 +43,29 @@ class JobApplicationViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(applicant=self.request.user)
 
-    # Status transitions
+    # Employer-driven status change: freely move an application to any
+    # non-terminal status, optionally notifying the applicant via chat
+    # and/or email.
     @action(detail=True, methods=["post"])
-    def shortlist(self, request, pk=None):
-        return self._transition(
-            pk, JobApplication.ApplicationStatus.SHORTLISTED
+    def change_status(self, request, pk=None):
+        instance = self.get_object()
+        serializer = StatusChangeSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        data = serializer.validated_data
+
+        updated = ApplicationTransitionService.change_status(
+            instance,
+            data["status"],
+            request.user,
+            message=data.get("message", ""),
+            send_message=data.get("send_message", True),
+            send_email=data.get("send_email", True),
         )
+        return Response(JobApplicationReadSerializer(updated).data)
 
-    @action(detail=True, methods=["post"])
-    def under_review(self, request, pk=None):
-        return self._transition(
-            pk, JobApplication.ApplicationStatus.UNDER_REVIEW
-        )
-
-    @action(detail=True, methods=["post"])
-    def schedule_interview(self, request, pk=None):
-        return self._transition(
-            pk, JobApplication.ApplicationStatus.INTERVIEW_SCHEDULED
-        )
-
-    @action(detail=True, methods=["post"])
-    def mark_interviewed(self, request, pk=None):
-        return self._transition(
-            pk, JobApplication.ApplicationStatus.INTERVIEWED
-        )
-
-    @action(detail=True, methods=["post"])
-    def offer(self, request, pk=None):
-        return self._transition(pk, JobApplication.ApplicationStatus.OFFERED)
-
-    @action(detail=True, methods=["post"])
-    def reject(self, request, pk=None):
-        return self._transition(pk, JobApplication.ApplicationStatus.REJECTED)
-
+    # Applicant-driven withdrawal.
     @action(detail=True, methods=["post"])
     def withdraw(self, request, pk=None):
-        return self._transition(pk, JobApplication.ApplicationStatus.WITHDRAWN)
-
-    def _transition(self, pk, new_status):
         instance = self.get_object()
-        updated = ApplicationTransitionService.transition(
-            instance, new_status, self.request.user
-        )
+        updated = ApplicationTransitionService.withdraw(instance, request.user)
         return Response(JobApplicationReadSerializer(updated).data)

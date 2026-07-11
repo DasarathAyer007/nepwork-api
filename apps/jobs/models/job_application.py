@@ -60,5 +60,14 @@ class JobApplication(TimeStampedModel, SoftDeleteModel):
 
     notes = models.TextField(blank=True)
 
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["job", "applicant"],
+                condition=models.Q(deleted_at__isnull=True),
+                name="unique_active_job_application_per_applicant",
+            )
+        ]
+
     def __str__(self) -> str:
         return f"{self.applicant} → {self.job}"
