@@ -5,8 +5,9 @@ from django.db import transaction
 from apps.users.models.admin_profile import AdminProfile
 from apps.users.models.organization_profile import OrganizationProfile
 from apps.users.models.personal_profile import PersonalProfile
+from apps.users.services.otp_services import OTPService
 
-from .models import User
+from ..models import User
 
 DEFAULT_PROFILE_PICTURE_URL = "profile_pictures/default.jpg"
 DEFAULT_COVER_PHOTO_URL = "cover_photos/default.jpg"
@@ -30,12 +31,15 @@ class UserService:
             account_type=account_type,
             profile_picture=DEFAULT_PROFILE_PICTURE_URL,
             cover_photo=DEFAULT_COVER_PHOTO_URL,
+            is_active=False,  # User will be activated after OTP verification
         )
         user.set_password(password)
         user.save()
 
         # 2. Create the matching empty profile
         UserService._create_default_profile(user)
+
+        OTPService.send_signup_otp(user)
 
         return user
 

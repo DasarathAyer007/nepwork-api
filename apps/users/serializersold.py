@@ -4,7 +4,8 @@ from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 from .models import User
-from .services import UserService
+
+# from .services.user_services import UserService
 
 
 class RegisterSerializer(serializers.ModelSerializer[User]):
@@ -27,8 +28,8 @@ class RegisterSerializer(serializers.ModelSerializer[User]):
             )
         return value
 
-    def create(self, validated_data: dict[str, Any]) -> User:
-        return UserService.create_user(**validated_data)
+    # def create(self, validated_data: dict[str, Any]) -> User:
+    #     return UserService.register_user(**validated_data)
 
 
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):

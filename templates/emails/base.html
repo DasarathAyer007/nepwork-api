@@ -1,0 +1,83 @@
+{% load static %}<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<meta name="supported-color-schemes" content="light">
+<title>{% block title %}NepWork{% endblock %}</title>
+</head>
+<body style="margin:0; padding:0; background-color:#f2fbff; font-family:'Plus Jakarta Sans', Arial, Helvetica, sans-serif;">
+
+  <!-- Preheader (hidden preview text) -->
+  <div style="display:none; max-height:0; overflow:hidden; opacity:0; mso-hide:all;">
+    {% block preheader %}{% endblock %}
+  </div>
+
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f2fbff; padding:40px 16px;">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:600px; background-color:#ffffff; border-radius:12px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.08);">
+
+          <!-- ================= HEADER ================= -->
+          <tr>
+            <td style="background-color:#004f60; padding:28px 40px; text-align:center;">
+            <!-- <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="200" height="200" rx="40" fill="#004f60"/>
+                <path d="M100 40C77.9086 40 60 57.9086 60 80C60 110 100 160 100 160C100 160 140 110 140 80C140 57.9086 122.091 40 100 40ZM100 105C86.1929 105 75 93.8071 75 80C75 66.1929 86.1929 55 100 55C113.807 55 125 66.1929 125 80C125 93.8071 113.807 105 100 105Z" fill="white"/>
+                <path d="M85 80H115M100 65V95" stroke="#10B981" stroke-width="8" stroke-linecap="round"/>
+            </svg> -->
+
+            <h1  style="color: #ffffff;">NEP WORK </h1>
+            </td>
+          </tr>
+          <!-- Thin accent line under header -->
+          <tr>
+            <td style="background-color:#a8e6fd; height:4px; line-height:4px; font-size:0;">&nbsp;</td>
+          </tr>
+
+          <!-- ================= CONTENT ================= -->
+          <tr>
+            <td style="padding:40px; color:#141d20; font-size:16px; line-height:24px;">
+              {% block content %}{% endblock %}
+            </td>
+          </tr>
+
+          <!-- ================= FOOTER ================= -->
+          <tr>
+            <td style="background-color:#ecf5f9; border-top:1px solid #bfc8cc; padding:24px 40px; text-align:center;">
+              <p style="margin:0 0 6px 0; font-size:13px; font-weight:600; color:#004f60;">
+                NepWork
+              </p>
+              <p style="margin:0 0 12px 0; font-size:12px; line-height:18px; color:#40484b;">
+                Connecting talent with opportunity.
+              </p>
+              <p style="margin:0 0 4px 0; font-size:11px; color:#737c80;">
+                This is an automated message, please do not reply to this email.
+              </p>
+              <p style="margin:0; font-size:11px; color:#737c80;">
+                &copy; {% now "Y" %} NepWork. All rights reserved.
+              </p>
+            </td>
+          </tr>
+
+        </table>
+
+        <!-- Small print below the card -->
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:600px;">
+          <tr>
+            <td style="padding:16px 40px; text-align:center;">
+              <p style="margin:0; font-size:11px; color:#737c80;">
+                Need help? Contact us at
+                <a href="mailto:support@nepwork.com" style="color:#004f60; text-decoration:underline;">support@nepwork.com</a>
+              </p>
+            </td>
+          </tr>
+        </table>
+
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>

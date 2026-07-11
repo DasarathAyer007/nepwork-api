@@ -4,7 +4,7 @@ from typing import Any
 from rest_framework import serializers
 
 from ..models import User
-from ..services import UserService
+from ..services.user_services import UserService
 from .validators import (
     validate_email,
     validate_full_name,
@@ -36,16 +36,10 @@ class UserRegisterSerializer(serializers.ModelSerializer[User]):
         return validate_full_name(value)
 
     def validate_email(self, value: str) -> str:
-        value = validate_email(value)
-        if User.objects.filter(email__iexact=value).exists():
-            raise serializers.ValidationError("Email already exists.")
-        return value
+        return validate_email(value)
 
     def validate_username(self, value: str) -> str:
-        value = validate_username(value)
-        if User.objects.filter(username__iexact=value).exists():
-            raise serializers.ValidationError("Username already exists.")
-        return value
+        return validate_username(value)
 
     def validate_password(self, value: str) -> str:
         return validate_password_strength(value)

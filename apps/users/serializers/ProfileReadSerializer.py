@@ -13,6 +13,8 @@ from apps.users.models.user import User
 class UserSerializer(serializers.ModelSerializer):
     """Declares all user fields. Filtering happens in BaseProfileSerializer."""
 
+    profile_picture = serializers.SerializerMethodField()
+
     class Meta:
         model = User
         fields = (
@@ -28,6 +30,12 @@ class UserSerializer(serializers.ModelSerializer):
             "last_login",
             "social_links",
         )
+
+    def get_profile_picture(self, instance) -> str | None:
+        # falls back to the linked social account's avatar (Google/Facebook)
+        # when the user hasn't uploaded a profile picture of their own.
+        request = self.context.get("request")
+        return instance.get_absolute_avatar_url(request)
 
 
 class BaseProfileSerializer(serializers.ModelSerializer):

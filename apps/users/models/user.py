@@ -94,3 +94,25 @@ class User(AbstractUser, TimeStampedModel):
             or hasattr(self, "organization_profile")
             or hasattr(self, "admin_profile")
         )
+
+    def get_avatar_url(self) -> str | None:
+        """Uploaded profile picture takes priority; otherwise fall back to
+        the avatar cached from a linked social account (Google/Facebook)."""
+        if self.profile_picture:
+            return self.profile_picture.url
+
+        social_account = (
+            self.social_accounts.exclude(avatar_url="")
+            .order_by("-updated_at")
+            .first()
+        )
+        return social_account.avatar_url if social_account else None
+
+    def get_absolute_avatar_url(self, request=None) -> str | None:
+        """Same as get_avatar_url(), but makes locally-uploaded paths
+        absolute. Social avatar URLs are already absolute and pass through
+        unchanged."""
+        url = self.get_avatar_url()
+        if url and request and url.startswith("/"):
+            return request.build_absolute_uri(url)
+        return url

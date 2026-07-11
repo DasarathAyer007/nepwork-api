@@ -25,13 +25,14 @@ from apps.users.serializers.ProfileWriteSerializer import (
 )
 from apps.utils.users_utils import get_auth_user
 
-from .schemas import ONBOARDING_SCHEMA, USER_LOCATION_SCHEMA
-from .serializers import (
+from ..schemas import ONBOARDING_SCHEMA, USER_LOCATION_SCHEMA
+from ..serializers import (
     CustomTokenObtainPairSerializer,
     ProfileReadSerializer,
     UserRegisterSerializer,
 )
-from .services import UserService
+from ..services.otp_services import OTPService
+from ..services.user_services import UserService
 
 # User = get_user_model()
 
@@ -50,14 +51,87 @@ class RegisterView(CreateAPIView[User]):
             password=data["password"],
             account_type=data["account_type"],
         )
+        return Response(
+            {
+                "message": "Registration successful. Please verify your email.",
+                "user_id": user.id,
+                "username": user.username,
+                "email": user.email,
+            },
+            status=status.HTTP_201_CREATED,
+        )
+
+
+class VerifyOTPView(GenericAPIView):
+    def post(self, request, *args, **kwargs):
+        email = request.data.get("email")
+        otp = request.data.get("otp")
+
+        if not email or not otp:
+            return Response(
+                {"message": "email and otp are required."},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        try:
+            user = User.objects.get(email=email)
+        except User.DoesNotExist:
+            return Response(
+                {"message": "User not found."},
+                status=status.HTTP_404_NOT_FOUND,
+            )
+
+        if OTPService.verify_signup_otp(user, otp):
+            token_data = CustomTokenObtainPairSerializer.build_response_data(
+                user,
+                request,
+            )
+            return Response(
+                {
+                    "message": "OTP verified successfully.",
+                    **token_data,
+                },
+                status=status.HTTP_200_OK,
+            )
+
+        return Response(
+            {"message": "Invalid or expired OTP."},
+            status=status.HTTP_400_BAD_REQUEST,
+        )
+
+
+class ResendOTPView(GenericAPIView):
+    def post(self, request, *args, **kwargs):
+        email = request.data.get("email")
+
+        if not email:
+            return Response(
+                {"message": "email is required."},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        try:
+            user = User.objects.get(email=email)
+        except User.DoesNotExist:
+            return Response(
+                {"message": "User not found."},
+                status=status.HTTP_404_NOT_FOUND,
+            )
+
+        if user.is_active:
+            return Response(
+                {"message": "Account is already verified."},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        OTPService.send_signup_otp(user)
 
         return Response(
             {
-                "message": "Registration successful. Please check your email.",
-                "user_id": user.id,
-                "username": user.username,
+                "message": "OTP resent successfully.",
+                "cooldown_seconds": 60,
             },
-            status=status.HTTP_201_CREATED,
+            status=status.HTTP_200_OK,
         )
 
 
