@@ -30,6 +30,7 @@ class JobApplicationViewSet(viewsets.ModelViewSet):
             "shortlist",
             "under_review",
             "schedule_interview",
+            "mark_interviewed",
             "offer",
             "reject",
             "withdraw",
@@ -65,6 +66,12 @@ class JobApplicationViewSet(viewsets.ModelViewSet):
     def schedule_interview(self, request, pk=None):
         return self._transition(
             pk, JobApplication.ApplicationStatus.INTERVIEW_SCHEDULED
+        )
+
+    @action(detail=True, methods=["post"])
+    def mark_interviewed(self, request, pk=None):
+        return self._transition(
+            pk, JobApplication.ApplicationStatus.INTERVIEWED
         )
 
     @action(detail=True, methods=["post"])

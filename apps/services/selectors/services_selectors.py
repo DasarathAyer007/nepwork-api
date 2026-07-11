@@ -71,9 +71,7 @@ def get_trending_services(user=None, days=7) -> QuerySet:
     """
     Not implmented
     """
-    return get_active_services(user).order_by(
-        "-total_applies", "-avg_rating", "-created_at"
-    )
+    return get_active_services(user).order_by("-total_applies", "-created_at")
 
 
 def get_recommendation_queryset(user) -> QuerySet:
@@ -91,7 +89,7 @@ def get_recommendation_queryset(user) -> QuerySet:
         get_active_services(user)
         .exclude(id__in=requested_service_ids)
         .exclude(user=user)  # don't recommend own services
-        .order_by("-avg_rating", "-total_applies")
+        .order_by("-total_applies")
     )
 
 

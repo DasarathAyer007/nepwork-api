@@ -61,7 +61,7 @@ class JobViewSet(viewsets.ModelViewSet):
         svc = JobQueryService(user=request.user, params=request.query_params)
         return self._list_response(svc.saved())
 
-    @action(detail=False, methods=["get"], url_path="my")
+    @action(detail=False, methods=["get"], url_path="my-jobs")
     def my_jobs(self, request):
         svc = JobQueryService(user=request.user, params=request.query_params)
         return self._list_response(svc.my_jobs())

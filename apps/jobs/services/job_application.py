@@ -17,6 +17,11 @@ class JobApplicationQueryService:
         # If not admin, restrict to own applications or applications to own jobs
         if self.user.account_type != "admin":
             qs = qs.filter(Q(applicant=self.user) | Q(job__posted_by=self.user))
+        scope = self.params.get("scope")
+        if scope == "applied":
+            qs = qs.filter(applicant=self.user)
+        elif scope == "received":
+            qs = qs.filter(job__posted_by=self.user)
         if job_id := self.params.get("job_id"):
             qs = qs.filter(job_id=job_id)
         if status := self.params.get("status"):
@@ -37,18 +42,22 @@ class ApplicationTransitionService:
         JobApplication.ApplicationStatus.SHORTLISTED: [
             JobApplication.ApplicationStatus.UNDER_REVIEW,
             JobApplication.ApplicationStatus.REJECTED,
+            JobApplication.ApplicationStatus.WITHDRAWN,
         ],
         JobApplication.ApplicationStatus.UNDER_REVIEW: [
             JobApplication.ApplicationStatus.INTERVIEW_SCHEDULED,
             JobApplication.ApplicationStatus.REJECTED,
+            JobApplication.ApplicationStatus.WITHDRAWN,
         ],
         JobApplication.ApplicationStatus.INTERVIEW_SCHEDULED: [
             JobApplication.ApplicationStatus.INTERVIEWED,
             JobApplication.ApplicationStatus.REJECTED,
+            JobApplication.ApplicationStatus.WITHDRAWN,
         ],
         JobApplication.ApplicationStatus.INTERVIEWED: [
             JobApplication.ApplicationStatus.OFFERED,
             JobApplication.ApplicationStatus.REJECTED,
+            JobApplication.ApplicationStatus.WITHDRAWN,
         ],
         JobApplication.ApplicationStatus.OFFERED: [
             JobApplication.ApplicationStatus.WITHDRAWN,

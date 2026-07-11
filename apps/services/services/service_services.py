@@ -19,8 +19,6 @@ class ServiceQueryService:
         "-created_at",
         "available_from",
         "-available_from",
-        "avg_rating",
-        "-avg_rating",
         "total_applies",
         "-total_applies",
         "distance",

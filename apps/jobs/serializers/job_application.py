@@ -1,14 +1,42 @@
+from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
 from apps.jobs.models.jobs import Job
 
 from ..models import JobApplication
 
+User = get_user_model()
+
+
+class JobApplicationJobSerializer(serializers.ModelSerializer):
+    posted_by_name = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Job
+        fields = [
+            "id",
+            "title",
+            "slug",
+            "thumbnail",
+            "status",
+            "posted_by",
+            "posted_by_name",
+        ]
+
+    def get_posted_by_name(self, obj):
+        return str(obj.posted_by) if obj.posted_by else None
+
+
+class JobApplicationUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ["id", "username", "full_name", "profile_picture"]
+
 
 class JobApplicationReadSerializer(serializers.ModelSerializer):
-    applicant = serializers.StringRelatedField()
-    job = serializers.StringRelatedField()
-    reviewed_by = serializers.StringRelatedField()
+    applicant = JobApplicationUserSerializer(read_only=True)
+    job = JobApplicationJobSerializer(read_only=True)
+    reviewed_by = JobApplicationUserSerializer(read_only=True, allow_null=True)
 
     class Meta:
         model = JobApplication

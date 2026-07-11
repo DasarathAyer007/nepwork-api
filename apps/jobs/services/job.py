@@ -141,9 +141,14 @@ class JobQueryService:
 
     def _filter_skills(self, qs):
         skills = self.params.get("skills")
+
         if skills:
-            skill_list = skills if isinstance(skills, list) else [skills]
-            qs = qs.filter(skills_required__id__in=skill_list).distinct()
+            skill_list = [
+                skill.strip() for skill in skills.split(",") if skill.strip()
+            ]
+
+            qs = qs.filter(skills_required__name__in=skill_list).distinct()
+
         return qs
 
     def _filter_location_text(self, qs):

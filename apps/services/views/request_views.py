@@ -5,7 +5,7 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 
 from ..models import ServiceRequest
-from ..permissions import IsServiceOwnerOrAdmin  # adjust
+from ..permissions import IsServiceRequestParticipantOrAdmin
 from ..selectors.request_selectors import get_service_requests_base
 from ..serializers import (
     ServiceRequestReadSerializer,
@@ -24,7 +24,7 @@ class ServiceRequestViewSet(viewsets.ModelViewSet):
     Full CRUD for service requests + status transitions.
     """
 
-    permission_classes = [IsServiceOwnerOrAdmin]
+    permission_classes = [IsServiceRequestParticipantOrAdmin]
     lookup_field = "pk"
 
     def get_serializer_class(self):

@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
 from apps.locations.serializers import (
@@ -5,12 +6,28 @@ from apps.locations.serializers import (
     LocationWriteSerializer,
 )
 
-from ..models import ServiceRequest
+from ..models import Service, ServiceRequest
+
+User = get_user_model()
+
+
+class ServiceRequestUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ["id", "username", "full_name", "profile_picture"]
+
+
+class ServiceRequestServiceSerializer(serializers.ModelSerializer):
+    user = ServiceRequestUserSerializer(read_only=True)
+
+    class Meta:
+        model = Service
+        fields = ["id", "title", "slug", "thumbnail", "status", "user"]
 
 
 class ServiceRequestReadSerializer(serializers.ModelSerializer):
-    user = serializers.StringRelatedField()
-    service = serializers.StringRelatedField()
+    user = ServiceRequestUserSerializer(read_only=True)
+    service = ServiceRequestServiceSerializer(read_only=True)
     location = LocationSerializer(read_only=True, allow_null=True)
 
     class Meta:

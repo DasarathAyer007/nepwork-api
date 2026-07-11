@@ -23,7 +23,6 @@ class ServiceListSerializer(serializers.ModelSerializer):
         many=True, read_only=True, slug_field="name"
     )
     is_currently_available = serializers.BooleanField(read_only=True)
-    avg_rating = serializers.FloatField(read_only=True)
     total_applies = serializers.IntegerField(read_only=True)
     is_saved = serializers.BooleanField(read_only=True)
     user = UserSerializer(read_only=True)
@@ -44,7 +43,6 @@ class ServiceListSerializer(serializers.ModelSerializer):
             "user",
             "category",
             "skills",
-            "avg_rating",
             "total_applies",
             "is_currently_available",
             "is_saved",

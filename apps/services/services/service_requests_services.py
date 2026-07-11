@@ -30,6 +30,13 @@ class ServiceRequestQueryService:
         if self.user and self.user.account_type != "admin":
             qs = qs.filter(Q(user=self.user) | Q(service__user=self.user))
 
+        # Filter by perspective: "sent" = requests I made, "received" = requests to my services
+        scope = self.params.get("scope")
+        if scope == "sent":
+            qs = qs.filter(user=self.user)
+        elif scope == "received":
+            qs = qs.filter(service__user=self.user)
+
         # Filter by service
         if service_id := self.params.get("service_id"):
             qs = qs.filter(service_id=service_id)
@@ -67,8 +74,9 @@ class ServiceRequestTransitionService:
             ServiceRequest.ServiceRequestStatus.CANCELLED,
         ],
         ServiceRequest.ServiceRequestStatus.IN_PROGRESS: [
+            # Once work has started, the requester can no longer cancel —
+            # only the provider can mark it complete.
             ServiceRequest.ServiceRequestStatus.COMPLETED,
-            ServiceRequest.ServiceRequestStatus.CANCELLED,
         ],
     }
 
