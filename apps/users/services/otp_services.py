@@ -1,7 +1,8 @@
 from django.contrib.auth.hashers import make_password
 
 from apps.users.models.otp_verification import OTPVerification
-from apps.utils.emails.email_service import EmailService
+
+from ..tasks import send_verification_email_task
 
 
 class OTPService:
@@ -17,10 +18,7 @@ class OTPService:
             },
         )
 
-        EmailService.send_verification_email(
-            user=user,
-            otp=otp,
-        )
+        send_verification_email_task.delay(user.full_name, user.email, otp)
 
     @staticmethod
     def verify_signup_otp(user, otp):

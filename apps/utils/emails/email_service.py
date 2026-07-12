@@ -5,11 +5,11 @@ from django.template.loader import render_to_string
 
 class EmailService:
     @staticmethod
-    def send_verification_email(user, otp):
+    def send_verification_email(full_name, email, otp):
         html = render_to_string(
             "emails/verify_email.html",
             {
-                "name": user.full_name,
+                "name": full_name,
                 "otp": otp,
             },
         )
@@ -18,7 +18,7 @@ class EmailService:
             subject="Verify your NepWork account",
             body=f"Your verification code is {otp}",
             from_email=settings.DEFAULT_FROM_EMAIL,
-            to=[user.email],
+            to=[email],
         )
 
         email.attach_alternative(html, "text/html")

@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     "channels",
+    "django_celery_beat",
+    "django_celery_results",
     "corsheaders",
     "django.contrib.gis",
     "drf_spectacular",
@@ -120,14 +122,20 @@ ASGI_APPLICATION = "config.asgi.application"
 # WSGI_APPLICATION = "config.wsgi.application"
 
 
-# CHANNEL_LAYERS = {
-#     "default": {
-#         "BACKEND": "channels_redis.core.RedisChannelLayer",
-#         "CONFIG": {
-#             "hosts": [("127.0.0.1", 6379)],
-#         },
-#     },
-# }
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [
+                config(
+                    "CHANNEL_REDIS_URL",
+                    default="redis://127.0.0.1:6379/2",
+                ),
+            ],
+        },
+    },
+}
+
 
 CHANNEL_LAYERS = {
     "default": {
@@ -214,3 +222,58 @@ DEFAULT_FROM_EMAIL = config("DEFAULT_FROM_EMAIL")
 
 
 GOOGLE_CLIENT_ID = config("GOOGLE_CLIENT_ID")
+
+
+CELERY_BROKER_URL = config(
+    "CELERY_BROKER_URL",
+    default="redis://127.0.0.1:6379/0",
+)
+
+CELERY_RESULT_BACKEND = config(
+    "CELERY_RESULT_BACKEND",
+    default="django-db",
+)
+
+CELERY_ACCEPT_CONTENT = ["json"]
+
+CELERY_TASK_SERIALIZER = "json"
+
+CELERY_RESULT_SERIALIZER = "json"
+
+CELERY_TIMEZONE = config(
+    "CELERY_TIMEZONE",
+    default="Asia/Kathmandu",
+)
+
+CELERY_TASK_TRACK_STARTED = config(
+    "CELERY_TASK_TRACK_STARTED",
+    default=True,
+    cast=bool,
+)
+
+CELERY_TASK_TIME_LIMIT = config(
+    "CELERY_TASK_TIME_LIMIT",
+    default=1800,  # 30 minutes
+    cast=int,
+)
+
+CELERY_TASK_ALWAYS_EAGER = config(
+    "CELERY_TASK_ALWAYS_EAGER",
+    default=False,
+    cast=bool,
+)
+
+CELERY_BEAT_SCHEDULER = config(
+    "CELERY_BEAT_SCHEDULER",
+    default="django_celery_beat.schedulers:DatabaseScheduler",
+)
+
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.redis.RedisCache",
+        "LOCATION": config(
+            "CACHE_REDIS_URL",
+            default="redis://127.0.0.1:6379/3",
+        ),
+    },
+}
