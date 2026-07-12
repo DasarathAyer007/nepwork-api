@@ -65,6 +65,8 @@ INSTALLED_APPS = [
     "apps.services",
     "apps.skill",
     "apps.websockets",
+    "apps.recommendations",
+    "apps.user_activity",
 ]
 
 REST_FRAMEWORK = {
@@ -181,6 +183,24 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+    },
+    "loggers": {
+        "apps.user_activity": {
+            "handlers": ["console"],
+            "level": "INFO",
+            "propagate": False,
+        },
+    },
+}
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
 
@@ -277,3 +297,16 @@ CACHES = {
         ),
     },
 }
+
+# Dedicated Redis DB for the recommendations app — kept separate from the
+# Celery broker (db/0), Channels layer (db/2), and Django cache (db/3).
+RECOMMENDATION_REDIS_URL = config(
+    "RECOMMENDATION_REDIS_URL",
+    default="redis://127.0.0.1:6379/4",
+)
+RECOMMENDATION_CACHE_TTL = config(
+    "RECOMMENDATION_CACHE_TTL", default=3600, cast=int
+)
+RECOMMENDATION_CANDIDATE_POOL_SIZE = config(
+    "RECOMMENDATION_CANDIDATE_POOL_SIZE", default=500, cast=int
+)

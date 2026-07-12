@@ -60,6 +60,8 @@ class JobDetailSerializer(JobListSerializer):
     employer = ProfileReadSerializer(source="posted_by", read_only=True)
     created_at = serializers.DateTimeField()
     updated_at = serializers.DateTimeField()
+    is_saved = serializers.BooleanField(read_only=True)
+    has_applied = serializers.BooleanField(read_only=True)
 
     class Meta(JobListSerializer.Meta):
         fields = [
@@ -72,4 +74,6 @@ class JobDetailSerializer(JobListSerializer):
             "created_at",
             "updated_at",
             "employer",
+            "is_saved",
+            "has_applied",
         ]

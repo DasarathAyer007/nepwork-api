@@ -3,10 +3,16 @@
 from drf_spectacular.utils import extend_schema
 from rest_framework import generics, viewsets
 from rest_framework.decorators import action
+from rest_framework.exceptions import ValidationError
 from rest_framework.response import Response
+
+from apps.recommendations.services.reader import RecommendationReadService
+from apps.user_activity.constants import ActivityType, ObjectType
+from apps.user_activity.mixins import ActivityTrackingMixin
 
 from ..models import Service
 from ..permissions import IsServiceOwnerOrAdmin
+from ..selectors.services_selectors import get_active_services
 from ..serializers import (
     ServiceDetailSerializer,
     ServiceListSerializer,
@@ -19,7 +25,7 @@ from ..services.service_services import ServiceQueryService
 
 
 @extend_schema(tags=["Services"])
-class ServiceViewSet(viewsets.ModelViewSet):
+class ServiceViewSet(ActivityTrackingMixin, viewsets.ModelViewSet):
     """
     Basic CRUD with listing .
     """
@@ -27,6 +33,7 @@ class ServiceViewSet(viewsets.ModelViewSet):
     queryset = Service.objects.filter(deleted_at__isnull=True)
     permission_classes = [IsServiceOwnerOrAdmin]
     lookup_field = "pk"
+    activity_object_type = ObjectType.SERVICE
 
     def get_serializer_class(self):
         if self.action in ("create", "update", "partial_update"):
@@ -42,10 +49,34 @@ class ServiceViewSet(viewsets.ModelViewSet):
                 params=self.request.query_params,
             )
             return svc.list_services()
+        if self.action == "retrieve":
+            svc = ServiceQueryService(user=self.request.user)
+            return svc.retrieve_queryset()
         return super().get_queryset()
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
+
+    def retrieve(self, request, *args, **kwargs):
+        response = super().retrieve(request, *args, **kwargs)
+        activity_type = (
+            ActivityType.CLICK
+            if request.query_params.get("source") == "recommended"
+            else ActivityType.VIEW
+        )
+        self.track_activity(activity_type, object_id=kwargs.get("pk"))
+        return response
+
+    def list(self, request, *args, **kwargs):
+        response = super().list(request, *args, **kwargs)
+        search = request.query_params.get("search")
+        if search:
+            self.track_activity(
+                ActivityType.SEARCH,
+                object_type=None,
+                metadata={"keyword": search},
+            )
+        return response
 
     # Listing methods
     @action(detail=False, methods=["get"])
@@ -63,12 +94,18 @@ class ServiceViewSet(viewsets.ModelViewSet):
         )
         return self._list_response(svc.trending())
 
-    @action(detail=False, methods=["get"])
-    def recommendations(self, request):
-        svc = ServiceQueryService(
-            user=request.user, params=request.query_params
+    @action(detail=False, methods=["get"], url_path="recommended")
+    def recommended(self, request):
+        if not request.user or not request.user.is_authenticated:
+            raise ValidationError("Authentication required.")
+        reader = RecommendationReadService()
+        ordered_ids = reader.get_ranked_ids(
+            request.user.id, "services", top_n=100
         )
-        return self._list_response(svc.recommendations())
+        qs = reader.reorder_queryset(
+            get_active_services(request.user), ordered_ids
+        )
+        return self._list_response(qs)
 
     @action(detail=False, methods=["get"], url_path="saved")
     def saved_services(self, request):

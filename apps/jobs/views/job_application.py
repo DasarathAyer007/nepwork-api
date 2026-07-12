@@ -5,6 +5,9 @@ from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
+from apps.user_activity.constants import ActivityType, ObjectType
+from apps.user_activity.mixins import ActivityTrackingMixin
+
 from ..selectors.application import get_applications_base
 from ..serializers.job_application import (
     EmptyActionSerializer,
@@ -19,9 +22,10 @@ from ..services.job_application import (
 
 
 @extend_schema(tags=["Jobs/Applications"])
-class JobApplicationViewSet(viewsets.ModelViewSet):
+class JobApplicationViewSet(ActivityTrackingMixin, viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
     lookup_field = "pk"
+    activity_object_type = ObjectType.JOB
 
     def get_serializer_class(self):
         if self.action in ("create", "update", "partial_update"):
@@ -42,6 +46,9 @@ class JobApplicationViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(applicant=self.request.user)
+        self.track_activity(
+            ActivityType.APPLY, object_id=serializer.instance.job_id
+        )
 
     # Employer-driven status change: freely move an application to any
     # non-terminal status, optionally notifying the applicant via chat

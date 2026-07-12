@@ -4,14 +4,19 @@ from rest_framework import status, viewsets
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
+from apps.user_activity.constants import ActivityType, ObjectType
+from apps.user_activity.mixins import ActivityTrackingMixin
+
 from ..models import JobSaved
 from ..serializers.job_saved import JobSavedCreateSerializer, JobSavedSerializer
 
 
 @extend_schema(tags=["Jobs/Saved"])
-class JobSavedViewSet(viewsets.ModelViewSet):
+class JobSavedViewSet(ActivityTrackingMixin, viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
     http_method_names = ["get", "post", "delete"]
+    activity_object_type = ObjectType.JOB
+    lookup_field = "job_id"
 
     def get_queryset(self):
         return JobSaved.objects.filter(
@@ -34,6 +39,7 @@ class JobSavedViewSet(viewsets.ModelViewSet):
             return Response(
                 {"detail": "Already saved."}, status=status.HTTP_200_OK
             )
+        self.track_activity(ActivityType.SAVE, object_id=job_id)
         return Response(
             JobSavedSerializer(saved).data, status=status.HTTP_201_CREATED
         )
@@ -42,5 +48,7 @@ class JobSavedViewSet(viewsets.ModelViewSet):
         instance = self.get_object()
         if instance.user != request.user:
             return Response(status=status.HTTP_403_FORBIDDEN)
-        instance.delete()  # soft delete
+        job_id = instance.job_id
+        instance.hard_delete()
+        self.track_activity(ActivityType.UNSAVE, object_id=job_id)
         return Response(status=status.HTTP_204_NO_CONTENT)

@@ -34,6 +34,9 @@ class JobQueryService:
         qs = self._apply_filters(qs)
         return self._apply_geo_if_provided(qs)
 
+    def retrieve_queryset(self) -> QuerySet:
+        return selectors.get_base_job_queryset(self.user)
+
     def near_me(self) -> QuerySet:
         self._validate_geo_params(required=True)
         qs = selectors.get_active_jobs(self.user)
@@ -42,13 +45,6 @@ class JobQueryService:
 
     def trending(self) -> QuerySet:
         qs = selectors.get_trending_jobs(self.user)
-        qs = self._apply_filters(qs, skip_ordering=True)
-        return self._apply_geo_if_provided(qs)
-
-    def recommendations(self) -> QuerySet:
-        if not self.user or not self.user.is_authenticated:
-            raise ValidationError("Authentication required.")
-        qs = selectors.get_recommendation_queryset(self.user)
         qs = self._apply_filters(qs, skip_ordering=True)
         return self._apply_geo_if_provided(qs)
 

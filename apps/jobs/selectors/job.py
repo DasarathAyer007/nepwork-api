@@ -3,13 +3,11 @@ from datetime import timedelta
 
 from django.db.models import (
     Avg,
-    BooleanField,
     Count,
-    ExpressionWrapper,
+    Exists,
     OuterRef,
     Q,
     QuerySet,
-    Subquery,
 )
 from django.utils import timezone
 
@@ -28,20 +26,14 @@ def get_base_job_queryset(user=None) -> QuerySet:
     )
 
     if user and user.is_authenticated:
-        saved_sub = JobSaved.objects.filter(
-            user=user, job=OuterRef("pk")
-        ).values("pk")[:1]
+        saved_sub = JobSaved.objects.filter(user=user, job=OuterRef("pk"))
         applied_sub = JobApplication.objects.filter(
             applicant=user, job=OuterRef("pk")
-        ).values("pk")[:1]
+        )
 
         qs = qs.annotate(
-            is_saved=ExpressionWrapper(
-                Q(pk__in=Subquery(saved_sub)), output_field=BooleanField()
-            ),
-            has_applied=ExpressionWrapper(
-                Q(pk__in=Subquery(applied_sub)), output_field=BooleanField()
-            ),
+            is_saved=Exists(saved_sub),
+            has_applied=Exists(applied_sub),
         )
     return qs
 
@@ -77,30 +69,6 @@ def get_trending_jobs(user=None, days=7) -> QuerySet:
         )
         .order_by("-recent_applications", "-created_at")
     )
-
-
-def get_recommendation_queryset(user) -> QuerySet:
-    """
-    Placeholder: jobs matching user's profile skills or past applications.
-    Replace with actual logic.
-    """
-    if not user.is_authenticated:
-        return get_active_jobs().none()
-
-    # Example: exclude jobs already applied to, filter by user's skills
-    applied_ids = JobApplication.objects.filter(applicant=user).values("job_id")
-    # Assume user has a profile with skills ManyToMany; adjust field name
-    user_skills = getattr(user, "profile", None) and user.profile.skills.all()
-    qs = (
-        get_active_jobs(user)
-        .exclude(id__in=applied_ids)
-        .exclude(posted_by=user)
-    )
-
-    if user_skills:
-        qs = qs.filter(skills_required__in=user_skills).distinct()
-
-    return qs.order_by("-total_applications", "-created_at")
 
 
 def get_similar_jobs(job, user=None) -> QuerySet:

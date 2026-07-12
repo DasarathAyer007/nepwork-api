@@ -4,6 +4,9 @@ from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
+from apps.user_activity.constants import ActivityType, ObjectType
+from apps.user_activity.mixins import ActivityTrackingMixin
+
 from ..models import ServiceRequest
 from ..permissions import IsServiceRequestParticipantOrAdmin
 from ..selectors.request_selectors import get_service_requests_base
@@ -19,13 +22,14 @@ from ..services.service_requests_services import (
 
 
 @extend_schema(tags=["Services/Requests"])
-class ServiceRequestViewSet(viewsets.ModelViewSet):
+class ServiceRequestViewSet(ActivityTrackingMixin, viewsets.ModelViewSet):
     """
     Full CRUD for service requests + status transitions.
     """
 
     permission_classes = [IsServiceRequestParticipantOrAdmin]
     lookup_field = "pk"
+    activity_object_type = ObjectType.SERVICE
 
     def get_serializer_class(self):
         if self.action in ("create", "update", "partial_update"):
@@ -51,6 +55,9 @@ class ServiceRequestViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
+        self.track_activity(
+            ActivityType.REQUEST, object_id=serializer.instance.service_id
+        )
 
     #  Status transition actions
     @action(detail=True, methods=["post"])
