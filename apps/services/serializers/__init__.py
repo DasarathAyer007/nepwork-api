@@ -1,4 +1,4 @@
-from .category_serializers import CategorySerializer
+from .category_serializers import CategorySerializer, PopularCategorySerializer
 from .saved_serializers import (
     ServiceSavedCreateSerializer,
     ServiceSavedSerializer,
@@ -19,6 +19,7 @@ from .service_request_serializers import (
 
 __all__ = [
     "CategorySerializer",
+    "PopularCategorySerializer",
     "ServiceDetailSerializer",
     "ServiceListSerializer",
     "ServiceLocationUpdateSerializer",

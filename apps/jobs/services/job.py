@@ -44,7 +44,9 @@ class JobQueryService:
         return self._apply_geo(qs)
 
     def trending(self) -> QuerySet:
-        qs = selectors.get_trending_jobs(self.user)
+        qs = selectors.get_trending_jobs(
+            self.user, user_point=self._get_user_location_point()
+        )
         qs = self._apply_filters(qs, skip_ordering=True)
         return self._apply_geo_if_provided(qs)
 
@@ -192,6 +194,15 @@ class JobQueryService:
         return qs.order_by(ordering)
 
     # ── Geo helpers ──────────────────────────────────────────
+    def _get_user_location_point(self):
+        """The authenticated user's saved location point, if any."""
+        if not self.user or not self.user.is_authenticated:
+            return None
+        location = getattr(self.user, "location", None)
+        if not location or not location.point:
+            return None
+        return location.point
+
     def _apply_geo(self, qs):
         lat = float(self.params["lat"])
         lng = float(self.params["lng"])

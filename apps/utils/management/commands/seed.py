@@ -43,6 +43,11 @@ class Command(BaseCommand):
             User.objects.all().delete()
             Skill.objects.all().delete()
 
+        # USERS
+        if users_count > 0:
+            self.stdout.write(f" Creating {users_count} users...")
+            UserFactory.create_batch(users_count)
+
         # SERVICE CATEGORIES
         if service_categories_count > 0:
             self.stdout.write(
@@ -56,11 +61,6 @@ class Command(BaseCommand):
                 f" Creating {job_categories_count} job categories..."
             )
             JobCategoryFactory.create_batch(job_categories_count)
-
-        # USERS
-        if users_count > 0:
-            self.stdout.write(f" Creating {users_count} users...")
-            UserFactory.create_batch(users_count)
 
         # SERVICES
         if services_count > 0:

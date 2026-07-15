@@ -1,6 +1,7 @@
 # jobs/selectors.py
 from datetime import timedelta
 
+from django.contrib.gis.db.models.functions import Distance
 from django.db.models import (
     Avg,
     Count,
@@ -56,19 +57,24 @@ def get_saved_jobs(user) -> QuerySet:
     return get_active_jobs(user).filter(id__in=saved_ids)
 
 
-def get_trending_jobs(user=None, days=7) -> QuerySet:
-    """Jobs with most recent applications - placeholder."""
+def get_trending_jobs(user=None, days=7, user_point=None) -> QuerySet:
+    """Jobs with most recent applications - placeholder.
+
+    `user_point` (if given) nudges ordering toward jobs closer to the
+    user's saved location, but only as a tie-breaker after recency of
+    applications - it never outranks a genuinely more trending job.
+    """
     since = timezone.now() - timedelta(days=days)
-    return (
-        get_active_jobs(user)
-        .annotate(
-            recent_applications=Count(
-                "applications",
-                filter=Q(applications__created_at__gte=since),
-            )
+    qs = get_active_jobs(user).annotate(
+        recent_applications=Count(
+            "applications",
+            filter=Q(applications__created_at__gte=since),
         )
-        .order_by("-recent_applications", "-created_at")
     )
+    if user_point:
+        qs = qs.annotate(distance=Distance("location__point", user_point))
+        return qs.order_by("-recent_applications", "distance", "-created_at")
+    return qs.order_by("-recent_applications", "-created_at")
 
 
 def get_similar_jobs(job, user=None) -> QuerySet:

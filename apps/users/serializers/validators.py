@@ -46,11 +46,6 @@ def validate_username(value: str) -> str:
             "Username must be between 3 and 30 characters."
         )
 
-    if not re.match(r"^[\w.@+-]+$", value):
-        raise serializers.ValidationError(
-            "Username may contain only letters, digits, and @/./+/-/_ characters."
-        )
-
     if User.objects.filter(username=value).exists():
         raise serializers.ValidationError("Username already exists.")
 
