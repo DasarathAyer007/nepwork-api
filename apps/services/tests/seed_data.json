@@ -1,471 +1,742 @@
 {
   "categories": [
-    { "name": "Cleaning", "icon": "spray-can" },
-    { "name": "Plumbing", "icon": "wrench" },
-    { "name": "Electrical", "icon": "zap" },
-    { "name": "HVAC", "icon": "snowflake" },
-    { "name": "Electronics Repair", "icon": "smartphone" },
-    { "name": "Home Maintenance", "icon": "hammer" },
-    { "name": "Painting", "icon": "paint-roller" },
-    { "name": "Carpentry", "icon": "ruler" },
-    { "name": "Gardening", "icon": "sprout" },
-    { "name": "Pest Control", "icon": "bug" },
-    { "name": "Moving", "icon": "truck" },
-    { "name": "Automotive", "icon": "car" },
-    { "name": "Appliance Repair", "icon": "microwave" },
-    { "name": "Security", "icon": "shield" },
-    { "name": "Smart Home", "icon": "home" }
+    {"name": "Home Cleaning", "icon": "spray-can", "description": "Residential and commercial cleaning services.", "color": "#0891b2"},
+    {"name": "Plumbing", "icon": "wrench", "description": "Pipe repair, installation, and maintenance services.", "color": "#2563eb"},
+    {"name": "Electrical", "icon": "zap", "description": "Wiring, repair, and installation of electrical systems.", "color": "#f59e0b"},
+    {"name": "Tutoring", "icon": "book-open", "description": "Academic and skill-based tutoring services.", "color": "#7c3aed"},
+    {"name": "Photography", "icon": "camera", "description": "Event, portrait, and commercial photography services.", "color": "#db2777"},
+    {"name": "Beauty & Wellness", "icon": "sparkles", "description": "Salon, spa, and personal wellness services.", "color": "#e11d48"},
+    {"name": "Gardening", "icon": "flower-2", "description": "Landscaping, lawn care, and garden maintenance.", "color": "#16a34a"},
+    {"name": "IT Support", "icon": "laptop", "description": "Computer repair and technical support services.", "color": "#4338ca"},
+    {"name": "Event Planning", "icon": "party-popper", "description": "Planning and coordination for events and celebrations.", "color": "#c026d3"},
+    {"name": "Fitness Training", "icon": "dumbbell", "description": "Personal training and fitness coaching services.", "color": "#ea580c"},
+    {"name": "Moving & Transport", "icon": "truck", "description": "Moving, delivery, and transport services.", "color": "#64748b"},
+    {"name": "Pet Care", "icon": "paw-print", "description": "Pet sitting, grooming, and walking services.", "color": "#65a30d"},
+    {"name": "Home Improvement", "icon": "paint-bucket", "description": "Painting, repairs, installations, and appliance fixes for your home.", "color": "#f97316"},
+    {"name": "Automotive", "icon": "car", "description": "Car detailing, maintenance, and light repair services.", "color": "#dc2626"},
+    {"name": "Music Lessons", "icon": "music", "description": "Instrument and vocal instruction for all ages and levels.", "color": "#f43f5e"},
+    {"name": "Child & Elderly Care", "icon": "heart", "description": "Babysitting, companionship, and specialized care services.", "color": "#d946ef"}
   ],
   "services": [
     {
-      "title": "House Cleaning",
-      "category": "Cleaning",
-      "skills": ["cleaning", "sanitization", "dusting"]
+      "title": "Deep House Cleaning",
+      "category": "Home Cleaning",
+      "description": "Thorough top-to-bottom cleaning for your home, covering kitchens, bathrooms, floors, and hard-to-reach spots. I use eco-friendly products and bring all my own equipment, so you don't need to prepare anything before I arrive. This service includes dusting baseboards, cleaning inside cabinets and appliances, scrubbing tile grout, and washing windows from the inside. Perfect for seasonal refreshes or before hosting guests. I follow a systematic checklist to ensure no area is overlooked.",
+      "skills": ["cleaning", "sanitization", "organization", "attention-to-detail", "time-management"]
     },
     {
-      "title": "Deep Cleaning",
-      "category": "Cleaning",
-      "skills": ["deep-cleaning", "disinfection", "sanitization"]
+      "title": "Office Cleaning",
+      "category": "Home Cleaning",
+      "description": "Reliable, recurring cleaning for offices and commercial spaces. I work around your business hours to keep disruption minimal, covering desks, common areas, restrooms, and floors to a consistent professional standard. I sanitize high-touch surfaces like doorknobs, light switches, and keyboards, and manage waste disposal and recycling. Service includes restocking basic supplies if you provide them. I can tailor frequency—daily, weekly, or bi-weekly—to keep your workspace consistently fresh.",
+      "skills": ["cleaning", "sanitization", "customer-service", "attention-to-detail", "reliability"]
     },
     {
-      "title": "Bathroom Cleaning",
-      "category": "Cleaning",
-      "skills": ["cleaning", "toilet-scrubbing", "disinfection"]
-    },
-    {
-      "title": "Kitchen Cleaning",
-      "category": "Cleaning",
-      "skills": ["grease-removal", "cleaning", "sanitization"]
-    },
-    {
-      "title": "Carpet Cleaning",
-      "category": "Cleaning",
-      "skills": ["vacuuming", "stain-removal", "washing"]
-    },
-    {
-      "title": "Sofa Cleaning",
-      "category": "Cleaning",
-      "skills": ["fabric-cleaning", "stain-removal", "vacuuming"]
+      "title": "Move-in/Move-out Cleaning",
+      "category": "Home Cleaning",
+      "description": "Deep cleaning tailored for moving in or out of a home, ensuring every surface is spotless for the next occupant or your fresh start. I clean inside cabinets, closets, and appliances, scrub floors, and wipe down walls and baseboards. Ovens, refrigerators, and bathroom tiles receive extra attention. I'll leave the property in pristine condition, helping you get your security deposit back or settle in comfortably.",
+      "skills": ["cleaning", "sanitization", "organization", "attention-to-detail"]
     },
     {
       "title": "Window Cleaning",
-      "category": "Cleaning",
-      "skills": ["glass-cleaning", "streak-free", "high-rise"]
+      "category": "Home Cleaning",
+      "description": "Professional interior and exterior window cleaning for streak-free, crystal-clear glass. I use purified water and squeegees to remove dirt, smudges, and hard water stains without leaving residue. Service includes cleaning of sills, tracks, and screens. I handle ground-floor and accessible second-story windows; for higher floors, I bring extension tools for safe reach.",
+      "skills": ["cleaning", "equipment-operation", "safety", "attention-to-detail"]
     },
     {
-      "title": "Tile & Grout Cleaning",
-      "category": "Cleaning",
-      "skills": ["scrubbing", "stain-removal", "sealing"]
+      "title": "Carpet & Upholstery Cleaning",
+      "category": "Home Cleaning",
+      "description": "Deep steam or dry cleaning for carpets, rugs, and upholstered furniture to remove stains, allergens, and embedded dirt. I pre-treat high-traffic areas and stubborn spots, then use hot water extraction to lift grime and restore fibers. Your carpets dry quickly with proper ventilation. I also apply a deodorizer and fabric protector to prolong freshness.",
+      "skills": ["cleaning", "sanitization", "equipment-operation", "attention-to-detail"]
     },
     {
-      "title": "Bathroom Plumbing",
+      "title": "Post-Construction Cleaning",
+      "category": "Home Cleaning",
+      "description": "Specialized cleanup after renovations or new construction, removing dust, debris, and protective coverings. I meticulously clean all surfaces including walls, ceilings, vents, and light fixtures to eliminate fine construction dust. Floors are swept, mopped, and vacuumed multiple times. I handle disposal of construction scraps within the scope, leaving your space ready for move-in or final inspection.",
+      "skills": ["cleaning", "sanitization", "organization", "safety", "heavy-lifting"]
+    },
+    {
+      "title": "Leak Repair & Pipe Fitting",
       "category": "Plumbing",
-      "skills": ["pipe-repair", "installation", "maintenance"]
+      "description": "Fast, dependable fixes for leaking pipes, dripping taps, and low water pressure. I diagnose the root cause rather than just patching symptoms, so you get a lasting repair instead of a recurring problem. I carry common fittings and washers to fix most leaks on the spot, and I pressure-test the system after repair to ensure integrity. For hidden leaks behind walls, I use acoustic detection or thermal imaging to minimize unnecessary damage. Clear communication on the problem and repair approach is always provided.",
+      "skills": ["plumbing", "repair", "diagnostics", "safety", "problem-solving"]
     },
     {
-      "title": "Kitchen Plumbing",
+      "title": "Bathroom Plumbing Installation",
       "category": "Plumbing",
-      "skills": ["sink-repair", "pipe-fixing", "installation"]
+      "description": "Full installation of sinks, toilets, showers, and water heaters for new or renovated bathrooms. I handle everything from rough-in plumbing to final fixture fitting, with clean, code-compliant work. I coordinate with other trades if needed, and I ensure proper venting and drainage to prevent future odors or clogs. All work is tested for leaks and functionality before finishing. I can also advise on fixture selection to match your design and budget.",
+      "skills": ["plumbing", "installation", "repair", "safety", "attention-to-detail"]
     },
     {
-      "title": "Pipe Leakage Repair",
+      "title": "Drain Unclogging & Cleaning",
       "category": "Plumbing",
-      "skills": ["leak-detection", "sealing", "repair"]
+      "description": "Quick and effective removal of clogs from sinks, showers, tubs, and toilets using mechanical snakes, hydro-jetting, or eco-friendly enzyme treatments. I diagnose whether the blockage is local or in the main sewer line, and provide preventive tips to avoid future backups. No harsh chemicals are used that could damage your pipes.",
+      "skills": ["plumbing", "cleaning", "diagnostics", "equipment-operation", "safety"]
     },
     {
-      "title": "Drain Cleaning",
+      "title": "Water Heater Repair & Installation",
       "category": "Plumbing",
-      "skills": ["clog-removal", "drain-unblocking", "cleaning"]
+      "description": "Repair of failing water heaters—fixing heating elements, thermostats, or leaks—or full replacement with a tank or tankless unit. I assess your hot water demand to recommend the right size and type, and ensure safe gas or electrical connections. Installation includes expansion tank and drip pan as required by code. I test water temperature and pressure upon completion.",
+      "skills": ["plumbing", "repair", "installation", "diagnostics", "safety"]
     },
     {
-      "title": "Water Tank Cleaning",
+      "title": "Sewer Line Inspection & Repair",
       "category": "Plumbing",
-      "skills": ["tank-cleaning", "sanitization", "maintenance"]
+      "description": "Camera inspection to locate breaks, tree root intrusion, or collapses in your sewer line without digging. I provide a video record and a clear recommendation for repair, which may include trenchless pipe lining or spot excavation if needed. Early detection can prevent catastrophic and costly backups.",
+      "skills": ["plumbing", "diagnostics", "repair", "equipment-operation", "problem-solving"]
     },
     {
-      "title": "Water Tank Repair",
+      "title": "Gas Line Installation & Leak Detection",
       "category": "Plumbing",
-      "skills": ["repair", "sealing", "maintenance"]
+      "description": "Safe installation of gas lines for stoves, dryers, fireplaces, and BBQ grills, with thorough pressure testing and bubble leak checks. For suspected leaks, I use electronic gas detectors to locate the source and repair it promptly. All work meets local gas codes, and I coordinate with the utility company if necessary.",
+      "skills": ["plumbing", "installation", "diagnostics", "safety", "testing"]
     },
     {
-      "title": "Toilet Installation",
+      "title": "Sump Pump Repair & Replacement",
       "category": "Plumbing",
-      "skills": ["installation", "plumbing", "sealing"]
+      "description": "Diagnose and fix sump pump failures, whether it's a stuck float switch, jammed impeller, or burned-out motor. I replace worn units with high-capacity, battery-backup-enabled pumps to protect your basement from flooding. I also check and clean the discharge line and pit.",
+      "skills": ["plumbing", "repair", "installation", "diagnostics", "safety"]
     },
     {
-      "title": "Water Heater Installation",
+      "title": "Toilet Repair & Installation",
       "category": "Plumbing",
-      "skills": ["installation", "plumbing", "electrical"]
+      "description": "From persistent running toilets and weak flushes to complete replacement with a water-efficient model, I handle all toilet issues. I replace fill valves, flappers, wax rings, and resolve base leaks. Installation includes proper shimming and sealing to prevent rocking and odor.",
+      "skills": ["plumbing", "repair", "installation", "diagnostics", "safety"]
     },
     {
-      "title": "Sump Pump Installation",
-      "category": "Plumbing",
-      "skills": ["installation", "plumbing", "pumping"]
-    },
-    {
-      "title": "Electrical Repair",
+      "title": "Home Wiring & Rewiring",
       "category": "Electrical",
-      "skills": ["wiring", "repair", "diagnostics"]
+      "description": "Safe, code-compliant wiring for new builds or older homes in need of an upgrade. I handle everything from panel upgrades to outlet installation, always prioritizing safety and proper load balancing. I replace outdated knob-and-tube or aluminum wiring with modern copper, install GFCI and AFCI protection where required, and label circuits clearly. A thorough inspection and testing of every outlet and switch ensures a reliable electrical system before I finish.",
+      "skills": ["electrical", "installation", "repair", "safety", "diagnostics"]
+    },
+    {
+      "title": "Electrical Fault Finding",
+      "category": "Electrical",
+      "description": "Quick, accurate diagnosis of tripped breakers, flickering lights, and other electrical faults. I identify the exact cause before recommending any repair, so you're not paying for guesswork. Using multimeters, circuit tracers, and thermal imaging, I locate loose connections, overloaded circuits, or failing breakers. I explain the findings in simple terms and provide a written quote before any repair work begins.",
+      "skills": ["electrical", "diagnostics", "repair", "problem-solving", "testing"]
     },
     {
       "title": "Ceiling Fan Installation",
       "category": "Electrical",
-      "skills": ["installation", "mounting", "wiring"]
+      "description": "Safe mounting and wiring of ceiling fans, including replacing existing light fixtures with fan-rated boxes. I ensure proper bracing for stability and balance the blades for noise-free operation. Installation includes remote control or wall switch wiring and clean, discreet cord management.",
+      "skills": ["electrical", "installation", "repair", "safety", "attention-to-detail"]
     },
     {
-      "title": "Light Fixture Installation",
+      "title": "Lighting Installation & Upgrade",
       "category": "Electrical",
-      "skills": ["installation", "wiring", "setup"]
+      "description": "Design and install recessed, track, pendant, and under-cabinet lighting to improve ambiance and functionality. I retrofit old fixtures with energy-efficient LED solutions, install dimmers and smart switches, and add outdoor security lighting. Proper circuit load calculation prevents tripping breakers.",
+      "skills": ["electrical", "installation", "design", "safety", "energy-efficiency"]
     },
     {
-      "title": "Wiring Installation",
+      "title": "EV Charger Installation",
       "category": "Electrical",
-      "skills": ["wiring", "electrical-design", "installation"]
+      "description": "Install a dedicated circuit and Level 2 EV charger in your garage or driveway, with load calculation to ensure your panel can handle the extra demand. I pull permits if required and test the charger with your vehicle. Options include NEMA 14-50 outlets or hardwired chargers.",
+      "skills": ["electrical", "installation", "safety", "diagnostics", "testing"]
     },
     {
-      "title": "Circuit Breaker Repair",
+      "title": "Home Automation Setup",
       "category": "Electrical",
-      "skills": ["repair", "diagnostics", "replacement"]
+      "description": "Wiring and integration of smart home devices—smart lights, thermostats, door locks, and voice assistants—into a cohesive system. I configure hubs, scenes, and schedules, and ensure all devices communicate reliably over your home network. Troubleshooting of connectivity issues included.",
+      "skills": ["electrical", "installation", "networking", "troubleshooting", "programming"]
     },
     {
-      "title": "Outlet Installation",
+      "title": "Solar Panel Setup",
       "category": "Electrical",
-      "skills": ["installation", "wiring", "safety"]
+      "description": "Complete installation of grid-tied or off-grid solar panel systems, including mounting, wiring, inverter setup, and connection to your electrical panel. I handle permits and utility interconnection agreements, and provide monitoring system configuration so you can track energy production.",
+      "skills": ["electrical", "installation", "safety", "project-management", "testing"]
     },
     {
-      "title": "Lighting Installation",
+      "title": "Circuit Breaker Replacement",
       "category": "Electrical",
-      "skills": ["installation", "wiring", "design"]
+      "description": "Diagnose and replace faulty or obsolete circuit breakers in your panel, ensuring correct amperage ratings and proper busbar connection. I also upgrade panels from fuse boxes to modern breaker panels if needed. Safety checks include torque verification and arc-fault detection testing.",
+      "skills": ["electrical", "repair", "diagnostics", "safety", "testing"]
     },
     {
-      "title": "Generator Installation",
-      "category": "Electrical",
-      "skills": ["installation", "wiring", "power-systems"]
+      "title": "Math Tutoring",
+      "category": "Tutoring",
+      "description": "Patient, personalized math tutoring for school and college students, from algebra through calculus. I adapt my teaching style to how each student learns best and track progress across sessions. I use real-world examples to make abstract concepts stick and provide practice problems with step-by-step feedback. Before each session, I review the student’s recent homework and test results to target weak areas. I also help with exam strategies and time management.",
+      "skills": ["teaching", "communication", "patience", "assessment", "lesson-planning"]
     },
     {
-      "title": "AC Installation",
-      "category": "HVAC",
-      "skills": ["installation", "cooling-systems", "mounting"]
+      "title": "English Language Tutoring",
+      "category": "Tutoring",
+      "description": "One-on-one English tutoring focused on grammar, writing, and conversational fluency. Lessons are tailored to your goals, whether that's exam prep, academic writing, or everyday conversation confidence. I incorporate reading comprehension exercises, vocabulary building, and pronunciation drills. I provide written feedback on essays and help with structuring arguments. For ESL students, I focus on natural phrasing and cultural nuances.",
+      "skills": ["teaching", "communication", "patience", "language-skills", "assessment"]
     },
     {
-      "title": "AC Repair",
-      "category": "HVAC",
-      "skills": ["repair", "gas-refill", "cooling"]
+      "title": "Science Tutoring",
+      "category": "Tutoring",
+      "description": "Comprehensive tutoring in physics, chemistry, and biology for high school and college students. I break down complex theories using experiments and diagrams, and I help with lab report writing and problem-solving techniques. I also prepare students for AP and IB exams with practice tests and review sessions.",
+      "skills": ["teaching", "communication", "patience", "assessment", "lesson-planning"]
     },
     {
-      "title": "AC Servicing",
-      "category": "HVAC",
-      "skills": ["maintenance", "cleaning", "inspection"]
+      "title": "Test Prep Tutoring (SAT/ACT/GRE)",
+      "category": "Tutoring",
+      "description": "Strategic preparation for standardized tests, focusing on test-taking skills, time management, and content review. I analyze practice test results to customize a study plan and teach proven techniques for each section. Includes vocabulary drills, math shortcuts, and essay writing workshops.",
+      "skills": ["teaching", "coaching", "assessment", "lesson-planning", "motivational-skills"]
     },
     {
-      "title": "Heater Repair",
-      "category": "HVAC",
-      "skills": ["repair", "heating-systems", "maintenance"]
+      "title": "Foreign Language Tutoring",
+      "category": "Tutoring",
+      "description": "Personalized language lessons in Spanish, French, Mandarin, or other languages, from beginner to advanced. I emphasize conversation practice and cultural context, supplementing with grammar exercises and multimedia resources. I track fluency improvement through regular speaking assessments.",
+      "skills": ["teaching", "communication", "patience", "language-skills", "assessment"]
     },
     {
-      "title": "Furnace Installation",
-      "category": "HVAC",
-      "skills": ["installation", "heating-systems", "gas"]
+      "title": "Special Education Tutoring",
+      "category": "Tutoring",
+      "description": "Patient, structured tutoring for students with learning differences (ADHD, dyslexia, autism spectrum). I use multisensory techniques and individualized pacing, breaking lessons into manageable chunks. I collaborate with parents and school IEP/504 plans to reinforce classroom goals.",
+      "skills": ["teaching", "special-needs-care", "communication", "patience", "assessment"]
     },
     {
-      "title": "Air Duct Cleaning",
-      "category": "HVAC",
-      "skills": ["cleaning", "inspection", "ventilation"]
+      "title": "Homework Help & Study Skills",
+      "category": "Tutoring",
+      "description": "Supervised homework sessions where I help students understand assignments, develop organization skills, and study effectively. I teach note-taking methods, time blocking, and active recall techniques. Not subject-specific—I assist across all subjects to build independent learning habits.",
+      "skills": ["teaching", "coaching", "organization", "time-management", "motivational-skills"]
     },
     {
-      "title": "Thermostat Installation",
-      "category": "HVAC",
-      "skills": ["installation", "programming", "smart-home"]
+      "title": "Coding & Programming Tutoring",
+      "category": "Tutoring",
+      "description": "One-on-one instruction in Python, JavaScript, HTML/CSS, or Java for beginners through intermediate learners. I use project-based learning to reinforce concepts, debugging sessions, and code reviews. Ideal for students taking AP Computer Science or adults transitioning into tech.",
+      "skills": ["teaching", "programming", "troubleshooting", "communication", "lesson-planning"]
     },
     {
-      "title": "HVAC System Design",
-      "category": "HVAC",
-      "skills": ["design", "installation", "consultation"]
+      "title": "Wedding Photography",
+      "category": "Photography",
+      "description": "Candid and posed wedding photography that captures the full story of your day, from getting-ready shots to the last dance. Includes a full edited gallery delivered within two weeks. I scout the venue in advance to plan lighting and backdrops, and I bring backup equipment to handle any situation. The gallery includes high-resolution images and a private online album for easy sharing. I also offer optional prints and albums.",
+      "skills": ["photography", "photo-editing", "creativity", "customer-service", "event-coverage"]
     },
     {
-      "title": "Laptop Repair",
-      "category": "Electronics Repair",
-      "skills": ["diagnostics", "hardware-repair", "software-troubleshooting"]
+      "title": "Product Photography",
+      "category": "Photography",
+      "description": "Clean, high-resolution product photography for e-commerce listings and marketing materials. I handle lighting, staging, and editing to make your products look their best across every platform. I shoot on white backgrounds for clean listings, lifestyle context shots for social media, and 360-degree spins if needed. Images are delivered optimized for web loading speed and with proper meta tags. Quick turnaround for product launch deadlines.",
+      "skills": ["photography", "photo-editing", "lighting", "creativity", "attention-to-detail"]
     },
     {
-      "title": "Computer Setup",
-      "category": "Electronics Repair",
-      "skills": ["installation", "configuration", "network-setup"]
+      "title": "Portrait Photography",
+      "category": "Photography",
+      "description": "Professional individual, couple, or family portraits shot on location or in a portable studio setup. I guide you through natural poses and use flattering lighting to capture genuine expressions. Retouched images are delivered in both high-resolution for print and web-ready formats.",
+      "skills": ["photography", "photo-editing", "posing", "customer-service", "creativity"]
     },
     {
-      "title": "Mobile Screen Replacement",
-      "category": "Electronics Repair",
-      "skills": ["screen-repair", "disassembly", "replacement"]
+      "title": "Real Estate Photography",
+      "category": "Photography",
+      "description": "Bright, airy interior and exterior photos for property listings, using HDR and wide-angle lenses to showcase space. I include twilight exterior shots and detail photos of key features. Fast 24-hour delivery to meet tight listing schedules, with drone add-on for aerial perspectives.",
+      "skills": ["photography", "photo-editing", "drone-operation", "lighting", "attention-to-detail"]
     },
     {
-      "title": "Mobile Battery Replacement",
-      "category": "Electronics Repair",
-      "skills": ["battery-replacement", "diagnostics", "repair"]
+      "title": "Drone Photography & Videography",
+      "category": "Photography",
+      "description": "Aerial photography and video for events, real estate, or landscapes using a licensed, insured drone pilot. I capture cinematic flyover footage and high-resolution stills, with basic color grading. Ideal for roof inspections, property showcases, or creating breathtaking visual content.",
+      "skills": ["photography", "drone-operation", "video-editing", "safety", "creativity"]
     },
     {
-      "title": "WiFi Router Setup",
-      "category": "Electronics Repair",
-      "skills": ["network-setup", "configuration", "troubleshooting"]
+      "title": "Event Photography",
+      "category": "Photography",
+      "description": "Coverage of corporate events, parties, and conferences with a focus on capturing key moments, details, and candid interactions. I deliver a curated gallery within 48 hours, with options for on-site slideshows. I blend in discreetly, never disrupting the flow of the event.",
+      "skills": ["photography", "photo-editing", "event-coverage", "customer-service", "attention-to-detail"]
     },
     {
-      "title": "Data Recovery",
-      "category": "Electronics Repair",
-      "skills": ["data-recovery", "backup", "storage"]
+      "title": "Newborn & Baby Photography",
+      "category": "Photography",
+      "description": "Gentle, posed newborn sessions in your home or my comfortable studio, using soft natural light and props. I schedule sessions flexibly around feeding and sleep times, prioritizing safety and warmth. Images are delicately edited to a timeless style.",
+      "skills": ["photography", "photo-editing", "childcare", "patience", "creativity"]
     },
     {
-      "title": "Printer Repair",
-      "category": "Electronics Repair",
-      "skills": ["repair", "maintenance", "diagnostics"]
+      "title": "Commercial & Brand Photography",
+      "category": "Photography",
+      "description": "Lifestyle and product imagery for websites, ads, and social media campaigns, aligned with your brand’s visual identity. I scout locations, cast models if needed, and direct the shoot to convey your message. Includes basic retouching and batch processing for consistency.",
+      "skills": ["photography", "photo-editing", "creativity", "marketing", "project-management"]
     },
     {
-      "title": "Tablet Repair",
-      "category": "Electronics Repair",
-      "skills": ["screen-repair", "battery-replacement", "diagnostics"]
+      "title": "Bridal Makeup",
+      "category": "Beauty & Wellness",
+      "description": "Professional bridal makeup that lasts through the whole event, tailored to your skin tone and the look you want. Includes a trial session beforehand so there are no surprises on the big day. I use high-quality, long-wear products and set with professional techniques to withstand tears and humidity. The trial allows us to test different styles and ensure your skin has no reactions. I also offer touch-up kits and can stay through the ceremony for touch-ups.",
+      "skills": ["makeup", "beauty", "skin-care", "customer-service", "creativity"]
     },
     {
-      "title": "Furniture Assembly",
-      "category": "Home Maintenance",
-      "skills": ["assembly", "woodwork", "installation"]
+      "title": "Haircut & Styling",
+      "category": "Beauty & Wellness",
+      "description": "Precision haircuts and styling for all hair types, done in a relaxed, unhurried setting. I take time to understand what you want before making a single cut. Whether you're after a blunt bob, layered cut, or textured style, I consider your face shape, hair texture, and lifestyle. I finish with a blowout or natural styling, and give tips for at-home maintenance. Sanitized tools and a clean environment are a given.",
+      "skills": ["hair-care", "styling", "customer-service", "hygiene", "creativity"]
     },
     {
-      "title": "TV Wall Mount Installation",
-      "category": "Home Maintenance",
-      "skills": ["mounting", "drilling", "installation"]
+      "title": "Massage Therapy",
+      "category": "Beauty & Wellness",
+      "description": "Therapeutic massage including Swedish, deep tissue, and sports massage, tailored to relieve tension and promote relaxation. I use professional-grade oils and lotions and ensure a calming atmosphere. Each session starts with a brief assessment to target problem areas and avoid injuries.",
+      "skills": ["massage", "wellness", "safety", "customer-service", "bodywork"]
     },
     {
-      "title": "Roof Leak Repair",
-      "category": "Home Maintenance",
-      "skills": ["waterproofing", "repair", "inspection"]
+      "title": "Manicure & Pedicure",
+      "category": "Beauty & Wellness",
+      "description": "Classic and gel manicures and pedicures with cuticle care, shaping, exfoliation, and massage. I use sterilized tools and high-quality polishes for a long-lasting, chip-resistant finish. Nail art and French tips available. Enjoy a relaxing foot soak and hot towel wrap as part of the pedicure.",
+      "skills": ["nail-care", "beauty", "hygiene", "customer-service", "creativity"]
     },
     {
-      "title": "Curtain Installation",
-      "category": "Home Maintenance",
-      "skills": ["drilling", "mounting", "installation"]
+      "title": "Facial & Skincare",
+      "category": "Beauty & Wellness",
+      "description": "Deep-cleansing facial customized to your skin type, including steaming, extractions, mask, and moisturizing. I analyze your skin and recommend a regimen. Add-on options: chemical peel, microdermabrasion, or LED therapy. Relaxing neck and shoulder massage included.",
+      "skills": ["skin-care", "beauty", "hygiene", "customer-service", "massage"]
     },
     {
-      "title": "Washing Machine Repair",
-      "category": "Home Maintenance",
-      "skills": ["motor-repair", "diagnostics", "installation"]
+      "title": "Hair Coloring & Highlights",
+      "category": "Beauty & Wellness",
+      "description": "Full color, balayage, ombre, highlights, or root touch-up using salon-grade products. I perform a strand test for sensitive scalps and ensure even application and vibrant, natural-looking results. Deep conditioning treatment finishes the service to lock in moisture and shine.",
+      "skills": ["hair-care", "styling", "beauty", "hygiene", "creativity"]
     },
     {
-      "title": "Refrigerator Repair",
-      "category": "Home Maintenance",
-      "skills": ["cooling-repair", "gas-refill", "maintenance"]
+      "title": "Waxing & Hair Removal",
+      "category": "Beauty & Wellness",
+      "description": "Quick and hygienic body waxing for legs, arms, underarms, bikini, and face using gentle, low-temperature wax. I prep the skin with cleanser and powder, and apply soothing post-wax lotion to minimize irritation. Suitable for all skin types, with sugaring options available.",
+      "skills": ["beauty", "hygiene", "skin-care", "customer-service"]
     },
     {
-      "title": "Door Installation",
-      "category": "Home Maintenance",
-      "skills": ["installation", "carpentry", "hardware"]
+      "title": "Eyelash Extensions",
+      "category": "Beauty & Wellness",
+      "description": "Custom application of individual synthetic, mink, or silk lashes to add length, curl, and volume, lasting 2–3 weeks. I style based on your eye shape and desired look, from natural to dramatic. Safe, formaldehyde-free adhesive used; aftercare instructions provided.",
+      "skills": ["beauty", "styling", "hygiene", "creativity", "customer-service"]
     },
     {
-      "title": "Cabinet Repair",
-      "category": "Home Maintenance",
-      "skills": ["repair", "woodwork", "refinishing"]
+      "title": "Lawn Maintenance",
+      "category": "Gardening",
+      "description": "Regular mowing, edging, and lawn care to keep your yard looking sharp year-round. I also offer seasonal treatments to keep grass healthy through heat and cold. I adjust mowing height by season, bag or mulch clippings, and provide edging along walkways and beds. Aeration, overseeding, and fertilization are available as add-ons to promote thick, weed-resistant turf.",
+      "skills": ["gardening", "landscaping", "equipment-operation", "plant-care", "maintenance"]
     },
     {
-      "title": "Drywall Repair",
-      "category": "Home Maintenance",
-      "skills": ["patching", "sanding", "painting"]
+      "title": "Garden Landscaping",
+      "category": "Gardening",
+      "description": "Full garden design and landscaping, from planning plant layouts to installing patios and pathways. I work with your space and climate to create something that stays beautiful with minimal upkeep. I create planting plans considering sunlight, soil, and water needs, then source healthy plants and materials. Hardscaping elements like stone paths, retaining walls, and mulch beds are installed with proper drainage. I leave you with a care guide to keep it thriving.",
+      "skills": ["landscaping", "gardening", "design", "plant-care", "installation"]
     },
     {
-      "title": "Ceiling Repair",
-      "category": "Home Maintenance",
-      "skills": ["repair", "plastering", "painting"]
+      "title": "Tree Trimming & Pruning",
+      "category": "Gardening",
+      "description": "Safe, precise pruning of trees and shrubs to improve health, shape, and safety. I remove dead or overhanging limbs, thin dense canopies, and trim for fruit production. Proper cuts prevent disease; I clean up all debris and can chip branches for mulch.",
+      "skills": ["gardening", "landscaping", "equipment-operation", "safety", "plant-care"]
+    },
+    {
+      "title": "Irrigation System Installation & Repair",
+      "category": "Gardening",
+      "description": "Design and install sprinkler or drip irrigation systems to keep your landscape hydrated efficiently. I program smart controllers for weather-based watering, repair leaking valves and broken heads, and adjust coverage for uniform distribution. Spring startup and winterization services included.",
+      "skills": ["gardening", "installation", "repair", "plumbing", "maintenance"]
+    },
+    {
+      "title": "Garden Cleanup & Waste Removal",
+      "category": "Gardening",
+      "description": "Seasonal cleanup of leaves, fallen branches, and overgrown areas, with haul-away of green waste. I clear garden beds, trim back perennials, and prepare the yard for winter or spring. Composting or eco-friendly disposal is arranged.",
+      "skills": ["gardening", "cleaning", "landscaping", "heavy-lifting", "maintenance"]
+    },
+    {
+      "title": "Sod & Turf Installation",
+      "category": "Gardening",
+      "description": "Prepare soil and install fresh sod or hydroseed for an instant, lush lawn. I grade the area for proper drainage, amend soil, and lay sod seamlessly. I provide watering instructions and follow-up care tips for successful establishment.",
+      "skills": ["gardening", "landscaping", "installation", "plant-care", "maintenance"]
+    },
+    {
+      "title": "Hedge Trimming & Shaping",
+      "category": "Gardening",
+      "description": "Precision trimming of hedges and topiary to maintain neat, geometric shapes or natural forms. I use sharp, sterilized shears and ladders for tall hedges, ensuring straight lines and even surfaces. I clean up all clippings and can apply growth regulators.",
+      "skills": ["gardening", "landscaping", "equipment-operation", "plant-care", "safety"]
+    },
+    {
+      "title": "Seasonal Planting & Color",
+      "category": "Gardening",
+      "description": "Design and installation of seasonal flower beds, containers, and hanging baskets for vibrant curb appeal. I select annuals and perennials that thrive in the current season and your light conditions, and install them with compost and mulch. Rotation service available to swap out displays each season.",
+      "skills": ["gardening", "landscaping", "plant-care", "creativity", "design"]
+    },
+    {
+      "title": "Computer Repair",
+      "category": "IT Support",
+      "description": "Diagnosis and repair for slow, crashing, or broken computers, covering both hardware and software issues. I explain what went wrong in plain language and offer tips to prevent it happening again. I troubleshoot failing hard drives, replace faulty RAM, remove viruses, and reinstall operating systems. Before any repair, I back up your data where possible. I provide a clear report of the work done and suggestions to keep your computer running smoothly.",
+      "skills": ["computer-repair", "troubleshooting", "diagnostics", "data-management", "customer-service"]
+    },
+    {
+      "title": "Home Network Setup",
+      "category": "IT Support",
+      "description": "Setup and optimization of home Wi-Fi networks, including router configuration, mesh systems, and dead-zone troubleshooting. Ideal for remote workers who need a reliable connection throughout the house. I survey the home to identify signal weak spots, install wired access points if needed, and configure QoS settings for video calls and streaming. I secure your network with strong encryption, guest networks, and parental controls. After setup, I perform speed tests and provide documentation.",
+      "skills": ["networking", "installation", "troubleshooting", "cybersecurity", "customer-service"]
+    },
+    {
+      "title": "Virus & Malware Removal",
+      "category": "IT Support",
+      "description": "Thorough scanning and removal of viruses, spyware, ransomware, and adware using advanced tools. I clean infected systems without losing your personal files, then install robust antivirus and educate you on safe browsing practices. Follow-up scan two weeks later included.",
+      "skills": ["computer-repair", "cybersecurity", "troubleshooting", "data-management"]
+    },
+    {
+      "title": "Data Recovery & Backup Solutions",
+      "category": "IT Support",
+      "description": "Recovery of lost files from crashed hard drives, accidentally formatted disks, or corrupted USBs. I use specialized software and, if necessary, work with cleanroom partners for physical damage. I then set up automated local or cloud backup systems to prevent future loss.",
+      "skills": ["data-management", "troubleshooting", "computer-repair", "installation", "cybersecurity"]
+    },
+    {
+      "title": "Software Installation & Training",
+      "category": "IT Support",
+      "description": "Install and configure software suites like Microsoft 365, Adobe Creative Cloud, or accounting tools, and provide personalized training to get you up and running quickly. I optimize settings for your workflow and offer follow-up support sessions. I also resolve compatibility issues.",
+      "skills": ["computer-repair", "installation", "teaching", "customer-service", "troubleshooting"]
+    },
+    {
+      "title": "Cybersecurity Setup",
+      "category": "IT Support",
+      "description": "Protect your home or small business with firewall configuration, VPN setup, password manager implementation, and multi-factor authentication. I run a security audit to identify vulnerabilities and create a defense plan. Includes anti-phishing training for family or staff.",
+      "skills": ["cybersecurity", "networking", "installation", "risk-assessment", "teaching"]
+    },
+    {
+      "title": "New Computer Setup & Migration",
+      "category": "IT Support",
+      "description": "Unbox, set up, and configure your new PC or Mac, transferring files, applications, and settings from your old machine. I ensure all peripherals work, software licenses are activated, and cloud sync is in place. I dispose of the old device responsibly if desired.",
+      "skills": ["computer-repair", "installation", "data-management", "customer-service"]
+    },
+    {
+      "title": "Smart Home Device Integration",
+      "category": "IT Support",
+      "description": "Set up and connect smart speakers, lights, thermostats, cameras, and doorbells so they work together seamlessly. I configure routines, automations, and voice commands through Alexa, Google Assistant, or HomeKit. I also troubleshoot connectivity issues and optimize your Wi-Fi for smart devices.",
+      "skills": ["networking", "installation", "troubleshooting", "programming", "customer-service"]
+    },
+    {
+      "title": "Birthday Party Planning",
+      "category": "Event Planning",
+      "description": "End-to-end planning for birthday parties, from venue and decor to catering and entertainment coordination. I handle the logistics so you can actually enjoy the celebration. I present theme options, manage RSVPs, and coordinate with vendors like magicians, face painters, and bakers. On the day, I oversee setup, timeline, and cleanup, ensuring everything runs smoothly. I also offer party favor assembly and custom signage.",
+      "skills": ["event-planning", "coordination", "vendor-management", "creativity", "budgeting"]
+    },
+    {
+      "title": "Corporate Event Planning",
+      "category": "Event Planning",
+      "description": "Planning and on-the-day coordination for corporate events, conferences, and team offsites. I manage vendors, timelines, and logistics to keep everything running smoothly and on brand. I handle venue sourcing, AV setup, catering, and registration. I create detailed run sheets, coordinate speakers, and manage any on-site emergencies. Post-event, I gather feedback and provide a debrief report.",
+      "skills": ["event-planning", "coordination", "vendor-management", "communication", "project-management"]
+    },
+    {
+      "title": "Wedding Planning & Coordination",
+      "category": "Event Planning",
+      "description": "Full-service or day-of coordination for weddings, ensuring every detail from ceremony to reception is flawlessly executed. I assist with vendor selection, budget management, timeline creation, and style design. On the day, I orchestrate setup, handle any hiccups, and keep the event on schedule.",
+      "skills": ["event-planning", "coordination", "vendor-management", "creativity", "budgeting"]
+    },
+    {
+      "title": "Baby Shower & Gender Reveal Planning",
+      "category": "Event Planning",
+      "description": "Charming, personalized baby showers or gender reveal parties including theme decor, games, and catering coordination. I manage invitations, favors, and setup a photo backdrop. For reveals, I arrange the creative reveal method and capture the moment.",
+      "skills": ["event-planning", "coordination", "creativity", "vendor-management", "decor"]
+    },
+    {
+      "title": "Conference & Seminar Planning",
+      "category": "Event Planning",
+      "description": "End-to-end organization of professional conferences, from venue and speaker liaison to registration systems and breakout sessions. I manage tech rehearsals, badging, and attendee materials. I ensure seamless streaming for hybrid events and provide attendee support.",
+      "skills": ["event-planning", "coordination", "logistics", "project-management", "communication"]
+    },
+    {
+      "title": "Private Dinner Party Planning",
+      "category": "Event Planning",
+      "description": "Intimate dinner parties with curated menus, table settings, and ambiance. I coordinate with private chefs, sommeliers, and rental companies, and design a timeline that flows from cocktail hour to dessert. I can also arrange live music or a themed experience.",
+      "skills": ["event-planning", "coordination", "vendor-management", "creativity", "budgeting"]
+    },
+    {
+      "title": "Festival & Fair Coordination",
+      "category": "Event Planning",
+      "description": "Large-scale community event planning including permits, vendor stalls, entertainment booking, and crowd flow logistics. I manage volunteer teams, safety plans, and waste management. From local craft fairs to music festivals, I bring your vision to life.",
+      "skills": ["event-planning", "coordination", "logistics", "project-management", "safety"]
+    },
+    {
+      "title": "Virtual Event Planning",
+      "category": "Event Planning",
+      "description": "Design and facilitation of engaging online events—webinars, virtual happy hours, and remote team-building activities. I select platforms, manage breakout rooms, and create interactive elements like polls and Q&A. I run technical rehearsals and provide live support.",
+      "skills": ["event-planning", "coordination", "technology", "communication", "creativity"]
+    },
+    {
+      "title": "Personal Training",
+      "category": "Fitness Training",
+      "description": "One-on-one fitness coaching with a plan built around your goals, whether that's weight loss, strength, or general fitness. Sessions include form correction and progress tracking to keep you improving safely. I conduct a movement screen to tailor exercises, periodize workouts to avoid plateaus, and offer nutrition guidance. I'm certified and insured, and can train in your home gym or a local park. Progress is monitored with body measurements and performance metrics.",
+      "skills": ["fitness-training", "coaching", "nutrition", "safety", "motivational-skills"]
+    },
+    {
+      "title": "Yoga Instruction",
+      "category": "Fitness Training",
+      "description": "Guided yoga sessions for all experience levels, focused on flexibility, breathing, and mindfulness. I adjust each session to your pace and any physical limitations you mention beforehand. I offer Hatha, Vinyasa, and Restorative styles, using props to support alignment. Sessions may include meditation and pranayama. I can design a home practice routine and provide posture modifications for injuries or conditions like back pain.",
+      "skills": ["fitness-training", "wellness", "coaching", "flexibility", "safety"]
+    },
+    {
+      "title": "Pilates Instruction",
+      "category": "Fitness Training",
+      "description": "Mat-based Pilates classes strengthening core, improving posture, and enhancing flexibility. I cue precise movements and breathing to engage deep muscles safely. Suitable for rehab or fitness enthusiasts; I offer modifications for spine issues. Equipment-based Reformer sessions available if studio access arranged.",
+      "skills": ["fitness-training", "coaching", "safety", "posture", "motivational-skills"]
+    },
+    {
+      "title": "Zumba & Dance Fitness",
+      "category": "Fitness Training",
+      "description": "High-energy dance fitness classes blending Latin and international rhythms with easy-to-follow choreography. I create a fun, inclusive atmosphere where all fitness levels can let loose. Playlist changes regularly to keep sessions fresh. Bring your energy!",
+      "skills": ["fitness-training", "coaching", "motivational-skills", "creativity", "group-leadership"]
+    },
+    {
+      "title": "Nutrition Coaching",
+      "category": "Fitness Training",
+      "description": "One-on-one nutrition guidance to complement your fitness or wellness goals. I help you build balanced meal plans, understand macronutrients, and develop healthy habits without extreme diets. I analyze your food diary and provide accountability, not judgment.",
+      "skills": ["nutrition", "coaching", "health-education", "motivational-skills", "assessment"]
+    },
+    {
+      "title": "Sports-Specific Training",
+      "category": "Fitness Training",
+      "description": "Performance training tailored to your sport—running, soccer, basketball, swimming—focusing on agility, power, endurance, and injury prevention. I use drills and conditioning programs designed for your competition season. Video analysis used to refine technique.",
+      "skills": ["fitness-training", "coaching", "safety", "assessment", "motivational-skills"]
+    },
+    {
+      "title": "Senior Fitness & Mobility",
+      "category": "Fitness Training",
+      "description": "Gentle, low-impact workouts to improve balance, strength, and flexibility for older adults. I focus on functional movements that make daily activities easier and reduce fall risk. Sessions can be seated or standing, with clear, encouraging instruction.",
+      "skills": ["fitness-training", "safety", "senior-care", "coaching", "patience"]
+    },
+    {
+      "title": "Group Fitness Boot Camp",
+      "category": "Fitness Training",
+      "description": "Motivating outdoor or indoor group sessions combining bodyweight exercises, cardio, and strength drills. I scale workouts for different fitness levels, and foster a team environment. Bring a friend or join a scheduled group; I ensure safe form and high energy.",
+      "skills": ["fitness-training", "group-leadership", "coaching", "motivational-skills", "safety"]
+    },
+    {
+      "title": "Local Moving Service",
+      "category": "Moving & Transport",
+      "description": "Careful, efficient moving for apartments and houses within the city. I bring proper packing materials and equipment to protect your belongings and get you settled with minimal hassle. I disassemble and reassemble furniture, protect floors and doorways, and load the truck using straps and pads. The service includes loading, transport, and unloading at your new place. I can also supply boxes and wardrobe cartons at cost.",
+      "skills": ["moving", "packing", "heavy-lifting", "customer-service", "safety"]
+    },
+    {
+      "title": "Furniture Delivery",
+      "category": "Moving & Transport",
+      "description": "Reliable delivery and assembly for furniture purchases, including careful handling and setup in the room of your choice. Same-day and scheduled slots available. I handle heavy or awkward items with a dolly and moving straps, and I assemble flat-pack furniture following manufacturer instructions. I remove all packaging debris and place the item exactly where you want it, including leveling and securing to walls if needed.",
+      "skills": ["delivery", "assembly", "heavy-lifting", "customer-service", "safety"]
+    },
+    {
+      "title": "Junk Removal & Hauling",
+      "category": "Moving & Transport",
+      "description": "Full-service removal of unwanted items, old furniture, appliances, electronics, and construction debris. I sort for recycling and donation where possible, and haul everything away in one trip. Pricing by volume with no hidden fees; I provide before/after photos.",
+      "skills": ["moving", "hauling", "heavy-lifting", "cleaning", "recycling"]
+    },
+    {
+      "title": "Piano Moving",
+      "category": "Moving & Transport",
+      "description": "Specialized piano moving with proper equipment—piano board, heavy-duty straps, and padded covers. I assess stairs, doorways, and tight corners to plan the safest route. Both upright and grand pianos handled; I’m insured for your peace of mind.",
+      "skills": ["moving", "heavy-lifting", "safety", "equipment-operation", "logistics"]
+    },
+    {
+      "title": "Long-Distance Moving",
+      "category": "Moving & Transport",
+      "description": "Interstate or cross-country moves with tailored logistics. I provide a dedicated truck, secure packing, and real-time GPS tracking. I can coordinate with storage facilities if needed and offer guaranteed delivery windows. All belongings inventoried and checked at destination.",
+      "skills": ["moving", "logistics", "packing", "project-management", "customer-service"]
+    },
+    {
+      "title": "Packing & Unpacking Service",
+      "category": "Moving & Transport",
+      "description": "Professional packing of your entire household using quality materials—bubble wrap, packing paper, sturdy boxes. I label every box by room and contents, then unpack and place items in your new home. Speeds up the moving process and reduces breakage.",
+      "skills": ["packing", "organization", "moving", "attention-to-detail"]
+    },
+    {
+      "title": "Office Relocation",
+      "category": "Moving & Transport",
+      "description": "Minimal-disruption office moves, including IT equipment disconnect/reconnect, furniture dismantle, and systematic setup at the new location. I work after hours or weekends to avoid downtime, and provide a detailed move plan. Crate rental available.",
+      "skills": ["moving", "logistics", "project-management", "heavy-lifting", "it-equipment-handling"]
+    },
+    {
+      "title": "Storage & Decluttering Service",
+      "category": "Moving & Transport",
+      "description": "Help decluttering and preparing items for short- or long-term storage, including wrapping and inventory. I deliver to a local storage facility and can retrieve items when needed. Perfect for home staging or downsizing.",
+      "skills": ["organization", "packing", "moving", "decluttering", "inventory-management"]
+    },
+    {
+      "title": "Dog Walking",
+      "category": "Pet Care",
+      "description": "Regular dog walks tailored to your pet's energy level and routine, with photo updates after every walk. Available for daily, weekly, or one-off bookings. I reinforce basic leash manners and provide water and a wipe-down after the walk. I follow your preferred route and alert you to any unusual behavior or health concerns. GPS-tracked walks available upon request.",
+      "skills": ["pet-care", "dog-walking", "animal-handling", "reliability", "communication"]
+    },
+    {
+      "title": "Pet Grooming",
+      "category": "Pet Care",
+      "description": "Full grooming service including bathing, brushing, nail trimming, and breed-specific styling. I keep a calm environment to make the experience stress-free for your pet. I use hypoallergenic shampoos and conditioners, clean ears, and express anal glands if requested. I take time to comfort nervous pets and use low-noise dryers. After, I provide a report on coat condition and any skin issues noticed.",
+      "skills": ["pet-care", "grooming", "animal-handling", "hygiene", "patience"]
+    },
+    {
+      "title": "Pet Sitting (In-Your-Home)",
+      "category": "Pet Care",
+      "description": "While you're away, I care for your pets in their familiar environment—feeding, fresh water, walks, playtime, and administering medication if needed. I also bring in mail, water plants, and alternate lights for home security. Daily photo/video updates.",
+      "skills": ["pet-care", "animal-handling", "reliability", "home-care", "communication"]
+    },
+    {
+      "title": "Dog Training (Basic Obedience)",
+      "category": "Pet Care",
+      "description": "Positive-reinforcement training for sit, stay, come, loose-leash walking, and other manners. I work with you and your dog in your home or a park, customizing sessions to address specific behavioral challenges like jumping or barking. Includes practice guides.",
+      "skills": ["pet-care", "dog-training", "animal-handling", "teaching", "patience"]
+    },
+    {
+      "title": "Cat Grooming & Care",
+      "category": "Pet Care",
+      "description": "Gentle grooming for cats including brushing, mat removal, nail trim, and sanitary trim. I use feline-friendly handling techniques to minimize stress. Also available: litter box cleaning and feeding visits while you’re away, with daily updates.",
+      "skills": ["pet-care", "grooming", "animal-handling", "hygiene", "patience"]
+    },
+    {
+      "title": "Exotic Pet Care",
+      "category": "Pet Care",
+      "description": "Care for birds, reptiles, small mammals (rabbits, guinea pigs), and fish, following specific feeding, lighting, and habitat requirements. I have experience with temperature control, live food prep, and administering supplements. I keep detailed logs.",
+      "skills": ["pet-care", "animal-handling", "specialized-knowledge", "reliability", "observation"]
+    },
+    {
+      "title": "Pet Taxi Service",
+      "category": "Pet Care",
+      "description": "Safe transport of your pet to vet appointments, groomer, or boarding facility. I use secured carriers, temperature-controlled vehicle, and direct routes to reduce stress. I'll wait during the appointment and bring them back home, with a report of the visit.",
+      "skills": ["pet-care", "transport", "animal-handling", "safety", "customer-service"]
+    },
+    {
+      "title": "Small Animal Boarding",
+      "category": "Pet Care",
+      "description": "In-my-home boarding for rabbits, hamsters, guinea pigs, and birds in a quiet, pet-proof space. I provide playtime, fresh veggies, and cage cleaning. Limited to a small number to ensure individual attention. Daily photo updates included.",
+      "skills": ["pet-care", "animal-handling", "cleaning", "reliability", "communication"]
     },
     {
       "title": "Interior Painting",
-      "category": "Painting",
-      "skills": ["painting", "surface-prep", "color-mixing"]
+      "category": "Home Improvement",
+      "description": "Transform your rooms with a fresh, professional paint job. I prep surfaces by filling holes, sanding, and priming, then apply two coats of premium paint in your chosen color and sheen. Careful cutting-in yields crisp edges; furniture and floors are fully protected with drop cloths. Clean-up and a final walkthrough included.",
+      "skills": ["painting", "surface-prep", "attention-to-detail", "safety", "customer-service"]
     },
     {
       "title": "Exterior Painting",
-      "category": "Painting",
-      "skills": ["painting", "surface-prep", "weatherproofing"]
+      "category": "Home Improvement",
+      "description": "Weather-resistant exterior painting for siding, trim, and doors. I power-wash, scrape, sand, and prime before painting to ensure adhesion and longevity. I use ladders and scaffolding safely, and protect landscaping. Can also paint fences and decks.",
+      "skills": ["painting", "surface-prep", "safety", "equipment-operation", "maintenance"]
     },
     {
-      "title": "Wallpaper Installation",
-      "category": "Painting",
-      "skills": ["installation", "surface-prep", "design"]
+      "title": "Drywall Repair & Finishing",
+      "category": "Home Improvement",
+      "description": "Patch holes, cracks, and water damage seamlessly. I cut out damaged sections, install new drywall, tape, mud, sand to a smooth finish, and texture-match existing walls. Ready for paint. I ensure the repaired area is indistinguishable from the rest.",
+      "skills": ["repair", "installation", "painting", "attention-to-detail"]
     },
     {
-      "title": "Fence Painting",
-      "category": "Painting",
-      "skills": ["painting", "surface-prep", "weatherproofing"]
+      "title": "Furniture Assembly & Mounting",
+      "category": "Home Improvement",
+      "description": "Assembly of flat-pack furniture (IKEA, etc.) following instructions precisely, with all parts checked. I also securely mount TVs, shelves, mirrors, and heavy art on drywall, brick, or concrete using appropriate anchors. I level everything and clean up packing debris.",
+      "skills": ["assembly", "installation", "handyman", "safety", "attention-to-detail"]
     },
     {
-      "title": "Deck Staining",
-      "category": "Painting",
-      "skills": ["staining", "surface-prep", "wood-care"]
+      "title": "Flooring Installation",
+      "category": "Home Improvement",
+      "description": "Install laminate, vinyl plank, or engineered wood flooring with underlayment, moisture barrier, and precise cuts around doorways. I remove and dispose of old flooring if needed, and install new baseboards and transitions for a polished look. Minimal dust with proper tools.",
+      "skills": ["installation", "flooring", "repair", "attention-to-detail", "equipment-operation"]
     },
     {
-      "title": "Custom Woodwork",
-      "category": "Carpentry",
-      "skills": ["woodworking", "design", "installation"]
+      "title": "Refrigerator & Freezer Repair",
+      "category": "Home Improvement",
+      "description": "Diagnose and fix cooling issues, noisy operation, leaks, ice maker malfunctions, and broken door seals. I test thermostats, compressors, and control boards, and replace defective parts with OEM components. I clean condenser coils and ensure proper temperature calibration.",
+      "skills": ["appliance-repair", "diagnostics", "repair", "safety", "maintenance"]
     },
     {
-      "title": "Cabinet Installation",
-      "category": "Carpentry",
-      "skills": ["installation", "measurement", "woodwork"]
+      "title": "Washing Machine & Dryer Repair",
+      "category": "Home Improvement",
+      "description": "Repair of washers (not draining, spinning, leaking) and dryers (no heat, not tumbling, too loud). I replace pumps, belts, heating elements, and control boards. I also clean lint ducts to prevent fire hazards. Gas dryer connections checked for safety.",
+      "skills": ["appliance-repair", "diagnostics", "repair", "safety", "maintenance"]
     },
     {
-      "title": "Deck Building",
-      "category": "Carpentry",
-      "skills": ["construction", "woodworking", "design"]
+      "title": "Oven & Stove Repair",
+      "category": "Home Improvement",
+      "description": "Fix electric or gas ovens and cooktops—baking unevenly, igniters not clicking, burners not heating. I replace bake/broil elements, igniters, control knobs, and safety valves, then test for proper temperature and gas leak tightness.",
+      "skills": ["appliance-repair", "diagnostics", "repair", "safety", "maintenance"]
     },
     {
-      "title": "Garden Maintenance",
-      "category": "Gardening",
-      "skills": ["gardening", "pruning", "plant-care"]
-    },
-    {
-      "title": "Lawn Mowing",
-      "category": "Gardening",
-      "skills": ["grass-cutting", "maintenance", "landscaping"]
-    },
-    {
-      "title": "Tree Trimming",
-      "category": "Gardening",
-      "skills": ["pruning", "tree-care", "removal"]
-    },
-    {
-      "title": "Landscaping Design",
-      "category": "Gardening",
-      "skills": ["design", "planting", "hardscaping"]
-    },
-    {
-      "title": "Irrigation Installation",
-      "category": "Gardening",
-      "skills": ["installation", "plumbing", "watering"]
-    },
-    {
-      "title": "Pest Control",
-      "category": "Pest Control",
-      "skills": ["fumigation", "spraying", "extermination"]
-    },
-    {
-      "title": "Rodent Control",
-      "category": "Pest Control",
-      "skills": ["trapping", "extermination", "prevention"]
-    },
-    {
-      "title": "Termite Treatment",
-      "category": "Pest Control",
-      "skills": ["inspection", "treatment", "prevention"]
-    },
-    {
-      "title": "Mosquito Control",
-      "category": "Pest Control",
-      "skills": ["spraying", "fumigation", "prevention"]
-    },
-    {
-      "title": "Home Moving Service",
-      "category": "Moving",
-      "skills": ["packing", "lifting", "transportation"]
-    },
-    {
-      "title": "Office Moving",
-      "category": "Moving",
-      "skills": ["packing", "lifting", "transportation"]
-    },
-    {
-      "title": "Packing Services",
-      "category": "Moving",
-      "skills": ["packing", "organization", "labeling"]
-    },
-    {
-      "title": "Storage Solutions",
-      "category": "Moving",
-      "skills": ["organization", "storage", "packing"]
-    },
-    {
-      "title": "Car Wash",
+      "title": "Car Wash & Detailing",
       "category": "Automotive",
-      "skills": ["washing", "detailing", "cleaning"]
+      "description": "Thorough hand wash, wax, and interior detailing to bring your vehicle to showroom condition. I clean carpets, upholstery, dash, vents, and windows, and apply leather conditioner. Exterior includes clay bar treatment, polish, and sealant for a deep shine. Headlight restoration add-on.",
+      "skills": ["automotive-detailing", "cleaning", "attention-to-detail", "paint-care"]
     },
     {
-      "title": "Bike Servicing",
+      "title": "Oil Change & Basic Maintenance",
       "category": "Automotive",
-      "skills": ["repair", "maintenance", "engine-check"]
+      "description": "Quick oil and filter change using the correct grade for your car, plus fluid top-offs (coolant, brake, windshield washer). I also inspect belts, hoses, and air filters, and provide a report on other maintenance needs. Disposal of old oil responsibly.",
+      "skills": ["automotive-maintenance", "safety", "diagnostics", "repair", "customer-service"]
     },
     {
-      "title": "Car Detailing",
+      "title": "Tire Change & Rotation",
       "category": "Automotive",
-      "skills": ["detailing", "cleaning", "polishing"]
+      "description": "Seasonal tire swap (winter/summer) or rotation to even tread wear, using a torque wrench to spec. I inspect tread depth and pressure, and check for uneven wear suggesting alignment issues. I can store your off-season tires if needed.",
+      "skills": ["automotive-maintenance", "safety", "equipment-operation", "inspection"]
     },
     {
-      "title": "Oil Change",
+      "title": "Brake Pad Replacement",
       "category": "Automotive",
-      "skills": ["oil-change", "maintenance", "filter-replacement"]
+      "description": "Replace worn brake pads and inspect rotors, calipers, and brake fluid. I bed in new pads and test for noise and stopping power. I'll advise if rotors need resurfacing. Performed with safety stands.",
+      "skills": ["automotive-maintenance", "repair", "safety", "diagnostics", "inspection"]
     },
     {
-      "title": "Tire Replacement",
+      "title": "Battery Jumpstart & Replacement",
       "category": "Automotive",
-      "skills": ["tire-replacement", "balance", "alignment"]
+      "description": "Jump-start a dead battery and test charging system. If battery is old, I can supply and install a new one with proper disposal of the old. I clean terminals and apply anti-corrosion spray. For tricky installations, I reset electronics if needed.",
+      "skills": ["automotive-maintenance", "repair", "safety", "diagnostics", "customer-service"]
     },
     {
-      "title": "Washing Machine Repair",
-      "category": "Appliance Repair",
-      "skills": ["motor-repair", "diagnostics", "installation"]
+      "title": "Headlight Restoration",
+      "category": "Automotive",
+      "description": "Restore cloudy, yellowed headlights to clear using wet sanding, polishing, and UV sealant. Dramatically improves nighttime visibility and appearance. Performed on-vehicle, with tape protection around surrounding paint.",
+      "skills": ["automotive-detailing", "restoration", "safety", "attention-to-detail"]
     },
     {
-      "title": "Refrigerator Repair",
-      "category": "Appliance Repair",
-      "skills": ["cooling-repair", "gas-refill", "maintenance"]
+      "title": "Guitar Lessons",
+      "category": "Music Lessons",
+      "description": "Acoustic or electric guitar lessons for beginners to advanced, covering chords, scales, music theory, and your favorite songs. I teach reading tablature and standard notation, and tailor lessons to your genre preference—rock, blues, folk. I provide practice routines and track progress.",
+      "skills": ["music-instruction", "teaching", "lesson-planning", "patience", "creativity"]
     },
     {
-      "title": "Oven Repair",
-      "category": "Appliance Repair",
-      "skills": ["repair", "diagnostics", "heating"]
+      "title": "Piano Lessons",
+      "category": "Music Lessons",
+      "description": "Piano/keyboard instruction focusing on technique, sight-reading, ear training, and repertoire. All ages welcome; I incorporate classical pieces and modern pop. I can prepare students for ABRSM exams or just for enjoyment. Access to a piano or keyboard required.",
+      "skills": ["music-instruction", "teaching", "lesson-planning", "patience", "assessment"]
     },
     {
-      "title": "Dishwasher Repair",
-      "category": "Appliance Repair",
-      "skills": ["repair", "diagnostics", "installation"]
+      "title": "Violin Lessons",
+      "category": "Music Lessons",
+      "description": "Violin lessons emphasizing proper posture, bow hold, intonation, and musical expression. I use the Suzuki method for young beginners and customize for older students. Regular recital opportunities and progress assessments.",
+      "skills": ["music-instruction", "teaching", "lesson-planning", "patience", "creativity"]
     },
     {
-      "title": "Dryer Repair",
-      "category": "Appliance Repair",
-      "skills": ["repair", "diagnostics", "venting"]
+      "title": "Vocal Coaching",
+      "category": "Music Lessons",
+      "description": "Develop your singing voice with breathing techniques, pitch accuracy, range expansion, and performance skills. I work on vocal health and style across pop, musical theater, or classical. Audition preparation and recording of practice tracks available.",
+      "skills": ["music-instruction", "teaching", "vocal-coaching", "patience", "performance-coaching"]
     },
     {
-      "title": "Microwave Repair",
-      "category": "Appliance Repair",
-      "skills": ["repair", "diagnostics", "magnetron"]
+      "title": "Drum Lessons",
+      "category": "Music Lessons",
+      "description": "Learn drum kit fundamentals—stick control, rudiments, rhythm reading, and playing along to songs. I provide a practice pad set-up for quiet practice and focus on coordination and timing. All styles covered: rock, funk, jazz.",
+      "skills": ["music-instruction", "teaching", "lesson-planning", "coordination", "patience"]
     },
     {
-      "title": "Security Camera Installation",
-      "category": "Security",
-      "skills": ["installation", "wiring", "configuration"]
+      "title": "Ukulele Lessons",
+      "category": "Music Lessons",
+      "description": "Fun, accessible ukulele lessons for all ages, quickly learning chords and strumming patterns to play songs. I teach basic music theory in a light way and encourage singing along. Ideal first instrument; I provide simple chord charts and songbooks.",
+      "skills": ["music-instruction", "teaching", "lesson-planning", "patience", "creativity"]
     },
     {
-      "title": "Alarm System Installation",
-      "category": "Security",
-      "skills": ["installation", "wiring", "configuration"]
+      "title": "Babysitting & Childcare",
+      "category": "Child & Elderly Care",
+      "description": "Responsible, engaging babysitter for date nights or regular care. I plan age-appropriate activities, help with homework, prepare simple meals, and follow bedtime routines. CPR/First Aid certified, with glowing references and a clean background check.",
+      "skills": ["childcare", "cpr-first-aid", "safety", "activity-planning", "patience"]
     },
     {
-      "title": "Lock Installation",
-      "category": "Security",
-      "skills": ["installation", "hardware", "security"]
+      "title": "Senior Companion & Assistance",
+      "category": "Child & Elderly Care",
+      "description": "Friendly, patient companionship for seniors—conversation, walks, light exercise, meal preparation, and medication reminders. I can run errands, accompany to appointments, and help with hobbies. I’m attentive to safety and dignity.",
+      "skills": ["senior-care", "companionship", "safety", "communication", "patience"]
     },
     {
-      "title": "Smart Lock Installation",
-      "category": "Security",
-      "skills": ["installation", "smart-home", "security"]
+      "title": "Special Needs Care",
+      "category": "Child & Elderly Care",
+      "description": "Compassionate care for children or adults with developmental disabilities, following individual care plans. I assist with daily living skills, communication, and sensory activities, and I’m trained in positive behavior support. I work closely with families to maintain consistency.",
+      "skills": ["special-needs-care", "childcare", "senior-care", "patience", "communication"]
     },
     {
-      "title": "Home Automation",
-      "category": "Smart Home",
-      "skills": ["automation", "programming", "smart-devices"]
+      "title": "After-School Nanny",
+      "category": "Child & Elderly Care",
+      "description": "Pick-up from school, snack, homework supervision, and enrichment activities until parents return. I manage schedules for extracurriculars and ensure a safe, structured afternoon. Light housekeeping related to the child (lunchbox cleaning, tidy play area) included.",
+      "skills": ["childcare", "transportation", "safety", "teaching", "organization"]
     },
     {
-      "title": "Smart Lighting Installation",
-      "category": "Smart Home",
-      "skills": ["installation", "wiring", "programming"]
+      "title": "Newborn Care & Night Nurse",
+      "category": "Child & Elderly Care",
+      "description": "Overnight or daytime care for newborns, giving parents a chance to rest. I handle feedings (bottle or bring baby to mom for nursing), diapering, soothing, and sleep conditioning. I offer guidance on routines and safe sleep practices. Lactation support knowledge.",
+      "skills": ["childcare", "newborn-care", "safety", "patience", "feeding-support"]
     },
     {
-      "title": "Smart Speaker Setup",
-      "category": "Smart Home",
-      "skills": ["setup", "configuration", "network"]
+      "title": "Overnight Care",
+      "category": "Child & Elderly Care",
+      "description": "Overnight supervision for children or elderly family members, ensuring safety and responding to any needs. I assist with bedtime routines, middle-of-night bathroom trips, and morning preparations. I remain awake or lightly sleeping as requested, with emergency protocols in place.",
+      "skills": ["childcare", "senior-care", "safety", "overnight-care", "cpr-first-aid"]
     }
   ]
 }

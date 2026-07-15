@@ -1,101 +1,1201 @@
 {
   "categories": [
-    {"name": "Software Development", "icon": "code"},
-    {"name": "Design", "icon": "palette"},
-    {"name": "Marketing", "icon": "megaphone"},
-    {"name": "Sales", "icon": "chart-bar"},
-    {"name": "Customer Support", "icon": "headset"},
-    {"name": "Finance", "icon": "bank"},
-    {"name": "Operations", "icon": "cogs"},
-    {"name": "HR", "icon": "users"},
-    {"name": "Education", "icon": "graduation-cap"},
-    {"name": "Healthcare", "icon": "heart"},
-    {"name": "Construction", "icon": "hard-hat"},
-    {"name": "Logistics", "icon": "truck"},
-    {"name": "Hospitality", "icon": "hotel"},
-    {"name": "Media", "icon": "camera"},
-    {"name": "Security", "icon": "shield"}
+    {"name": "Software Development", "icon": "code-2", "description": "Roles building and maintaining software products.", "color": "#2563eb"},
+    {"name": "Design", "icon": "palette", "description": "Roles focused on visual and product design.", "color": "#db2777"},
+    {"name": "Marketing", "icon": "megaphone", "description": "Roles driving brand awareness and growth.", "color": "#f59e0b"},
+    {"name": "Sales", "icon": "trending-up", "description": "Roles focused on revenue and client acquisition.", "color": "#16a34a"},
+    {"name": "Customer Support", "icon": "headphones", "description": "Roles helping customers resolve issues.", "color": "#0891b2"},
+    {"name": "Finance", "icon": "landmark", "description": "Roles managing budgets, reporting, and analysis.", "color": "#65a30d"},
+    {"name": "Operations", "icon": "settings", "description": "Roles keeping day-to-day operations running smoothly.", "color": "#64748b"},
+    {"name": "HR", "icon": "users", "description": "Roles managing people, hiring, and culture.", "color": "#7c3aed"},
+    {"name": "Education", "icon": "graduation-cap", "description": "Roles focused on teaching and training.", "color": "#0d9488"},
+    {"name": "Healthcare", "icon": "heart-pulse", "description": "Roles focused on patient care and medical support.", "color": "#e11d48"},
+    {"name": "Construction", "icon": "hard-hat", "description": "Roles building and managing physical infrastructure.", "color": "#ea580c"},
+    {"name": "Logistics", "icon": "truck", "description": "Roles managing supply chain and delivery.", "color": "#4338ca"},
+    {"name": "Hospitality", "icon": "concierge-bell", "description": "Roles delivering guest and hospitality services.", "color": "#c026d3"},
+    {"name": "Media", "icon": "camera", "description": "Roles producing content and media.", "color": "#9333ea"},
+    {"name": "Security", "icon": "shield", "description": "Roles focused on safety and security.", "color": "#334155"},
+    {"name": "Data & Analytics", "icon": "bar-chart-3", "description": "Roles that extract insights and build data solutions.", "color": "#d946ef"},
+    {"name": "Legal", "icon": "scale", "description": "Roles providing legal advice, compliance, and representation.", "color": "#f43f5e"},
+    {"name": "Real Estate", "icon": "home", "description": "Roles managing property, sales, and leasing.", "color": "#14b8a6"}
   ],
   "jobs": [
     {
       "title": "Backend Developer",
-      "skills": ["python", "django", "api-development"]
+      "category": "Software Development",
+      "description": "Design, build, and maintain the server-side logic and databases that power our applications. You will collaborate with frontend developers and product managers to deliver scalable, secure APIs and services. Your work ensures our platform stays fast, reliable, and ready to handle millions of requests. We value clean code, thorough testing, and proactive performance optimization.",
+      "skills": ["programming", "api-development", "database-management", "problem-solving", "security"],
+      "requirements": {
+        "education": "Bachelor's degree in Computer Science, Engineering, or related field (or equivalent practical experience)",
+        "experience": "2+ years building backend systems with Python, Java, or Node.js",
+        "skills": "Strong understanding of RESTful APIs, database design, and cloud platforms like AWS/GCP",
+        "certifications": "Relevant cloud or software certifications are a plus"
+      },
+      "benefits": {
+        "health": "Comprehensive health, dental, and vision coverage",
+        "leave": "20 days paid vacation plus sick leave",
+        "remote": "Hybrid or fully remote options available",
+        "flexible_hours": "Flexible working hours",
+        "growth": "Annual training budget and conference attendance",
+        "stock": "Equity grants for qualified candidates",
+        "retirement": "401(k) with company match"
+      }
     },
     {
       "title": "Frontend Developer",
-      "skills": ["javascript", "react", "ui-development"]
+      "category": "Software Development",
+      "description": "Translate beautiful designs into responsive, high-performance user interfaces using modern JavaScript frameworks. You will work closely with designers and backend engineers to craft seamless, accessible web experiences. Attention to detail and a passion for user experience are essential. Join a team that values code quality, reusable components, and iterative improvement.",
+      "skills": ["programming", "ui-development", "web-performance", "accessibility", "communication"],
+      "requirements": {
+        "education": "Bachelor's degree preferred, or strong portfolio of past projects",
+        "experience": "2+ years developing with React, Vue, or Angular",
+        "skills": "Proficiency in HTML/CSS, modern JavaScript, and responsive design",
+        "portfolio": "GitHub or live project links required"
+      },
+      "benefits": {
+        "health": "Medical, dental, and vision insurance",
+        "remote": "Work from anywhere policy",
+        "flexible_hours": "Flexible schedule with core overlap hours",
+        "equipment": "Latest MacBook Pro and peripherals provided",
+        "growth": "Learning stipend for courses and certifications"
+      }
     },
     {
       "title": "Full Stack Developer",
-      "skills": ["python", "javascript", "django", "react"]
+      "category": "Software Development",
+      "description": "Build features end-to-end, from database schema to user interface. You'll take ownership of projects in a fast-paced, agile environment. We need someone comfortable with both frontend frameworks and backend architecture, who can also contribute to DevOps and deployment pipelines. Your ability to quickly switch context and solve problems across the stack is key.",
+      "skills": ["full-stack", "programming", "api-development", "database-management", "troubleshooting"],
+      "requirements": {
+        "education": "Bachelor's degree in CS or equivalent bootcamp + experience",
+        "experience": "3+ years building and shipping full stack applications",
+        "skills": "Proficient in at least one backend language and one modern frontend framework",
+        "other": "Experience with containerization (Docker) and CI/CD preferred"
+      },
+      "benefits": {
+        "health": "Full family medical, dental, and vision",
+        "leave": "Unlimited PTO policy",
+        "remote": "Fully remote team",
+        "growth": "Budget for online courses, books, and conferences",
+        "stock": "Meaningful equity package",
+        "wellness": "Wellness allowance for gym or meditation apps"
+      }
     },
     {
-      "title": "UI/UX Designer",
-      "skills": ["figma", "wireframing", "user-research"]
-    },
-    {
-      "title": "Graphic Designer",
-      "skills": ["photoshop", "illustration", "branding"]
-    },
-    {
-      "title": "Digital Marketing Specialist",
-      "skills": ["seo", "content-marketing", "social-media"]
-    },
-    {
-      "title": "Sales Executive",
-      "skills": ["negotiation", "crm", "customer-engagement"]
-    },
-    {
-      "title": "Account Manager",
-      "skills": ["client-management", "communication", "sales"]
-    },
-    {
-      "title": "Customer Support Representative",
-      "skills": ["support", "communication", "troubleshooting"]
-    },
-    {
-      "title": "Finance Analyst",
-      "skills": ["excel", "financial-modeling", "reporting"]
-    },
-    {
-      "title": "Operations Coordinator",
-      "skills": ["coordination", "process-improvement", "planning"]
-    },
-    {
-      "title": "HR Assistant",
-      "skills": ["recruitment", "documentation", "hr-management"]
-    },
-    {
-      "title": "Teacher",
-      "skills": ["teaching", "lesson-planning", "communication"]
-    },
-    {
-      "title": "Nurse",
-      "skills": ["patient-care", "healthcare", "documentation"]
-    },
-    {
-      "title": "Civil Engineer",
-      "skills": ["engineering", "site-management", "design"]
-    },
-    {
-      "title": "Warehouse Supervisor",
-      "skills": ["inventory", "supervision", "logistics"]
-    },
-    {
-      "title": "Hotel Receptionist",
-      "skills": ["guest-service", "front-desk", "communication"]
-    },
-    {
-      "title": "Content Creator",
-      "skills": ["video-editing", "content-writing", "social-media"]
-    },
-    {
-      "title": "Security Guard",
-      "skills": ["surveillance", "patrolling", "safety"]
+      "title": "Mobile App Developer",
+      "category": "Software Development",
+      "description": "Develop native iOS and Android applications that delight our users. You'll work on new features from concept to App Store release, optimizing for performance and battery life. We encourage creative solutions and clean code that passes rigorous testing. Help shape a product used by millions daily.",
+      "skills": ["mobile-development", "programming", "ui-development", "testing", "performance"],
+      "requirements": {
+        "education": "Bachelor's degree or equivalent technical training",
+        "experience": "2+ years with Swift/Kotlin or React Native",
+        "skills": "Strong understanding of mobile UI guidelines and offline storage",
+        "portfolio": "Apps published in App Store/Google Play a plus"
+      },
+      "benefits": {
+        "health": "Comprehensive health benefits",
+        "remote": "Remote-friendly",
+        "flexible_hours": "Choose your own schedule",
+        "equipment": "Choice of Mac or PC setup",
+        "growth": "Reimbursement for developer conferences"
+      }
     },
     {
       "title": "DevOps Engineer",
-      "skills": ["docker", "kubernetes", "ci-cd"]
+      "category": "Software Development",
+      "description": "Bridge development and operations by automating infrastructure, deployments, and monitoring. You'll maintain CI/CD pipelines, manage cloud resources, and improve system reliability. Your work empowers the entire engineering team to ship faster and more safely. We value a culture of shared responsibility and blameless post-mortems.",
+      "skills": ["devops", "automation", "cloud-services", "monitoring", "security"],
+      "requirements": {
+        "education": "Bachelor's degree in CS, IT, or related field",
+        "experience": "3+ years in DevOps or SRE role",
+        "skills": "Expertise with Docker, Kubernetes, Terraform, and major cloud providers",
+        "certifications": "AWS/Azure/GCP certification preferred"
+      },
+      "benefits": {
+        "health": "Premium medical, dental, and vision",
+        "remote": "100% remote option",
+        "retirement": "401(k) with generous employer match",
+        "leave": "26 days annual leave",
+        "on-call": "Compensated on-call rotation with additional time off"
+      }
+    },
+    {
+      "title": "Software QA Engineer",
+      "category": "Software Development",
+      "description": "Ensure our applications perform flawlessly by designing test strategies, writing automated test scripts, and performing manual exploratory testing. You'll work alongside developers to catch regressions early and advocate for quality throughout the development lifecycle. We believe testing is a shared responsibility and you'll help foster that culture.",
+      "skills": ["testing", "automation", "programming", "analytical", "communication"],
+      "requirements": {
+        "education": "Bachelor's in Computer Science or related field",
+        "experience": "2+ years in software testing/QA",
+        "skills": "Experience with Selenium, Cypress, or similar tools; scripting in Python or JavaScript",
+        "mindset": "Passion for breaking things and improving user experience"
+      },
+      "benefits": {
+        "health": "Health, dental, vision",
+        "remote": "Hybrid work model",
+        "flexible_hours": "Core hours with flexibility",
+        "growth": "Certification support (ISTQB etc.)",
+        "equipment": "Dual monitor setup provided"
+      }
+    },
+    {
+      "title": "Embedded Systems Engineer",
+      "category": "Software Development",
+      "description": "Develop firmware and software for microcontrollers and IoT devices. You'll work close to the hardware, optimizing for memory, power, and real-time constraints. We're building the next generation of connected devices, and your deep understanding of C/C++ and hardware interfaces will be critical.",
+      "skills": ["embedded-systems", "programming", "hardware-interface", "optimization", "debugging"],
+      "requirements": {
+        "education": "Bachelor's in Electrical Engineering, Computer Engineering, or equivalent",
+        "experience": "2+ years of embedded software development",
+        "skills": "Proficient in C/C++, RTOS, and reading schematics",
+        "tools": "Experience with oscilloscopes and logic analyzers"
+      },
+      "benefits": {
+        "health": "Comprehensive insurance",
+        "lab_access": "State-of-the-art lab and equipment",
+        "leave": "20 PTO days + public holidays",
+        "growth": "Funding for professional memberships and courses"
+      }
+    },
+    {
+      "title": "Security Engineer",
+      "category": "Software Development",
+      "description": "Protect our products and infrastructure from threats by designing secure architectures, conducting penetration tests, and building security tooling. You'll work across teams to embed security into the SDLC and respond to incidents. We're committed to creating a security-first culture.",
+      "skills": ["cybersecurity", "programming", "networking", "risk-assessment", "incident-response"],
+      "requirements": {
+        "education": "Bachelor's degree in Cybersecurity, CS, or related field",
+        "experience": "3+ years in a security-focused role",
+        "certifications": "CISSP, CEH, or OSCP strongly preferred",
+        "skills": "Deep knowledge of network protocols, encryption, and cloud security"
+      },
+      "benefits": {
+        "health": "Executive-level health plan",
+        "remote": "Remote work supported",
+        "stock": "Significant equity",
+        "growth": "Annual budget for security conferences (BlackHat, Defcon)",
+        "retreat": "Company-wide annual security offsite"
+      }
+    },
+    {
+      "title": "UI/UX Designer",
+      "category": "Design",
+      "description": "Craft intuitive, beautiful experiences for our digital products. You'll conduct user research, create wireframes and prototypes, and hand off pixel-perfect designs. We look for designers who balance aesthetics with usability and data-driven decisions. Your designs will shape the way thousands of users interact with our platform every day.",
+      "skills": ["ui-design", "ux-research", "prototyping", "design-systems", "collaboration"],
+      "requirements": {
+        "education": "Degree in Design, HCI, or equivalent experience",
+        "experience": "2+ years designing digital products",
+        "skills": "Expert in Figma; experience with user testing and design systems",
+        "portfolio": "Portfolio showcasing problem-solving and design process"
+      },
+      "benefits": {
+        "health": "Health and wellness benefits",
+        "remote": "Remote-first culture",
+        "flexible_hours": "Work when you're most creative",
+        "growth": "Design conference and workshop budget",
+        "equipment": "Premium design hardware"
+      }
+    },
+    {
+      "title": "Graphic Designer",
+      "category": "Design",
+      "description": "Create compelling visual assets for marketing campaigns, social media, and brand identity. You'll develop concepts that communicate our brand values and engage audiences across multiple channels. A strong eye for typography, color, and composition is essential, as is the ability to manage multiple projects with quick turnarounds.",
+      "skills": ["graphic-design", "branding", "typography", "creativity", "attention-to-detail"],
+      "requirements": {
+        "education": "Bachelor's degree in Graphic Design or related field",
+        "experience": "2+ years in a design studio or agency",
+        "skills": "Advanced skills in Adobe Creative Suite (Photoshop, Illustrator, InDesign)",
+        "portfolio": "Strong portfolio demonstrating branding and campaign work"
+      },
+      "benefits": {
+        "health": "Health insurance",
+        "remote": "Hybrid schedule",
+        "flexible_hours": "Flexible work hours",
+        "equipment": "Adobe CC license provided",
+        "leave": "18 days paid leave"
+      }
+    },
+    {
+      "title": "Product Designer",
+      "category": "Design",
+      "description": "Own the end-to-end design process for new features, from discovery and ideation to high-fidelity mockups and usability testing. You'll partner with product managers and engineers to balance user needs with business goals. We value designers who think strategically and iterate quickly based on feedback.",
+      "skills": ["product-design", "ux-research", "wireframing", "prototyping", "data-analysis"],
+      "requirements": {
+        "education": "Degree in Design, HCI, or comparable experience",
+        "experience": "3+ years in product design",
+        "skills": "Expert in Figma, prototyping tools, and user research methods",
+        "portfolio": "Must include case studies with measurable impact"
+      },
+      "benefits": {
+        "health": "Comprehensive medical plan",
+        "remote": "Remote or office options",
+        "leave": "Unlimited PTO",
+        "stock": "Equity",
+        "growth": "Personal learning budget"
+      }
+    },
+    {
+      "title": "Motion Designer",
+      "category": "Design",
+      "description": "Bring our brand to life through animation and motion graphics for product demos, advertisements, and social content. You'll collaborate with video editors and marketers to create cohesive storytelling that captivates viewers. A strong grasp of timing, easing, and visual narrative is required.",
+      "skills": ["motion-graphics", "animation", "video-editing", "storytelling", "creativity"],
+      "requirements": {
+        "education": "Bachelor's degree in Motion Design, Animation, or related field",
+        "experience": "2+ years of motion design experience",
+        "skills": "Expert in After Effects, Premiere Pro, and Cinema 4D/Blender",
+        "portfolio": "Showreel demonstrating diverse animation styles"
+      },
+      "benefits": {
+        "health": "Medical and dental",
+        "remote": "Remote possible",
+        "equipment": "High-performance workstation",
+        "growth": "Access to animation courses"
+      }
+    },
+    {
+      "title": "UX Researcher",
+      "category": "Design",
+      "description": "Lead user research initiatives to uncover deep insights about our customers. You'll design and conduct usability studies, interviews, and surveys, then synthesize findings into actionable recommendations. Your work will directly influence product strategy and feature prioritization.",
+      "skills": ["user-research", "usability-testing", "data-synthesis", "communication", "empathy"],
+      "requirements": {
+        "education": "Master's degree in HCI, Psychology, Anthropology, or related field preferred",
+        "experience": "2+ years in UX research or similar role",
+        "skills": "Mixed-methods expertise, statistical analysis, and storytelling",
+        "portfolio": "Research case studies required"
+      },
+      "benefits": {
+        "health": "Full health coverage",
+        "remote": "Work from anywhere",
+        "flexible_hours": "Flexible schedule",
+        "growth": "Conference and training funds",
+        "wellness": "Mental health support subscription"
+      }
+    },
+    {
+      "title": "Digital Marketing Specialist",
+      "category": "Marketing",
+      "description": "Plan and execute digital campaigns across SEO, SEM, email, and social media to drive traffic and conversions. You'll analyze performance data, optimize spend, and experiment with new channels. We need someone data-driven yet creative, ready to manage multiple campaigns simultaneously.",
+      "skills": ["digital-marketing", "seo", "analytics", "campaign-management", "creativity"],
+      "requirements": {
+        "education": "Bachelor's degree in Marketing, Business, or Communications",
+        "experience": "2+ years in digital marketing",
+        "skills": "Proficient in Google Analytics, Ads, and marketing automation tools",
+        "certifications": "Google Ads/Analytics certification a plus"
+      },
+      "benefits": {
+        "health": "Health, dental, vision",
+        "remote": "Hybrid work",
+        "flexible_hours": "Flexible hours",
+        "growth": "Marketing conference budget",
+        "bonus": "Performance-based quarterly bonus"
+      }
+    },
+    {
+      "title": "SEO Specialist",
+      "category": "Marketing",
+      "description": "Improve organic search visibility and ranking through technical audits, keyword research, and content optimization. You'll monitor algorithm changes, analyze competitors, and collaborate with content teams to increase targeted traffic. Your strategies will directly impact revenue growth.",
+      "skills": ["seo", "keyword-research", "analytics", "content-strategy", "technical-audit"],
+      "requirements": {
+        "education": "Bachelor's degree or relevant experience",
+        "experience": "2+ years in SEO role",
+        "skills": "Mastery of SEO tools (Ahrefs, SEMrush), HTML/CSS basics, and Google Search Console"
+      },
+      "benefits": {
+        "health": "Insurance benefits",
+        "remote": "Fully remote eligible",
+        "leave": "22 days PTO",
+        "bonus": "Annual performance bonus"
+      }
+    },
+    {
+      "title": "Content Marketing Manager",
+      "category": "Marketing",
+      "description": "Develop and execute a content strategy that educates our audience and generates leads. You'll oversee blog posts, whitepapers, case studies, and videos, managing a team of writers and freelancers. Success is measured by engagement, lead quality, and brand authority growth.",
+      "skills": ["content-strategy", "writing", "editing", "seo", "team-management"],
+      "requirements": {
+        "education": "Bachelor's in Journalism, Marketing, or English",
+        "experience": "4+ years in content marketing",
+        "skills": "Exceptional writing/editing, project management, and familiarity with CMS platforms"
+      },
+      "benefits": {
+        "health": "Medical, dental",
+        "remote": "Remote-first",
+        "stock": "Equity",
+        "leave": "Unlimited PTO",
+        "growth": "Professional development budget"
+      }
+    },
+    {
+      "title": "Social Media Manager",
+      "category": "Marketing",
+      "description": "Grow our brand's presence across Instagram, TikTok, LinkedIn, and Twitter through engaging content and community interaction. You'll plan monthly calendars, analyze metrics, and jump on trends while maintaining brand voice. You're the voice of the company online.",
+      "skills": ["social-media", "community-engagement", "content-creation", "analytics", "trend-spotting"],
+      "requirements": {
+        "education": "Bachelor's degree in Marketing or related field",
+        "experience": "2+ years managing brand social accounts",
+        "skills": "Strong copywriting, basic graphic/video editing, platform analytics"
+      },
+      "benefits": {
+        "health": "Health and wellness plan",
+        "remote": "Remote option",
+        "flexible_hours": "Flexible schedule",
+        "equipment": "Provided smartphone and laptop"
+      }
+    },
+    {
+      "title": "Growth Marketing Manager",
+      "category": "Marketing",
+      "description": "Drive rapid user acquisition through experimentation across channels, including paid ads, referrals, and viral loops. You'll build growth models, run A/B tests, and optimize the entire funnel. We need a data-obsessed marketer who isn't afraid to fail fast and scale what works.",
+      "skills": ["growth-marketing", "data-analysis", "a-b-testing", "paid-acquisition", "creativity"],
+      "requirements": {
+        "education": "Bachelor's degree in Marketing, Statistics, or Business",
+        "experience": "3+ years in growth or performance marketing",
+        "skills": "SQL, Excel, BI tools, and hands-on experience with ad platforms"
+      },
+      "benefits": {
+        "health": "Top-tier health coverage",
+        "remote": "Hybrid/remote",
+        "stock": "Generous equity",
+        "bonus": "Growth milestone bonuses",
+        "leave": "25 days PTO"
+      }
+    },
+    {
+      "title": "Sales Executive",
+      "category": "Sales",
+      "description": "Prospect, pitch, and close deals with mid-market and enterprise clients. You'll manage the entire sales cycle, from lead qualification to contract signing. We provide extensive training and a supportive team environment. Your results directly fuel company growth.",
+      "skills": ["sales", "negotiation", "crm", "communication", "resilience"],
+      "requirements": {
+        "education": "Bachelor's degree or equivalent experience in sales",
+        "experience": "2+ years B2B sales experience with a track record of meeting quotas",
+        "skills": "Strong negotiation and presentation abilities; CRM proficiency (Salesforce)"
+      },
+      "benefits": {
+        "health": "Medical, dental, vision",
+        "commission": "Uncapped commission structure",
+        "incentive": "Quarterly and annual bonuses",
+        "transport": "Car allowance or travel stipend",
+        "growth": "Sales training and leadership programs"
+      }
+    },
+    {
+      "title": "Account Manager",
+      "category": "Sales",
+      "description": "Nurture relationships with existing clients, ensuring they receive maximum value from our products. You'll identify upsell opportunities, handle renewals, and act as the voice of the customer internally. Building trust and long-term partnerships is the core of this role.",
+      "skills": ["account-management", "customer-service", "upselling", "communication", "problem-solving"],
+      "requirements": {
+        "education": "Bachelor's degree in Business or related field",
+        "experience": "3+ years in account management or customer success",
+        "skills": "Excellent interpersonal skills and experience with CRM software"
+      },
+      "benefits": {
+        "health": "Full benefits package",
+        "retirement": "401(k) match",
+        "bonus": "Retention and upsell bonuses",
+        "remote": "Flexible location"
+      }
+    },
+    {
+      "title": "Business Development Representative",
+      "category": "Sales",
+      "description": "Generate pipeline by researching and contacting potential clients through cold calls, emails, and social outreach. You'll qualify leads and set meetings for senior sales executives. This role offers a clear path to a closing position.",
+      "skills": ["prospecting", "cold-calling", "email-outreach", "persistence", "research"],
+      "requirements": {
+        "education": "Bachelor's degree preferred",
+        "experience": "0-2 years; entry-level welcome",
+        "skills": "Strong communication, resilience, and organizational skills"
+      },
+      "benefits": {
+        "health": "Health coverage",
+        "commission": "Performance-based bonuses",
+        "growth": "Structured career progression",
+        "training": "Comprehensive sales training"
+      }
+    },
+    {
+      "title": "Customer Support Representative",
+      "category": "Customer Support",
+      "description": "Provide world-class support via phone, chat, and email, resolving customer issues with empathy and efficiency. You'll troubleshoot problems, document solutions, and escalate when necessary. We're looking for patient problem-solvers who truly enjoy helping others.",
+      "skills": ["customer-service", "troubleshooting", "empathy", "communication", "multitasking"],
+      "requirements": {
+        "education": "High school diploma; some college preferred",
+        "experience": "Previous customer service experience a plus",
+        "skills": "Strong written and verbal communication; basic technical aptitude"
+      },
+      "benefits": {
+        "health": "Health, dental, vision",
+        "remote": "Work-from-home opportunities",
+        "flexible_hours": "Shift flexibility",
+        "growth": "Internal career path to advanced support or management"
+      }
+    },
+    {
+      "title": "Technical Support Specialist",
+      "category": "Customer Support",
+      "description": "Assist users with complex technical issues, reproducing bugs and guiding them through advanced troubleshooting. You'll bridge the gap between customers and engineering, ensuring issues are resolved accurately and promptly. A curious mind and love for technology are essential.",
+      "skills": ["technical-support", "troubleshooting", "coding-basics", "communication", "documentation"],
+      "requirements": {
+        "education": "Associate's degree or technical certifications",
+        "experience": "2+ years in technical support",
+        "skills": "Familiarity with command line, SQL queries, and reading logs"
+      },
+      "benefits": {
+        "health": "Comprehensive benefits",
+        "remote": "Remote-friendly",
+        "growth": "Paid certifications (CompTIA, ITIL)",
+        "equipment": "Home office stipend"
+      }
+    },
+    {
+      "title": "Customer Success Manager",
+      "category": "Customer Support",
+      "description": "Proactively ensure customers achieve their desired outcomes using our product. You'll onboard new accounts, conduct regular check-ins, and drive product adoption. Your success is measured by customer retention and satisfaction scores.",
+      "skills": ["customer-success", "product-training", "account-management", "data-analysis", "communication"],
+      "requirements": {
+        "education": "Bachelor's degree in Business or related field",
+        "experience": "3+ years in customer success or account management",
+        "skills": "Strong analytical, presentation, and relationship-building skills"
+      },
+      "benefits": {
+        "health": "Full health coverage",
+        "remote": "Remote work option",
+        "stock": "Equity",
+        "bonus": "Retention-based bonus"
+      }
+    },
+    {
+      "title": "Finance Analyst",
+      "category": "Finance",
+      "description": "Support budgeting, forecasting, and financial reporting to drive strategic decisions. You'll build financial models, analyze variances, and prepare presentations for leadership. We need someone with strong analytical skills and attention to detail.",
+      "skills": ["financial-modeling", "excel", "reporting", "analytical-skills", "attention-to-detail"],
+      "requirements": {
+        "education": "Bachelor's degree in Finance, Accounting, or Economics",
+        "experience": "2+ years in financial analysis",
+        "skills": "Advanced Excel, PowerPoint; experience with ERP systems a plus",
+        "certifications": "CFA or CPA candidate preferred"
+      },
+      "benefits": {
+        "health": "Medical, dental",
+        "retirement": "401(k) with company match",
+        "leave": "22 days PTO",
+        "growth": "Support for professional certifications"
+      }
+    },
+    {
+      "title": "Accountant",
+      "category": "Finance",
+      "description": "Maintain financial records, prepare monthly closing entries, and reconcile accounts. You'll ensure compliance with GAAP and support external audits. We value meticulousness and a proactive approach to process improvement.",
+      "skills": ["accounting", "reconciliation", "gaap", "excel", "organization"],
+      "requirements": {
+        "education": "Bachelor's degree in Accounting",
+        "experience": "2+ years in general ledger accounting",
+        "skills": "Proficiency in QuickBooks or NetSuite; strong Excel skills"
+      },
+      "benefits": {
+        "health": "Health, dental, vision",
+        "retirement": "401(k) matching",
+        "leave": "Paid vacation and sick leave",
+        "bonus": "Annual performance bonus"
+      }
+    },
+    {
+      "title": "Operations Coordinator",
+      "category": "Operations",
+      "description": "Keep our internal processes running like a well-oiled machine. You'll handle scheduling, vendor coordination, and administrative projects. You thrive in a role that demands organization and the ability to juggle multiple priorities calmly.",
+      "skills": ["coordination", "organization", "problem-solving", "communication", "time-management"],
+      "requirements": {
+        "education": "Bachelor's degree in Business Administration or related field",
+        "experience": "1+ years in an operations or administrative role",
+        "skills": "Excellent Excel, project management tools, and written communication"
+      },
+      "benefits": {
+        "health": "Health insurance",
+        "leave": "18 days PTO",
+        "flexible_hours": "Flexible start/end times",
+        "growth": "Cross-training opportunities"
+      }
+    },
+    {
+      "title": "Project Manager",
+      "category": "Operations",
+      "description": "Lead cross-functional projects from initiation to closure, ensuring they stay on schedule and within budget. You'll coordinate resources, manage risks, and communicate status to stakeholders. PMP or agile certification is strongly preferred.",
+      "skills": ["project-management", "leadership", "risk-management", "communication", "budgeting"],
+      "requirements": {
+        "education": "Bachelor's degree in Business or technical field",
+        "experience": "3+ years managing complex projects",
+        "skills": "Proficient with Jira, Asana, or MS Project",
+        "certifications": "PMP, PRINCE2, or Scrum Master certification preferred"
+      },
+      "benefits": {
+        "health": "Full benefits",
+        "remote": "Hybrid work",
+        "leave": "25 days PTO",
+        "bonus": "Project completion bonuses"
+      }
+    },
+    {
+      "title": "Supply Chain Analyst",
+      "category": "Operations",
+      "description": "Analyze supply chain data to improve efficiency, reduce costs, and ensure timely delivery. You'll forecast demand, track inventory levels, and collaborate with suppliers. Your insights will directly impact our bottom line.",
+      "skills": ["supply-chain", "data-analysis", "forecasting", "inventory-management", "excel"],
+      "requirements": {
+        "education": "Bachelor's degree in Supply Chain, Logistics, or Business",
+        "experience": "2+ years in supply chain or logistics analysis",
+        "skills": "Advanced Excel, ERP systems (SAP/Oracle), and analytical modeling"
+      },
+      "benefits": {
+        "health": "Insurance",
+        "retirement": "401(k)",
+        "leave": "Paid time off",
+        "growth": "APICS certification support"
+      }
+    },
+    {
+      "title": "HR Assistant",
+      "category": "HR",
+      "description": "Support the HR team with recruitment coordination, onboarding paperwork, and employee record management. You'll be the first friendly face new hires see. Attention to detail and confidentiality are crucial.",
+      "skills": ["hr-support", "recruitment-coordination", "documentation", "organization", "communication"],
+      "requirements": {
+        "education": "Bachelor's degree in HR or related field",
+        "experience": "1+ year in administrative or HR role",
+        "skills": "Proficiency in MS Office and HRIS systems"
+      },
+      "benefits": {
+        "health": "Health, dental",
+        "leave": "20 days PTO",
+        "growth": "SHRM-CP preparation support"
+      }
+    },
+    {
+      "title": "Recruiter",
+      "category": "HR",
+      "description": "Source, screen, and attract top talent to join our company. You'll partner with hiring managers, manage the full recruitment cycle, and build a strong employer brand. We value creative sourcing strategies and excellent candidate experience.",
+      "skills": ["recruitment", "sourcing", "interviewing", "stakeholder-management", "negotiation"],
+      "requirements": {
+        "education": "Bachelor's degree in HR, Business, or Psychology",
+        "experience": "2+ years in corporate or agency recruiting",
+        "skills": "ATS proficiency (Greenhouse/Lever), LinkedIn Recruiter expertise"
+      },
+      "benefits": {
+        "health": "Medical, dental",
+        "remote": "Hybrid schedule",
+        "bonus": "Hiring target bonuses",
+        "growth": "Recruitment conference attendance"
+      }
+    },
+    {
+      "title": "Teacher",
+      "category": "Education",
+      "description": "Deliver engaging lessons, assess student progress, and foster a positive learning environment. You'll adapt curriculum to diverse learning styles and collaborate with parents. A passion for inspiring young minds is non-negotiable.",
+      "skills": ["teaching", "classroom-management", "lesson-planning", "communication", "patience"],
+      "requirements": {
+        "education": "Bachelor's degree in Education or subject area; state teaching license",
+        "experience": "1+ years in classroom setting",
+        "skills": "Strong presentation and behavior management skills"
+      },
+      "benefits": {
+        "health": "Comprehensive benefits",
+        "retirement": "Pension plan",
+        "leave": "School holidays plus personal days",
+        "growth": "Professional development funds"
+      }
+    },
+    {
+      "title": "Corporate Trainer",
+      "category": "Education",
+      "description": "Design and deliver training programs that enhance employee skills and leadership capabilities. You'll assess training needs, develop engaging content, and measure effectiveness. Join a team that believes continuous learning is a competitive advantage.",
+      "skills": ["training", "instructional-design", "facilitation", "needs-assessment", "public-speaking"],
+      "requirements": {
+        "education": "Bachelor's degree in Education, HR, or related field",
+        "experience": "3+ years in corporate training or L&D",
+        "skills": "Experience with LMS platforms and content authoring tools"
+      },
+      "benefits": {
+        "health": "Health insurance",
+        "remote": "Flexible location",
+        "growth": "Annual learning stipend",
+        "leave": "Unlimited PTO"
+      }
+    },
+    {
+      "title": "Registered Nurse",
+      "category": "Healthcare",
+      "description": "Provide compassionate patient care including assessment, medication administration, and treatment planning. You'll collaborate with physicians and educate patients and families. A valid nursing license and commitment to patient advocacy are required.",
+      "skills": ["patient-care", "clinical-skills", "medication-administration", "communication", "empathy"],
+      "requirements": {
+        "education": "BSN or ADN from accredited program; active RN license",
+        "experience": "1+ years in a clinical setting",
+        "certifications": "BLS and ACLS certifications required",
+        "skills": "Strong clinical judgment and electronic health record proficiency"
+      },
+      "benefits": {
+        "health": "Excellent medical, dental, vision",
+        "retirement": "403(b) with match",
+        "leave": "Generous PTO and paid sick leave",
+        "shift_diff": "Evening and weekend differentials",
+        "growth": "Tuition reimbursement for advanced degrees"
+      }
+    },
+    {
+      "title": "Medical Assistant",
+      "category": "Healthcare",
+      "description": "Support clinical operations by rooming patients, taking vitals, administering injections, and maintaining electronic health records. You'll be the backbone of a busy practice, ensuring patients feel comfortable and well-informed.",
+      "skills": ["patient-care", "vital-signs", "ehr", "phlebotomy", "customer-service"],
+      "requirements": {
+        "education": "Medical Assistant certification from accredited program",
+        "experience": "0-2 years, clinical externship preferred",
+        "skills": "CPR certified, comfortable with EMR systems"
+      },
+      "benefits": {
+        "health": "Medical, dental",
+        "leave": "Paid time off",
+        "growth": "Cross-training for specialized clinics",
+        "uniform": "Scrubs allowance"
+      }
+    },
+    {
+      "title": "Pharmacist",
+      "category": "Healthcare",
+      "description": "Dispense medications accurately, counsel patients on proper usage, and monitor for drug interactions. You'll oversee pharmacy technicians and ensure compliance with all regulations. A Doctor of Pharmacy (Pharm.D.) and active license are required.",
+      "skills": ["pharmacology", "patient-counseling", "dispensing", "regulatory-compliance", "attention-to-detail"],
+      "requirements": {
+        "education": "Pharm.D. degree; state pharmacy license",
+        "experience": "1+ years in retail or hospital pharmacy",
+        "skills": "Strong clinical knowledge and communication"
+      },
+      "benefits": {
+        "health": "Health, dental, vision",
+        "retirement": "401(k) match",
+        "leave": "24 days PTO",
+        "bonus": "Annual performance bonus"
+      }
+    },
+    {
+      "title": "Physical Therapist",
+      "category": "Healthcare",
+      "description": "Evaluate and treat patients with movement disorders, creating personalized rehabilitation plans. You'll help patients regain mobility, reduce pain, and prevent further injury. A DPT degree and state licensure are mandatory.",
+      "skills": ["physical-therapy", "rehabilitation", "manual-therapy", "exercise-prescription", "patient-education"],
+      "requirements": {
+        "education": "Doctor of Physical Therapy (DPT) degree",
+        "experience": "Clinical rotations; new grads welcome",
+        "certifications": "State PT license; CPR"
+      },
+      "benefits": {
+        "health": "Comprehensive benefits",
+        "leave": "Paid leave",
+        "growth": "Continuing education allowance",
+        "loan_repay": "Student loan repayment assistance"
+      }
+    },
+    {
+      "title": "Lab Technician",
+      "category": "Healthcare",
+      "description": "Perform diagnostic tests on patient samples, operate lab analyzers, and maintain quality control records. Accuracy and speed are crucial in this fast-paced environment. An associate degree in medical lab technology is the minimum.",
+      "skills": ["lab-testing", "equipment-calibration", "quality-control", "sample-handling", "data-entry"],
+      "requirements": {
+        "education": "Associate's degree in Medical Laboratory Technology",
+        "experience": "1+ year in a clinical lab",
+        "certifications": "ASCP certification preferred"
+      },
+      "benefits": {
+        "health": "Insurance",
+        "retirement": "Pension",
+        "leave": "Paid holidays and vacation",
+        "shift_diff": "Shift differential for nights/weekends"
+      }
+    },
+    {
+      "title": "Civil Engineer",
+      "category": "Construction",
+      "description": "Design and oversee infrastructure projects such as roads, bridges, and water systems. You'll perform structural calculations, prepare drawings, and ensure compliance with regulations. A PE license or progress toward it is highly valued.",
+      "skills": ["civil-engineering", "design", "project-management", "site-inspection", "cad"],
+      "requirements": {
+        "education": "Bachelor's degree in Civil Engineering",
+        "experience": "2+ years in civil design or construction",
+        "certifications": "EIT certification; PE preferred",
+        "skills": "Proficient in AutoCAD Civil 3D and hydraulic modeling"
+      },
+      "benefits": {
+        "health": "Medical, dental",
+        "retirement": "401(k) with match",
+        "transport": "Vehicle allowance or company truck",
+        "growth": "PE exam fees and study materials covered"
+      }
+    },
+    {
+      "title": "Site Supervisor",
+      "category": "Construction",
+      "description": "Lead daily operations on construction sites, managing crews, schedules, and safety compliance. You'll coordinate subcontractors and ensure work meets quality standards and deadlines. Strong leadership and problem-solving on your feet are a must.",
+      "skills": ["supervision", "construction-safety", "scheduling", "quality-control", "leadership"],
+      "requirements": {
+        "education": "High school diploma; trade school or degree preferred",
+        "experience": "5+ years in construction with 2+ in supervisory role",
+        "certifications": "OSHA 30 certification required"
+      },
+      "benefits": {
+        "health": "Health coverage",
+        "transport": "Company vehicle",
+        "bonus": "Project completion bonuses",
+        "overtime": "Overtime pay"
+      }
+    },
+    {
+      "title": "Electrician",
+      "category": "Construction",
+      "description": "Install, maintain, and repair electrical systems in residential, commercial, or industrial settings. You'll read blueprints, troubleshoot faults, and ensure code compliance. A journeyman license is preferred.",
+      "skills": ["electrical-work", "wiring", "troubleshooting", "safety", "blueprint-reading"],
+      "requirements": {
+        "education": "Completed apprenticeship or technical school",
+        "experience": "3+ years as an electrician",
+        "licensure": "Journeyman or master electrician license"
+      },
+      "benefits": {
+        "health": "Medical, dental",
+        "retirement": "Pension plan",
+        "transport": "Take-home van",
+        "overtime": "Double-time on Sundays"
+      }
+    },
+    {
+      "title": "Plumber",
+      "category": "Construction",
+      "description": "Install and repair piping, fixtures, and appliances for water, gas, and drainage. You'll diagnose issues, cut and solder pipe, and ensure all work meets plumbing codes. A stable, in-demand career with excellent pay.",
+      "skills": ["plumbing", "pipefitting", "troubleshooting", "safety", "customer-service"],
+      "requirements": {
+        "education": "Apprenticeship completion",
+        "experience": "2+ years in plumbing",
+        "licensure": "Plumber's license or apprentice registration"
+      },
+      "benefits": {
+        "health": "Health insurance",
+        "transport": "Company vehicle",
+        "overtime": "Overtime pay",
+        "tool_allowance": "Annual tool allowance"
+      }
+    },
+    {
+      "title": "Architect",
+      "category": "Construction",
+      "description": "Design functional, sustainable buildings and spaces, from concept sketches to detailed construction documents. You'll coordinate with engineers and clients, ensuring aesthetic and regulatory requirements are met. Proficiency in BIM software is required.",
+      "skills": ["architectural-design", "cad", "bim", "project-management", "creativity"],
+      "requirements": {
+        "education": "Professional degree in Architecture (B.Arch/M.Arch)",
+        "experience": "3+ years in an architectural firm",
+        "licensure": "Working toward ARE licensure; LEED accreditation a plus",
+        "skills": "Expert in Revit, AutoCAD, and rendering software"
+      },
+      "benefits": {
+        "health": "Full benefits",
+        "remote": "Hybrid schedule",
+        "growth": "ARE exam fees covered",
+        "leave": "Paid time off"
+      }
+    },
+    {
+      "title": "Warehouse Supervisor",
+      "category": "Logistics",
+      "description": "Oversee warehouse operations including receiving, storage, picking, and shipping. You'll lead a team, enforce safety protocols, and meet daily productivity targets. We need a hands-on leader who can thrive in a fast-paced environment.",
+      "skills": ["warehouse-management", "inventory-control", "team-leadership", "safety", "forklift-operation"],
+      "requirements": {
+        "education": "High school diploma; associate's degree preferred",
+        "experience": "3+ years in warehouse operations, 1+ in supervisory role",
+        "skills": "Familiarity with WMS and forklift certification"
+      },
+      "benefits": {
+        "health": "Health, dental",
+        "leave": "Paid vacation",
+        "bonus": "Productivity bonus",
+        "transport": "Shift transport provided"
+      }
+    },
+    {
+      "title": "Truck Driver",
+      "category": "Logistics",
+      "description": "Safely transport goods over local or regional routes, adhering to all traffic laws and delivery schedules. You'll perform vehicle inspections and maintain accurate logs. A CDL and clean driving record are essential.",
+      "skills": ["driving", "safety", "time-management", "vehicle-maintenance", "navigation"],
+      "requirements": {
+        "education": "High school diploma; CDL class A required",
+        "experience": "1+ year of verifiable driving experience",
+        "skills": "Clean driving record; ability to pass DOT physical"
+      },
+      "benefits": {
+        "health": "Medical, dental",
+        "retirement": "401(k) with match",
+        "leave": "Paid time off",
+        "bonus": "Safety and mileage bonuses"
+      }
+    },
+    {
+      "title": "Supply Chain Manager",
+      "category": "Logistics",
+      "description": "Strategically oversee end-to-end supply chain activities, from procurement to last-mile delivery. You'll optimize costs, mitigate risks, and build strong vendor relationships. This role directly impacts customer satisfaction and profitability.",
+      "skills": ["supply-chain-management", "negotiation", "logistics", "erp", "leadership"],
+      "requirements": {
+        "education": "Bachelor's degree in Supply Chain, Logistics, or Business",
+        "experience": "5+ years in supply chain management",
+        "skills": "Experience with SAP or Oracle SCM; strong analytical abilities"
+      },
+      "benefits": {
+        "health": "Executive health package",
+        "bonus": "Annual performance bonus up to 20%",
+        "stock": "Equity",
+        "remote": "Hybrid work",
+        "growth": "Executive education programs"
+      }
+    },
+    {
+      "title": "Logistics Coordinator",
+      "category": "Logistics",
+      "description": "Coordinate shipments, track inventory, and communicate with carriers and customers to ensure on-time delivery. You'll solve routing issues and handle documentation. Fast-paced role ideal for a detail-oriented multitasker.",
+      "skills": ["logistics-coordination", "communication", "problem-solving", "scheduling", "data-entry"],
+      "requirements": {
+        "education": "Associate's degree or equivalent experience",
+        "experience": "1+ years in logistics or dispatching",
+        "skills": "Proficient in TMS and MS Office"
+      },
+      "benefits": {
+        "health": "Health insurance",
+        "leave": "Paid leave",
+        "flexible_hours": "Shift flexibility",
+        "growth": "Tuition assistance"
+      }
+    },
+    {
+      "title": "Hotel Receptionist",
+      "category": "Hospitality",
+      "description": "Welcome guests, manage check-ins/outs, answer inquiries, and handle reservations. You are the face of the hotel, creating a warm first impression. We seek a friendly, organized individual who can multitask under pressure.",
+      "skills": ["guest-service", "front-desk-operations", "communication", "multitasking", "problem-solving"],
+      "requirements": {
+        "education": "High school diploma; hospitality degree a plus",
+        "experience": "1+ year in customer service",
+        "skills": "Proficient in property management systems like Opera"
+      },
+      "benefits": {
+        "health": "Medical",
+        "leave": "Paid vacation",
+        "discount": "Hotel and F&B discounts",
+        "uniform": "Uniforms provided"
+      }
+    },
+    {
+      "title": "Restaurant Manager",
+      "category": "Hospitality",
+      "description": "Manage daily restaurant operations including staff scheduling, inventory, and ensuring an exceptional dining experience. You'll uphold health codes, handle customer feedback, and drive revenue targets. A passion for food and leadership is key.",
+      "skills": ["restaurant-management", "team-leadership", "customer-service", "inventory", "p&l-management"],
+      "requirements": {
+        "education": "Associate's degree in Hospitality or equivalent experience",
+        "experience": "3+ years in restaurant management",
+        "certifications": "Food Safety Manager certification"
+      },
+      "benefits": {
+        "health": "Health, dental",
+        "bonus": "Quarterly performance bonus",
+        "meals": "Complimentary meals on shift",
+        "leave": "Paid time off"
+      }
+    },
+    {
+      "title": "Chef",
+      "category": "Hospitality",
+      "description": "Lead the kitchen team, design menus, and ensure every dish meets high standards. You'll manage food costs, order supplies, and maintain a clean, safe kitchen. Creativity and consistency define success.",
+      "skills": ["cooking", "menu-planning", "kitchen-management", "food-safety", "creativity"],
+      "requirements": {
+        "education": "Culinary degree or equivalent apprenticeship",
+        "experience": "4+ years in a professional kitchen, 2 as sous chef",
+        "certifications": "ServSafe certification"
+      },
+      "benefits": {
+        "health": "Insurance",
+        "meals": "Free meals",
+        "growth": "Culinary workshop opportunities",
+        "bonus": "Profit-sharing"
+      }
+    },
+    {
+      "title": "Event Coordinator",
+      "category": "Hospitality",
+      "description": "Plan and execute flawless events—from corporate conferences to wedding receptions. You'll coordinate vendors, manage budgets, and ensure every detail is perfect. Your ability to stay calm under pressure makes events memorable.",
+      "skills": ["event-planning", "vendor-coordination", "budgeting", "communication", "multitasking"],
+      "requirements": {
+        "education": "Bachelor's degree in Event Management or Hospitality",
+        "experience": "2+ years in event planning",
+        "skills": "Strong organizational and negotiation skills"
+      },
+      "benefits": {
+        "health": "Medical",
+        "remote": "Hybrid possible",
+        "bonus": "Event success bonuses",
+        "discount": "Venue discounts"
+      }
+    },
+    {
+      "title": "Housekeeping Supervisor",
+      "category": "Hospitality",
+      "description": "Lead the housekeeping team to maintain the highest standards of cleanliness in guest rooms and public areas. You'll inspect rooms, manage linen inventory, and train staff. A keen eye for detail ensures every guest enjoys a pristine environment.",
+      "skills": ["housekeeping", "supervision", "quality-control", "inventory-management", "training"],
+      "requirements": {
+        "education": "High school diploma",
+        "experience": "2+ years in housekeeping, with supervisory experience",
+        "skills": "Knowledge of cleaning chemicals and protocols"
+      },
+      "benefits": {
+        "health": "Health insurance",
+        "uniform": "Uniform allowance",
+        "leave": "Paid leave",
+        "growth": "Hospitality certification programs"
+      }
+    },
+    {
+      "title": "Content Creator",
+      "category": "Media",
+      "description": "Produce engaging video and written content for platforms like YouTube, TikTok, and our website. You'll brainstorm ideas, film, edit, and analyze performance metrics. We need a creative storyteller who understands viral trends.",
+      "skills": ["video-production", "editing", "storytelling", "social-media", "creativity"],
+      "requirements": {
+        "education": "Degree in Media, Communications, or equivalent experience",
+        "experience": "1+ year as a content creator",
+        "skills": "Proficient in Premiere Pro, After Effects, and on-camera presence",
+        "portfolio": "Showreel or channel required"
+      },
+      "benefits": {
+        "health": "Health and dental",
+        "remote": "Fully remote",
+        "flexible_hours": "Creative schedule",
+        "equipment": "Production gear stipend"
+      }
+    },
+    {
+      "title": "Video Editor",
+      "category": "Media",
+      "description": "Transform raw footage into polished, compelling videos for marketing, social media, and internal communications. You'll handle color grading, sound mixing, and motion graphics. Efficiency and storytelling sense are critical.",
+      "skills": ["video-editing", "post-production", "color-grading", "sound-design", "creativity"],
+      "requirements": {
+        "education": "Bachelor's degree in Film, Media, or related field",
+        "experience": "2+ years of professional editing experience",
+        "skills": "Expert in Adobe Premiere Pro, DaVinci Resolve, and After Effects"
+      },
+      "benefits": {
+        "health": "Medical, vision",
+        "remote": "Remote work",
+        "flexible_hours": "Flexible deadlines",
+        "growth": "Editing workshop fees covered"
+      }
+    },
+    {
+      "title": "Journalist",
+      "category": "Media",
+      "description": "Research, write, and report on breaking news and feature stories across digital and print platforms. You'll conduct interviews, verify facts, and meet tight deadlines. A nose for news and impeccable writing ethics are essential.",
+      "skills": ["journalism", "writing", "interviewing", "fact-checking", "storytelling"],
+      "requirements": {
+        "education": "Bachelor's degree in Journalism or Communications",
+        "experience": "2+ years in a newsroom or similar environment",
+        "skills": "Strong AP style writing and multimedia storytelling"
+      },
+      "benefits": {
+        "health": "Health insurance",
+        "remote": "Field-based flexibility",
+        "leave": "Paid holidays and personal days",
+        "growth": "Press conference and travel opportunities"
+      }
+    },
+    {
+      "title": "Photographer",
+      "category": "Media",
+      "description": "Capture high-quality images for editorial, commercial, or portrait use. You'll operate professional camera equipment, edit photos in Lightroom/Photoshop, and manage digital asset libraries. A strong portfolio that demonstrates creative range is a must.",
+      "skills": ["photography", "photo-editing", "lighting", "composition", "creativity"],
+      "requirements": {
+        "education": "Degree in Photography or equivalent experience",
+        "experience": "2+ years as a professional photographer",
+        "skills": "Proficient in DSLR/mirrorless systems and Adobe Creative Suite",
+        "portfolio": "Online portfolio required"
+      },
+      "benefits": {
+        "health": "Insurance",
+        "equipment": "Camera and lens allowance",
+        "remote": "On-location and studio mix",
+        "growth": "Photography workshop support"
+      }
+    },
+    {
+      "title": "Podcast Producer",
+      "category": "Media",
+      "description": "Manage the end-to-end production of our podcast series, from booking guests to editing episodes and publishing. You'll ensure high audio quality, consistent branding, and engaging show notes. Experience with remote recording tools is a plus.",
+      "skills": ["audio-production", "editing", "scheduling", "storytelling", "marketing"],
+      "requirements": {
+        "education": "Bachelor's degree in Media or Communications",
+        "experience": "2+ years in podcast or radio production",
+        "skills": "ProTools or Audition expertise, strong organizational skills"
+      },
+      "benefits": {
+        "health": "Health, dental",
+        "remote": "Fully remote",
+        "flexible_hours": "Flexible recording schedule",
+        "equipment": "Home studio budget"
+      }
+    },
+    {
+      "title": "Security Guard",
+      "category": "Security",
+      "description": "Protect property, personnel, and assets by patrolling premises, monitoring surveillance equipment, and controlling access points. You'll respond to incidents and write detailed reports. Reliability and a calm demeanor are crucial.",
+      "skills": ["patrolling", "surveillance", "access-control", "report-writing", "crisis-management"],
+      "requirements": {
+        "education": "High school diploma; security license required",
+        "experience": "0-2 years; prior military or law enforcement a plus",
+        "skills": "Strong observational skills and physical fitness"
+      },
+      "benefits": {
+        "health": "Medical coverage",
+        "leave": "Paid leave",
+        "uniform": "Uniform provided",
+        "overtime": "Overtime available"
+      }
+    },
+    {
+      "title": "Cybersecurity Analyst",
+      "category": "Security",
+      "description": "Monitor networks for security breaches, investigate incidents, and implement protective measures. You'll conduct vulnerability assessments and help develop security policies. A CEH, Sec+, or CISSP certification is highly valued.",
+      "skills": ["cybersecurity", "threat-analysis", "network-monitoring", "incident-response", "vulnerability-assessment"],
+      "requirements": {
+        "education": "Bachelor's degree in Cybersecurity or IT",
+        "experience": "2+ years in a SOC or security analyst role",
+        "certifications": "CompTIA Security+; CISSP or CEH preferred"
+      },
+      "benefits": {
+        "health": "Premium health plan",
+        "remote": "Hybrid/remote",
+        "growth": "Certification and training reimbursements",
+        "stock": "Equity"
+      }
+    },
+    {
+      "title": "Data Analyst",
+      "category": "Data & Analytics",
+      "description": "Turn raw data into actionable insights by building dashboards, running SQL queries, and performing statistical analysis. You'll work closely with business stakeholders to answer key questions and drive data-informed decisions. Strong storytelling with data is essential.",
+      "skills": ["data-analysis", "sql", "visualization", "statistics", "communication"],
+      "requirements": {
+        "education": "Bachelor's degree in Statistics, Math, CS, or Economics",
+        "experience": "2+ years in data analysis",
+        "skills": "Expert in SQL, Tableau/Power BI, and Excel; Python/R a plus"
+      },
+      "benefits": {
+        "health": "Full health coverage",
+        "remote": "Remote-first",
+        "stock": "Equity",
+        "growth": "Data science learning budget"
+      }
+    },
+    {
+      "title": "Data Scientist",
+      "category": "Data & Analytics",
+      "description": "Develop machine learning models and advanced analytics to solve complex business problems. You'll work with large datasets, design experiments, and deploy models to production. A strong foundation in statistics and programming is required.",
+      "skills": ["machine-learning", "python", "statistics", "data-modeling", "experimentation"],
+      "requirements": {
+        "education": "Master's or PhD in a quantitative field",
+        "experience": "3+ years in data science",
+        "skills": "Proficient in Python (scikit-learn, TensorFlow), SQL, and cloud ML platforms"
+      },
+      "benefits": {
+        "health": "Executive health package",
+        "remote": "Remote flexible",
+        "stock": "Generous equity",
+        "growth": "Conference and publication support"
+      }
+    },
+    {
+      "title": "Business Intelligence Analyst",
+      "category": "Data & Analytics",
+      "description": "Design and maintain BI solutions that provide visibility into company performance. You'll gather requirements, build ETL pipelines, and create dashboards. Help leaders see the numbers that matter most.",
+      "skills": ["bi-development", "sql", "etl", "dashboards", "requirements-gathering"],
+      "requirements": {
+        "education": "Bachelor's in Information Systems or Business",
+        "experience": "2+ years in BI development",
+        "skills": "Power BI/Looker/Tableau expert, SQL, data modeling"
+      },
+      "benefits": {
+        "health": "Health insurance",
+        "remote": "Hybrid",
+        "leave": "25 days PTO",
+        "bonus": "Performance bonus"
+      }
+    },
+    {
+      "title": "Legal Counsel",
+      "category": "Legal",
+      "description": "Advise the company on contracts, compliance, intellectual property, and risk management. You'll draft and negotiate agreements, and work with external counsel when needed. A strong business acumen combined with legal expertise is critical.",
+      "skills": ["legal-advice", "contract-negotiation", "compliance", "risk-assessment", "communication"],
+      "requirements": {
+        "education": "Juris Doctor (JD) and active bar membership",
+        "experience": "4+ years in corporate law, either in-house or at a firm",
+        "skills": "Excellent drafting and negotiation skills"
+      },
+      "benefits": {
+        "health": "Comprehensive benefits",
+        "remote": "Hybrid schedule",
+        "stock": "Equity eligible",
+        "growth": "Bar dues and CLE covered"
+      }
+    },
+    {
+      "title": "Paralegal",
+      "category": "Legal",
+      "description": "Support attorneys by conducting legal research, drafting documents, and organizing case files. You'll manage deadlines and assist with trial preparation. A paralegal certificate and meticulous organizational skills are required.",
+      "skills": ["legal-research", "document-drafting", "case-management", "organization", "attention-to-detail"],
+      "requirements": {
+        "education": "Associate's degree or paralegal certificate",
+        "experience": "2+ years in a law firm or legal department",
+        "skills": "Proficiency with legal research tools (Westlaw, LexisNexis)"
+      },
+      "benefits": {
+        "health": "Medical, dental",
+        "leave": "Paid time off",
+        "growth": "Paralegal conference allowance"
+      }
+    },
+    {
+      "title": "Real Estate Agent",
+      "category": "Real Estate",
+      "description": "Guide buyers and sellers through property transactions, from listing to closing. You'll prospect for clients, host open houses, and negotiate offers. An active real estate license and a passion for helping people are essential.",
+      "skills": ["sales", "negotiation", "real-estate-law", "marketing", "customer-service"],
+      "requirements": {
+        "education": "High school diploma; state real estate license",
+        "experience": "0-2 years; training provided",
+        "skills": "Strong networking and communication abilities"
+      },
+      "benefits": {
+        "commission": "High commission splits",
+        "flexible_hours": "Set your own schedule",
+        "training": "Mentorship and lead generation tools"
+      }
+    },
+    {
+      "title": "Property Manager",
+      "category": "Real Estate",
+      "description": "Oversee residential or commercial properties, handling tenant relations, maintenance requests, and lease renewals. You'll coordinate with contractors and ensure properties are well-maintained and profitable.",
+      "skills": ["property-management", "tenant-relations", "maintenance-coordination", "leasing", "financial-reporting"],
+      "requirements": {
+        "education": "Bachelor's degree or equivalent experience",
+        "experience": "2+ years in property management",
+        "certifications": "CPM or CAM certification a plus"
+      },
+      "benefits": {
+        "health": "Health plan",
+        "bonus": "Leasing bonuses",
+        "housing_discount": "Rent discount at managed properties",
+        "transport": "Mileage reimbursement"
+      }
+    },
+    {
+      "title": "Leasing Consultant",
+      "category": "Real Estate",
+      "description": "Show apartments, process applications, and build relationships with current and prospective residents. You'll help maintain high occupancy rates through excellent customer service and follow-up. Ideal for outgoing, sales-minded individuals.",
+      "skills": ["sales", "customer-service", "property-tours", "leasing-software", "communication"],
+      "requirements": {
+        "education": "High school diploma",
+        "experience": "1+ year in sales or customer service",
+        "skills": "Proficient in property management software (Yardi, Entrata)"
+      },
+      "benefits": {
+        "health": "Medical insurance",
+        "commission": "Leasing commissions",
+        "housing_discount": "Apartment discount",
+        "leave": "Paid vacation"
+      }
     }
   ]
 }

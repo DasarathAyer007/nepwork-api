@@ -1,7 +1,9 @@
 import random
+from typing import Any, cast
 
 from factory.declarations import (
     Iterator,
+    LazyAttribute,
     LazyFunction,
     SubFactory,
 )
@@ -20,6 +22,8 @@ data = load_json("apps/services/tests/seed_data.json")
 categories = data["categories"]
 SERVICES = data["services"]
 
+# ruff: noqa: S311
+
 
 class ServiceCategoryFactory(DjangoModelFactory):
     class Meta:
@@ -28,26 +32,30 @@ class ServiceCategoryFactory(DjangoModelFactory):
 
     name = Iterator([c["name"] for c in categories])
     icon = Iterator([c["icon"] for c in categories])
-    description = Faker("sentence", nb_words=10)
+    description = Iterator([c["description"] for c in categories])
+    color = Iterator([c["color"] for c in categories])
 
     is_active = Faker("boolean", chance_of_getting_true=95)
-
-
-# ruff: noqa: S311
 
 
 class ServiceFactory(DjangoModelFactory):
     class Meta:
         model = Service
+        exclude = ("seed_entry",)
 
-    title = LazyFunction(lambda: random.choice(SERVICES)["title"])
+    seed_entry = LazyFunction(lambda: random.choice(SERVICES))
 
-    description = Faker("paragraph", nb_sentences=4)
+    # kept random on purpose, no Iterator here
+    title = LazyAttribute(lambda o: o.seed_entry["title"])
+
+    description = LazyAttribute(lambda o: o.seed_entry["description"])
 
     user = LazyFunction(lambda: random.choice(list(User.objects.all())))
 
-    category = LazyFunction(
-        lambda: random.choice(list(ServiceCategory.objects.all()))
+    category = LazyAttribute(
+        lambda o: ServiceCategory.objects.get_or_create(
+            name=o.seed_entry["category"]
+        )[0]
     )
 
     location = SubFactory(LocationFactory)
@@ -60,10 +68,10 @@ class ServiceFactory(DjangoModelFactory):
                 Service.AvailabilityStatus.UNAVAILABLE,
                 Service.AvailabilityStatus.HOLIDAY,
             ],
-            weights=[70, 15, 10, 5],
+            weights=[90, 4, 4, 2],
             k=1,
         )[0]
-    )  #
+    )
 
     price_type = Faker(
         "random_element",
@@ -78,7 +86,7 @@ class ServiceFactory(DjangoModelFactory):
                 Service.ServiceStatus.PAUSED,
                 Service.ServiceStatus.CLOSED,
             ],
-            weights=[90, 5, 2, 3],
+            weights=[95, 1, 2, 2],
             k=1,
         )[0]
     )
@@ -119,4 +127,4 @@ class ServiceFactory(DjangoModelFactory):
             skill, _ = Skill.objects.get_or_create(name=name.strip().lower())
             skill_objs.append(skill)
 
-        self.skills.set(skill_objs)
+        cast(Any, self.skills).set(skill_objs)

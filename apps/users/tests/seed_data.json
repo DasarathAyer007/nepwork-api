@@ -1,0 +1,132 @@
+{
+  "users": [
+    {
+      "full_name": "Aarav Shrestha",
+      "username": "aarav.shrestha",
+      "email": "aarav.shrestha@example.com",
+      "phone_number": "9841200001",
+      "type": "individual",
+      "interests": ["python", "open-source", "hiking", "reading", "cooking"],
+      "social_links": {
+        "linkedin": "https://linkedin.com/in/aaravshrestha",
+        "github": "https://github.com/aaravshrestha",
+        "portfolio": "https://aaravshrestha.dev"
+      }
+    },
+    {
+      "full_name": "Saraswati Karki",
+      "username": "saraswati.karki",
+      "email": "saraswati.karki@example.com",
+      "phone_number": "9841200002",
+      "type": "individual",
+      "interests": ["design", "travel", "photography", "music", "blogging"],
+      "social_links": {
+        "linkedin": "https://linkedin.com/in/saraswatikarki",
+        "instagram": "https://instagram.com/saraswati.karki",
+        "website": "https://saraswatikarki.com"
+      }
+    },
+    {
+      "full_name": "Bibek Gautam",
+      "username": "bibek.gautam",
+      "email": "bibek.gautam@example.com",
+      "phone_number": "9841200003",
+      "type": "individual",
+      "interests": ["machine learning", "fitness", "podcasts", "sports", "volunteering"],
+      "social_links": {
+        "linkedin": "https://linkedin.com/in/bibekgautam",
+        "github": "https://github.com/bibekgautam",
+        "website": "https://bibekgautam.com"
+      }
+    },
+    {
+      "full_name": "Nisha Thapa",
+      "username": "nisha.thapa",
+      "email": "nisha.thapa@example.com",
+      "phone_number": "9841200004",
+      "type": "individual",
+      "interests": ["ui ux", "illustration", "journaling", "music", "gaming"],
+      "social_links": {
+        "linkedin": "https://linkedin.com/in/nishathapa",
+        "behance": "https://behance.net/nishathapa",
+        "portfolio": "https://nishathapa.design"
+      }
+    },
+    {
+      "full_name": "Himalayan Tech Pvt. Ltd.",
+      "username": "himalayan.tech",
+      "email": "careers@himalayantech.com",
+      "phone_number": "9801200005",
+      "type": "organization",
+      "industries": ["Technology"],
+      "social_links": {
+        "website": "https://himalayantech.com",
+        "linkedin": "https://linkedin.com/company/himalayan-tech",
+        "facebook": "https://facebook.com/himalayantech"
+      }
+    },
+    {
+      "full_name": "Everest Design Studio",
+      "username": "everest.design",
+      "email": "hello@everestdesignstudio.com",
+      "phone_number": "9801200006",
+      "type": "organization",
+      "industries": ["Design"],
+      "social_links": {
+        "website": "https://everestdesignstudio.com",
+        "instagram": "https://instagram.com/everestdesignstudio",
+        "linkedin": "https://linkedin.com/company/everest-design-studio"
+      }
+    },
+    {
+      "full_name": "Mero Logistics",
+      "username": "mero.logistics",
+      "email": "contact@merologistics.com",
+      "phone_number": "9801200007",
+      "type": "organization",
+      "industries": ["Logistics"],
+      "social_links": {
+        "website": "https://merologistics.com",
+        "linkedin": "https://linkedin.com/company/mero-logistics"
+      }
+    },
+    {
+      "full_name": "Green Valley School",
+      "username": "green.valley.school",
+      "email": "admin@greenvalleyschool.edu.np",
+      "phone_number": "9801200008",
+      "type": "organization",
+      "industries": ["Education"],
+      "social_links": {
+        "website": "https://greenvalleyschool.edu.np",
+        "facebook": "https://facebook.com/greenvalleyschool",
+        "linkedin": "https://linkedin.com/company/green-valley-school"
+      }
+    },
+    {
+      "full_name": "Carewell Clinic",
+      "username": "carewell.clinic",
+      "email": "info@carewellclinic.com",
+      "phone_number": "9801200009",
+      "type": "organization",
+      "industries": ["Healthcare"],
+      "social_links": {
+        "website": "https://carewellclinic.com",
+        "linkedin": "https://linkedin.com/company/carewell-clinic",
+        "instagram": "https://instagram.com/carewellclinic"
+      }
+    },
+    {
+      "full_name": "Nexus Finance Advisory",
+      "username": "nexus.finance",
+      "email": "contact@nexusfinance.com",
+      "phone_number": "9801200010",
+      "type": "organization",
+      "industries": ["Finance"],
+      "social_links": {
+        "website": "https://nexusfinance.com",
+        "linkedin": "https://linkedin.com/company/nexus-finance-advisory"
+      }
+    }
+  ]
+}

@@ -44,7 +44,7 @@ class LocationFactory(DjangoModelFactory):
     address = Faker("street_address")
     city = Faker("city")
     state = Faker("state")
-    country = Faker("country")
+    country = "Nepal"
     postal_code = Faker("postcode")
 
     label = Faker(

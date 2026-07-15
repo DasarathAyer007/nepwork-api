@@ -2,11 +2,9 @@ import random
 
 import factory
 from factory.declarations import (
-    Dict,
     LazyAttribute,
     LazyFunction,
     PostGenerationMethodCall,
-    Sequence,
 )
 from factory.django import DjangoModelFactory
 from factory.faker import Faker
@@ -15,37 +13,47 @@ from factory.helpers import post_generation
 from apps.skill.models import Skill
 from apps.skill.tests.factories import SkillFactory
 from apps.users.models import User
+from apps.utils.json_loader import load_json
 
-from ..models import OrganizationProfile, PersonalProfile
+from ..models import (
+    OrganizationProfile,
+    PersonalProfile,
+)
+
+# ruff: noqa: S311, SIM102
+data = load_json("apps/users/tests/seed_data.json")
+USERS = data["users"]
 
 
-# ruff: noqa: S311
 class UserFactory(DjangoModelFactory):
     class Meta:
         model = User
         django_get_or_create = ("username",)
+        exclude = ("seed_entry",)
 
-    full_name = Faker("name")
+    seed_entry = LazyFunction(lambda: random.choice(USERS))
 
-    username = Sequence(lambda n: f"u{n}")
+    full_name = LazyAttribute(lambda o: o.seed_entry["full_name"])
 
-    email = Sequence(lambda n: f"u{n}@test.com")
+    username = LazyAttribute(lambda o: o.seed_entry["username"])
+
+    email = LazyAttribute(lambda o: o.seed_entry["email"])
 
     password = PostGenerationMethodCall(
         "set_password",
         "test",
     )
 
-    phone_number = LazyFunction(
-        lambda: str(random.randint(1000000000, 9999999999))
-    )
+    phone_number = LazyAttribute(lambda o: o.seed_entry.get("phone_number", ""))
 
-    account_type = Faker(
-        "random_element",
-        elements=[
-            User.AccountType.PERSONAL,
-            User.AccountType.ORGANIZATION,
-        ],
+    social_links = LazyAttribute(lambda o: o.seed_entry.get("social_links", {}))
+
+    account_type = LazyAttribute(
+        lambda o: (
+            User.AccountType.PERSONAL
+            if o.seed_entry.get("type") == "individual"
+            else User.AccountType.ORGANIZATION
+        )
     )
 
     status = Faker(
@@ -74,14 +82,6 @@ class UserFactory(DjangoModelFactory):
         chance_of_getting_true=30,
     )
 
-    social_links = Dict(
-        {
-            "facebook": Faker("url"),
-            "instagram": Faker("url"),
-            "linkedin": Faker("url"),
-        }
-    )
-
     location = None
 
     @post_generation
@@ -89,25 +89,41 @@ class UserFactory(DjangoModelFactory):
         if not create:
             return
 
+        # Find the matching seed entry for the generated user
+        seed_entry = next(
+            (u for u in USERS if u["username"] == self.username), None
+        )
+
         if self.account_type == User.AccountType.PERSONAL:
-            PersonalProfileFactory(user=self)
+            # Avoid duplicate creation for the same user
+            if not hasattr(self, "personal_profile"):
+                interests = (
+                    seed_entry.get("interests", []) if seed_entry else []
+                )
+                PersonalProfileFactory(user=self, interests=interests)
 
         elif self.account_type == User.AccountType.ORGANIZATION:
-            OrganizationProfileFactory(user=self)
-
-
-INTERESTS_POOL = [
-    "music",
-    "sports",
-    "technology",
-    "travel",
-    "gaming",
-    "reading",
-    "fitness",
-    "photography",
-    "cooking",
-    "movies",
-]
+            # Avoid duplicate creation for the same user
+            if not hasattr(self, "organization_profile"):
+                industries = (
+                    seed_entry.get("industries", []) if seed_entry else []
+                )
+                # Use the first industry if multiple, or fallback to random
+                industry = (
+                    industries[0]
+                    if industries
+                    else random.choice(
+                        [
+                            "Technology",
+                            "Design",
+                            "Logistics",
+                            "Education",
+                            "Healthcare",
+                            "Finance",
+                        ]
+                    )
+                )
+                OrganizationProfileFactory(user=self, industry=industry)
 
 
 class PersonalProfileFactory(DjangoModelFactory):
@@ -127,9 +143,7 @@ class PersonalProfileFactory(DjangoModelFactory):
         elements=[c[0] for c in PersonalProfile.Gender.choices],
     )
 
-    interests = LazyFunction(
-        lambda: random.sample(INTERESTS_POOL, k=random.randint(2, 5))
-    )
+    interests = LazyFunction(lambda: random.choice(data.get("interests", [[]])))
 
     @post_generation
     def skills(self, create, extracted, **kwargs):
@@ -153,10 +167,10 @@ class OrganizationProfileFactory(DjangoModelFactory):
     class Meta:
         model = OrganizationProfile
 
-    user = None
+    user = None  # IMPORTANT: set by UserFactory
 
-    industry = Faker(
-        "random_element", elements=["Technology", "Healthcare", "Finance"]
+    industry = LazyFunction(
+        lambda: random.choice(data.get("industries", ["Technology"]))
     )
 
     logo = factory.django.ImageField(color="blue")
