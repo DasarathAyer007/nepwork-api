@@ -322,3 +322,5 @@ Double-check that the values in your `.env` file match your local PostgreSQL set
 
 
 python manage.py startapp user_activity apps/user_activity
+
+celery -A config worker --pool=threads --loglevel=INFO
