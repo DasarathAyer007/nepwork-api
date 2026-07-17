@@ -1,7 +1,10 @@
 # jobs/query_service_applications.py
+from django.db import transaction
 from django.db.models import Q
 from jsonschema import ValidationError
 from rest_framework.exceptions import PermissionDenied
+
+from apps.notifications.tasks import notify_job_application_status_changed
 
 from ..models import JobApplication
 from .application_notifications import notify_application_status_change
@@ -96,6 +99,11 @@ class ApplicationTransitionService:
                 send_message=send_message,
                 send_email=send_email,
             )
+
+        application_id = str(application.id)
+        transaction.on_commit(
+            lambda: notify_job_application_status_changed.delay(application_id)
+        )
 
         return application
 

@@ -35,6 +35,7 @@ urlpatterns = [
     path("api/services/", include("apps.services.urls")),
     path("api/chats/", include("apps.chat.urls")),
     path("api/jobs/", include("apps.jobs.urls")),
+    path("api/notifications/", include("apps.notifications.urls")),
 ]
 
 # API Documentation

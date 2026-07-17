@@ -1,10 +1,12 @@
 # jobs/views_applications.py
+from django.db import transaction
 from drf_spectacular.utils import extend_schema
 from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
+from apps.notifications.tasks import notify_job_application
 from apps.user_activity.constants import ActivityType, ObjectType
 from apps.user_activity.mixins import ActivityTrackingMixin
 
@@ -48,6 +50,10 @@ class JobApplicationViewSet(ActivityTrackingMixin, viewsets.ModelViewSet):
         serializer.save(applicant=self.request.user)
         self.track_activity(
             ActivityType.APPLY, object_id=serializer.instance.job_id
+        )
+        application_id = str(serializer.instance.id)
+        transaction.on_commit(
+            lambda: notify_job_application.delay(application_id)
         )
 
     # Employer-driven status change: freely move an application to any

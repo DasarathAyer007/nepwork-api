@@ -1,61 +1,5 @@
-# from rest_framework import generics, permissions, status
-# from rest_framework.response import Response
-# from rest_framework.views import APIView
-# from django.contrib.auth import get_user_model
-# from .models import Chat, Message
-# from .serializers import ChatSerializer, MessageSerializer
-
-# User = get_user_model()
-
-
-# class ChatListCreateView(generics.ListCreateAPIView):
-#     serializer_class = ChatSerializer
-#     permission_classes = [permissions.IsAuthenticated]
-
-#     def get_queryset(self):
-#         return Chat.objects.filter(members=self.request.user)
-
-#     def perform_create(self, serializer):
-#         chat = serializer.save()
-#         chat.members.add(self.request.user)
-#         # Add other members via request data
-#         member_ids = self.request.data.get("member_ids", [])
-#         for uid in member_ids:
-#             try:
-#                 chat.members.add(User.objects.get(id=uid))
-#             except User.DoesNotExist:
-#                 continue
-
-
-# class MessageListCreateView(generics.ListCreateAPIView):
-#     permission_classes = [permissions.IsAuthenticated]
-
-#     def get_queryset(self):
-#         return Message.objects.filter(
-#             chat_id=self.kwargs["chat_id"], chat__members=self.request.user
-#         )
-
-#     def get_serializer_class(self):
-#         if self.request.method == "POST":
-#             return MessageSerializer
-#         return MessageSerializer
-
-#     def perform_create(self, serializer):
-#         serializer.save(
-#             sender=self.request.user, chat_id=self.kwargs["chat_id"]
-#         )
-
-
-# class MarkReadView(APIView):
-#     permission_classes = [permissions.IsAuthenticated]
-
-#     def post(self, request, chat_id):
-#         Message.objects.filter(chat_id=chat_id, is_read=False).exclude(
-#             sender=request.user
-#         ).update(is_read=True)
-#         return Response({"status": "marked read"})
-
-
+from asgiref.sync import async_to_sync
+from channels.layers import get_channel_layer
 from django.shortcuts import get_object_or_404
 from rest_framework import generics, status
 from rest_framework.exceptions import NotFound
@@ -71,6 +15,7 @@ from .serializers import (
     SendMessageSerializer,
     User,
 )
+from .services import ChatService
 
 
 class ChatListCreateView(generics.ListCreateAPIView):
@@ -137,45 +82,71 @@ class MessageSendView(APIView):
     POST /api/chats/<chat_id>/messages/send/
 
     HTTP fallback for sending a message (e.g. file uploads, offline queuing).
-    Real-time delivery is handled via WebSocket (chat.send).
+    Goes through the same ChatService call and broadcast as the WebSocket
+    `chat.send` path, so recipients get it live regardless of which path
+    the sender used.
     """
 
     permission_classes = [IsAuthenticated, IsChatMember]
 
     def post(self, request, chat_id):
-        chat = get_object_or_404(Chat, id=chat_id, members=request.user)
+        get_object_or_404(Chat, id=chat_id, members=request.user)
         serializer = SendMessageSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
-        message = Message.objects.create(
-            chat=chat,
+        message = ChatService.create_message_sync(
             sender=request.user,
+            chat_id=chat_id,
             content=serializer.validated_data["content"],
         )
-        return Response(
-            MessageSerializer(message).data,
-            status=status.HTTP_201_CREATED,
-        )
+
+        member_ids = ChatService.get_member_ids_sync(chat_id)
+        channel_layer = get_channel_layer()
+        for member_id in member_ids:
+            async_to_sync(channel_layer.group_send)(
+                f"user_{member_id}",
+                {"type": "chat_message", "payload": message},
+            )
+
+        return Response(message, status=status.HTTP_201_CREATED)
 
 
 class MarkChatReadView(APIView):
     """
     POST /api/chats/<chat_id>/read/   mark all messages in a chat as read
+
+    Goes through the same ChatService call and broadcast as the WebSocket
+    `chat.read` path, so every member's badge updates live regardless of
+    which path the reader used.
     """
 
     permission_classes = [IsAuthenticated]
 
     def post(self, request, chat_id):
         get_object_or_404(Chat, id=chat_id, members=request.user)
-        updated = (
-            Message.objects.filter(
-                chat_id=chat_id,
-                is_read=False,
+
+        updated_count, member_unread_counts = (
+            ChatService.mark_chat_read_and_get_unread_counts_sync(
+                user=request.user, chat_id=chat_id
             )
-            .exclude(sender=request.user)
-            .update(is_read=True)
         )
-        return Response({"marked_read": updated})
+
+        channel_layer = get_channel_layer()
+        for entry in member_unread_counts:
+            async_to_sync(channel_layer.group_send)(
+                f"user_{entry['member_id']}",
+                {
+                    "type": "chat_read_confirmed",
+                    "payload": {
+                        "chat_id": str(chat_id),
+                        "reader_id": str(request.user.id),
+                        "marked_read": updated_count,
+                        "unread_count": entry["unread_count"],
+                    },
+                },
+            )
+
+        return Response({"marked_read": updated_count})
 
 
 class ChatWithUserView(generics.RetrieveAPIView):
@@ -206,9 +177,6 @@ class MessageUnreadCountView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
-        unread_count = (
-            Message.objects.filter(chat__members=request.user, is_read=False)
-            .exclude(sender=request.user)
-            .count()
+        return Response(
+            {"unread_count": ChatService.get_unread_count_sync(request.user)}
         )
-        return Response({"unread_count": unread_count})

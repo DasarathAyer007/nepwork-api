@@ -2,7 +2,6 @@ import logging
 
 from apps.chat.services import ChatService
 
-# from apps.notifications.services import NotificationService
 from .base import BaseHandler
 
 logger = logging.getLogger(__name__)
@@ -97,22 +96,6 @@ class ChatHandler(BaseHandler):
                 payload=message,
             )
 
-            if member_id == self.user.id:
-                continue
-
-            # notification = await NotificationService.create_notification(
-            #     recipient_id=member_id,
-            #     sender=self.user,
-            #     title=f"New message from {self.user.username}",
-            #     message=content[:100],
-            #     action_url=f"/chats/{chat.id}/",
-            # )
-            # await self.send_to_user(
-            #     user_id=member_id,
-            #     event_type="notification_new",
-            #     payload=notification,
-            # )
-
         # Direct ack to the sender, tied to client_ref, so their own UI can
         # resolve the draft→existing transition immediately instead of
         # waiting on the fan-out loop / a second event.
@@ -127,7 +110,8 @@ class ChatHandler(BaseHandler):
 
     async def _handle_send(self, data: dict):
         chat_id = data.get("chat_id")
-        content = data.get("content", "").strip()
+        content = (data.get("content") or "").strip()
+        client_ref = data.get("client_ref")
 
         if not chat_id or not content:
             await self.send_error(
@@ -157,27 +141,21 @@ class ChatHandler(BaseHandler):
         # years old. No group-membership bookkeeping needed anywhere.
         member_ids = await ChatService.get_member_ids(chat_id)
         for member_id in member_ids:
+            # client_ref only means anything to the sender's own connection
+            # — it lets their UI swap the optimistic/pending bubble for the
+            # real, server-assigned message instead of showing a duplicate.
+            # Other members simply ignore the extra field.
+            is_sender = member_id == self.user.id
+            payload = (
+                {**message, "client_ref": client_ref}
+                if is_sender and client_ref
+                else message
+            )
             await self.send_to_user(
                 user_id=member_id,
                 event_type="chat_message",  # → AppConsumer.chat_message()
-                payload=message,
+                payload=payload,
             )
-
-            if member_id == self.user.id:
-                continue  # don't notify yourself
-
-            # notification = await NotificationService.create_notification(
-            #     recipient_id=member_id,
-            #     sender=self.user,
-            #     title=f"New message from {self.user.username}",
-            #     message=content[:100],
-            #     action_url=f"/chats/{chat_id}/",
-            # )
-            # await self.send_to_user(
-            #     user_id=member_id,
-            #     event_type="notification_new",
-            #     payload=notification,
-            # )
 
     # ------------------------------------------------------------------ #
     #  chat.typing                                                         #
@@ -231,16 +209,25 @@ class ChatHandler(BaseHandler):
             )
             return
 
-        updated_count = await ChatService.mark_messages_read(
+        (
+            updated_count,
+            member_unread_counts,
+        ) = await ChatService.mark_chat_read_and_get_unread_counts(
             user=self.user,
             chat_id=chat_id,
         )
 
-        # Echo back confirmation to the sender only
-        await self.reply(
-            "chat.read_confirmed",
-            {
-                "chat_id": str(chat_id),
-                "marked_read": updated_count,
-            },
-        )
+        # Broadcast read confirmation and updated unread count to each member's personal group
+        for entry in member_unread_counts:
+            member_id = entry["member_id"]
+            unread_count = entry["unread_count"]
+            await self.send_to_user(
+                user_id=member_id,
+                event_type="chat_read_confirmed",
+                payload={
+                    "chat_id": str(chat_id),
+                    "reader_id": str(self.user.id),
+                    "marked_read": updated_count,
+                    "unread_count": unread_count,
+                },
+            )

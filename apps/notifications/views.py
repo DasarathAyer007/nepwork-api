@@ -1,19 +1,18 @@
-# Create your views here.
 from django.shortcuts import get_object_or_404
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from notifications.models import Notification
-
+from .models import Notification
 from .serializers import NotificationSerializer
 
 
 class NotificationListView(generics.ListAPIView):
     """
-    GET /api/notifications/   - list notifications for the authenticated user
-    Supports ?unread=true to filter unread only.
+    GET /api/notifications/   - paginated notification history for the
+    authenticated user, newest first. Supports ?unread=true to filter
+    unread only.
     """
 
     serializer_class = NotificationSerializer
@@ -28,6 +27,24 @@ class NotificationListView(generics.ListAPIView):
         if self.request.query_params.get("unread") == "true":
             qs = qs.filter(is_read=False)
         return qs
+
+
+class NotificationLatestView(generics.ListAPIView):
+    """
+    GET /api/notifications/latest/  - latest 10 notifications for the
+    notification bell dropdown.
+    """
+
+    serializer_class = NotificationSerializer
+    permission_classes = [IsAuthenticated]
+    pagination_class = None
+
+    def get_queryset(self):
+        return (
+            Notification.objects.filter(recipient=self.request.user)
+            .select_related("sender")
+            .order_by("-created_at")[:10]
+        )
 
 
 class NotificationUnreadCountView(APIView):
@@ -76,3 +93,15 @@ class NotificationMarkAllReadView(APIView):
             is_read=False,
         ).update(is_read=True)
         return Response({"marked_read": updated})
+
+
+class NotificationDeleteView(generics.DestroyAPIView):
+    """
+    DELETE /api/notifications/<id>/
+    """
+
+    serializer_class = NotificationSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return Notification.objects.filter(recipient=self.request.user)

@@ -52,9 +52,10 @@ class NotificationHandler(BaseHandler):
 
         unread_count = await NotificationService.get_unread_count(self.user)
 
-        await self.reply(
-            "notification.read_confirmed",
-            {
+        await self.send_to_user(
+            user_id=self.user.id,
+            event_type="notification_read_confirmed",
+            payload={
                 "notification_id": notification_id,
                 "unread_count": unread_count,
             },
@@ -67,9 +68,10 @@ class NotificationHandler(BaseHandler):
     async def _handle_read_all(self, data: dict):
         updated_count = await NotificationService.mark_all_as_read(self.user)
 
-        await self.reply(
-            "notification.read_all_confirmed",
-            {
+        await self.send_to_user(
+            user_id=self.user.id,
+            event_type="notification_read_all_confirmed",
+            payload={
                 "marked_read": updated_count,
                 "unread_count": 0,
             },

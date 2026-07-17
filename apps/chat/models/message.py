@@ -21,6 +21,9 @@ class Message(TimeStampedModel, SoftDeleteModel):
 
     class Meta:
         ordering = ["created_at"]
+        indexes = [
+            models.Index(fields=["chat", "is_read"]),
+        ]
 
     def __str__(self):
         return f"{self.sender.username}: {self.content[:50]}"

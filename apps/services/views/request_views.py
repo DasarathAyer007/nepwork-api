@@ -1,9 +1,11 @@
 # services/views_requests.py
+from django.db import transaction
 from drf_spectacular.utils import extend_schema
 from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
+from apps.notifications.tasks import notify_service_request
 from apps.user_activity.constants import ActivityType, ObjectType
 from apps.user_activity.mixins import ActivityTrackingMixin
 
@@ -58,6 +60,8 @@ class ServiceRequestViewSet(ActivityTrackingMixin, viewsets.ModelViewSet):
         self.track_activity(
             ActivityType.REQUEST, object_id=serializer.instance.service_id
         )
+        request_id = str(serializer.instance.id)
+        transaction.on_commit(lambda: notify_service_request.delay(request_id))
 
     #  Status transition actions
     @action(detail=True, methods=["post"])

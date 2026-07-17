@@ -1,9 +1,10 @@
 from django.urls import path
-from rest_framework_simplejwt.views import TokenRefreshView
 
 from .views.auth import (
+    CustomTokenRefreshView,
     FacebookLoginView,
     GoogleLoginView,
+    LogoutView,
 )
 from .views.users import (
     LoginView,
@@ -18,7 +19,8 @@ from .views.users import (
 urlpatterns = [
     path("register", RegisterView.as_view()),
     path("login", LoginView.as_view()),
-    path("token/refresh", TokenRefreshView.as_view()),
+    path("token/refresh", CustomTokenRefreshView.as_view()),
+    path("logout", LogoutView.as_view()),
     path("verify-otp", VerifyOTPView.as_view()),
     path("resend-otp", ResendOTPView.as_view()),
     path("onboarding", OnboardingView.as_view()),

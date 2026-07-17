@@ -9,6 +9,7 @@ logger = logging.getLogger(__name__)
 # AppConsumer never needs to change.
 HANDLER_MAP: dict = {
     # Chat
+    "chat.start": ChatHandler,
     "chat.send": ChatHandler,
     "chat.typing": ChatHandler,
     "chat.read": ChatHandler,

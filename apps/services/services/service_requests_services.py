@@ -1,6 +1,9 @@
+from django.db import transaction
 from django.db.models import Q
 from django.utils import timezone
 from rest_framework.exceptions import PermissionDenied, ValidationError
+
+from apps.notifications.tasks import notify_service_request_status_changed
 
 from ..models import ServiceRequest
 
@@ -94,6 +97,12 @@ class ServiceRequestTransitionService:
         if new_status == ServiceRequest.ServiceRequestStatus.COMPLETED:
             request_instance.completed_at = timezone.now()
         request_instance.save(update_fields=["status", "completed_at"])
+
+        request_id = str(request_instance.id)
+        transaction.on_commit(
+            lambda: notify_service_request_status_changed.delay(request_id)
+        )
+
         return request_instance
 
     @classmethod

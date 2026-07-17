@@ -1,7 +1,21 @@
 from typing import Any
 
-from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from rest_framework_simplejwt.serializers import (
+    TokenObtainPairSerializer,
+    TokenRefreshSerializer,
+)
 from rest_framework_simplejwt.tokens import RefreshToken
+
+
+class CustomTokenRefreshSerializer(TokenRefreshSerializer):
+    def validate(self, attrs: dict[str, Any]) -> dict[str, Any]:
+        data = super().validate(attrs)
+
+        data["access_token"] = data.pop("access")
+        if "refresh" in data:
+            data["refresh_token"] = data.pop("refresh")
+
+        return data
 
 
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
