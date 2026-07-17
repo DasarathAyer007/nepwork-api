@@ -8,6 +8,7 @@ from rest_framework.generics import (
     CreateAPIView,
     GenericAPIView,
     RetrieveAPIView,
+    UpdateAPIView,
     get_object_or_404,
 )
 from rest_framework.permissions import IsAuthenticated
@@ -202,6 +203,32 @@ class ProfileDetailView(RetrieveAPIView):
 
         self.check_object_permissions(self.request, obj)
         return obj
+
+
+class ProfileUpdateView(UpdateAPIView):
+    permission_classes = [IsAuthenticated]
+
+    def get_object(self):
+        user = self.request.user
+
+        if user.account_type == User.AccountType.PERSONAL:
+            return user.personal_profile
+
+        if user.account_type == User.AccountType.ORGANIZATION:
+            return user.organization_profile
+
+        raise NotFound("Profile not found.")
+
+    def get_serializer_class(self):
+        user = self.request.user
+
+        if user.account_type == User.AccountType.PERSONAL:
+            return PersonalProfileWriteSerializer
+
+        if user.account_type == User.AccountType.ORGANIZATION:
+            return OrganizationProfileWriteSerializer
+
+        raise ValidationError("Invalid account type.")
 
 
 @USER_LOCATION_SCHEMA

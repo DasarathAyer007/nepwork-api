@@ -1,6 +1,8 @@
 from django.urls import path
 from rest_framework_simplejwt.views import TokenRefreshView
 
+from apps.users.views.profile import UpdateProfileView
+
 from .views.auth import (
     FacebookLoginView,
     GoogleLoginView,
@@ -27,4 +29,9 @@ urlpatterns = [
     path("<uuid:user_id>/location", UserLocationView.as_view()),
     path("auth/google/", GoogleLoginView.as_view(), name="google-login"),
     path("auth/facebook/", FacebookLoginView.as_view(), name="facebook-login"),
+    path(
+        "profile/update/",
+        UpdateProfileView.as_view(),
+        name="update-profile",
+    ),
 ]
