@@ -67,17 +67,31 @@ class BaseProfileSerializer(serializers.ModelSerializer):
             "social_links",
         ),
         "limited": ("id", "username", "full_name", "profile_picture"),
-        "private": ("id", "username"),
+        "private": (
+            "id",
+            "username",
+            "profile_picture",
+            "cover_photo",
+            "bio",
+        ),
     }
 
     def _is_owner(self, instance):
         request = self.context.get("request")
-        if not request or not request.user.is_authenticated:
+
+        if request is None:
             return False
-        return request.user == instance.user
+
+        if not hasattr(request, "user"):
+            return False
+
+        if not request.user.is_authenticated:
+            return False
+
+        return str(request.user.id) == str(instance.user.id)
 
     def _get_user_data(self, instance, level):
-        allowed = self.USER_FIELDS.get(level, self.USER_FIELDS["private"])
+        allowed = self.USER_FIELDS.get(level, self.USER_FIELDS["full"])
         all_user_data = UserSerializer(instance.user, context=self.context).data
         filtered = {k: v for k, v in all_user_data.items() if k in allowed}
 
@@ -98,12 +112,15 @@ class BaseProfileSerializer(serializers.ModelSerializer):
         return {k: v for k, v in all_profile_data.items() if k in allowed}
 
     def to_representation(self, instance):
+        is_owner = self._is_owner(instance)
+
         visibility = getattr(
             instance.user,
             "profile_visibility",
             User.ProfileVisibility.PUBLIC,
         )
-        level = "full" if self._is_owner(instance) else visibility
+
+        level = "full" if is_owner else visibility
 
         return {
             **self._get_user_data(instance, level),
@@ -114,8 +131,24 @@ class BaseProfileSerializer(serializers.ModelSerializer):
 
 class PersonalProfileSerializer(BaseProfileSerializer):
     VISIBILITY_FIELDS = {
-        "public": ("gender", "skills", "interests"),
-        "limited": ("gender", "skills"),
+        "full": (
+            "date_of_birth",
+            "gender",
+            "skills",
+            "interests",
+        ),
+        "public": (
+            "date_of_birth",
+            "gender",
+            "skills",
+            "interests",
+        ),
+        "limited": (
+            "date_of_birth",
+            "gender",
+            "skills",
+            "interests",
+        ),
         "private": (),
     }
     skills = SkillSerializer(many=True, read_only=True)
@@ -132,6 +165,15 @@ class PersonalProfileSerializer(BaseProfileSerializer):
 
 class OrganizationProfileSerializer(BaseProfileSerializer):
     VISIBILITY_FIELDS = {
+        "full": (
+            "industry",
+            "logo",
+            "employees_count",
+            "founded_at",
+            "address",
+            "tax_id",
+            "is_verified",
+        ),
         "public": (
             "industry",
             "logo",
@@ -140,7 +182,12 @@ class OrganizationProfileSerializer(BaseProfileSerializer):
             "address",
             "is_verified",
         ),
-        "limited": ("industry", "logo", "employees_count", "is_verified"),
+        "limited": (
+            "industry",
+            "logo",
+            "employees_count",
+            "is_verified",
+        ),
         "private": (),
     }
 
