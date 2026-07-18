@@ -20,6 +20,7 @@ class ChatHandler(BaseHandler):
 
     async def handle(self, data: dict):
         action = data.get("type")
+        print(f"ChatHandler received action: {action}")
         dispatch = {
             "chat.start": self._handle_start,
             "chat.send": self._handle_send,

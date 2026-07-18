@@ -101,6 +101,11 @@ class JobViewSet(ActivityTrackingMixin, viewsets.ModelViewSet):
         svc = JobQueryService(user=request.user, params=request.query_params)
         return self._list_response(svc.my_jobs())
 
+    @action(detail=False, methods=["get"], url_path="stats")
+    def stats(self, request):
+        svc = JobQueryService(user=request.user, params=request.query_params)
+        return Response(svc.status_counts())
+
     @action(detail=True, methods=["get"])
     def similar(self, request, pk=None):
         svc = JobQueryService(user=request.user, params=request.query_params)

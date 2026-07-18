@@ -39,6 +39,16 @@ class IsAdmin(BaseRolePermission):
     required_role = "admin"
 
 
+class IsAdminOrReadOnly(BasePermission):
+    def has_permission(self, request: Request, view: APIView) -> bool:
+        if request.method in SAFE_METHODS:
+            return True
+
+        user = get_user(request)
+
+        return bool(user and user.account_type == "admin")
+
+
 class IsOwnerAdminOrReadOnly(BasePermission):
     owner_field = "created_by"
 

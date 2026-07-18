@@ -9,20 +9,19 @@ User = get_user_model()
 
 
 class UserSerializer(serializers.ModelSerializer):
-    online = serializers.SerializerMethodField()
-
     class Meta:
         model = User
-        fields = ["id", "username", "profile_picture", "email", "online"]
-
-    def get_online(self, obj) -> bool:
-        from apps.websockets.presence import PresenceService
-
-        return PresenceService.is_online(obj.id)
+        fields = ["id", "username", "profile_picture", "email"]
 
 
 class MessageSerializer(serializers.ModelSerializer):
     sender = UserSerializer(read_only=True)
+    # "chat_id" isn't a real model field name (the FK is "chat"), so
+    # ModelSerializer can't map it and silently falls back to a plain
+    # ReadOnlyField, which returns the raw UUID instead of a string —
+    # that raw UUID then fails to serialize when the payload is pushed
+    # through the channels_redis msgpack layer.
+    chat_id = serializers.UUIDField(read_only=True)
 
     class Meta:
         model = Message

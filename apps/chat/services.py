@@ -31,11 +31,6 @@ class ChatService:
         return Chat.objects.filter(id=chat_id, members=user).exists()
 
     @staticmethod
-    @database_sync_to_async
-    def is_member(user, chat_id) -> bool:
-        return ChatService.is_member_sync(user, chat_id)
-
-    @staticmethod
     def get_member_ids_sync(chat_id) -> list:
         return list(
             Chat.objects.filter(id=chat_id).values_list(
@@ -43,27 +38,28 @@ class ChatService:
             )
         )
 
-    @staticmethod
-    @database_sync_to_async
-    def get_member_ids(chat_id) -> list:
-        return ChatService.get_member_ids_sync(chat_id)
+    # database_sync_to_async defaults to thread_sensitive=True, which
+    # routes EVERY sync-DB call in the whole process — every chat send,
+    # every sync HTTP view under ASGI, everything — onto a single shared
+    # worker thread. One slow caller anywhere blocks all chat traffic
+    # behind it. Message delivery has no reason to share that thread with
+    # unrelated request handling, so the hot chat path runs
+    # thread_sensitive=False: real thread-pool concurrency instead of a
+    # single-file queue.
+    is_member = staticmethod(
+        database_sync_to_async(is_member_sync.__func__, thread_sensitive=False)
+    )
+    get_member_ids = staticmethod(
+        database_sync_to_async(
+            get_member_ids_sync.__func__, thread_sensitive=False
+        )
+    )
 
     @staticmethod
     @database_sync_to_async
     def get_user_chat_ids(user) -> list:
         """Return all chat UUIDs the user belongs to (used on connect)."""
         return list(user.chats.values_list("id", flat=True))
-
-    @staticmethod
-    @database_sync_to_async
-    def get_all_contacts_ids(user) -> set:
-        """Return unique member IDs of all chats the user is in, excluding the user themselves."""
-        contact_ids = (
-            User.objects.filter(chats__members=user)
-            .exclude(id=user.id)
-            .values_list("id", flat=True)
-        )
-        return set(contact_ids)
 
     # ------------------------------------------------------------------ #
     #  Unread counts — single definition, shared by every call site        #
@@ -80,10 +76,11 @@ class ChatService:
     def get_unread_count_sync(user) -> int:
         return ChatService._unread_count_queryset(user).count()
 
-    @staticmethod
-    @database_sync_to_async
-    def get_unread_count(user) -> int:
-        return ChatService.get_unread_count_sync(user)
+    get_unread_count = staticmethod(
+        database_sync_to_async(
+            get_unread_count_sync.__func__, thread_sensitive=False
+        )
+    )
 
     @staticmethod
     def get_chat_unread_count_sync(chat_id, user) -> int:
@@ -109,10 +106,11 @@ class ChatService:
         )
         return MessageSerializer(message).data
 
-    @staticmethod
-    @database_sync_to_async
-    def create_message(sender, chat_id, content: str) -> dict[str, Any]:
-        return ChatService.create_message_sync(sender, chat_id, content)
+    create_message = staticmethod(
+        database_sync_to_async(
+            create_message_sync.__func__, thread_sensitive=False
+        )
+    )
 
     @staticmethod
     def mark_chat_read_and_get_unread_counts_sync(
@@ -162,14 +160,12 @@ class ChatService:
         ]
         return updated_count, results
 
-    @staticmethod
-    @database_sync_to_async
-    def mark_chat_read_and_get_unread_counts(
-        user, chat_id
-    ) -> tuple[int, list[dict]]:
-        return ChatService.mark_chat_read_and_get_unread_counts_sync(
-            user, chat_id
+    mark_chat_read_and_get_unread_counts = staticmethod(
+        database_sync_to_async(
+            mark_chat_read_and_get_unread_counts_sync.__func__,
+            thread_sensitive=False,
         )
+    )
 
     @staticmethod
     @database_sync_to_async
@@ -212,7 +208,8 @@ class ChatService:
         except IntegrityError:
             return Chat.objects.get(direct_pair_key=pair_key), False
 
-    @staticmethod
-    @database_sync_to_async
-    def get_or_create_direct_chat(users) -> tuple[Chat, bool]:
-        return ChatService.get_or_create_direct_chat_sync(users)
+    get_or_create_direct_chat = staticmethod(
+        database_sync_to_async(
+            get_or_create_direct_chat_sync.__func__, thread_sensitive=False
+        )
+    )

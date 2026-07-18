@@ -2,9 +2,10 @@
 from django.contrib.gis.db.models.functions import Distance
 from django.contrib.gis.geos import Point
 from django.contrib.gis.measure import D
-from django.db.models import Q, QuerySet
+from django.db.models import Count, Q, QuerySet
 from rest_framework.exceptions import ValidationError
 
+from ..models import Job
 from ..selectors import job as selectors
 
 
@@ -30,9 +31,27 @@ class JobQueryService:
 
     # ── Public entry points ──────────────────────────────────
     def list_jobs(self) -> QuerySet:
-        qs = selectors.get_active_jobs(self.user)
+        qs = (
+            selectors.get_base_job_queryset(self.user)
+            if self._is_admin()
+            else selectors.get_active_jobs(self.user)
+        )
         qs = self._apply_filters(qs)
         return self._apply_geo_if_provided(qs)
+
+    def status_counts(self) -> dict:
+        """Real counts per job status, from the database, for admin dashboards."""
+        qs = (
+            selectors.get_base_job_queryset(self.user)
+            if self._is_admin()
+            else selectors.get_active_jobs(self.user)
+        )
+        qs = self._apply_filters(qs, skip_ordering=True, skip_status=True)
+        counts = {status: 0 for status, _ in Job.JobStatus.choices}
+        for row in qs.values("status").annotate(count=Count("id")):
+            counts[row["status"]] = row["count"]
+        counts["total"] = sum(counts.values())
+        return counts
 
     def retrieve_queryset(self) -> QuerySet:
         return selectors.get_base_job_queryset(self.user)
@@ -127,8 +146,20 @@ class JobQueryService:
         return qs
 
     def _filter_status(self, qs):
-        # Public listing: only OPEN
+        # Public listing is already restricted to OPEN jobs via get_active_jobs.
+        # Admins see every status, so honor the status filter for them.
+        if not self._is_admin():
+            return qs
+        if status := self.params.get("status"):
+            qs = qs.filter(status=status)
         return qs
+
+    def _is_admin(self):
+        return bool(
+            self.user
+            and self.user.is_authenticated
+            and getattr(self.user, "account_type", None) == "admin"
+        )
 
     def _filter_category(self, qs):
         if cat_id := self.params.get("category"):

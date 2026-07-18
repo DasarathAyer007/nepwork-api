@@ -4,7 +4,7 @@ from .models import Notification
 
 
 class NotificationSenderSerializer(serializers.Serializer):
-    id = serializers.IntegerField()
+    id = serializers.CharField()
     username = serializers.CharField()
 
 
