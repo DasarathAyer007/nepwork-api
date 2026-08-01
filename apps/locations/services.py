@@ -1,61 +1,85 @@
-# services.py
 import logging
 
 import requests
+
+from config.geo_coding import (
+    REVERSE_GEOCODING_API_KEY,
+    REVERSE_GEOCODING_API_URL,
+)
 
 logger = logging.getLogger(__name__)
 
 
 class LocationService:
-    NOMINATIM_URL = "https://nominatim.openstreetmap.org/reverse"
     TIMEOUT = 20  # seconds
 
     @staticmethod
     def reverse_geocode(lat: float, lng: float) -> dict:
+        url = str(REVERSE_GEOCODING_API_URL)
+
         params = {
-            "format": "json",
+            "apiKey": REVERSE_GEOCODING_API_KEY,
             "lat": lat,
             "lon": lng,
-            "addressdetails": 1,
         }
 
-        HEADERS = {
+        headers = {
             "User-Agent": "NepWork/1.0",
             "Accept": "application/json",
         }
 
         try:
             response = requests.get(
-                LocationService.NOMINATIM_URL,
+                url,
                 params=params,
-                headers=HEADERS,
+                headers=headers,
                 timeout=LocationService.TIMEOUT,
             )
-            print(
-                f"Reverse geocode response: {response.text}"
-            )  # Debugging line
             response.raise_for_status()
             data = response.json()
+
+            print("Reverse geocode response:", data)  # Debugging line
+
         except requests.Timeout:
             logger.warning(
-                "Nominatim reverse geocode timed out for (%s, %s)", lat, lng
+                "Reverse geocode timed out for (%s, %s)",
+                lat,
+                lng,
             )
             return {}
+
         except requests.RequestException as e:
             logger.error(
-                "Nominatim reverse geocode failed for (%s, %s): %s", lat, lng, e
+                "Reverse geocode failed for (%s, %s): %s",
+                lat,
+                lng,
+                e,
             )
             return {}
 
-        address = data.get("address", {})
+        features = data.get("features", [])
+        if not features:
+            return {}
+
+        properties = features[0].get("properties", {})
 
         return {
-            "city": address.get("city")
-            or address.get("town")
-            or address.get("village")
-            or "",
-            "state": address.get("state", ""),
-            "country": address.get("country", ""),
-            "postal_code": address.get("postcode", ""),
-            "address": data.get("display_name", ""),
+            "city": (
+                properties.get("city")
+                or properties.get("town")
+                or properties.get("village")
+                or ""
+            ),
+            "state": properties.get("state", ""),
+            "country": properties.get("country", ""),
+            "country_code": properties.get("country_code", "").upper(),
+            "postal_code": properties.get("postcode", ""),
+            "district": properties.get("district", ""),
+            "suburb": properties.get("suburb", ""),
+            "county": properties.get("county", ""),
+            "street": properties.get("street", ""),
+            "house_number": properties.get("housenumber", ""),
+            "address": properties.get("formatted", ""),
+            "latitude": properties.get("lat"),
+            "longitude": properties.get("lon"),
         }
