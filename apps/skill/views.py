@@ -2,6 +2,7 @@ from django.db.models import Count, F
 from drf_spectacular.utils import extend_schema
 from rest_framework.filters import OrderingFilter, SearchFilter
 from rest_framework.generics import ListAPIView
+from rest_framework.permissions import AllowAny
 
 from apps.skill.models import Skill
 from apps.skill.serializer import SkillUsageSerializer
@@ -21,6 +22,8 @@ def annotated_skill_queryset():
 @extend_schema(tags=["Skills"])
 class SkillListView(ListAPIView):
     serializer_class = SkillUsageSerializer
+
+    permission_classes = [AllowAny]
 
     filter_backends = [SearchFilter, OrderingFilter]
 
@@ -52,6 +55,8 @@ class PopularSkillsView(ListAPIView):
     """
 
     serializer_class = SkillUsageSerializer
+
+    permission_classes = [AllowAny]
 
     filter_backends = [SearchFilter]
 

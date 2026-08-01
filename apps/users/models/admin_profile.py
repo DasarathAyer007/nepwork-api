@@ -4,6 +4,7 @@ from django.db import models
 
 from apps.utils.models import TimeStampedModel
 
+from .role import Role
 from .user import User
 
 
@@ -13,7 +14,13 @@ class AdminProfile(TimeStampedModel):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, related_name="admin_profile"
     )
-    role = models.CharField(max_length=20, blank=True)
+    role = models.ForeignKey(
+        Role,
+        on_delete=models.PROTECT,
+        null=True,
+        blank=True,
+        related_name="admin_profiles",
+    )
 
     ip_address = models.GenericIPAddressField(blank=True, null=True)
 

@@ -11,5 +11,5 @@ from ..serializers.job_category import JobCategorySerializer
 class JobCategoryViewSet(viewsets.ModelViewSet):
     queryset = JobCategory.objects.filter(deleted_at__isnull=True)
     serializer_class = JobCategorySerializer
-    permission_classes = [IsAdminOrReadOnly]
+    permission_classes = [IsAdminOrReadOnly("jobs")]
     pagination_class = None

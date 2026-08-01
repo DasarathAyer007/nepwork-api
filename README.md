@@ -324,6 +324,8 @@ python manage.py startapp user_activity apps/user_activity
 
 celery -A config worker --pool=threads --loglevel=INFO
 
-
-
 celery -A config worker -l info
+
+uv run  manage.py migrate
+uv run  manage.py seed_roles_permissions
+un run manage.py create_superadmin --username admin --email admin@example.com --full-name "Site Admin"

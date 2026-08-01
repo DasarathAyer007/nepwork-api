@@ -206,10 +206,13 @@ class OrganizationProfileSerializer(BaseProfileSerializer):
 
 class AdminProfileReadSerializer(BaseProfileSerializer):
     VISIBILITY_FIELDS = {
+        "full": ("role", "ip_address", "department", "designation", "notes"),
         "public": ("role", "department", "designation"),
         "limited": ("role", "department", "designation"),
         "private": (),
     }
+
+    role = serializers.SerializerMethodField()
 
     class Meta:
         model = AdminProfile
@@ -221,6 +224,11 @@ class AdminProfileReadSerializer(BaseProfileSerializer):
             "created_by",
             "notes",
         ]
+
+    def get_role(self, instance) -> dict[str, str] | None:
+        if not instance.role_id:
+            return None
+        return {"code": instance.role.code, "name": instance.role.name}
 
 
 class ProfileReadSerializer(serializers.Serializer):

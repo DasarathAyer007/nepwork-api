@@ -6,6 +6,8 @@ from rest_framework_simplejwt.serializers import (
 )
 from rest_framework_simplejwt.tokens import RefreshToken
 
+from apps.users.services.permissions import get_effective_permission_codes
+
 
 class CustomTokenRefreshSerializer(TokenRefreshSerializer):
     def validate(self, attrs: dict[str, Any]) -> dict[str, Any]:
@@ -27,6 +29,14 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
             user.get_absolute_avatar_url(request) if user else None  # type: ignore[union-attr]
         )
 
+        admin_profile = getattr(user, "admin_profile", None)
+        role_data = None
+        if admin_profile and admin_profile.role_id:
+            role_data = {
+                "code": admin_profile.role.code,
+                "name": admin_profile.role.name,
+            }
+
         return {
             "access_token": str(refresh.access_token),
             "refresh_token": str(refresh),
@@ -38,7 +48,10 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
                 "account_type": user.account_type,  # type: ignore[union-attr]
                 "profile_picture": profile_picture_url,
                 "is_onboarded": user.is_onboarded(),  # type: ignore[union-attr]
+                "is_superuser": user.is_superuser,  # type: ignore[union-attr]
             },
+            "role": role_data,
+            "permissions": sorted(get_effective_permission_codes(user)),
         }
 
     def validate(self, attrs: dict[str, Any]) -> dict[str, Any]:

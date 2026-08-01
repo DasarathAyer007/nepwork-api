@@ -44,6 +44,42 @@ class UserService:
         return user
 
     @staticmethod
+    @transaction.atomic
+    def create_admin_user(
+        full_name: str,
+        email: str,
+        username: str,
+        password: str,
+        role,
+        created_by: User,
+        department: str = "",
+        designation: str = "",
+    ) -> User:
+        user = User(
+            full_name=full_name,
+            email=email,
+            username=username,
+            account_type=User.AccountType.ADMIN,
+            profile_picture=DEFAULT_PROFILE_PICTURE_URL,
+            cover_photo=DEFAULT_COVER_PHOTO_URL,
+            is_active=True,
+            is_staff=role.code == "superadmin",
+            is_superuser=role.code == "superadmin",
+        )
+        user.set_password(password)
+        user.save()
+
+        AdminProfile.objects.create(
+            user=user,
+            role=role,
+            department=department,
+            designation=designation,
+            created_by=created_by,
+        )
+
+        return user
+
+    @staticmethod
     def _create_default_profile(user: User) -> None:
         """Creates an empty profile record based on account_type."""
         if user.account_type == User.AccountType.PERSONAL:

@@ -20,14 +20,17 @@ from apps.locations.serializers import (
     LocationWriteSerializer,
 )
 from apps.users.models.user import User
+from apps.users.permissions import HasPermission
 from apps.users.serializers.ProfileWriteSerializer import (
     OrganizationProfileWriteSerializer,
     PersonalProfileWriteSerializer,
 )
+from apps.users.services.permissions import get_effective_permission_codes
 from apps.utils.users_utils import get_auth_user
 
 from ..schemas import ONBOARDING_SCHEMA, USER_LOCATION_SCHEMA
 from ..serializers import (
+    AdminCreateSerializer,
     CustomTokenObtainPairSerializer,
     ProfileReadSerializer,
     UserRegisterSerializer,
@@ -140,6 +143,58 @@ class LoginView(TokenObtainPairView):
     serializer_class = CustomTokenObtainPairSerializer
 
 
+class MeView(GenericAPIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, *args, **kwargs):
+        user = request.user
+        admin_profile = getattr(user, "admin_profile", None)
+        role_data = None
+        if admin_profile and admin_profile.role_id:
+            role_data = {
+                "code": admin_profile.role.code,
+                "name": admin_profile.role.name,
+            }
+
+        return Response(
+            {
+                "user": {
+                    "id": user.id,
+                    "email": user.email,
+                    "username": user.username,
+                    "full_name": user.full_name,
+                    "account_type": user.account_type,
+                    "profile_picture": user.get_absolute_avatar_url(request),
+                    "is_onboarded": user.is_onboarded(),
+                    "is_superuser": user.is_superuser,
+                },
+                "role": role_data,
+                "permissions": sorted(get_effective_permission_codes(user)),
+            }
+        )
+
+
+class AdminCreateView(CreateAPIView):
+    serializer_class = AdminCreateSerializer
+    permission_classes = [IsAuthenticated, HasPermission("users.edit")]
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(
+            data=request.data, context={"request": request}
+        )
+        serializer.is_valid(raise_exception=True)
+        user = serializer.save()
+        return Response(
+            {
+                "message": "Admin account created successfully.",
+                "user_id": user.id,
+                "username": user.username,
+                "email": user.email,
+            },
+            status=status.HTTP_201_CREATED,
+        )
+
+
 @ONBOARDING_SCHEMA
 class OnboardingView(CreateAPIView):
     permission_classes = [IsAuthenticated]
@@ -186,7 +241,7 @@ class ProfileDetailView(RetrieveAPIView):
     queryset = User.objects.prefetch_related(
         "personal_profile",
         "organization_profile",
-    )
+    ).select_related("admin_profile", "admin_profile__role")
     serializer_class = ProfileReadSerializer
 
     def get_object(self):

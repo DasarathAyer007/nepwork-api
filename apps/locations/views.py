@@ -1,5 +1,6 @@
 from drf_spectacular.utils import extend_schema
 from rest_framework import status
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
@@ -16,7 +17,7 @@ from .services import LocationService
 
 class LocationViewSet(ModelViewSet):
     queryset = Location.objects.all()
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 
     def get_serializer_class(self):
         if self.action in ["create", "update", "partial_update"]:
@@ -28,6 +29,8 @@ class LocationViewSet(ModelViewSet):
     parameters=[ReverseGeocodeQuerySerializer],
 )
 class ReverseGeocodingView(APIView):
+    permission_classes = [IsAuthenticated]
+
     def get(self, request, format=None):
         serializer = ReverseGeocodeQuerySerializer(data=request.query_params)
         serializer.is_valid(raise_exception=True)

@@ -4,6 +4,8 @@ from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
+from apps.users.permissions import IsAdminOrReadOnly
+
 from ..models import ServiceCategory
 from ..selectors.category_selectors import get_popular_categories
 from ..serializers import CategorySerializer, PopularCategorySerializer
@@ -13,6 +15,7 @@ from ..serializers import CategorySerializer, PopularCategorySerializer
 class ServiceCategoryViewSet(viewsets.ModelViewSet):
     queryset = ServiceCategory.objects.filter(is_active=True)
     serializer_class = CategorySerializer
+    permission_classes = [IsAdminOrReadOnly("services")]
     pagination_class = None
 
     DEFAULT_LIMIT = 10

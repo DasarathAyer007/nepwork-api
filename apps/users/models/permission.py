@@ -2,6 +2,7 @@ from django.db import models
 
 from apps.utils.models import SoftDeleteModel, TimeStampedModel
 
+from .role import Role
 from .user import User
 
 
@@ -14,6 +15,21 @@ class Permission(TimeStampedModel, SoftDeleteModel):
 
     def __str__(self) -> str:
         return self.name
+
+
+class RolePermission(TimeStampedModel):
+    role = models.ForeignKey(
+        Role, on_delete=models.CASCADE, related_name="role_permissions"
+    )
+    permission = models.ForeignKey(
+        Permission, on_delete=models.CASCADE, related_name="role_permissions"
+    )
+
+    class Meta:
+        unique_together = ("role", "permission")
+
+    def __str__(self) -> str:
+        return f"{self.role.code} - {self.permission.code}"
 
 
 class UserPermission(TimeStampedModel):
@@ -32,6 +48,10 @@ class UserPermission(TimeStampedModel):
         blank=True,
         related_name="permissions_given",
     )
+    is_denied = models.BooleanField(default=False)
+
+    class Meta:
+        unique_together = ("user", "permission")
 
     def __str__(self) -> str:
         return f"{self.user.username} - {self.permission.name}"
