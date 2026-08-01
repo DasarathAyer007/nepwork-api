@@ -6,7 +6,11 @@
       "email": "aarav.shrestha@example.com",
       "phone_number": "9841200001",
       "type": "individual",
+      "gender": "male",
+      "date_of_birth": "1996-03-14",
+      "bio": "Backend developer from Kathmandu who loves contributing to open-source Python projects.",
       "interests": ["python", "open-source", "hiking", "reading", "cooking"],
+      "skills": ["python", "django", "postgresql", "docker"],
       "social_links": {
         "linkedin": "https://linkedin.com/in/aaravshrestha",
         "github": "https://github.com/aaravshrestha",
@@ -19,7 +23,11 @@
       "email": "saraswati.karki@example.com",
       "phone_number": "9841200002",
       "type": "individual",
+      "gender": "female",
+      "date_of_birth": "1998-07-22",
+      "bio": "Freelance graphic designer and travel photographer based in Pokhara.",
       "interests": ["design", "travel", "photography", "music", "blogging"],
+      "skills": ["graphic design", "adobe photoshop", "photography", "figma"],
       "social_links": {
         "linkedin": "https://linkedin.com/in/saraswatikarki",
         "instagram": "https://instagram.com/saraswati.karki",
@@ -32,7 +40,11 @@
       "email": "bibek.gautam@example.com",
       "phone_number": "9841200003",
       "type": "individual",
+      "gender": "male",
+      "date_of_birth": "1993-11-05",
+      "bio": "Machine learning enthusiast, weekend runner, and podcast addict.",
       "interests": ["machine learning", "fitness", "podcasts", "sports", "volunteering"],
+      "skills": ["python", "machine learning", "data analysis", "tensorflow"],
       "social_links": {
         "linkedin": "https://linkedin.com/in/bibekgautam",
         "github": "https://github.com/bibekgautam",
@@ -45,11 +57,265 @@
       "email": "nisha.thapa@example.com",
       "phone_number": "9841200004",
       "type": "individual",
+      "gender": "female",
+      "date_of_birth": "1999-02-18",
+      "bio": "UI/UX designer who spends free time journaling and playing indie games.",
       "interests": ["ui ux", "illustration", "journaling", "music", "gaming"],
+      "skills": ["ui design", "ux research", "figma", "illustration"],
       "social_links": {
         "linkedin": "https://linkedin.com/in/nishathapa",
         "behance": "https://behance.net/nishathapa",
         "portfolio": "https://nishathapa.design"
+      }
+    },
+    {
+      "full_name": "Sandeep Rai",
+      "username": "sandeep.rai",
+      "email": "sandeep.rai@example.com",
+      "phone_number": "9841200011",
+      "type": "individual",
+      "gender": "male",
+      "date_of_birth": "1991-05-30",
+      "bio": "Civil engineer turned project manager, passionate about sustainable construction.",
+      "interests": ["architecture", "sustainability", "chess", "cycling"],
+      "skills": ["project management", "autocad", "site supervision"],
+      "social_links": {
+        "linkedin": "https://linkedin.com/in/sandeeprai"
+      }
+    },
+    {
+      "full_name": "Kritika Basnet",
+      "username": "kritika.basnet",
+      "email": "kritika.basnet@example.com",
+      "phone_number": "9841200012",
+      "type": "individual",
+      "gender": "female",
+      "date_of_birth": "2000-09-09",
+      "bio": "Digital marketer who enjoys yoga, baking, and binge-worthy documentaries.",
+      "interests": ["digital marketing", "yoga", "baking", "documentaries"],
+      "skills": ["seo", "content writing", "social media marketing"],
+      "social_links": {
+        "linkedin": "https://linkedin.com/in/kritikabasnet",
+        "instagram": "https://instagram.com/kritika.basnet"
+      }
+    },
+    {
+      "full_name": "Prakash Lama",
+      "username": "prakash.lama",
+      "email": "prakash.lama@example.com",
+      "phone_number": "9841200013",
+      "type": "individual",
+      "gender": "male",
+      "date_of_birth": "1988-12-01",
+      "bio": "Full-stack developer building products for the Nepali fintech space.",
+      "interests": ["fintech", "startups", "badminton", "trekking"],
+      "skills": ["javascript", "react", "node.js", "aws"],
+      "social_links": {
+        "github": "https://github.com/prakashlama",
+        "linkedin": "https://linkedin.com/in/prakashlama"
+      }
+    },
+    {
+      "full_name": "Anjali Maharjan",
+      "username": "anjali.maharjan",
+      "email": "anjali.maharjan@example.com",
+      "phone_number": "9841200014",
+      "type": "individual",
+      "gender": "female",
+      "date_of_birth": "1997-04-27",
+      "bio": "Content writer and part-time potter who loves exploring local newari cuisine.",
+      "interests": ["writing", "pottery", "food", "culture"],
+      "skills": ["content writing", "copywriting", "editing"],
+      "social_links": {
+        "instagram": "https://instagram.com/anjali.maharjan",
+        "website": "https://anjalimaharjan.com"
+      }
+    },
+    {
+      "full_name": "Rohan Adhikari",
+      "username": "rohan.adhikari",
+      "email": "rohan.adhikari@example.com",
+      "phone_number": "9841200015",
+      "type": "individual",
+      "gender": "male",
+      "date_of_birth": "1994-08-16",
+      "bio": "DevOps engineer who enjoys home-brewing coffee and building mechanical keyboards.",
+      "interests": ["devops", "coffee", "keyboards", "gaming"],
+      "skills": ["kubernetes", "docker", "ci/cd", "linux"],
+      "social_links": {
+        "github": "https://github.com/rohanadhikari",
+        "linkedin": "https://linkedin.com/in/rohanadhikari"
+      }
+    },
+    {
+      "full_name": "Sunita Poudel",
+      "username": "sunita.poudel",
+      "email": "sunita.poudel@example.com",
+      "phone_number": "9841200016",
+      "type": "individual",
+      "gender": "female",
+      "date_of_birth": "1995-01-11",
+      "bio": "Accountant by profession, gardener by passion.",
+      "interests": ["gardening", "finance", "reading", "meditation"],
+      "skills": ["bookkeeping", "tax advisory", "excel"],
+      "social_links": {
+        "linkedin": "https://linkedin.com/in/sunitapoudel"
+      }
+    },
+    {
+      "full_name": "Manish Tamang",
+      "username": "manish.tamang",
+      "email": "manish.tamang@example.com",
+      "phone_number": "9841200017",
+      "type": "individual",
+      "gender": "male",
+      "date_of_birth": "1990-06-23",
+      "bio": "Mobile app developer who loves mountain biking on weekends.",
+      "interests": ["mobile development", "mountain biking", "open-source"],
+      "skills": ["flutter", "kotlin", "android", "firebase"],
+      "social_links": {
+        "github": "https://github.com/manishtamang",
+        "portfolio": "https://manishtamang.dev"
+      }
+    },
+    {
+      "full_name": "Priya Sharma",
+      "username": "priya.sharma",
+      "email": "priya.sharma@example.com",
+      "phone_number": "9841200018",
+      "type": "individual",
+      "gender": "female",
+      "date_of_birth": "2001-10-03",
+      "bio": "HR professional passionate about workplace culture and classical dance.",
+      "interests": ["hr", "dance", "psychology", "networking"],
+      "skills": ["recruitment", "employee engagement", "communication"],
+      "social_links": {
+        "linkedin": "https://linkedin.com/in/priyasharma"
+      }
+    },
+    {
+      "full_name": "Dipesh Khadka",
+      "username": "dipesh.khadka",
+      "email": "dipesh.khadka@example.com",
+      "phone_number": "9841200019",
+      "type": "individual",
+      "gender": "male",
+      "date_of_birth": "1992-02-29",
+      "bio": "QA engineer obsessed with automation testing and street food.",
+      "interests": ["qa automation", "street food", "movies"],
+      "skills": ["selenium", "test automation", "python", "jira"],
+      "social_links": {
+        "linkedin": "https://linkedin.com/in/dipeshkhadka",
+        "github": "https://github.com/dipeshkhadka"
+      }
+    },
+    {
+      "full_name": "Sabina Magar",
+      "username": "sabina.magar",
+      "email": "sabina.magar@example.com",
+      "phone_number": "9841200020",
+      "type": "individual",
+      "gender": "female",
+      "date_of_birth": "1996-12-19",
+      "bio": "Video editor and content creator sharing stories from across Nepal.",
+      "interests": ["videography", "storytelling", "travel"],
+      "skills": ["premiere pro", "after effects", "video editing"],
+      "social_links": {
+        "instagram": "https://instagram.com/sabina.magar",
+        "youtube": "https://youtube.com/@sabinamagar"
+      }
+    },
+    {
+      "full_name": "Nabin Bhattarai",
+      "username": "nabin.bhattarai",
+      "email": "nabin.bhattarai@example.com",
+      "phone_number": "9841200021",
+      "type": "individual",
+      "gender": "male",
+      "date_of_birth": "1989-03-08",
+      "bio": "Data engineer building analytics pipelines, cricket fan on the side.",
+      "interests": ["data engineering", "cricket", "chess"],
+      "skills": ["python", "sql", "airflow", "spark"],
+      "social_links": {
+        "linkedin": "https://linkedin.com/in/nabinbhattarai",
+        "github": "https://github.com/nabinbhattarai"
+      }
+    },
+    {
+      "full_name": "Alisha Gurung",
+      "username": "alisha.gurung",
+      "email": "alisha.gurung@example.com",
+      "phone_number": "9841200022",
+      "type": "individual",
+      "gender": "female",
+      "date_of_birth": "2002-05-14",
+      "bio": "Aspiring product manager who loves sketching wireframes on napkins.",
+      "interests": ["product management", "sketching", "startups"],
+      "skills": ["product management", "user research", "figma"],
+      "social_links": {
+        "linkedin": "https://linkedin.com/in/alishagurung"
+      }
+    },
+    {
+      "full_name": "Suman Dahal",
+      "username": "suman.dahal",
+      "email": "suman.dahal@example.com",
+      "phone_number": "9841200023",
+      "type": "individual",
+      "gender": "male",
+      "date_of_birth": "1987-07-19",
+      "bio": "Electrical engineer consulting on solar energy projects across Nepal.",
+      "interests": ["renewable energy", "electronics", "hiking"],
+      "skills": ["electrical design", "solar energy", "autocad"],
+      "social_links": {
+        "linkedin": "https://linkedin.com/in/sumandahal"
+      }
+    },
+    {
+      "full_name": "Rekha Joshi",
+      "username": "rekha.joshi",
+      "email": "rekha.joshi@example.com",
+      "phone_number": "9841200024",
+      "type": "individual",
+      "gender": "female",
+      "date_of_birth": "1998-11-27",
+      "bio": "Nutritionist and wellness blogger who loves early morning runs.",
+      "interests": ["nutrition", "running", "blogging"],
+      "skills": ["nutrition planning", "content writing"],
+      "social_links": {
+        "instagram": "https://instagram.com/rekha.joshi",
+        "website": "https://rekhajoshi.com"
+      }
+    },
+    {
+      "full_name": "Kiran Bhandari",
+      "username": "kiran.bhandari",
+      "email": "kiran.bhandari@example.com",
+      "phone_number": "9841200025",
+      "type": "individual",
+      "gender": "other",
+      "date_of_birth": "1995-09-02",
+      "bio": "Cybersecurity researcher and CTF player, coffee over code.",
+      "interests": ["cybersecurity", "ctf", "coffee"],
+      "skills": ["penetration testing", "network security", "python"],
+      "social_links": {
+        "github": "https://github.com/kiranbhandari",
+        "linkedin": "https://linkedin.com/in/kiranbhandari"
+      }
+    },
+    {
+      "full_name": "Sujata Pandey",
+      "username": "sujata.pandey",
+      "email": "sujata.pandey@example.com",
+      "phone_number": "9841200026",
+      "type": "individual",
+      "gender": "female",
+      "date_of_birth": "1993-04-06",
+      "bio": "Legal consultant specializing in corporate law, avid book collector.",
+      "interests": ["law", "reading", "debate"],
+      "skills": ["corporate law", "contract drafting", "negotiation"],
+      "social_links": {
+        "linkedin": "https://linkedin.com/in/sujatapandey"
       }
     },
     {
@@ -59,6 +325,12 @@
       "phone_number": "9801200005",
       "type": "organization",
       "industries": ["Technology"],
+      "bio": "A Kathmandu-based software company building products for global clients since 2015.",
+      "employees_count": 85,
+      "founded_at": "2015-03-10",
+      "address": "Jhamsikhel, Lalitpur, Bagmati Province, Nepal",
+      "tax_id": "301234567",
+      "is_verified": true,
       "social_links": {
         "website": "https://himalayantech.com",
         "linkedin": "https://linkedin.com/company/himalayan-tech",
@@ -72,6 +344,12 @@
       "phone_number": "9801200006",
       "type": "organization",
       "industries": ["Design"],
+      "bio": "Boutique branding and product design studio working with startups across South Asia.",
+      "employees_count": 14,
+      "founded_at": "2018-06-01",
+      "address": "Baluwatar, Kathmandu, Bagmati Province, Nepal",
+      "tax_id": "301234568",
+      "is_verified": true,
       "social_links": {
         "website": "https://everestdesignstudio.com",
         "instagram": "https://instagram.com/everestdesignstudio",
@@ -85,6 +363,12 @@
       "phone_number": "9801200007",
       "type": "organization",
       "industries": ["Logistics"],
+      "bio": "Last-mile delivery and freight logistics provider operating across major Nepali cities.",
+      "employees_count": 220,
+      "founded_at": "2012-01-15",
+      "address": "Balaju Industrial Area, Kathmandu, Nepal",
+      "tax_id": "301234569",
+      "is_verified": false,
       "social_links": {
         "website": "https://merologistics.com",
         "linkedin": "https://linkedin.com/company/mero-logistics"
@@ -97,6 +381,12 @@
       "phone_number": "9801200008",
       "type": "organization",
       "industries": ["Education"],
+      "bio": "A K-12 school in Pokhara focused on holistic, experiential learning.",
+      "employees_count": 60,
+      "founded_at": "2001-04-01",
+      "address": "Lakeside, Pokhara, Gandaki Province, Nepal",
+      "tax_id": "301234570",
+      "is_verified": true,
       "social_links": {
         "website": "https://greenvalleyschool.edu.np",
         "facebook": "https://facebook.com/greenvalleyschool",
@@ -110,6 +400,12 @@
       "phone_number": "9801200009",
       "type": "organization",
       "industries": ["Healthcare"],
+      "bio": "Multi-specialty outpatient clinic providing affordable primary healthcare in Biratnagar.",
+      "employees_count": 45,
+      "founded_at": "2016-09-20",
+      "address": "Main Road, Biratnagar, Koshi Province, Nepal",
+      "tax_id": "301234571",
+      "is_verified": true,
       "social_links": {
         "website": "https://carewellclinic.com",
         "linkedin": "https://linkedin.com/company/carewell-clinic",
@@ -123,10 +419,140 @@
       "phone_number": "9801200010",
       "type": "organization",
       "industries": ["Finance"],
+      "bio": "Financial advisory firm helping SMEs with tax planning and investment strategy.",
+      "employees_count": 22,
+      "founded_at": "2019-11-11",
+      "address": "New Road, Kathmandu, Bagmati Province, Nepal",
+      "tax_id": "301234572",
+      "is_verified": false,
       "social_links": {
         "website": "https://nexusfinance.com",
         "linkedin": "https://linkedin.com/company/nexus-finance-advisory"
       }
+    },
+    {
+      "full_name": "Sagarmatha Agro Pvt. Ltd.",
+      "username": "sagarmatha.agro",
+      "email": "info@sagarmathaagro.com",
+      "phone_number": "9801200027",
+      "type": "organization",
+      "industries": ["Agriculture"],
+      "bio": "Sustainable farming cooperative supplying organic produce to Kathmandu valley markets.",
+      "employees_count": 130,
+      "founded_at": "2008-02-14",
+      "address": "Banepa, Kavrepalanchok, Bagmati Province, Nepal",
+      "tax_id": "301234573",
+      "is_verified": true,
+      "social_links": {
+        "website": "https://sagarmathaagro.com",
+        "facebook": "https://facebook.com/sagarmathaagro"
+      }
+    },
+    {
+      "full_name": "Kathmandu Media House",
+      "username": "kathmandu.media",
+      "email": "editor@kathmandumediahouse.com",
+      "phone_number": "9801200028",
+      "type": "organization",
+      "industries": ["Media"],
+      "bio": "Digital news and media outlet covering business and technology in Nepal.",
+      "employees_count": 38,
+      "founded_at": "2014-08-05",
+      "address": "Sinamangal, Kathmandu, Bagmati Province, Nepal",
+      "tax_id": "301234574",
+      "is_verified": true,
+      "social_links": {
+        "website": "https://kathmandumediahouse.com",
+        "twitter": "https://twitter.com/ktmmediahouse",
+        "linkedin": "https://linkedin.com/company/kathmandu-media-house"
+      }
+    },
+    {
+      "full_name": "Annapurna Travels & Tours",
+      "username": "annapurna.travels",
+      "email": "bookings@annapurnatravels.com",
+      "phone_number": "9801200029",
+      "type": "organization",
+      "industries": ["Travel & Tourism"],
+      "bio": "Trekking and tour operator specializing in Annapurna and Everest region expeditions.",
+      "employees_count": 27,
+      "founded_at": "2005-05-22",
+      "address": "Thamel, Kathmandu, Bagmati Province, Nepal",
+      "tax_id": "301234575",
+      "is_verified": true,
+      "social_links": {
+        "website": "https://annapurnatravels.com",
+        "instagram": "https://instagram.com/annapurnatravels",
+        "facebook": "https://facebook.com/annapurnatravels"
+      }
+    },
+    {
+      "full_name": "Bagmati Construction Co.",
+      "username": "bagmati.construction",
+      "email": "info@bagmaticonstruction.com",
+      "phone_number": "9801200030",
+      "type": "organization",
+      "industries": ["Construction"],
+      "bio": "General contractor delivering residential and commercial construction projects.",
+      "employees_count": 310,
+      "founded_at": "1999-10-30",
+      "address": "Koteshwor, Kathmandu, Bagmati Province, Nepal",
+      "tax_id": "301234576",
+      "is_verified": false,
+      "social_links": {
+        "website": "https://bagmaticonstruction.com",
+        "linkedin": "https://linkedin.com/company/bagmati-construction"
+      }
+    },
+    {
+      "full_name": "Pashupati Retail Mart",
+      "username": "pashupati.retail",
+      "email": "support@pashupatiretail.com",
+      "phone_number": "9801200031",
+      "type": "organization",
+      "industries": ["Retail"],
+      "bio": "Chain of neighborhood supermarkets serving the Kathmandu valley since 2010.",
+      "employees_count": 175,
+      "founded_at": "2010-12-12",
+      "address": "Chabahil, Kathmandu, Bagmati Province, Nepal",
+      "tax_id": "301234577",
+      "is_verified": true,
+      "social_links": {
+        "website": "https://pashupatiretail.com",
+        "facebook": "https://facebook.com/pashupatiretail"
+      }
+    },
+    {
+      "full_name": "Lumbini Legal Associates",
+      "username": "lumbini.legal",
+      "email": "contact@lumbinilegal.com",
+      "phone_number": "9801200032",
+      "type": "organization",
+      "industries": ["Legal"],
+      "bio": "Full-service law firm advising businesses on corporate and commercial law in Nepal.",
+      "employees_count": 18,
+      "founded_at": "2013-03-03",
+      "address": "Anamnagar, Kathmandu, Bagmati Province, Nepal",
+      "tax_id": "301234578",
+      "is_verified": true,
+      "social_links": {
+        "website": "https://lumbinilegal.com",
+        "linkedin": "https://linkedin.com/company/lumbini-legal-associates"
+      }
     }
+  ],
+  "industries": [
+    "Technology",
+    "Design",
+    "Logistics",
+    "Education",
+    "Healthcare",
+    "Finance",
+    "Agriculture",
+    "Media",
+    "Travel & Tourism",
+    "Construction",
+    "Retail",
+    "Legal"
   ]
 }

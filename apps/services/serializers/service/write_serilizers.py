@@ -4,6 +4,7 @@ from apps.locations.serializers import (
     LocationWriteSerializer,
 )
 from apps.skill.services import SkillService
+from apps.utils.html_sanitizer import clean_and_validate_rich_text
 from apps.utils.serializers import MultipartJSONFieldsMixin
 
 from ...models import Service
@@ -52,6 +53,9 @@ class ServiceWriteSerializer(
                 {"price": "Required for fixed price."}
             )
         return attrs
+
+    def validate_description(self, value):
+        return clean_and_validate_rich_text(value)
 
     def create(self, validated_data):
         location_data = validated_data.pop("location", None)

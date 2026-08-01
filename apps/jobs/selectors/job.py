@@ -30,6 +30,11 @@ def get_base_job_queryset(user=None) -> QuerySet:
         saved_sub = JobSaved.objects.filter(user=user, job=OuterRef("pk"))
         applied_sub = JobApplication.objects.filter(
             applicant=user, job=OuterRef("pk")
+        ).exclude(
+            status__in=[
+                JobApplication.ApplicationStatus.WITHDRAWN,
+                JobApplication.ApplicationStatus.REJECTED,
+            ]
         )
 
         qs = qs.annotate(

@@ -4,6 +4,7 @@ from django.db.models import (
     OuterRef,
     Q,
     QuerySet,
+    Subquery,
 )
 
 from ..models import Service, ServiceRequest, ServiceSaved
@@ -30,13 +31,21 @@ def get_base_service_queryset(user=None) -> QuerySet:
             user=user, service=OuterRef("pk")
         )
 
-        applied_sub = ServiceRequest.objects.filter(
-            user=user, service=OuterRef("pk")
+        active_requests_sub = (
+            ServiceRequest.objects.filter(user=user, service=OuterRef("pk"))
+            .exclude(
+                status__in=[
+                    ServiceRequest.ServiceRequestStatus.CANCELLED,
+                    ServiceRequest.ServiceRequestStatus.REJECTED,
+                ]
+            )
+            .order_by("-created_at")
         )
 
         qs = qs.annotate(
             is_saved=Exists(saved_sub),
-            has_applied=Exists(applied_sub),
+            has_applied=Exists(active_requests_sub),
+            my_active_request_id=Subquery(active_requests_sub.values("id")[:1]),
         )
     return qs
 

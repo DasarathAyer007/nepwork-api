@@ -1,7 +1,9 @@
+import datetime
 import random
 
 import factory
 from factory.declarations import (
+    Iterator,
     LazyAttribute,
     LazyFunction,
     PostGenerationMethodCall,
@@ -9,6 +11,7 @@ from factory.declarations import (
 from factory.django import DjangoModelFactory
 from factory.faker import Faker
 from factory.helpers import post_generation
+from faker import Faker as FakerProvider
 
 from apps.skill.models import Skill
 from apps.skill.tests.factories import SkillFactory
@@ -23,6 +26,15 @@ from ..models import (
 # ruff: noqa: S311, SIM102
 data = load_json("apps/users/tests/seed_data.json")
 USERS = data["users"]
+INDUSTRIES = data.get("industries", ["Technology"])
+
+fake = FakerProvider()
+
+
+def _parse_date(value):
+    if not value:
+        return None
+    return datetime.date.fromisoformat(value)
 
 
 class UserFactory(DjangoModelFactory):
@@ -31,7 +43,9 @@ class UserFactory(DjangoModelFactory):
         django_get_or_create = ("username",)
         exclude = ("seed_entry",)
 
-    seed_entry = LazyFunction(lambda: random.choice(USERS))
+    # Cycles through every seed entry before repeating, so batches up to
+    # len(USERS) never collide on username/email.
+    seed_entry = Iterator(USERS)
 
     full_name = LazyAttribute(lambda o: o.seed_entry["full_name"])
 
@@ -61,7 +75,9 @@ class UserFactory(DjangoModelFactory):
         elements=User.Status.values,
     )
 
-    bio = Faker("paragraph", nb_sentences=3)
+    bio = LazyAttribute(
+        lambda o: o.seed_entry.get("bio") or fake.paragraph(nb_sentences=3)
+    )
 
     profile_visibility = Faker(
         "random_element",
@@ -89,41 +105,50 @@ class UserFactory(DjangoModelFactory):
         if not create:
             return
 
-        # Find the matching seed entry for the generated user
+        # Find the matching seed entry for the generated user.
         seed_entry = next(
             (u for u in USERS if u["username"] == self.username), None
         )
+        seed_entry = seed_entry or {}
 
         if self.account_type == User.AccountType.PERSONAL:
-            # Avoid duplicate creation for the same user
-            if not hasattr(self, "personal_profile"):
-                interests = (
-                    seed_entry.get("interests", []) if seed_entry else []
-                )
-                PersonalProfileFactory(user=self, interests=interests)
+            if not PersonalProfile.objects.filter(user=self).exists():
+                interests = seed_entry.get("interests", [])
+                kwargs = {
+                    "user": self,
+                    "interests": interests,
+                    "skills": seed_entry.get("skills", interests),
+                }
+                if seed_entry.get("gender"):
+                    kwargs["gender"] = seed_entry["gender"]
+                date_of_birth = _parse_date(seed_entry.get("date_of_birth"))
+                if date_of_birth:
+                    kwargs["date_of_birth"] = date_of_birth
+                PersonalProfileFactory(**kwargs)
 
         elif self.account_type == User.AccountType.ORGANIZATION:
-            # Avoid duplicate creation for the same user
-            if not hasattr(self, "organization_profile"):
-                industries = (
-                    seed_entry.get("industries", []) if seed_entry else []
-                )
-                # Use the first industry if multiple, or fallback to random
-                industry = (
-                    industries[0]
-                    if industries
-                    else random.choice(
-                        [
-                            "Technology",
-                            "Design",
-                            "Logistics",
-                            "Education",
-                            "Healthcare",
-                            "Finance",
-                        ]
-                    )
-                )
-                OrganizationProfileFactory(user=self, industry=industry)
+            if not OrganizationProfile.objects.filter(user=self).exists():
+                industries = seed_entry.get("industries", [])
+                kwargs = {
+                    "user": self,
+                    "industry": (
+                        industries[0]
+                        if industries
+                        else random.choice(INDUSTRIES)
+                    ),
+                }
+                for field in (
+                    "employees_count",
+                    "address",
+                    "tax_id",
+                    "is_verified",
+                ):
+                    if seed_entry.get(field) is not None:
+                        kwargs[field] = seed_entry[field]
+                founded_at = _parse_date(seed_entry.get("founded_at"))
+                if founded_at:
+                    kwargs["founded_at"] = founded_at
+                OrganizationProfileFactory(**kwargs)
 
 
 class PersonalProfileFactory(DjangoModelFactory):
@@ -143,7 +168,7 @@ class PersonalProfileFactory(DjangoModelFactory):
         elements=[c[0] for c in PersonalProfile.Gender.choices],
     )
 
-    interests = LazyFunction(lambda: random.choice(data.get("interests", [[]])))
+    interests = LazyFunction(list)
 
     @post_generation
     def skills(self, create, extracted, **kwargs):
@@ -169,9 +194,7 @@ class OrganizationProfileFactory(DjangoModelFactory):
 
     user = None  # IMPORTANT: set by UserFactory
 
-    industry = LazyFunction(
-        lambda: random.choice(data.get("industries", ["Technology"]))
-    )
+    industry = LazyAttribute(lambda o: random.choice(INDUSTRIES))
 
     logo = factory.django.ImageField(color="blue")
 

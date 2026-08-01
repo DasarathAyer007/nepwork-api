@@ -117,8 +117,7 @@ class BaseProfileWriteSerializer(
 
             # keep uploaded files
             if hasattr(data, "FILES"):
-                for key, file in data.FILES.items():
-                    mutable_data[key] = file
+                mutable_data.update(dict(data.FILES.items()))
 
             data = mutable_data
 

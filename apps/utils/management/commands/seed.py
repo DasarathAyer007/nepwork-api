@@ -2,6 +2,7 @@ from django.core.management.base import BaseCommand
 
 from apps.jobs.models import Job, JobCategory
 from apps.jobs.tests.factories import JobCategoryFactory, JobFactory
+from apps.locations.models import Location
 from apps.services.models.service_category import ServiceCategory
 from apps.services.models.services import Service
 from apps.services.tests.factories import ServiceCategoryFactory, ServiceFactory
@@ -42,6 +43,7 @@ class Command(BaseCommand):
             JobCategory.objects.all().delete()
             User.objects.all().delete()
             Skill.objects.all().delete()
+            Location.objects.all().delete()
 
         # USERS
         if users_count > 0:

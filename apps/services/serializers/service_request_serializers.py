@@ -5,6 +5,7 @@ from apps.locations.serializers import (
     LocationSerializer,
     LocationWriteSerializer,
 )
+from apps.utils.html_sanitizer import clean_and_validate_rich_text
 
 from ..models import Service, ServiceRequest
 
@@ -73,14 +74,33 @@ class ServiceRequestWriteSerializer(serializers.ModelSerializer):
         ]
 
     def validate_service(self, value):
+        user = self.context["request"].user
         # Ensure service is active and not the user's own
-        if value.user == self.context["request"].user:
+        if value.user == user:
             raise serializers.ValidationError(
                 "You cannot request your own service."
             )
         if value.status != "active":
             raise serializers.ValidationError("Service is not active.")
+
+        existing = ServiceRequest.objects.filter(
+            user=user, service=value
+        ).exclude(
+            status__in=[
+                ServiceRequest.ServiceRequestStatus.CANCELLED,
+                ServiceRequest.ServiceRequestStatus.REJECTED,
+            ]
+        )
+        if self.instance is not None:
+            existing = existing.exclude(pk=self.instance.pk)
+        if existing.exists():
+            raise serializers.ValidationError(
+                "You already have an active request for this service."
+            )
         return value
+
+    def validate_request_message(self, value):
+        return clean_and_validate_rich_text(value)
 
     def create(self, validated_data):
         location_data = validated_data.pop("location", None)

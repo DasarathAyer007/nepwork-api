@@ -1,10 +1,9 @@
-from bleach import clean
-from bleach.css_sanitizer import CSSSanitizer
 from django.contrib.auth import get_user_model
 from django.db import IntegrityError
 from rest_framework import serializers
 
 from apps.jobs.models.jobs import Job
+from apps.utils.html_sanitizer import clean_and_validate_rich_text
 
 from ..models import JobApplication
 from ..services.job_application import ApplicationTransitionService
@@ -15,41 +14,6 @@ RESUME_MAX_SIZE = 10 * 1024 * 1024  # 10MB
 RESUME_ALLOWED_CONTENT_TYPES = [
     "application/pdf",
 ]
-
-COVER_LETTER_ALLOWED_TAGS = [
-    "p",
-    "br",
-    "strong",
-    "b",
-    "em",
-    "i",
-    "u",
-    "s",
-    "ul",
-    "ol",
-    "li",
-    "h1",
-    "h2",
-    "h3",
-    "blockquote",
-    "a",
-]
-
-COVER_LETTER_ALLOWED_ATTRIBUTES = {
-    "a": ["href", "rel", "target"],
-    "p": ["style"],
-    "h1": ["style"],
-    "h2": ["style"],
-    "h3": ["style"],
-}
-
-COVER_LETTER_ALLOWED_STYLES = ["text-align"]
-
-COVER_LETTER_CSS_SANITIZER = CSSSanitizer(
-    allowed_css_properties=COVER_LETTER_ALLOWED_STYLES
-)
-
-COVER_LETTER_ALLOWED_PROTOCOLS = ["http", "https", "mailto"]
 
 
 class JobApplicationJobSerializer(serializers.ModelSerializer):
@@ -123,7 +87,14 @@ class JobApplicationWriteSerializer(serializers.ModelSerializer):
         if value.posted_by == user:
             raise serializers.ValidationError("Cannot apply to your own job.")
 
-        existing = JobApplication.objects.filter(job=value, applicant=user)
+        existing = JobApplication.objects.filter(
+            job=value, applicant=user
+        ).exclude(
+            status__in=[
+                JobApplication.ApplicationStatus.WITHDRAWN,
+                JobApplication.ApplicationStatus.REJECTED,
+            ]
+        )
         if self.instance is not None:
             existing = existing.exclude(pk=self.instance.pk)
         if existing.exists():
@@ -145,21 +116,9 @@ class JobApplicationWriteSerializer(serializers.ModelSerializer):
         return value
 
     def validate_cover_letter(self, value):
-        cleaned = clean(
-            value,
-            tags=COVER_LETTER_ALLOWED_TAGS,
-            attributes=COVER_LETTER_ALLOWED_ATTRIBUTES,
-            protocols=COVER_LETTER_ALLOWED_PROTOCOLS,
-            css_sanitizer=COVER_LETTER_CSS_SANITIZER,
-            strip=True,
+        return clean_and_validate_rich_text(
+            value, min_length=50, max_length=None
         )
-
-        text_only = clean(cleaned, tags=[], strip=True).strip()
-        if len(text_only) < 50:
-            raise serializers.ValidationError(
-                "Cover letter must be at least 50 characters long."
-            )
-        return cleaned
 
     def create(self, validated_data):
         try:

@@ -2,9 +2,18 @@ from rest_framework import serializers
 
 from apps.locations.serializers import LocationWriteSerializer
 from apps.skill.services import SkillService
+from apps.utils.html_sanitizer import clean_and_validate_rich_text
 from apps.utils.serializers import MultipartJSONFieldsMixin
 
 from ...models import Job
+
+
+def _has_coordinates(location_data):
+    return (
+        bool(location_data)
+        and location_data.get("lat") is not None
+        and location_data.get("lng") is not None
+    )
 
 
 class JobWriteSerializer(MultipartJSONFieldsMixin, serializers.ModelSerializer):
@@ -55,6 +64,9 @@ class JobWriteSerializer(MultipartJSONFieldsMixin, serializers.ModelSerializer):
             )
         return attrs
 
+    def validate_description(self, value):
+        return clean_and_validate_rich_text(value)
+
     def create(self, validated_data):
         location_data = validated_data.pop("location", None)
         skills_required = validated_data.pop("skills_required", [])
@@ -63,7 +75,7 @@ class JobWriteSerializer(MultipartJSONFieldsMixin, serializers.ModelSerializer):
             job.skills_required.set(
                 SkillService.get_or_create_skills(skills_required)
             )
-        if location_data:
+        if _has_coordinates(location_data):
             loc_serializer = LocationWriteSerializer(data=location_data)
             loc_serializer.is_valid(raise_exception=True)
             job.location = loc_serializer.save()
@@ -82,7 +94,7 @@ class JobWriteSerializer(MultipartJSONFieldsMixin, serializers.ModelSerializer):
             )
 
         if location_data is not None:
-            if location_data:
+            if _has_coordinates(location_data):
                 if instance.location:
                     loc_serializer = LocationWriteSerializer(
                         instance.location, data=location_data, partial=True

@@ -30,6 +30,12 @@ class JobApplicationQueryService:
             qs = qs.filter(job_id=job_id)
         if status := self.params.get("status"):
             qs = qs.filter(status=status)
+        if search := self.params.get("search"):
+            qs = qs.filter(
+                Q(job__title__icontains=search)
+                | Q(applicant__full_name__icontains=search)
+                | Q(applicant__username__icontains=search)
+            )
         ordering = self.params.get("ordering", "-created_at")
         if ordering in ["created_at", "-created_at", "status", "-status"]:
             qs = qs.order_by(ordering)

@@ -1,5 +1,6 @@
 import random
 
+import factory
 from factory.declarations import (
     Iterator,
     LazyAttribute,
@@ -13,7 +14,7 @@ from factory.helpers import post_generation
 from apps.jobs.models import Job, JobCategory
 from apps.locations.tests.factories import LocationFactory
 from apps.skill.models import Skill
-from apps.users.models.user import User
+from apps.users.models import OrganizationProfile, User
 from apps.users.tests.factories import UserFactory
 from apps.utils.json_loader import load_json
 
@@ -22,6 +23,42 @@ categories = data["categories"]
 JOBS = data["jobs"]
 
 # ruff: noqa: S311
+
+_category_cache: dict[str, JobCategory] = {}
+
+# Keeps years-of-experience and salary bands internally consistent instead
+# of rolling three unrelated dice (e.g. a "Lead" role paying entry-level
+# salary with 1 year of experience required).
+_EXPERIENCE_YEARS_RANGE = {
+    Job.ExperienceLevel.ENTRY: (0, 2),
+    Job.ExperienceLevel.MID: (2, 5),
+    Job.ExperienceLevel.SENIOR: (5, 10),
+    Job.ExperienceLevel.LEAD: (8, 15),
+}
+
+# Rough monthly NPR salary bands by experience level.
+_SALARY_RANGE_NPR = {
+    Job.ExperienceLevel.ENTRY: (25_000, 45_000),
+    Job.ExperienceLevel.MID: (45_000, 80_000),
+    Job.ExperienceLevel.SENIOR: (80_000, 150_000),
+    Job.ExperienceLevel.LEAD: (150_000, 250_000),
+}
+
+
+def _get_category(name: str) -> JobCategory:
+    if name not in _category_cache:
+        _category_cache[name], _ = JobCategory.objects.get_or_create(name=name)
+    return _category_cache[name]
+
+
+def _random_poster_user():
+    """Pick a random non-admin user to post the job, falling back to
+    creating one so standalone `JobFactory()` calls still work without a
+    prior user-seeding step."""
+    qs = User.objects.exclude(account_type=User.AccountType.ADMIN)
+    if not qs.exists():
+        return UserFactory()
+    return random.choice(list(qs))
 
 
 class JobCategoryFactory(DjangoModelFactory):
@@ -39,23 +76,24 @@ class JobCategoryFactory(DjangoModelFactory):
 class JobFactory(DjangoModelFactory):
     class Meta:
         model = Job
+        exclude = ("seed_entry",)
 
     seed_entry = LazyFunction(lambda: random.choice(JOBS))
 
     title = LazyAttribute(lambda o: o.seed_entry["title"])
     description = LazyAttribute(lambda o: o.seed_entry["description"])
 
-    posted_by = LazyFunction(
-        lambda: random.choice(list(User.objects.all()))
-        if User.objects.exists()
-        else UserFactory()
+    thumbnail = factory.django.ImageField(color="gray")
+
+    posted_by = LazyFunction(_random_poster_user)
+
+    # A job posted by an organization account should belong to that
+    # organization; individual/freelance posters have none.
+    organization = LazyAttribute(
+        lambda o: OrganizationProfile.objects.filter(user=o.posted_by).first()
     )
 
-    category = LazyAttribute(
-        lambda o: JobCategory.objects.get_or_create(
-            name=o.seed_entry["category"]
-        )[0]
-    )
+    category = LazyAttribute(lambda o: _get_category(o.seed_entry["category"]))
 
     location = SubFactory(LocationFactory)
 
@@ -76,12 +114,14 @@ class JobFactory(DjangoModelFactory):
     experience_level = Faker(
         "random_element", elements=Job.ExperienceLevel.values
     )
-    experience_years = Faker("random_int", min=0, max=10)
-    salary_min = Faker(
-        "pydecimal", left_digits=4, right_digits=2, positive=True
+    experience_years = LazyAttribute(
+        lambda o: random.randint(*_EXPERIENCE_YEARS_RANGE[o.experience_level])
     )
-    salary_max = Faker(
-        "pydecimal", left_digits=4, right_digits=2, positive=True
+    salary_min = LazyAttribute(
+        lambda o: random.randint(*_SALARY_RANGE_NPR[o.experience_level])
+    )
+    salary_max = LazyAttribute(
+        lambda o: o.salary_min + random.randint(5_000, 40_000)
     )
     currency = "NPR"
     contact_email = Faker("email")
@@ -93,23 +133,16 @@ class JobFactory(DjangoModelFactory):
     benefits = LazyAttribute(lambda o: o.seed_entry["benefits"])
     deadline = Faker("date_between", start_date="+1d", end_date="+90d")
 
-    @classmethod
-    def _create(cls, model_class, *args, **kwargs):
-        # Pop seed_entry before creation so it doesn't go to the DB, but keep it for post_generation
-        seed_entry = kwargs.pop("seed_entry", None)
-        instance = super()._create(model_class, *args, **kwargs)
-        instance._seed_entry = seed_entry  # store temporarily on the instance
-        return instance
-
     @post_generation
     def skills_required(self, create, extracted, **kwargs):
         if not create:
             return
-        seed_entry = getattr(self, "_seed_entry", None)
-        if not seed_entry:
-            print("DEBUG: No seed_entry, skipping")
+
+        job = next((j for j in JOBS if j["title"] == self.title), None)
+        if not job:
             return
-        skill_names = seed_entry.get("skills", [])
+
+        skill_names = job.get("skills", [])
         skill_objs = []
         for name in skill_names:
             skill, _ = Skill.objects.get_or_create(name=name.strip().lower())

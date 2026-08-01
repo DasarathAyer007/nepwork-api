@@ -25,7 +25,12 @@ class ServiceListSerializer(serializers.ModelSerializer):
     is_currently_available = serializers.BooleanField(read_only=True)
     total_applies = serializers.IntegerField(read_only=True)
     is_saved = serializers.BooleanField(read_only=True)
+    has_applied = serializers.BooleanField(read_only=True)
+    my_active_request_id = serializers.SerializerMethodField()
     user = UserSerializer(read_only=True)
+
+    def get_my_active_request_id(self, obj):
+        return getattr(obj, "my_active_request_id", None)
 
     class Meta:
         model = Service
@@ -46,6 +51,8 @@ class ServiceListSerializer(serializers.ModelSerializer):
             "total_applies",
             "is_currently_available",
             "is_saved",
+            "has_applied",
+            "my_active_request_id",
         ]
 
 

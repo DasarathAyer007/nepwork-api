@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
 from apps.locations.serializers import LocationReadSerializer
@@ -5,11 +6,19 @@ from apps.users.serializers.ProfileReadSerializer import ProfileReadSerializer
 
 from ...models import Job, JobCategory
 
+User = get_user_model()
+
 
 class JobCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = JobCategory
         fields = ["id", "name", "icon", "color"]
+
+
+class JobPosterSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ["id", "username", "profile_picture"]
 
 
 class JobListSerializer(serializers.ModelSerializer):

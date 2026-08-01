@@ -52,6 +52,16 @@ class ServiceRequestQueryService:
         if priority := self.params.get("priority"):
             qs = qs.filter(priority=priority)
 
+        # Filter by search
+        if search := self.params.get("search"):
+            qs = qs.filter(
+                Q(service__title__icontains=search)
+                | Q(service__user__full_name__icontains=search)
+                | Q(service__user__username__icontains=search)
+                | Q(user__full_name__icontains=search)
+                | Q(user__username__icontains=search)
+            )
+
         # Ordering
         ordering = self.params.get("ordering", self.DEFAULT_ORDERING)
         if ordering in self.ALLOWED_ORDERING:

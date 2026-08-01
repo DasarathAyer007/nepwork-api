@@ -64,7 +64,8 @@ class JobApplication(TimeStampedModel, SoftDeleteModel):
         constraints = [
             models.UniqueConstraint(
                 fields=["job", "applicant"],
-                condition=models.Q(deleted_at__isnull=True),
+                condition=models.Q(deleted_at__isnull=True)
+                & ~models.Q(status__in=["rejected", "withdrawn"]),
                 name="unique_active_job_application_per_applicant",
             )
         ]
