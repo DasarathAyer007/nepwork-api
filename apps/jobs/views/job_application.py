@@ -10,6 +10,7 @@ from apps.notifications.tasks import notify_job_application
 from apps.user_activity.constants import ActivityType, ObjectType
 from apps.user_activity.mixins import ActivityTrackingMixin
 
+from ..permissions import IsJobApplicationOwnerOrAdmin
 from ..selectors.application import get_applications_base
 from ..serializers.job_application import (
     EmptyActionSerializer,
@@ -25,7 +26,7 @@ from ..services.job_application import (
 
 @extend_schema(tags=["Jobs/Applications"])
 class JobApplicationViewSet(ActivityTrackingMixin, viewsets.ModelViewSet):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, IsJobApplicationOwnerOrAdmin]
     lookup_field = "pk"
     activity_object_type = ObjectType.JOB
 
@@ -47,14 +48,23 @@ class JobApplicationViewSet(ActivityTrackingMixin, viewsets.ModelViewSet):
         return svc.apply_filters(qs)
 
     def perform_create(self, serializer):
-        serializer.save(applicant=self.request.user)
-        self.track_activity(
-            ActivityType.APPLY, object_id=serializer.instance.job_id
-        )
+        serializer.save()
+        if serializer.instance.applicant == self.request.user:
+            self.track_activity(
+                ActivityType.APPLY, object_id=serializer.instance.job_id
+            )
         application_id = str(serializer.instance.id)
         transaction.on_commit(
             lambda: notify_job_application.delay(application_id)
         )
+
+    @action(detail=False, methods=["get"], url_path="stats")
+    def stats(self, request):
+        svc = JobApplicationQueryService(
+            user=self.request.user,
+            params=self.request.query_params,
+        )
+        return Response(svc.status_counts())
 
     # Employer-driven status change: freely move an application to any
     # non-terminal status, optionally notifying the applicant via chat

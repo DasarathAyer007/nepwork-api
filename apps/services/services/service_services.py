@@ -3,7 +3,7 @@
 from django.contrib.gis.db.models.functions import Distance
 from django.contrib.gis.geos import Point
 from django.contrib.gis.measure import D
-from django.db.models import F, Q, QuerySet
+from django.db.models import Count, F, Q, QuerySet
 from django.utils import timezone
 from rest_framework.exceptions import ValidationError
 
@@ -30,9 +30,34 @@ class ServiceQueryService:
         self.params = params or {}
 
     def list_services(self) -> QuerySet:
-        qs = selectors.get_active_services(self.user)
+        qs = (
+            selectors.get_base_service_queryset(self.user)
+            if self._is_admin()
+            else selectors.get_active_services(self.user)
+        )
         qs = self._apply_filters(qs)
         return self._apply_geo_if_provided(qs)
+
+    def status_counts(self) -> dict:
+        """Real counts per service status, from the database, for admin dashboards."""
+        qs = (
+            selectors.get_base_service_queryset(self.user)
+            if self._is_admin()
+            else selectors.get_active_services(self.user)
+        )
+        qs = self._apply_filters(qs, skip_ordering=True, skip_status=True)
+        counts = {status: 0 for status, _ in Service.ServiceStatus.choices}
+        for row in qs.values("status").annotate(count=Count("id")):
+            counts[row["status"]] = row["count"]
+        counts["total"] = sum(counts.values())
+        return counts
+
+    def _is_admin(self):
+        return bool(
+            self.user
+            and self.user.is_authenticated
+            and getattr(self.user, "account_type", None) == "admin"
+        )
 
     def retrieve_queryset(self) -> QuerySet:
         return selectors.get_base_service_queryset(self.user)
@@ -45,7 +70,7 @@ class ServiceQueryService:
 
     def trending(self) -> QuerySet:
         qs = selectors.get_trending_services(self.user)
-        qs = self._apply_filters(qs, skip_ordering=True)
+        qs = self._apply_filters(qs, skip_ordering=True, skip_status=True)
         return self._apply_geo_if_provided(qs)
 
     def saved(self) -> QuerySet:
@@ -71,6 +96,8 @@ class ServiceQueryService:
         qs = self._filter_price(qs)
         if not skip_status:
             qs = self._filter_status(qs)
+            if self._is_admin() and (status := self.params.get("status")):
+                qs = qs.filter(status=status)
         qs = self._filter_category(qs)
         qs = self._filter_skills(qs)
         qs = self._filter_location_text(qs)

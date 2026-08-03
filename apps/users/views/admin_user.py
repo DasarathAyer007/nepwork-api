@@ -66,3 +66,11 @@ class AdminUserUpdateView(UpdateAPIView):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(AdminUserListSerializer(admin_profile.user).data)
+
+
+class CandidateUserListView(ListAPIView):
+    serializer_class = AdminUserListSerializer
+    permission_classes = [IsAuthenticated, HasPermission("users.view")]
+    queryset = User.objects.filter(
+        account_type=User.AccountType.PERSONAL
+    ).order_by("-date_joined")

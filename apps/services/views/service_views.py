@@ -78,6 +78,13 @@ class ServiceViewSet(ActivityTrackingMixin, viewsets.ModelViewSet):
             )
         return response
 
+    @action(detail=False, methods=["get"], url_path="stats")
+    def stats(self, request):
+        svc = ServiceQueryService(
+            user=request.user, params=request.query_params
+        )
+        return Response(svc.status_counts())
+
     # Listing methods
     @action(detail=False, methods=["get"])
     def near_me(self, request):

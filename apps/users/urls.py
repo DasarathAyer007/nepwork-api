@@ -2,7 +2,11 @@ from django.urls import path
 
 from apps.users.views.profile import UpdateProfileView
 
-from .views.admin_user import AdminUserListView, AdminUserUpdateView
+from .views.admin_user import (
+    AdminUserListView,
+    AdminUserUpdateView,
+    CandidateUserListView,
+)
 from .views.auth import (
     CustomTokenRefreshView,
     FacebookLoginView,
@@ -40,6 +44,7 @@ urlpatterns = [
     path("admin/create", AdminCreateView.as_view()),
     path("admin/users", AdminUserListView.as_view()),
     path("admin/users/<uuid:id>", AdminUserUpdateView.as_view()),
+    path("admin/candidates", CandidateUserListView.as_view()),
     path("profile/<uuid:id>", ProfileDetailView.as_view()),
     path("profile/<str:username>", ProfileDetailView.as_view()),
     path("<uuid:user_id>/location", UserLocationView.as_view()),

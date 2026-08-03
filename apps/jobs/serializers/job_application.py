@@ -66,41 +66,37 @@ class JobApplicationReadSerializer(serializers.ModelSerializer):
 
 
 class JobApplicationWriteSerializer(serializers.ModelSerializer):
+    applicant = serializers.PrimaryKeyRelatedField(
+        queryset=User.objects.all(), required=False, allow_null=True
+    )
+    status = serializers.ChoiceField(
+        choices=JobApplication.ApplicationStatus.choices, required=False
+    )
+
     class Meta:
         model = JobApplication
         fields = [
             "job",
+            "applicant",
             "resume",
             "cover_letter",
+            "status",
             "expected_salary",
             "years_of_experience",
             "notes",
-            "expected_salary",
         ]
 
     def validate_job(self, value):
-        if value.status != Job.JobStatus.OPEN:
-            raise serializers.ValidationError(
-                "Job is not open for applications."
-            )
         user = self.context["request"].user
-        if value.posted_by == user:
-            raise serializers.ValidationError("Cannot apply to your own job.")
-
-        existing = JobApplication.objects.filter(
-            job=value, applicant=user
-        ).exclude(
-            status__in=[
-                JobApplication.ApplicationStatus.WITHDRAWN,
-                JobApplication.ApplicationStatus.REJECTED,
-            ]
-        )
-        if self.instance is not None:
-            existing = existing.exclude(pk=self.instance.pk)
-        if existing.exists():
-            raise serializers.ValidationError(
-                "You have already applied to this job."
-            )
+        if user.account_type != "admin":
+            if value.status != Job.JobStatus.OPEN:
+                raise serializers.ValidationError(
+                    "Job is not open for applications."
+                )
+            if value.posted_by == user:
+                raise serializers.ValidationError(
+                    "Cannot apply to your own job."
+                )
         return value
 
     def validate_resume(self, value):
@@ -116,17 +112,77 @@ class JobApplicationWriteSerializer(serializers.ModelSerializer):
         return value
 
     def validate_cover_letter(self, value):
+        user = self.context["request"].user
+        if user.account_type == "admin":
+            return value or ""
         return clean_and_validate_rich_text(
             value, min_length=50, max_length=None
         )
 
+    def validate(self, attrs):
+        user = self.context["request"].user
+
+        applicant = attrs.get("applicant")
+        if self.instance is None:
+            if applicant is None:
+                if user.account_type != "admin":
+                    applicant = user
+                    attrs["applicant"] = user
+                else:
+                    raise serializers.ValidationError(
+                        {"applicant": "Applicant is required for admins."}
+                    )
+        else:
+            applicant = attrs.get("applicant", self.instance.applicant)
+
+        job = attrs.get("job", self.instance.job if self.instance else None)
+
+        if job and applicant:
+            existing = JobApplication.objects.filter(
+                job=job, applicant=applicant, deleted_at__isnull=True
+            ).exclude(
+                status__in=[
+                    JobApplication.ApplicationStatus.WITHDRAWN,
+                    JobApplication.ApplicationStatus.REJECTED,
+                ]
+            )
+            if self.instance is not None:
+                existing = existing.exclude(pk=self.instance.pk)
+            if existing.exists():
+                raise serializers.ValidationError(
+                    {
+                        "non_field_errors": "An active application already exists for this applicant and job."
+                    }
+                )
+
+        if (
+            "status" in attrs
+            and attrs["status"] != JobApplication.ApplicationStatus.APPLIED
+        ) and user.account_type != "admin":
+            raise serializers.ValidationError(
+                {"status": "Only admins can set a custom status."}
+            )
+
+        return attrs
+
     def create(self, validated_data):
+        user = self.context["request"].user
+        if user.account_type == "admin":
+            validated_data["reviewed_by"] = user
         try:
             return JobApplication.objects.create(**validated_data)
         except IntegrityError as exc:
             raise serializers.ValidationError(
-                {"job": "You have already applied to this job."}
+                {
+                    "job": "An active application already exists for this applicant and job."
+                }
             ) from exc
+
+    def update(self, instance, validated_data):
+        user = self.context["request"].user
+        if user.account_type == "admin":
+            validated_data["reviewed_by"] = user
+        return super().update(instance, validated_data)
 
 
 class EmptyActionSerializer(serializers.Serializer):

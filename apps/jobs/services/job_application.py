@@ -1,12 +1,13 @@
 # jobs/query_service_applications.py
 from django.db import transaction
-from django.db.models import Q
+from django.db.models import Count, Q
 from jsonschema import ValidationError
 from rest_framework.exceptions import PermissionDenied
 
 from apps.notifications.tasks import notify_job_application_status_changed
 
 from ..models import JobApplication
+from ..selectors.application import get_applications_base
 from .application_notifications import notify_application_status_change
 
 
@@ -15,7 +16,7 @@ class JobApplicationQueryService:
         self.user = user
         self.params = params or {}
 
-    def apply_filters(self, qs):
+    def _apply_filters_internal(self, qs, skip_status=False):
         if not self.user.is_authenticated:
             return qs.none()
         # If not admin, restrict to own applications or applications to own jobs
@@ -28,7 +29,7 @@ class JobApplicationQueryService:
             qs = qs.filter(job__posted_by=self.user)
         if job_id := self.params.get("job_id"):
             qs = qs.filter(job_id=job_id)
-        if status := self.params.get("status"):
+        if not skip_status and (status := self.params.get("status")):
             qs = qs.filter(status=status)
         if search := self.params.get("search"):
             qs = qs.filter(
@@ -36,10 +37,35 @@ class JobApplicationQueryService:
                 | Q(applicant__full_name__icontains=search)
                 | Q(applicant__username__icontains=search)
             )
+        if salary_min := self.params.get("expected_salary_min"):
+            qs = qs.filter(expected_salary__gte=salary_min)
+        if salary_max := self.params.get("expected_salary_max"):
+            qs = qs.filter(expected_salary__lte=salary_max)
+        if exp_min := self.params.get("years_of_experience_min"):
+            qs = qs.filter(years_of_experience__gte=exp_min)
+        if exp_max := self.params.get("years_of_experience_max"):
+            qs = qs.filter(years_of_experience__lte=exp_max)
+        return qs
+
+    def apply_filters(self, qs):
+        qs = self._apply_filters_internal(qs)
         ordering = self.params.get("ordering", "-created_at")
         if ordering in ["created_at", "-created_at", "status", "-status"]:
             qs = qs.order_by(ordering)
         return qs
+
+    def status_counts(self) -> dict:
+        if not self.user.is_authenticated:
+            return {}
+        qs = get_applications_base(user=self.user)
+        qs = self._apply_filters_internal(qs, skip_status=True)
+        counts = {
+            status: 0 for status, _ in JobApplication.ApplicationStatus.choices
+        }
+        for row in qs.values("status").annotate(count=Count("id")):
+            counts[row["status"]] = row["count"]
+        counts["total"] = sum(counts.values())
+        return counts
 
 
 class ApplicationTransitionService:
@@ -123,9 +149,9 @@ class ApplicationTransitionService:
 
     @classmethod
     def _authorize_employer(cls, application, user):
-        if user != application.job.posted_by:
+        if user.account_type != "admin" and user != application.job.posted_by:
             raise PermissionDenied(
-                "Only the job owner can update this application's status."
+                "Only the job owner or an admin can update this application's status."
             )
 
     @classmethod
