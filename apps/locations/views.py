@@ -12,7 +12,7 @@ from apps.locations.serializers import (
     ReverseGeocodeQuerySerializer,
 )
 
-from .services import LocationService
+from .services import LocationService, SearchService
 
 
 class LocationViewSet(ModelViewSet):
@@ -46,3 +46,14 @@ class ReverseGeocodingView(APIView):
             )
 
         return Response(location_data)
+
+
+class SearchSuggestionView(APIView):
+    # permission_classes = [IsAuthenticated]
+
+    def get(self, request, format=None):
+        query = request.query_params.get("search", "")
+        if not query or len(query) < 3:
+            return Response({"suggestions": []})
+        suggestions = SearchService.get_search_suggestions(query)
+        return Response({"suggestions": suggestions})

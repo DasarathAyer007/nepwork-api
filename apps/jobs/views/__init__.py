@@ -1,4 +1,9 @@
-from .job import JobLocationUpdateView, JobSalaryUpdateView, JobViewSet
+from .job import (
+    JobLocationUpdateView,
+    JobSalaryUpdateView,
+    JobViewSet,
+    SearchSuggestionView,
+)
 from .job_application import JobApplicationViewSet
 from .job_category import JobCategoryViewSet
 from .job_save import JobSavedViewSet
@@ -10,4 +15,5 @@ __all__ = [
     "JobSalaryUpdateView",
     "JobSavedViewSet",
     "JobViewSet",
+    "SearchSuggestionView",
 ]

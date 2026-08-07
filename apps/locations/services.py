@@ -1,11 +1,14 @@
 import logging
 
 import requests
+from django.db.models import Q
 
 from config.geo_coding import (
     REVERSE_GEOCODING_API_KEY,
     REVERSE_GEOCODING_API_URL,
 )
+
+from .models import Location
 
 logger = logging.getLogger(__name__)
 
@@ -83,3 +86,23 @@ class LocationService:
             "latitude": properties.get("lat"),
             "longitude": properties.get("lon"),
         }
+
+
+class SearchService:
+    @staticmethod
+    def get_search_suggestions(query: str) -> list:
+        if not query:
+            return []
+        qs = (
+            Location.objects.filter(
+                Q(city__icontains=query)
+                | Q(state__icontains=query)
+                | Q(country__icontains=query)
+                | Q(postal_code__icontains=query)
+                | Q(address__icontains=query)
+            )
+            .values("id", "city", "state", "address")
+            .distinct()[:15]
+        )
+
+        return list(qs)

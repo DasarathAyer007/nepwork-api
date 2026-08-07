@@ -279,3 +279,20 @@ class JobQueryService:
                     raise ValidationError({"lng": "Must be -180..180"})
             except (TypeError, ValueError):
                 raise ValidationError({"lng": "Invalid number"})
+
+
+class SearchService:
+    @staticmethod
+    def get_search_suggestions(query: str) -> QuerySet:
+        if not query:
+            return Job.objects.none()
+
+        return (
+            Job.objects.filter(
+                Q(title__icontains=query)
+                | Q(skills_required__name__icontains=query),
+                status=Job.JobStatus.OPEN,
+            )
+            .distinct()
+            .values("id", "title", "slug")[:10]
+        )

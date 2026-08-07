@@ -2,6 +2,7 @@ import json
 from typing import cast
 
 from django.conf import settings
+from django.db.models import Case, QuerySet, When
 from redis import Redis
 
 DEFAULT_TTL_SECONDS = getattr(
@@ -66,3 +67,38 @@ class RecommendationCache:
 
     def exists(self, user_id, feed_type):
         return self.redis.exists(self._key(user_id, feed_type)) == 1
+
+
+def get_ranked_ids(
+    user_id,
+    feed_type: str,
+    top_n: int = 20,
+    cache: RecommendationCache | None = None,
+) -> list[str]:
+    """Cached ids for a feed, generating (and caching) them on a miss."""
+    cache = cache or RecommendationCache()
+    cached = cache.get(user_id, feed_type)
+    if cached is None:
+        from .recommender import generate_for_user
+
+        result = generate_for_user(user_id, top_n=top_n, cache=cache)
+        cached = result[feed_type]
+
+    return [item["id"] for item in cached[:top_n]]
+
+
+def reorder_queryset(
+    queryset: QuerySet, ordered_ids: list[str], pk_field: str = "id"
+) -> QuerySet:
+    """Case/When preserved-order technique, so DB filtering stays untouched."""
+    if not ordered_ids:
+        return queryset.none()
+    preserved = Case(
+        *[
+            When(**{pk_field: pk}, then=pos)
+            for pos, pk in enumerate(ordered_ids)
+        ]
+    )
+    return queryset.filter(**{f"{pk_field}__in": ordered_ids}).order_by(
+        preserved
+    )

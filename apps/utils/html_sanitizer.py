@@ -51,6 +51,91 @@ def sanitize_rich_text(value: str) -> str:
     )
 
 
+SVG_ALLOWED_TAGS = [
+    "svg",
+    "g",
+    "path",
+    "circle",
+    "ellipse",
+    "line",
+    "polyline",
+    "polygon",
+    "rect",
+    "text",
+    "tspan",
+    "defs",
+    "linearGradient",
+    "radialGradient",
+    "stop",
+    "clipPath",
+    "mask",
+    "title",
+    "desc",
+]
+
+# html5lib parses SVG as foreign content and restores the "correct" mixed
+# case for known tag/attribute names (e.g. viewBox, linearGradient) — the
+# allow-list below must match that casing exactly or bleach silently drops
+# the tag/attribute as unrecognized.
+SVG_ALLOWED_ATTRIBUTES = {
+    "*": [
+        "id",
+        "class",
+        "transform",
+        "fill",
+        "fill-opacity",
+        "fill-rule",
+        "stroke",
+        "stroke-width",
+        "stroke-linecap",
+        "stroke-linejoin",
+        "stroke-dasharray",
+        "stroke-opacity",
+        "opacity",
+        "clip-path",
+        "mask",
+    ],
+    "svg": ["xmlns", "viewBox", "width", "height", "preserveAspectRatio"],
+    "path": ["d"],
+    "circle": ["cx", "cy", "r"],
+    "ellipse": ["cx", "cy", "rx", "ry"],
+    "line": ["x1", "y1", "x2", "y2"],
+    "polyline": ["points"],
+    "polygon": ["points"],
+    "rect": ["x", "y", "width", "height", "rx", "ry"],
+    "text": ["x", "y", "dx", "dy", "text-anchor", "font-size", "font-family"],
+    "tspan": ["x", "y", "dx", "dy"],
+    "linearGradient": [
+        "x1",
+        "y1",
+        "x2",
+        "y2",
+        "gradientUnits",
+        "gradientTransform",
+    ],
+    "radialGradient": ["cx", "cy", "r", "fx", "fy", "gradientUnits"],
+    "stop": ["offset", "stop-color", "stop-opacity"],
+    "clipPath": ["clipPathUnits"],
+    "mask": ["maskUnits"],
+}
+
+
+def sanitize_svg(value: str) -> str:
+    """Strip an uploaded SVG down to safe drawing tags/attributes.
+
+    Removes `<script>`, event-handler attributes, and any other tag or
+    attribute not on the allow-list, so an admin-uploaded icon can't smuggle
+    executable content into a page that renders it inline.
+    """
+    return clean(
+        value,
+        tags=SVG_ALLOWED_TAGS,
+        attributes=SVG_ALLOWED_ATTRIBUTES,
+        protocols=[],
+        strip=True,
+    )
+
+
 def clean_and_validate_rich_text(
     value: str,
     *,

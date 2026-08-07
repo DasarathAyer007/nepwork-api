@@ -2,6 +2,7 @@ from django.urls import include, path
 from rest_framework.routers import DefaultRouter
 
 from .views import (
+    SearchSuggestionView,
     ServiceCategoryViewSet,
     ServiceLocationUpdateView,
     ServicePricingUpdateView,
@@ -19,8 +20,9 @@ router.register("", ServiceViewSet)
 
 
 urlpatterns = [
-    path("", include(router.urls)),
     path("<uuid:pk>/radius/", ServiceRadiusUpdateView.as_view()),
     path("<uuid:pk>/pricing/", ServicePricingUpdateView.as_view()),
     path("<uuid:pk>/location/", ServiceLocationUpdateView.as_view()),
+    path("search-suggestions/", SearchSuggestionView.as_view()),
+    path("", include(router.urls)),
 ]

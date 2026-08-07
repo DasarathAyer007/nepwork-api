@@ -15,11 +15,10 @@ def update_user_recommendations(self, user_id):
     recommendation feeds in Redis. Never touches Postgres for storage —
     read-only queries against Job/Service only.
     """
-    from .services.engine import RecommendationEngine
+    from .services.recommender import generate_for_user
 
     try:
-        engine = RecommendationEngine()
-        result = engine.generate_for_user(user_id)
+        result = generate_for_user(user_id)
         logger.info(
             "Recomputed recommendations for user_id=%s (jobs=%d, services=%d)",
             user_id,

@@ -5,8 +5,9 @@ from rest_framework import generics, viewsets
 from rest_framework.decorators import action
 from rest_framework.exceptions import ValidationError
 from rest_framework.response import Response
+from rest_framework.views import APIView
 
-from apps.recommendations.services.reader import RecommendationReadService
+from apps.recommendations.services.cache import get_ranked_ids, reorder_queryset
 from apps.user_activity.constants import ActivityType, ObjectType
 from apps.user_activity.mixins import ActivityTrackingMixin
 
@@ -21,7 +22,7 @@ from ..serializers import (
     ServiceRadiusSerializer,
     ServiceWriteSerializer,
 )
-from ..services.service_services import ServiceQueryService
+from ..services.service_services import SearchService, ServiceQueryService
 
 
 @extend_schema(tags=["Services"])
@@ -105,13 +106,8 @@ class ServiceViewSet(ActivityTrackingMixin, viewsets.ModelViewSet):
     def recommended(self, request):
         if not request.user or not request.user.is_authenticated:
             raise ValidationError("Authentication required.")
-        reader = RecommendationReadService()
-        ordered_ids = reader.get_ranked_ids(
-            request.user.id, "services", top_n=100
-        )
-        qs = reader.reorder_queryset(
-            get_active_services(request.user), ordered_ids
-        )
+        ordered_ids = get_ranked_ids(request.user.id, "services", top_n=100)
+        qs = reorder_queryset(get_active_services(request.user), ordered_ids)
         return self._list_response(qs)
 
     @action(detail=False, methods=["get"], url_path="saved")
@@ -144,6 +140,16 @@ class ServiceViewSet(ActivityTrackingMixin, viewsets.ModelViewSet):
             return self.get_paginated_response(serializer.data)
         serializer = self.get_serializer(qs, many=True)
         return Response(serializer.data)
+
+
+@extend_schema(tags=["Services"])
+class SearchSuggestionView(APIView):
+    def get(self, request):
+        query = request.query_params.get("search", "")
+        if not query or len(query) < 3:
+            return Response({"suggestions": []})
+        suggestions = SearchService.get_search_suggestions(query)
+        return Response({"suggestions": suggestions})
 
 
 # Separate partial update views

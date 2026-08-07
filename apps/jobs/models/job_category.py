@@ -1,5 +1,6 @@
 from uuid import uuid7
 
+from django.core.validators import FileExtensionValidator
 from django.db import models
 
 from apps.utils.models import SoftDeleteModel, TimeStampedModel
@@ -10,10 +11,12 @@ class JobCategory(TimeStampedModel, SoftDeleteModel):
     name = models.CharField(max_length=50, unique=True)
     description = models.TextField(blank=True)
     is_active = models.BooleanField(default=True)
-    icon = models.CharField(
-        max_length=100,
+    icon = models.FileField(
+        upload_to="job_category/",
         blank=True,
-        help_text="Optional icon name or identifier",
+        null=True,
+        validators=[FileExtensionValidator(allowed_extensions=["svg"])],
+        help_text="Custom SVG icon uploaded by admin",
     )
     color = models.CharField(
         max_length=10,

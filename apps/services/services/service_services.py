@@ -252,3 +252,20 @@ class ServiceQueryService:
                     raise ValidationError({"lng": "Must be -180..180"})
             except (TypeError, ValueError):
                 raise ValidationError({"lng": "Invalid number"})
+
+
+class SearchService:
+    @staticmethod
+    def get_search_suggestions(query: str) -> list:
+        if not query:
+            return []
+        qs = (
+            Service.objects.filter(
+                Q(title__icontains=query) | Q(skills__name__icontains=query),
+                status=Service.ServiceStatus.ACTIVE,
+            )
+            .values("id", "title", "slug")
+            .distinct()[:10]
+        )
+
+        return list(qs)

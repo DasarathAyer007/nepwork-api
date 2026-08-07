@@ -8,6 +8,7 @@ from .views import (
     JobSalaryUpdateView,
     JobSavedViewSet,
     JobViewSet,
+    SearchSuggestionView,
 )
 
 router = DefaultRouter()
@@ -19,7 +20,8 @@ router.register(r"saved", JobSavedViewSet, basename="jobsaved")
 router.register(r"", JobViewSet, basename="job")
 
 urlpatterns = [
-    path("", include(router.urls)),
     path("jobs/<uuid:pk>/salary/", JobSalaryUpdateView.as_view()),
     path("jobs/<uuid:pk>/location/", JobLocationUpdateView.as_view()),
+    path("search-suggestions/", SearchSuggestionView.as_view()),
+    path("", include(router.urls)),
 ]

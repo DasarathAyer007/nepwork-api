@@ -132,6 +132,9 @@ class IsOwnerAdminOrReadOnly(BasePermission):
     def has_object_permission(
         self, request: Request, view: APIView, obj: object
     ) -> bool:
+        if request.method in SAFE_METHODS:
+            return True
+
         user = get_user(request)
 
         if user is None:
@@ -139,9 +142,6 @@ class IsOwnerAdminOrReadOnly(BasePermission):
 
         owner_id = getattr(obj, f"{self.owner_field}_id", None)
         if owner_id == user.id:
-            return True
-
-        if request.method in SAFE_METHODS and self.resource is None:
             return True
 
         if user.is_superuser:
