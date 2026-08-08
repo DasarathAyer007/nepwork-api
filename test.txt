@@ -1,0 +1,4 @@
+Username (leave blank to use 'dasarath'):
+Email address: dasarath@gmail.com
+
+password : admin@123
