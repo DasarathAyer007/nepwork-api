@@ -128,6 +128,18 @@ class Job(TimeStampedModel, SoftDeleteModel):
 
     deadline = models.DateField(null=True, blank=True)
 
+    class Meta:
+        indexes = [
+            models.Index(fields=["created_at"], name="job_created_at_idx"),
+            models.Index(
+                fields=["status", "created_at"], name="job_status_created_idx"
+            ),
+            models.Index(
+                fields=["job_type", "created_at"],
+                name="job_type_created_idx",
+            ),
+        ]
+
     def save(self, *args: Any, **kwargs: Any) -> None:
         if not self.slug:
             self.slug = generate_unique_slug(Job, self.title)

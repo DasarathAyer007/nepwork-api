@@ -99,6 +99,14 @@ class Service(TimeStampedModel, SoftDeleteModel):
     available_from = models.TimeField(null=True, blank=True)
     available_to = models.TimeField(null=True, blank=True)
 
+    class Meta:
+        indexes = [
+            models.Index(
+                fields=["status", "created_at"],
+                name="service_status_created_idx",
+            ),
+        ]
+
     def __str__(self) -> str:
         return (
             f"{self.title} unavailable "

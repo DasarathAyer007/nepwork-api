@@ -68,6 +68,7 @@ INSTALLED_APPS = [
     "apps.websockets",
     "apps.recommendations",
     "apps.user_activity",
+    "apps.analytics",
 ]
 
 REST_FRAMEWORK = {

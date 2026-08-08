@@ -85,6 +85,17 @@ class User(AbstractUser, TimeStampedModel):
 
     social_links = models.JSONField(default=dict, blank=True)
 
+    class Meta:
+        indexes = [
+            models.Index(
+                fields=["account_type", "date_joined"],
+                name="user_accttype_joined_idx",
+            ),
+            models.Index(
+                fields=["last_active_at"], name="user_last_active_idx"
+            ),
+        ]
+
     def __str__(self) -> str:
         return self.full_name if self.full_name else self.username
 

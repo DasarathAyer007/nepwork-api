@@ -42,6 +42,7 @@ class JobApplication(TimeStampedModel, SoftDeleteModel):
         max_length=20,
         choices=ApplicationStatus.choices,
         default=ApplicationStatus.APPLIED,
+        db_index=True,
     )
 
     expected_salary = models.DecimalField(
@@ -68,6 +69,15 @@ class JobApplication(TimeStampedModel, SoftDeleteModel):
                 & ~models.Q(status__in=["rejected", "withdrawn"]),
                 name="unique_active_job_application_per_applicant",
             )
+        ]
+        indexes = [
+            models.Index(
+                fields=["status", "created_at"],
+                name="jobapp_status_created_idx",
+            ),
+            models.Index(
+                fields=["job", "status"], name="jobapp_job_status_idx"
+            ),
         ]
 
     def __str__(self) -> str:

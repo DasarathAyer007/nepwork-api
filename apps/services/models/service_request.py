@@ -89,5 +89,17 @@ class ServiceRequest(TimeStampedModel, SoftDeleteModel):
         blank=True,
     )
 
+    class Meta:
+        indexes = [
+            models.Index(
+                fields=["status", "created_at"],
+                name="svcreq_status_created_idx",
+            ),
+            models.Index(
+                fields=["status", "completed_at"],
+                name="svcreq_status_completed_idx",
+            ),
+        ]
+
     def __str__(self) -> str:
         return f"{self.user} → {self.service} ({self.status})"
