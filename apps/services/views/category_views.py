@@ -25,7 +25,9 @@ class ServiceCategoryViewSet(viewsets.ModelViewSet):
     @action(detail=False, methods=["get"], url_path="popular")
     def popular(self, request):
         qs = get_popular_categories(limit=self._get_limit(request))
-        serializer = PopularCategorySerializer(qs, many=True)
+        serializer = PopularCategorySerializer(
+            qs, many=True, context={"request": request}
+        )
         return Response(serializer.data)
 
     def _get_limit(self, request):

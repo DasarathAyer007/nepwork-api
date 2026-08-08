@@ -14,6 +14,7 @@ class UserSerializer(serializers.ModelSerializer):
     """Declares all user fields. Filtering happens in BaseProfileSerializer."""
 
     profile_picture = serializers.SerializerMethodField()
+    is_onboarded = serializers.SerializerMethodField()
 
     class Meta:
         model = User
@@ -29,6 +30,7 @@ class UserSerializer(serializers.ModelSerializer):
             "date_joined",
             "last_login",
             "social_links",
+            "is_onboarded",
         )
 
     def get_profile_picture(self, instance) -> str | None:
@@ -36,6 +38,9 @@ class UserSerializer(serializers.ModelSerializer):
         # when the user hasn't uploaded a profile picture of their own.
         request = self.context.get("request")
         return instance.get_absolute_avatar_url(request)
+
+    def get_is_onboarded(self, instance) -> bool:
+        return instance.is_onboarded()
 
 
 class BaseProfileSerializer(serializers.ModelSerializer):
@@ -55,6 +60,7 @@ class BaseProfileSerializer(serializers.ModelSerializer):
             "last_login",
             "location",
             "social_links",
+            "is_onboarded",
         ),
         "public": (
             "id",
@@ -65,14 +71,22 @@ class BaseProfileSerializer(serializers.ModelSerializer):
             "bio",
             "location",
             "social_links",
+            "is_onboarded",
         ),
-        "limited": ("id", "username", "full_name", "profile_picture"),
+        "limited": (
+            "id",
+            "username",
+            "full_name",
+            "profile_picture",
+            "is_onboarded",
+        ),
         "private": (
             "id",
             "username",
             "profile_picture",
             "cover_photo",
             "bio",
+            "is_onboarded",
         ),
     }
 
@@ -132,19 +146,19 @@ class BaseProfileSerializer(serializers.ModelSerializer):
 class PersonalProfileSerializer(BaseProfileSerializer):
     VISIBILITY_FIELDS = {
         "full": (
-            "date_of_birth",
+            "age",
             "gender",
             "skills",
             "interests",
         ),
         "public": (
-            "date_of_birth",
+            "age",
             "gender",
             "skills",
             "interests",
         ),
         "limited": (
-            "date_of_birth",
+            "age",
             "gender",
             "skills",
             "interests",
@@ -156,7 +170,7 @@ class PersonalProfileSerializer(BaseProfileSerializer):
     class Meta:
         model = PersonalProfile
         fields = (
-            "date_of_birth",
+            "age",
             "gender",
             "skills",
             "interests",
@@ -242,12 +256,18 @@ class ProfileReadSerializer(serializers.Serializer):
         account_type = getattr(instance, "account_type", None)
 
         if account_type == User.AccountType.PERSONAL:
+            if not hasattr(instance, "personal_profile"):
+                return self._not_onboarded(instance, "personal")
+
             serializer = PersonalProfileSerializer(
                 instance.personal_profile,
                 context=self.context,
             )
             account_type = "personal"
         elif account_type == User.AccountType.ORGANIZATION:
+            if not hasattr(instance, "organization_profile"):
+                return self._not_onboarded(instance, "organization")
+
             serializer = OrganizationProfileSerializer(
                 instance.organization_profile,
                 context=self.context,
@@ -266,3 +286,10 @@ class ProfileReadSerializer(serializers.Serializer):
             return {"error": "Profile not found for the given user."}
 
         return {**serializer.data, "account_type": account_type}
+
+    def _not_onboarded(self, instance, account_type: str) -> dict[str, Any]:
+        return {
+            "is_onboarded": False,
+            "account_type": account_type,
+            "user": UserSerializer(instance, context=self.context).data,
+        }

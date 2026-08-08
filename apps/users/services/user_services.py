@@ -36,9 +36,6 @@ class UserService:
         user.set_password(password)
         user.save()
 
-        # 2. Create the matching empty profile
-        UserService._create_default_profile(user)
-
         OTPService.send_signup_otp(user)
 
         return user
@@ -78,26 +75,6 @@ class UserService:
         )
 
         return user
-
-    @staticmethod
-    def _create_default_profile(user: User) -> None:
-        """Creates an empty profile record based on account_type."""
-        if user.account_type == User.AccountType.PERSONAL:
-            PersonalProfile.objects.create(
-                user=user,
-                date_of_birth=None,
-                interests=[],
-            )
-
-        elif user.account_type == User.AccountType.ORGANIZATION:
-            OrganizationProfile.objects.create(
-                user=user,
-                employees_count=None,
-                founded_at=None,
-                address="",
-                tax_id="",
-                is_verified=False,
-            )
 
 
 class ProfileService:

@@ -104,13 +104,21 @@ class BaseProfileWriteSerializer(
 
     def to_internal_value(self, data):
         if hasattr(data, "dict"):
+            list_field_names = {
+                name
+                for name, field in self.fields.items()
+                if isinstance(field, serializers.ListField)
+            }
+
             mutable_data = {}
 
             for key in data:
                 values = data.getlist(key)
 
-                # preserve multiple values like skills
-                if len(values) > 1:
+                # preserve multiple values, and always keep declared list
+                # fields (e.g. skills, interests) as a list even when only
+                # one value was submitted.
+                if len(values) > 1 or key in list_field_names:
                     mutable_data[key] = values
                 else:
                     mutable_data[key] = values[0]
@@ -235,9 +243,6 @@ class BaseProfileWriteSerializer(
         if phone_number is not None:
             user_updates["phone_number"] = phone_number
 
-        print("USER UPDATES:")
-        print(user_updates)
-
         if user_updates:
             for attr, value in user_updates.items():
                 setattr(
@@ -249,11 +254,6 @@ class BaseProfileWriteSerializer(
             user.save(update_fields=list(user_updates.keys()))
 
             user.refresh_from_db()
-
-            print(
-                "AFTER DB SAVE:",
-                user.social_links,
-            )
 
         return user
 
@@ -296,7 +296,11 @@ class PersonalProfileWriteSerializer(BaseProfileWriteSerializer):
         required=False,
     )
 
-    date_of_birth = serializers.DateField(required=False)
+    age = serializers.IntegerField(
+        required=False,
+        min_value=13,
+        max_value=120,
+    )
 
     class Meta:
         model = PersonalProfile
@@ -308,21 +312,12 @@ class PersonalProfileWriteSerializer(BaseProfileWriteSerializer):
             "profile_picture",
             "cover_photo",
             "social_links",
-            "date_of_birth",
+            "age",
             "gender",
             "skills",
             "interests",
         ]
         read_only_fields = ["id"]
-
-    def validate_date_of_birth(
-        self,
-        value: date,
-    ) -> date:
-        return self._reject_future(
-            value,
-            "Date of birth",
-        )
 
     def validate_skills(
         self,

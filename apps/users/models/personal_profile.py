@@ -1,5 +1,6 @@
 from uuid import uuid7
 
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
 from apps.skill.models import Skill
@@ -21,7 +22,11 @@ class PersonalProfile(TimeStampedModel):
         User, on_delete=models.CASCADE, related_name="personal_profile"
     )
 
-    date_of_birth = models.DateField(blank=True, null=True)
+    age = models.PositiveSmallIntegerField(
+        blank=True,
+        null=True,
+        validators=[MinValueValidator(13), MaxValueValidator(120)],
+    )
 
     gender = models.CharField(
         max_length=20,

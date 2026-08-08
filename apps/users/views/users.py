@@ -1,3 +1,6 @@
+import json
+
+from django.db import transaction
 from rest_framework import status
 from rest_framework.exceptions import (
     NotFound,
@@ -199,6 +202,29 @@ class AdminCreateView(CreateAPIView):
 class OnboardingView(CreateAPIView):
     permission_classes = [IsAuthenticated]
 
+    def _resolve_account_type(self, request):
+        requested = (
+            request.data.get("account_type") or request.user.account_type
+        )
+
+        account_type_map = {
+            "personal": User.AccountType.PERSONAL,
+            "organization": User.AccountType.ORGANIZATION,
+            User.AccountType.PERSONAL: User.AccountType.PERSONAL,
+            User.AccountType.ORGANIZATION: User.AccountType.ORGANIZATION,
+        }
+
+        account_type = account_type_map.get(requested)
+
+        if account_type is None:
+            raise ValidationError(
+                {
+                    "account_type": "Onboarding is only available for personal or organization accounts."
+                }
+            )
+
+        return account_type
+
     def get_serializer_class(self):
         user = get_auth_user(self.request)
 
@@ -206,24 +232,59 @@ class OnboardingView(CreateAPIView):
             raise PermissionDenied(
                 "Authentication credentials were not provided."
             )
-        account_type = user.account_type
+
+        account_type = self._resolve_account_type(self.request)
+
         if account_type == User.AccountType.PERSONAL:
             return PersonalProfileWriteSerializer
 
-        if account_type == User.AccountType.ORGANIZATION:
-            return OrganizationProfileWriteSerializer
+        return OrganizationProfileWriteSerializer
 
-        raise ValidationError(
-            {
-                "account_type": "Onboarding is only available for personal or organization accounts."
-            }
-        )
+    def _save_location(self, user, request):
+        raw_location = request.data.get("location")
 
+        if not raw_location:
+            return
+
+        try:
+            location_data = (
+                json.loads(raw_location)
+                if isinstance(raw_location, str)
+                else raw_location
+            )
+        except json.JSONDecodeError:
+            return
+
+        if (
+            not location_data
+            or location_data.get("lat") is None
+            or location_data.get("lng") is None
+        ):
+            return
+
+        location_serializer = LocationWriteSerializer(data=location_data)
+        location_serializer.is_valid(raise_exception=True)
+        location = location_serializer.save()
+
+        user.location = location
+        user.save(update_fields=["location"])
+
+    @transaction.atomic
     def create(self, request, *args, **kwargs):
+        account_type = self._resolve_account_type(request)
+
+        user = get_auth_user(self.request)
+
+        if user and account_type != user.account_type:
+            user.account_type = account_type
+            user.save(update_fields=["account_type"])
+
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
         serializer.save(user=request.user)
+
+        self._save_location(request.user, request)
 
         return Response(
             {
@@ -249,10 +310,8 @@ class ProfileDetailView(RetrieveAPIView):
         # decide filter based on which kwarg is present in the URL
         if "username" in self.kwargs:
             obj = get_object_or_404(queryset, username=self.kwargs["username"])
-            print(f"Retrieved user by username: {obj.username}")
         elif "id" in self.kwargs:
             obj = get_object_or_404(queryset, id=self.kwargs["id"])
-            print(f"Retrieved user by ID: {obj.id}")
         else:
             raise NotFound("No lookup field provided.")
 
@@ -264,26 +323,42 @@ class ProfileUpdateView(UpdateAPIView):
     permission_classes = [IsAuthenticated]
 
     def get_object(self):
-        user = self.request.user
+        user = get_auth_user(self.request)
 
-        if user.account_type == User.AccountType.PERSONAL:
+        if user and user.account_type == User.AccountType.PERSONAL:
             return user.personal_profile
 
-        if user.account_type == User.AccountType.ORGANIZATION:
+        if user and user.account_type == User.AccountType.ORGANIZATION:
             return user.organization_profile
 
         raise NotFound("Profile not found.")
 
     def get_serializer_class(self):
-        user = self.request.user
+        user = get_auth_user(self.request)
 
-        if user.account_type == User.AccountType.PERSONAL:
+        if user and user.account_type == User.AccountType.PERSONAL:
             return PersonalProfileWriteSerializer
 
-        if user.account_type == User.AccountType.ORGANIZATION:
+        if user and user.account_type == User.AccountType.ORGANIZATION:
             return OrganizationProfileWriteSerializer
 
         raise ValidationError("Invalid account type.")
+
+    def update(self, request, *args, **kwargs):
+        partial = kwargs.pop("partial", False)
+        instance = self.get_object()
+        serializer = self.get_serializer(
+            instance, data=request.data, partial=partial
+        )
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+
+        return Response(
+            ProfileReadSerializer(
+                request.user,
+                context={"request": request},
+            ).data
+        )
 
 
 @USER_LOCATION_SCHEMA
