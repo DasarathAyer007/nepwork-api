@@ -1,76 +1,3 @@
-# import getpass
-
-# from django.core.management.base import BaseCommand, CommandError
-# from django.db import transaction
-
-# from apps.users.models import AdminProfile, Role, User
-
-# # python manage.py create_superadmin --username admin --email admin@example.com --full-name "Site Admin"
-
-
-# class Command(BaseCommand):
-#     help = (
-#         "Creates the first superadmin account (User + AdminProfile, role=superadmin, "
-#         "is_superuser/is_staff=True). Run once, after seed_roles_permissions, to bootstrap "
-#         "an account that can log in and create every other admin/moderator/developer account."
-#     )
-
-#     def add_arguments(self, parser):
-#         parser.add_argument("--username", required=True)
-#         parser.add_argument("--email", required=True)
-#         parser.add_argument("--full-name", default="")
-#         parser.add_argument(
-#             "--password",
-#             help="If omitted, you'll be prompted (input hidden).",
-#         )
-
-#     def handle(self, *args, **options):
-#         username = options["username"]
-#         email = options["email"]
-#         full_name = options["full_name"]
-#         password = options["password"]
-
-#         if User.objects.filter(username=username).exists():
-#             raise CommandError(f"A user with username '{username}' already exists.")
-#         if User.objects.filter(email=email).exists():
-#             raise CommandError(f"A user with email '{email}' already exists.")
-
-#         try:
-#             role = Role.objects.get(code="superadmin")
-#         except Role.DoesNotExist as exc:
-#             raise CommandError(
-#                 "Role 'superadmin' does not exist. Run "
-#                 "`python manage.py seed_roles_permissions` first."
-#             ) from exc
-
-#         if not password:
-#             password = getpass.getpass("Password: ")
-#             confirm = getpass.getpass("Password (again): ")
-#             if password != confirm:
-#                 raise CommandError("Passwords did not match.")
-#         if not password:
-#             raise CommandError("Password must not be empty.")
-
-#         with transaction.atomic():
-#             user = User(
-#                 username=username,
-#                 email=email,
-#                 full_name=full_name,
-#                 account_type=User.AccountType.ADMIN,
-#                 is_active=True,
-#                 is_staff=True,
-#                 is_superuser=True,
-#             )
-#             user.set_password(password)
-#             user.save()
-
-#             AdminProfile.objects.create(user=user, role=role)
-
-#         self.stdout.write(
-#             self.style.SUCCESS(f"Superadmin '{username}' created (id={user.id}).")
-#         )
-
-
 import getpass
 
 from django.contrib.auth.password_validation import validate_password
@@ -138,6 +65,8 @@ class Command(BaseCommand):
             return password
 
     def handle(self, *args, **options):
+        self.stdout.write(" Creating superadmin account...")
+
         username = options.get("username")
         email = options.get("email")
         full_name = options.get("full_name")

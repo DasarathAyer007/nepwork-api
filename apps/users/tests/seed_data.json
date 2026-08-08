@@ -2,15 +2,15 @@
   "users": [
     {
       "full_name": "Aarav Shrestha",
-      "username": "aarav.shrestha",
+      "username": "aarav_dev",
       "email": "aarav.shrestha@example.com",
       "phone_number": "9841200001",
       "type": "individual",
       "gender": "male",
       "date_of_birth": "1996-03-14",
-      "bio": "Backend developer from Kathmandu who loves contributing to open-source Python projects.",
-      "interests": ["python", "open-source", "hiking", "reading", "cooking"],
-      "skills": ["python", "django", "postgresql", "docker"],
+      "bio": "<p>Aarav is a passionate backend developer from Kathmandu with over 6 years of experience building scalable web applications. He specializes in Python and Django, and he actively contributes to open-source projects during his free time. When he's not coding, Aarav enjoys hiking in the hills around Kathmandu valley, exploring new cafes, and experimenting with Nepali cuisine in his kitchen. He believes in writing clean, maintainable code and mentoring junior developers.</p><p>He has worked with both startups and established companies, helping them design robust APIs and optimize database performance. Aarav is also a regular speaker at local tech meetups and frequently writes technical blogs about backend engineering and system design.</p>",
+      "interests": ["python", "open-source", "hiking", "reading", "cooking", "tech-blogging", "mentoring"],
+      "skills": ["python", "django", "postgresql", "docker", "rest-api", "system-design"],
       "social_links": {
         "linkedin": "https://linkedin.com/in/aaravshrestha",
         "github": "https://github.com/aaravshrestha",
@@ -19,32 +19,32 @@
     },
     {
       "full_name": "Saraswati Karki",
-      "username": "saraswati.karki",
+      "username": "saraswati_creates",
       "email": "saraswati.karki@example.com",
       "phone_number": "9841200002",
       "type": "individual",
       "gender": "female",
       "date_of_birth": "1998-07-22",
-      "bio": "Freelance graphic designer and travel photographer based in Pokhara.",
-      "interests": ["design", "travel", "photography", "music", "blogging"],
-      "skills": ["graphic design", "adobe photoshop", "photography", "figma"],
+      "bio": "<p>Saraswati is a freelance graphic designer and travel photographer based in the beautiful lakeside city of Pokhara. With a keen eye for aesthetics and a deep appreciation for visual storytelling, she helps brands build their identity through thoughtful design. Her work spans logo design, social media graphics, packaging, and brand strategy.</p><p>When she's not behind her screen, Saraswati is often found exploring remote villages with her camera, capturing the raw beauty of Nepal's landscapes and its people. Her photography has been featured in several travel magazines and online publications. She believes that good design is not just about looking beautiful—it's about communicating effectively and creating meaningful connections.</p>",
+      "interests": ["design", "travel", "photography", "music", "blogging", "branding", "visual-storytelling"],
+      "skills": ["graphic-design", "adobe-photoshop", "photography", "figma", "branding", "illustrator"],
       "social_links": {
         "linkedin": "https://linkedin.com/in/saraswatikarki",
-        "instagram": "https://instagram.com/saraswati.karki",
+        "instagram": "https://instagram.com/saraswati.creates",
         "website": "https://saraswatikarki.com"
       }
     },
     {
       "full_name": "Bibek Gautam",
-      "username": "bibek.gautam",
+      "username": "bibek_ml",
       "email": "bibek.gautam@example.com",
       "phone_number": "9841200003",
       "type": "individual",
       "gender": "male",
       "date_of_birth": "1993-11-05",
-      "bio": "Machine learning enthusiast, weekend runner, and podcast addict.",
-      "interests": ["machine learning", "fitness", "podcasts", "sports", "volunteering"],
-      "skills": ["python", "machine learning", "data analysis", "tensorflow"],
+      "bio": "<p>Bibek is a machine learning engineer with a strong foundation in data science and artificial intelligence. He holds a Master's degree in Computer Science and has spent the last 5 years building predictive models and deploying ML solutions for various industries including finance, healthcare, and e-commerce. His expertise includes natural language processing, computer vision, and time series forecasting.</p><p>Outside of work, Bibek is an avid runner who participates in local marathons and a devoted podcast listener who enjoys learning about emerging technologies, philosophy, and psychology. He also volunteers his time to teach basic coding and data literacy to underprivileged students in Kathmandu, believing that technology education should be accessible to everyone.</p>",
+      "interests": ["machine-learning", "fitness", "podcasts", "sports", "volunteering", "data-science", "ai-ethics"],
+      "skills": ["python", "machine-learning", "data-analysis", "tensorflow", "pytorch", "scikit-learn", "sql"],
       "social_links": {
         "linkedin": "https://linkedin.com/in/bibekgautam",
         "github": "https://github.com/bibekgautam",
@@ -53,15 +53,15 @@
     },
     {
       "full_name": "Nisha Thapa",
-      "username": "nisha.thapa",
+      "username": "nisha_designs",
       "email": "nisha.thapa@example.com",
       "phone_number": "9841200004",
       "type": "individual",
       "gender": "female",
       "date_of_birth": "1999-02-18",
-      "bio": "UI/UX designer who spends free time journaling and playing indie games.",
-      "interests": ["ui ux", "illustration", "journaling", "music", "gaming"],
-      "skills": ["ui design", "ux research", "figma", "illustration"],
+      "bio": "<p>Nisha is a UI/UX designer who believes that great design is invisible—it should make life easier without users even noticing. With a background in fine arts and human-computer interaction, she has designed products for tech startups, educational platforms, and healthcare applications. Her approach combines user research, rapid prototyping, and iterative testing to deliver intuitive and delightful experiences.</p><p>When she's not designing, Nisha enjoys sketching, journaling, and exploring indie games for their unique art styles and storytelling. She's particularly fascinated by how game mechanics can influence user behavior and often draws inspiration from them for her UX work. Nisha is also a passionate advocate for accessibility in design and regularly speaks at design conferences about inclusive design practices.</p>",
+      "interests": ["ui-ux", "illustration", "journaling", "music", "gaming", "accessibility", "design-systems"],
+      "skills": ["ui-design", "ux-research", "figma", "illustration", "prototyping", "user-testing"],
       "social_links": {
         "linkedin": "https://linkedin.com/in/nishathapa",
         "behance": "https://behance.net/nishathapa",
@@ -70,30 +70,30 @@
     },
     {
       "full_name": "Sandeep Rai",
-      "username": "sandeep.rai",
+      "username": "sandeep_pm",
       "email": "sandeep.rai@example.com",
       "phone_number": "9841200011",
       "type": "individual",
       "gender": "male",
       "date_of_birth": "1991-05-30",
-      "bio": "Civil engineer turned project manager, passionate about sustainable construction.",
-      "interests": ["architecture", "sustainability", "chess", "cycling"],
-      "skills": ["project management", "autocad", "site supervision"],
+      "bio": "<p>Sandeep is a civil engineer turned project manager who brings over a decade of experience in the construction industry. He has managed large-scale residential and commercial projects across Nepal, specializing in sustainable construction practices and green building certification. His engineering background gives him a unique ability to bridge the gap between technical teams and clients, ensuring projects are delivered on time and within budget.</p><p>Sandeep is deeply passionate about sustainable architecture and believes that Nepal's construction industry has a huge opportunity to adopt environmentally friendly practices. He holds a PMP certification and is currently pursuing a Green Building certification. When he's not managing projects, he enjoys playing chess, cycling around the valley, and mentoring young engineers entering the field.</p>",
+      "interests": ["architecture", "sustainability", "chess", "cycling", "mentoring", "project-management"],
+      "skills": ["project-management", "autocad", "site-supervision", "construction-planning", "pmp"],
       "social_links": {
         "linkedin": "https://linkedin.com/in/sandeeprai"
       }
     },
     {
       "full_name": "Kritika Basnet",
-      "username": "kritika.basnet",
+      "username": "kritika_marketing",
       "email": "kritika.basnet@example.com",
       "phone_number": "9841200012",
       "type": "individual",
       "gender": "female",
       "date_of_birth": "2000-09-09",
-      "bio": "Digital marketer who enjoys yoga, baking, and binge-worthy documentaries.",
-      "interests": ["digital marketing", "yoga", "baking", "documentaries"],
-      "skills": ["seo", "content writing", "social media marketing"],
+      "bio": "<p>Kritika is a digital marketer who has a knack for creating compelling content that drives engagement and growth. She has worked with brands across e-commerce, hospitality, and tech sectors, developing comprehensive digital strategies that include SEO, social media, email marketing, and paid advertising. Her data-driven approach ensures that every campaign delivers measurable results.</p><p>Beyond work, Kritika is a certified yoga instructor who believes in the importance of mental and physical well-being. She teaches weekend yoga classes at a local studio and often integrates mindfulness practices into her daily routine. She also enjoys baking—she's known among friends for her sourdough bread and chocolate chip cookies—and never misses a good documentary, especially ones about nature, culture, or social justice.</p>",
+      "interests": ["digital-marketing", "yoga", "baking", "documentaries", "content-strategy", "wellness"],
+      "skills": ["seo", "content-writing", "social-media-marketing", "email-marketing", "google-analytics"],
       "social_links": {
         "linkedin": "https://linkedin.com/in/kritikabasnet",
         "instagram": "https://instagram.com/kritika.basnet"
@@ -101,15 +101,15 @@
     },
     {
       "full_name": "Prakash Lama",
-      "username": "prakash.lama",
+      "username": "prakash_fullstack",
       "email": "prakash.lama@example.com",
       "phone_number": "9841200013",
       "type": "individual",
       "gender": "male",
       "date_of_birth": "1988-12-01",
-      "bio": "Full-stack developer building products for the Nepali fintech space.",
-      "interests": ["fintech", "startups", "badminton", "trekking"],
-      "skills": ["javascript", "react", "node.js", "aws"],
+      "bio": "<p>Prakash is a full-stack developer with a passion for building fintech solutions that make financial services more accessible to underserved communities in Nepal. With over 8 years of experience in software development, he has led engineering teams and architected systems that handle millions of transactions. His technical expertise spans JavaScript ecosystems including React, Node.js, and AWS cloud infrastructure.</p><p>Prakash is deeply interested in the startup ecosystem and has mentored several early-stage tech founders in Kathmandu. He frequently writes about fintech trends, software architecture, and agile development methodologies on his blog. Outside of code, he's an avid badminton player who also enjoys weekend treks with friends, exploring new trails and discovering hidden spots in the Himalayas.</p>",
+      "interests": ["fintech", "startups", "badminton", "trekking", "tech-blogging", "mentoring"],
+      "skills": ["javascript", "react", "nodejs", "aws", "mongodb", "postgresql", "microservices"],
       "social_links": {
         "github": "https://github.com/prakashlama",
         "linkedin": "https://linkedin.com/in/prakashlama"
@@ -117,15 +117,15 @@
     },
     {
       "full_name": "Anjali Maharjan",
-      "username": "anjali.maharjan",
+      "username": "anjali_writes",
       "email": "anjali.maharjan@example.com",
       "phone_number": "9841200014",
       "type": "individual",
       "gender": "female",
       "date_of_birth": "1997-04-27",
-      "bio": "Content writer and part-time potter who loves exploring local newari cuisine.",
-      "interests": ["writing", "pottery", "food", "culture"],
-      "skills": ["content writing", "copywriting", "editing"],
+      "bio": "<p>Anjali is a content writer and storyteller who weaves words into compelling narratives for brands, blogs, and magazines. She specializes in lifestyle, food, and culture writing, and has contributed to several prominent Nepali publications. Her writing is known for its warmth, authenticity, and attention to detail—she has a gift for making readers feel connected to the stories she tells.</p><p>Anjali is also a passionate potter who spends her weekends at a local pottery studio. She finds the tactile nature of clay therapeutic and often draws inspiration from her pottery for her writing. A true foodie, she's on a mission to document traditional Newari recipes and share them with the world, celebrating Nepal's rich culinary heritage through her blog and social media channels.</p>",
+      "interests": ["writing", "pottery", "food", "culture", "storytelling", "journalism"],
+      "skills": ["content-writing", "copywriting", "editing", "blogging", "storytelling"],
       "social_links": {
         "instagram": "https://instagram.com/anjali.maharjan",
         "website": "https://anjalimaharjan.com"
@@ -133,15 +133,15 @@
     },
     {
       "full_name": "Rohan Adhikari",
-      "username": "rohan.adhikari",
+      "username": "rohan_devops",
       "email": "rohan.adhikari@example.com",
       "phone_number": "9841200015",
       "type": "individual",
       "gender": "male",
       "date_of_birth": "1994-08-16",
-      "bio": "DevOps engineer who enjoys home-brewing coffee and building mechanical keyboards.",
-      "interests": ["devops", "coffee", "keyboards", "gaming"],
-      "skills": ["kubernetes", "docker", "ci/cd", "linux"],
+      "bio": "<p>Rohan is a DevOps engineer with a passion for automation, reliability, and infrastructure as code. Over the past 6 years, he has helped organizations transition to cloud-native architectures, implementing CI/CD pipelines, containerization with Kubernetes, and robust monitoring solutions. He believes that great infrastructure is invisible—it should just work, reliably and securely, without developers needing to think about it.</p><p>Beyond the terminal, Rohan is a coffee aficionado who roasts his own beans and experiments with pour-over brewing methods. He's also an enthusiast of mechanical keyboards, having built several from scratch and often customizing switches and keycaps. In his downtime, he enjoys gaming (both video and board games) and occasionally tinkering with electronics and Raspberry Pi projects.</p>",
+      "interests": ["devops", "coffee", "keyboards", "gaming", "automation", "cloud-native"],
+      "skills": ["kubernetes", "docker", "cicd", "linux", "aws", "terraform", "prometheus"],
       "social_links": {
         "github": "https://github.com/rohanadhikari",
         "linkedin": "https://linkedin.com/in/rohanadhikari"
@@ -149,30 +149,30 @@
     },
     {
       "full_name": "Sunita Poudel",
-      "username": "sunita.poudel",
+      "username": "sunita_accounting",
       "email": "sunita.poudel@example.com",
       "phone_number": "9841200016",
       "type": "individual",
       "gender": "female",
       "date_of_birth": "1995-01-11",
-      "bio": "Accountant by profession, gardener by passion.",
-      "interests": ["gardening", "finance", "reading", "meditation"],
-      "skills": ["bookkeeping", "tax advisory", "excel"],
+      "bio": "<p>Sunita is a certified accountant with a passion for helping small businesses manage their finances effectively. With over 5 years of experience in bookkeeping, tax advisory, and financial planning, she has assisted dozens of entrepreneurs in Kathmandu to understand their financial health and make informed decisions. She believes that good accounting is the foundation of a sustainable business.</p><p>When she's not working with numbers, Sunita finds peace in her garden. She's an enthusiastic gardener who grows organic vegetables, herbs, and flowers in her urban garden. She's also a dedicated reader and meditator, and she often combines these interests by reading philosophy and self-improvement books in her garden sanctuary.</p>",
+      "interests": ["gardening", "finance", "reading", "meditation", "small-business", "tax-planning"],
+      "skills": ["bookkeeping", "tax-advisory", "excel", "financial-planning", "accounting"],
       "social_links": {
         "linkedin": "https://linkedin.com/in/sunitapoudel"
       }
     },
     {
       "full_name": "Manish Tamang",
-      "username": "manish.tamang",
+      "username": "manish_mobile",
       "email": "manish.tamang@example.com",
       "phone_number": "9841200017",
       "type": "individual",
       "gender": "male",
       "date_of_birth": "1990-06-23",
-      "bio": "Mobile app developer who loves mountain biking on weekends.",
-      "interests": ["mobile development", "mountain biking", "open-source"],
-      "skills": ["flutter", "kotlin", "android", "firebase"],
+      "bio": "<p>Manish is a mobile app developer who has been building native and cross-platform applications for over 7 years. He specializes in Flutter and Kotlin, and has developed apps for clients across the globe—from e-commerce to health-tech to travel. He's passionate about creating fluid, intuitive user experiences that make people's lives easier and more enjoyable.</p><p>On the weekends, Manish is an avid mountain biker who tackles the rugged trails of the Kathmandu valley and beyond. He also contributes to several open-source Flutter projects and is a regular at local developer meetups, where he shares his knowledge about mobile development best practices and performance optimization.</p>",
+      "interests": ["mobile-development", "mountain-biking", "open-source", "flutter", "kotlin"],
+      "skills": ["flutter", "kotlin", "android", "firebase", "dart", "react-native"],
       "social_links": {
         "github": "https://github.com/manishtamang",
         "portfolio": "https://manishtamang.dev"
@@ -180,30 +180,30 @@
     },
     {
       "full_name": "Priya Sharma",
-      "username": "priya.sharma",
+      "username": "priya_hr",
       "email": "priya.sharma@example.com",
       "phone_number": "9841200018",
       "type": "individual",
       "gender": "female",
       "date_of_birth": "2001-10-03",
-      "bio": "HR professional passionate about workplace culture and classical dance.",
-      "interests": ["hr", "dance", "psychology", "networking"],
-      "skills": ["recruitment", "employee engagement", "communication"],
+      "bio": "<p>Priya is a human resources professional dedicated to fostering positive workplace cultures where employees can thrive. With a degree in Organizational Psychology and 4 years of experience in recruitment, employee engagement, and talent development, she helps companies build teams that are motivated, inclusive, and high-performing.</p><p>Priya is deeply interested in how psychology influences workplace dynamics and is particularly passionate about mental health advocacy at work. Outside of HR, she's trained in classical Nepali dance and often performs at cultural events. She also loves networking and connecting with professionals across industries, always curious to learn about different career paths and perspectives.</p>",
+      "interests": ["hr", "dance", "psychology", "networking", "mental-health", "workplace-culture"],
+      "skills": ["recruitment", "employee-engagement", "communication", "talent-management", "hr-strategy"],
       "social_links": {
         "linkedin": "https://linkedin.com/in/priyasharma"
       }
     },
     {
       "full_name": "Dipesh Khadka",
-      "username": "dipesh.khadka",
+      "username": "dipesh_qa",
       "email": "dipesh.khadka@example.com",
       "phone_number": "9841200019",
       "type": "individual",
       "gender": "male",
       "date_of_birth": "1992-02-29",
-      "bio": "QA engineer obsessed with automation testing and street food.",
-      "interests": ["qa automation", "street food", "movies"],
-      "skills": ["selenium", "test automation", "python", "jira"],
+      "bio": "<p>Dipesh is a QA engineer who is obsessed with automation and making sure everything works flawlessly. With 6 years of experience in quality assurance, he's built automated testing frameworks for web and mobile applications, ensuring that bugs are caught early and often. He believes that quality is not just about testing—it's about building a culture of quality across the entire development lifecycle.</p><p>When Dipesh is not breaking applications to find bugs, he's exploring the vibrant street food scene in Kathmandu. He's a self-proclaimed foodie who loves discovering new spots and sharing his finds with friends and colleagues. He's also a big movie buff, with a particular fondness for classic cinema and independent films. He brings a curious and systematic approach to everything he does, whether it's writing test cases or trying a new dish.</p>",
+      "interests": ["qa-automation", "street-food", "movies", "test-automation", "quality-culture"],
+      "skills": ["selenium", "test-automation", "python", "jira", "cypress", "api-testing"],
       "social_links": {
         "linkedin": "https://linkedin.com/in/dipeshkhadka",
         "github": "https://github.com/dipeshkhadka"
@@ -211,31 +211,31 @@
     },
     {
       "full_name": "Sabina Magar",
-      "username": "sabina.magar",
+      "username": "sabina_creates",
       "email": "sabina.magar@example.com",
       "phone_number": "9841200020",
       "type": "individual",
       "gender": "female",
       "date_of_birth": "1996-12-19",
-      "bio": "Video editor and content creator sharing stories from across Nepal.",
-      "interests": ["videography", "storytelling", "travel"],
-      "skills": ["premiere pro", "after effects", "video editing"],
+      "bio": "<p>Sabina is a video editor and content creator who brings stories to life through the power of visual storytelling. With a background in film editing and motion graphics, she has produced content for social media, documentaries, advertising, and YouTube channels. She has a unique ability to find the emotional core of a story and shape raw footage into something powerful and compelling.</p><p>Sabina is passionate about showcasing the diverse cultures and landscapes of Nepal through her work. She has traveled extensively across the country, documenting remote communities, festivals, and everyday life. Her content has been featured on Nepali television and has accumulated millions of views online. When she's not editing, she's often planning her next travel adventure or experimenting with new animation techniques.</p>",
+      "interests": ["videography", "storytelling", "travel", "documentary", "motion-graphics"],
+      "skills": ["premiere-pro", "after-effects", "video-editing", "color-grading", "sound-design"],
       "social_links": {
-        "instagram": "https://instagram.com/sabina.magar",
-        "youtube": "https://youtube.com/@sabinamagar"
+        "instagram": "https://instagram.com/sabina.creates",
+        "youtube": "https://youtube.com/@sabinacreates"
       }
     },
     {
       "full_name": "Nabin Bhattarai",
-      "username": "nabin.bhattarai",
+      "username": "nabin_data",
       "email": "nabin.bhattarai@example.com",
       "phone_number": "9841200021",
       "type": "individual",
       "gender": "male",
       "date_of_birth": "1989-03-08",
-      "bio": "Data engineer building analytics pipelines, cricket fan on the side.",
-      "interests": ["data engineering", "cricket", "chess"],
-      "skills": ["python", "sql", "airflow", "spark"],
+      "bio": "<p>Nabin is a data engineer who builds robust data pipelines and analytics platforms for organizations looking to make data-driven decisions. With over 8 years of experience, he has worked with large-scale data processing, real-time streaming, and data warehousing solutions. He is a firm believer that data is only as valuable as the insights you can extract from it, and he's dedicated to making data accessible and useful for teams.</p><p>Outside of work, Nabin is a passionate cricket fan who follows international cricket closely and plays in local weekend leagues. He's also an avid chess player who finds the strategic depth of the game fascinating. He enjoys teaching data skills to students and professionals through workshops and online courses, contributing to the growing data community in Nepal.</p>",
+      "interests": ["data-engineering", "cricket", "chess", "data-pipelines", "teaching"],
+      "skills": ["python", "sql", "airflow", "spark", "aws", "data-warehousing"],
       "social_links": {
         "linkedin": "https://linkedin.com/in/nabinbhattarai",
         "github": "https://github.com/nabinbhattarai"
@@ -243,61 +243,61 @@
     },
     {
       "full_name": "Alisha Gurung",
-      "username": "alisha.gurung",
+      "username": "alisha_product",
       "email": "alisha.gurung@example.com",
       "phone_number": "9841200022",
       "type": "individual",
       "gender": "female",
       "date_of_birth": "2002-05-14",
-      "bio": "Aspiring product manager who loves sketching wireframes on napkins.",
-      "interests": ["product management", "sketching", "startups"],
-      "skills": ["product management", "user research", "figma"],
+      "bio": "<p>Alisha is an aspiring product manager with a strong foundation in user research, product strategy, and agile development. She holds a Bachelor's degree in Information Systems and has worked on product initiatives for ed-tech and fintech startups. Her approach combines deep empathy for users with a pragmatic understanding of business goals and technical feasibility.</p><p>Known for her detailed wireframing skills—often sketching ideas on whatever paper is nearby, including napkins—Alisha is a creative problem solver who loves building products that solve real problems. She's particularly interested in the intersection of product design and behavioral psychology, and she reads extensively about product management, human behavior, and design thinking. She's also a budding public speaker and has presented at local product meetups.</p>",
+      "interests": ["product-management", "sketching", "startups", "user-research", "behavioral-psychology"],
+      "skills": ["product-management", "user-research", "figma", "agile", "product-strategy"],
       "social_links": {
         "linkedin": "https://linkedin.com/in/alishagurung"
       }
     },
     {
       "full_name": "Suman Dahal",
-      "username": "suman.dahal",
+      "username": "suman_solar",
       "email": "suman.dahal@example.com",
       "phone_number": "9841200023",
       "type": "individual",
       "gender": "male",
       "date_of_birth": "1987-07-19",
-      "bio": "Electrical engineer consulting on solar energy projects across Nepal.",
-      "interests": ["renewable energy", "electronics", "hiking"],
-      "skills": ["electrical design", "solar energy", "autocad"],
+      "bio": "<p>Suman is an electrical engineer with a specialization in renewable energy systems, particularly solar power. Over the past 12 years, he has designed and implemented solar energy projects across Nepal, from small-scale residential rooftop systems to large off-grid installations for remote villages. He is passionate about bringing clean, sustainable energy to underserved communities.</p><p>Suman holds a Master's degree in Renewable Energy Engineering and is a certified solar designer. He regularly consults for government agencies and NGOs on energy access projects. In his free time, he enjoys hiking in the mountains—often combining his love for the outdoors with his work by assessing potential sites for micro-hydro or solar projects. He also mentors young engineers entering the renewable energy field.</p>",
+      "interests": ["renewable-energy", "electronics", "hiking", "solar-power", "sustainable-development"],
+      "skills": ["electrical-design", "solar-energy", "autocad", "project-design", "energy-audit"],
       "social_links": {
         "linkedin": "https://linkedin.com/in/sumandahal"
       }
     },
     {
       "full_name": "Rekha Joshi",
-      "username": "rekha.joshi",
+      "username": "rekha_wellness",
       "email": "rekha.joshi@example.com",
       "phone_number": "9841200024",
       "type": "individual",
       "gender": "female",
       "date_of_birth": "1998-11-27",
-      "bio": "Nutritionist and wellness blogger who loves early morning runs.",
-      "interests": ["nutrition", "running", "blogging"],
-      "skills": ["nutrition planning", "content writing"],
+      "bio": "<p>Rekha is a nutritionist and wellness coach who is committed to helping people build healthy, sustainable relationships with food. With a degree in Nutrition and Dietetics, she has worked with clients ranging from busy professionals to athletes, providing personalized meal plans, nutritional counseling, and lifestyle coaching.</p><p>A passionate runner, Reka has participated in multiple half-marathons and uses her own fitness journey to connect with clients and inspire them. She writes a wellness blog where she shares nutritious recipes, fitness tips, and reflections on mental health. She believes that wellness is not just about what you eat—it's about how you feel, move, and think, and she advocates for a holistic approach to health.</p>",
+      "interests": ["nutrition", "running", "blogging", "wellness", "holistic-health"],
+      "skills": ["nutrition-planning", "content-writing", "health-coaching", "meal-planning"],
       "social_links": {
-        "instagram": "https://instagram.com/rekha.joshi",
+        "instagram": "https://instagram.com/rekha.wellness",
         "website": "https://rekhajoshi.com"
       }
     },
     {
       "full_name": "Kiran Bhandari",
-      "username": "kiran.bhandari",
+      "username": "kiran_cyber",
       "email": "kiran.bhandari@example.com",
       "phone_number": "9841200025",
       "type": "individual",
       "gender": "other",
       "date_of_birth": "1995-09-02",
-      "bio": "Cybersecurity researcher and CTF player, coffee over code.",
-      "interests": ["cybersecurity", "ctf", "coffee"],
-      "skills": ["penetration testing", "network security", "python"],
+      "bio": "<p>Kiran is a cybersecurity researcher and ethical hacker who is passionate about making the internet a safer place. With expertise in penetration testing, network security, and digital forensics, they have worked with government agencies, banks, and technology companies to identify vulnerabilities and strengthen security postures.</p><p>An active participant in the global cybersecurity community, Kiran regularly competes in Capture the Flag (CTF) competitions and has ranked among the top performers in regional events. They also contribute to open-source security tools and write about emerging threats and defense strategies. When not in front of a screen, Kiran is an enthusiastic coffee lover—always on the lookout for the perfect pour-over—and enjoys reading about technology ethics, privacy, and social implications of AI.</p>",
+      "interests": ["cybersecurity", "ctf", "coffee", "ethical-hacking", "privacy", "ai-ethics"],
+      "skills": ["penetration-testing", "network-security", "python", "forensics", "cloud-security"],
       "social_links": {
         "github": "https://github.com/kiranbhandari",
         "linkedin": "https://linkedin.com/in/kiranbhandari"
@@ -305,27 +305,27 @@
     },
     {
       "full_name": "Sujata Pandey",
-      "username": "sujata.pandey",
+      "username": "sujata_legal",
       "email": "sujata.pandey@example.com",
       "phone_number": "9841200026",
       "type": "individual",
       "gender": "female",
       "date_of_birth": "1993-04-06",
-      "bio": "Legal consultant specializing in corporate law, avid book collector.",
-      "interests": ["law", "reading", "debate"],
-      "skills": ["corporate law", "contract drafting", "negotiation"],
+      "bio": "<p>Sujata is a corporate lawyer and legal consultant with expertise in contract drafting, commercial transactions, and regulatory compliance. She holds a law degree from Tribhuvan University and has over 7 years of experience advising businesses on legal matters ranging from company formation to mergers and acquisitions.</p><p>Known for her attention to detail and strategic mindset, Sujata helps companies navigate Nepal's complex legal landscape while making law accessible and practical for business owners. She's also a passionate advocate for legal literacy and regularly conducts workshops for entrepreneurs. Outside of law, she is an avid reader—particularly of legal thrillers and philosophy—and enjoys engaging in thoughtful debates on current affairs and social justice issues.</p>",
+      "interests": ["law", "reading", "debate", "legal-literacy", "corporate-law", "social-justice"],
+      "skills": ["corporate-law", "contract-drafting", "negotiation", "legal-research", "compliance"],
       "social_links": {
         "linkedin": "https://linkedin.com/in/sujatapandey"
       }
     },
     {
       "full_name": "Himalayan Tech Pvt. Ltd.",
-      "username": "himalayan.tech",
+      "username": "himalayan_tech",
       "email": "careers@himalayantech.com",
       "phone_number": "9801200005",
       "type": "organization",
       "industries": ["Technology"],
-      "bio": "A Kathmandu-based software company building products for global clients since 2015.",
+      "bio": "<p>Himalayan Tech is a Kathmandu-based software development company that has been building innovative digital products for clients around the world since 2015. With a team of 85 talented engineers, designers, and project managers, we specialize in custom software development, cloud infrastructure, and digital transformation consulting. We've helped startups launch their MVPs, enterprises modernize their legacy systems, and nonprofits scale their impact through technology.</p><p>Our company culture is built on collaboration, continuous learning, and a deep commitment to quality. We believe in investing in our people—providing opportunities for professional growth, mentorship, and meaningful work. We've earned a reputation for delivering complex projects on time and within budget, earning the trust of clients across fintech, healthcare, education, and e-commerce sectors. Himalayan Tech is also committed to giving back to the community: we sponsor tech education programs and organize free coding workshops for students and young professionals in Nepal.</p>",
       "employees_count": 85,
       "founded_at": "2015-03-10",
       "address": "Jhamsikhel, Lalitpur, Bagmati Province, Nepal",
@@ -334,17 +334,18 @@
       "social_links": {
         "website": "https://himalayantech.com",
         "linkedin": "https://linkedin.com/company/himalayan-tech",
-        "facebook": "https://facebook.com/himalayantech"
+        "facebook": "https://facebook.com/himalayantech",
+        "github": "https://github.com/himalayan-tech"
       }
     },
     {
       "full_name": "Everest Design Studio",
-      "username": "everest.design",
+      "username": "everest_design",
       "email": "hello@everestdesignstudio.com",
       "phone_number": "9801200006",
       "type": "organization",
       "industries": ["Design"],
-      "bio": "Boutique branding and product design studio working with startups across South Asia.",
+      "bio": "<p>Everest Design Studio is a boutique branding and product design agency based in Kathmandu, serving clients across South Asia. Since our founding in 2018, we've helped over 100 startups, small businesses, and non-profits develop compelling visual identities, intuitive digital products, and memorable brand experiences. Our team of 14 designers and strategists specialize in logo design, brand identity, UI/UX design, packaging, and marketing collateral.</p><p>What sets us apart is our deep understanding of how design drives business growth. We don't just make things look beautiful—we create functional designs that communicate clearly, build trust, and deliver measurable results. We're also committed to sustainable design practices, using eco-friendly materials and digital-first approaches wherever possible. Our work has been featured in design publications and has earned several awards from regional design competitions. We're proud to be part of Nepal's growing creative economy.</p>",
       "employees_count": 14,
       "founded_at": "2018-06-01",
       "address": "Baluwatar, Kathmandu, Bagmati Province, Nepal",
@@ -352,18 +353,19 @@
       "is_verified": true,
       "social_links": {
         "website": "https://everestdesignstudio.com",
-        "instagram": "https://instagram.com/everestdesignstudio",
-        "linkedin": "https://linkedin.com/company/everest-design-studio"
+        "instagram": "https://instagram.com/everest_design",
+        "linkedin": "https://linkedin.com/company/everest-design-studio",
+        "behance": "https://behance.net/everestdesign"
       }
     },
     {
       "full_name": "Mero Logistics",
-      "username": "mero.logistics",
+      "username": "mero_logistics",
       "email": "contact@merologistics.com",
       "phone_number": "9801200007",
       "type": "organization",
       "industries": ["Logistics"],
-      "bio": "Last-mile delivery and freight logistics provider operating across major Nepali cities.",
+      "bio": "<p>Mero Logistics is a leading last-mile delivery and freight logistics provider operating across all major cities in Nepal. Since 2012, we've grown from a small courier service to a comprehensive logistics network with a fleet of 50+ vehicles, 220+ employees, and technology-driven route optimization. We handle everything from same-day parcel delivery to large-scale freight forwarding and warehousing.</p><p>Our mission is to make logistics simple, fast, and reliable for businesses of all sizes. We use smart algorithms to optimize delivery routes, real-time tracking to keep customers informed, and a dedicated customer support team to resolve issues quickly. We serve e-commerce companies, retail chains, manufacturers, and individuals across the country. Mero Logistics is committed to sustainability—we're actively transitioning our fleet to electric vehicles and have implemented eco-friendly packaging options for our clients.</p>",
       "employees_count": 220,
       "founded_at": "2012-01-15",
       "address": "Balaju Industrial Area, Kathmandu, Nepal",
@@ -371,17 +373,18 @@
       "is_verified": false,
       "social_links": {
         "website": "https://merologistics.com",
-        "linkedin": "https://linkedin.com/company/mero-logistics"
+        "linkedin": "https://linkedin.com/company/mero-logistics",
+        "facebook": "https://facebook.com/merologistics"
       }
     },
     {
       "full_name": "Green Valley School",
-      "username": "green.valley.school",
+      "username": "green_valley_school",
       "email": "admin@greenvalleyschool.edu.np",
       "phone_number": "9801200008",
       "type": "organization",
       "industries": ["Education"],
-      "bio": "A K-12 school in Pokhara focused on holistic, experiential learning.",
+      "bio": "<p>Green Valley School is a K-12 educational institution located in the scenic city of Pokhara, Nepal. Since our founding in 2001, we've been committed to providing a holistic, experiential education that prepares students for success in a rapidly changing world. Our approach combines strong academic foundations with hands-on learning, environmental awareness, and character development.</p><p>We pride ourselves on our student-teacher ratio, innovative curriculum, and state-of-the-art facilities—including a fully equipped science lab, computer lab, library, and outdoor learning spaces. Our faculty is dedicated, passionate, and continuously trained in modern pedagogical methods. We offer a broad range of extracurricular activities, from sports and arts to robotics and environmental clubs. Green Valley School is proud to be recognized as one of the leading schools in the Gandaki Province, with a strong track record of academic excellence and community engagement.</p>",
       "employees_count": 60,
       "founded_at": "2001-04-01",
       "address": "Lakeside, Pokhara, Gandaki Province, Nepal",
@@ -395,12 +398,12 @@
     },
     {
       "full_name": "Carewell Clinic",
-      "username": "carewell.clinic",
+      "username": "carewell_clinic",
       "email": "info@carewellclinic.com",
       "phone_number": "9801200009",
       "type": "organization",
       "industries": ["Healthcare"],
-      "bio": "Multi-specialty outpatient clinic providing affordable primary healthcare in Biratnagar.",
+      "bio": "<p>Carewell Clinic is a multi-specialty outpatient healthcare facility providing affordable, high-quality primary care to communities in Biratnagar and surrounding regions. Since opening our doors in 2016, we've served over 50,000 patients through our team of experienced doctors, nurses, and allied health professionals. Our services include general medicine, pediatrics, gynecology, orthopedics, dermatology, and dental care.</p><p>We believe that quality healthcare should be accessible to everyone, regardless of economic background. That's why we maintain transparent pricing, offer flexible payment plans, and participate in community health outreach programs. Our clinic is equipped with modern diagnostic tools, including ultrasound, X-ray, and a well-stocked pharmacy. We also emphasize preventive care and patient education, helping individuals and families take charge of their health. Carewell Clinic is ISO-certified and is committed to maintaining the highest standards of hygiene, safety, and patient care.</p>",
       "employees_count": 45,
       "founded_at": "2016-09-20",
       "address": "Main Road, Biratnagar, Koshi Province, Nepal",
@@ -409,17 +412,17 @@
       "social_links": {
         "website": "https://carewellclinic.com",
         "linkedin": "https://linkedin.com/company/carewell-clinic",
-        "instagram": "https://instagram.com/carewellclinic"
+        "instagram": "https://instagram.com/carewell_clinic"
       }
     },
     {
       "full_name": "Nexus Finance Advisory",
-      "username": "nexus.finance",
+      "username": "nexus_finance",
       "email": "contact@nexusfinance.com",
       "phone_number": "9801200010",
       "type": "organization",
       "industries": ["Finance"],
-      "bio": "Financial advisory firm helping SMEs with tax planning and investment strategy.",
+      "bio": "<p>Nexus Finance Advisory is a boutique financial consulting firm dedicated to helping small and medium-sized enterprises achieve financial clarity and growth. Since 2019, we've been offering services including tax planning, financial reporting, business valuation, and investment strategy. Our team of 22 certified accountants and financial analysts brings decades of combined experience to every engagement.</p><p>We understand that managing finances can be overwhelming for business owners. That's why we focus on simplifying complex financial concepts and offering practical, actionable advice. We help our clients understand their financial health, optimize their tax strategies, and make informed decisions about investments and growth. We pride ourselves on our integrity, responsiveness, and commitment to client success. Nexus Finance Advisory is also actively involved in financial literacy initiatives—offering free workshops and webinars to entrepreneurs and the broader business community.</p>",
       "employees_count": 22,
       "founded_at": "2019-11-11",
       "address": "New Road, Kathmandu, Bagmati Province, Nepal",
@@ -427,17 +430,18 @@
       "is_verified": false,
       "social_links": {
         "website": "https://nexusfinance.com",
-        "linkedin": "https://linkedin.com/company/nexus-finance-advisory"
+        "linkedin": "https://linkedin.com/company/nexus-finance-advisory",
+        "facebook": "https://facebook.com/nexusfinance"
       }
     },
     {
       "full_name": "Sagarmatha Agro Pvt. Ltd.",
-      "username": "sagarmatha.agro",
+      "username": "sagarmatha_agro",
       "email": "info@sagarmathaagro.com",
       "phone_number": "9801200027",
       "type": "organization",
       "industries": ["Agriculture"],
-      "bio": "Sustainable farming cooperative supplying organic produce to Kathmandu valley markets.",
+      "bio": "<p>Sagarmatha Agro is a sustainable farming cooperative that has been serving organic produce to the Kathmandu valley since 2008. We work directly with over 500 smallholder farmers across the Kavrepalanchok district, supporting them with training, resources, and access to markets. Our cooperative model ensures that farmers receive fair prices for their produce while consumers get access to fresh, chemical-free vegetables, fruits, and grains.</p><p>We operate a modern packaging and distribution facility in Banepa, which processes over 10 tons of produce daily. We're committed to regenerative agriculture practices, soil health, and reducing food miles. Our produce is sold through a network of retail partners, direct-to-consumer subscription boxes, and our own farm-to-table café in Kathmandu. Sagarmatha Agro is a pioneer in organic farming in Nepal and is certified by the Nepal Organic Certification Body.</p>",
       "employees_count": 130,
       "founded_at": "2008-02-14",
       "address": "Banepa, Kavrepalanchok, Bagmati Province, Nepal",
@@ -445,17 +449,18 @@
       "is_verified": true,
       "social_links": {
         "website": "https://sagarmathaagro.com",
-        "facebook": "https://facebook.com/sagarmathaagro"
+        "facebook": "https://facebook.com/sagarmatha_agro",
+        "instagram": "https://instagram.com/sagarmatha_agro"
       }
     },
     {
       "full_name": "Kathmandu Media House",
-      "username": "kathmandu.media",
+      "username": "kathmandu_media",
       "email": "editor@kathmandumediahouse.com",
       "phone_number": "9801200028",
       "type": "organization",
       "industries": ["Media"],
-      "bio": "Digital news and media outlet covering business and technology in Nepal.",
+      "bio": "<p>Kathmandu Media House is a leading digital news and media outlet covering business, technology, and culture in Nepal. Since our founding in 2014, we've grown into a trusted source of independent journalism, reaching millions of readers each month through our website, social media channels, and newsletters. Our team of 38 journalists, editors, and multimedia creators is committed to reporting with accuracy, integrity, and depth.</p><p>We cover stories that matter: from startup ecosystems and economic policy to social issues and cultural events. We also produce video content, podcasts, and investigative series that bring important issues to light. We believe that a free and independent press is essential for a healthy democracy, and we strive to hold power accountable while giving voice to marginalized communities. Kathmandu Media House is a member of the Federation of Nepali Journalists and adheres to strict ethical standards.</p>",
       "employees_count": 38,
       "founded_at": "2014-08-05",
       "address": "Sinamangal, Kathmandu, Bagmati Province, Nepal",
@@ -463,18 +468,19 @@
       "is_verified": true,
       "social_links": {
         "website": "https://kathmandumediahouse.com",
-        "twitter": "https://twitter.com/ktmmediahouse",
-        "linkedin": "https://linkedin.com/company/kathmandu-media-house"
+        "twitter": "https://twitter.com/ktm_media",
+        "linkedin": "https://linkedin.com/company/kathmandu-media-house",
+        "youtube": "https://youtube.com/@kathmandumediahouse"
       }
     },
     {
       "full_name": "Annapurna Travels & Tours",
-      "username": "annapurna.travels",
+      "username": "annapurna_travels",
       "email": "bookings@annapurnatravels.com",
       "phone_number": "9801200029",
       "type": "organization",
       "industries": ["Travel & Tourism"],
-      "bio": "Trekking and tour operator specializing in Annapurna and Everest region expeditions.",
+      "bio": "<p>Annapurna Travels & Tours has been offering unforgettable trekking and touring experiences in Nepal since 2005. We specialize in organizing expeditions to the world-famous Annapurna and Everest regions, as well as customized cultural tours, jungle safaris, and pilgrimage trips. Our team of 27 experienced guides, porters, and support staff are committed to safety, sustainability, and exceptional service.</p><p>We believe in responsible tourism—supporting local communities, protecting the environment, and ensuring that our trekkers have a meaningful connection with the places they visit. We use eco-friendly practices, partner with local guesthouses, and contribute a portion of our profits to community development projects. Whether you're a seasoned mountaineer or a first-time trekker, we design itineraries that match your fitness level and interests. Annapurna Travels has received multiple awards for excellence in tourism and has built a reputation for reliability and personalized service.</p>",
       "employees_count": 27,
       "founded_at": "2005-05-22",
       "address": "Thamel, Kathmandu, Bagmati Province, Nepal",
@@ -482,18 +488,19 @@
       "is_verified": true,
       "social_links": {
         "website": "https://annapurnatravels.com",
-        "instagram": "https://instagram.com/annapurnatravels",
-        "facebook": "https://facebook.com/annapurnatravels"
+        "instagram": "https://instagram.com/annapurna_travels",
+        "facebook": "https://facebook.com/annapurnatravels",
+        "linkedin": "https://linkedin.com/company/annapurna-travels"
       }
     },
     {
       "full_name": "Bagmati Construction Co.",
-      "username": "bagmati.construction",
+      "username": "bagmati_construction",
       "email": "info@bagmaticonstruction.com",
       "phone_number": "9801200030",
       "type": "organization",
       "industries": ["Construction"],
-      "bio": "General contractor delivering residential and commercial construction projects.",
+      "bio": "<p>Bagmati Construction Company is a premier general contracting firm that has been delivering high-quality residential and commercial construction projects since 1999. With a workforce of over 310 skilled professionals, we have successfully completed more than 200 projects—including luxury homes, office buildings, schools, and infrastructure projects—across Nepal.</p><p>We are known for our meticulous attention to detail, adherence to timelines, and commitment to safety. Our approach integrates modern construction techniques with local materials and craftsmanship, ensuring durability and aesthetic appeal. We also emphasize sustainable building practices, including energy-efficient designs and waste-reduction strategies. Bagmati Construction has been recognized with several industry awards and maintains strong relationships with architects, engineers, and suppliers. We're dedicated to building a better Nepal, one project at a time.</p>",
       "employees_count": 310,
       "founded_at": "1999-10-30",
       "address": "Koteshwor, Kathmandu, Bagmati Province, Nepal",
@@ -501,17 +508,18 @@
       "is_verified": false,
       "social_links": {
         "website": "https://bagmaticonstruction.com",
-        "linkedin": "https://linkedin.com/company/bagmati-construction"
+        "linkedin": "https://linkedin.com/company/bagmati-construction",
+        "facebook": "https://facebook.com/bagmaticonstruction"
       }
     },
     {
       "full_name": "Pashupati Retail Mart",
-      "username": "pashupati.retail",
+      "username": "pashupati_retail",
       "email": "support@pashupatiretail.com",
       "phone_number": "9801200031",
       "type": "organization",
       "industries": ["Retail"],
-      "bio": "Chain of neighborhood supermarkets serving the Kathmandu valley since 2010.",
+      "bio": "<p>Pashupati Retail Mart is a leading chain of neighborhood supermarkets serving the Kathmandu valley since 2010. We operate 12 stores across the valley, offering a wide range of groceries, fresh produce, household items, and essential goods to communities at convenient locations. Our customer-first approach, competitive pricing, and commitment to quality have made us a trusted household name.</p><p>We source fresh produce directly from farmers, support local producers, and maintain strict quality control across our supply chain. Our stores are designed for a pleasant shopping experience, with clean aisles, helpful staff, and efficient checkout processes. We also offer home delivery through our app and website, making it easy for customers to shop from the comfort of their homes. Pashupati Retail Mart is committed to giving back—we support food banks, donate to disaster relief efforts, and actively participate in community initiatives.</p>",
       "employees_count": 175,
       "founded_at": "2010-12-12",
       "address": "Chabahil, Kathmandu, Bagmati Province, Nepal",
@@ -519,17 +527,18 @@
       "is_verified": true,
       "social_links": {
         "website": "https://pashupatiretail.com",
-        "facebook": "https://facebook.com/pashupatiretail"
+        "facebook": "https://facebook.com/pashupati_retail",
+        "instagram": "https://instagram.com/pashupati_retail"
       }
     },
     {
       "full_name": "Lumbini Legal Associates",
-      "username": "lumbini.legal",
+      "username": "lumbini_legal",
       "email": "contact@lumbinilegal.com",
       "phone_number": "9801200032",
       "type": "organization",
       "industries": ["Legal"],
-      "bio": "Full-service law firm advising businesses on corporate and commercial law in Nepal.",
+      "bio": "<p>Lumbini Legal Associates is a full-service law firm based in Kathmandu, providing comprehensive legal services to businesses and individuals across Nepal. Since our founding in 2013, we've built a reputation for excellence in corporate law, commercial litigation, intellectual property, and regulatory compliance. Our team of 18 highly experienced attorneys is dedicated to delivering strategic, results-oriented legal solutions.</p><p>We serve a diverse clientele—from startups and multinational corporations to non-profit organizations and high-net-worth individuals. Our expertise spans company formation, contract drafting and negotiation, dispute resolution, taxation, employment law, and mergers and acquisitions. We pride ourselves on our deep understanding of Nepal's legal landscape, our responsiveness, and our commitment to client success. Lumbini Legal is also actively involved in legal education and pro bono work, providing free legal assistance to underprivileged communities and supporting legal literacy initiatives.</p>",
       "employees_count": 18,
       "founded_at": "2013-03-03",
       "address": "Anamnagar, Kathmandu, Bagmati Province, Nepal",
@@ -537,7 +546,108 @@
       "is_verified": true,
       "social_links": {
         "website": "https://lumbinilegal.com",
-        "linkedin": "https://linkedin.com/company/lumbini-legal-associates"
+        "linkedin": "https://linkedin.com/company/lumbini-legal-associates",
+        "facebook": "https://facebook.com/lumbinilegal"
+      }
+    },
+     {
+      "full_name": "Yeti Technologies Inc.",
+      "username": "yeti_tech",
+      "email": "hello@yetitech.com",
+      "phone_number": "9801200033",
+      "type": "organization",
+      "industries": ["Technology"],
+      "bio": "<p>Yeti Technologies is a Kathmandu-based AI and data science company that builds intelligent solutions for businesses across Asia. Founded in 2021 by a team of MIT and IIT alumni, we specialize in natural language processing, computer vision, and predictive analytics. Our flagship product, 'NepAI,' is an AI-powered virtual assistant that helps Nepali businesses automate customer support in both Nepali and English.</p><p>We're a fast-growing team of 40 engineers, data scientists, and product managers who are passionate about making AI accessible to businesses of all sizes. We've raised seed funding from regional VCs and are expanding our operations to India and Southeast Asia. Our culture is built on innovation, collaboration, and a deep sense of purpose—using technology to solve real problems in the region. We also run an AI fellowship program that trains young Nepali talent in machine learning and data science.</p>",
+      "employees_count": 40,
+      "founded_at": "2021-08-15",
+      "address": "Baneshwor, Kathmandu, Bagmati Province, Nepal",
+      "tax_id": "301234579",
+      "is_verified": true,
+      "social_links": {
+        "website": "https://yetitech.com",
+        "linkedin": "https://linkedin.com/company/yeti-technologies",
+        "github": "https://github.com/yeti-tech",
+        "twitter": "https://twitter.com/yeti_tech"
+      }
+    },
+    {
+      "full_name": "Himalayan Organic Farms",
+      "username": "himalayan_organic",
+      "email": "info@himalayanorganic.com",
+      "phone_number": "9801200034",
+      "type": "organization",
+      "industries": ["Agriculture"],
+      "bio": "<p>Himalayan Organic Farms is a pioneering agri-business dedicated to promoting organic and sustainable farming practices in Nepal. Since 2010, we've worked with over 1,200 smallholder farmers across 15 districts, helping them transition to certified organic farming and connecting them to premium markets both locally and internationally.</p><p>We cultivate and export high-value organic products including Himalayan pink salt, organic ginger, turmeric, cardamom, coffee, and a range of medicinal herbs. Our processing facility in Dhulikhel is equipped with modern machinery for cleaning, grading, and packaging, ensuring that our products meet international quality standards. We're certified by the USDA, EU Organic, and JAS (Japan) standards.</p><p>Beyond business, we're committed to rural development—providing training, micro-loans, and healthcare support to farming communities. We also run a school in one of our partner villages, supporting education for children of our farmer families. Himalayan Organic Farms is a proud member of the Fair Trade Federation.</p>",
+      "employees_count": 85,
+      "founded_at": "2010-03-18",
+      "address": "Dhulikhel, Kavrepalanchok, Bagmati Province, Nepal",
+      "tax_id": "301234580",
+      "is_verified": true,
+      "social_links": {
+        "website": "https://himalayanorganic.com",
+        "facebook": "https://facebook.com/himalayanorganic",
+        "instagram": "https://instagram.com/himalayan_organic",
+        "linkedin": "https://linkedin.com/company/himalayan-organic-farms"
+      }
+    },
+    {
+      "full_name": "Kathmandu Creative Agency",
+      "username": "ktm_creative",
+      "email": "hello@ktmcreative.com",
+      "phone_number": "9801200035",
+      "type": "organization",
+      "industries": ["Design", "Media"],
+      "bio": "<p>Kathmandu Creative Agency is a full-service creative studio that helps brands tell compelling stories through design, video, and digital experiences. Founded in 2015, we've grown into a team of 32 talented designers, animators, video producers, and strategists who work with clients ranging from local startups to international NGOs.</p><p>We offer a comprehensive suite of services: brand identity and logo design, website and app design, motion graphics and animation, video production (corporate, documentary, social media), and digital marketing strategy. Our work has been recognized with several regional awards, including the 'Best Design Agency' award at the Nepal Creative Awards in 2022 and 2023.</p><p>We believe that great design has the power to transform businesses and communities. We're deeply engaged in the local creative ecosystem, organizing workshops, design meetups, and mentorship programs for emerging creatives. Our office in Patan is a vibrant space that doubles as a community hub for artists and designers.</p>",
+      "employees_count": 32,
+      "founded_at": "2015-07-01",
+      "address": "Patan, Lalitpur, Bagmati Province, Nepal",
+      "tax_id": "301234581",
+      "is_verified": true,
+      "social_links": {
+        "website": "https://ktmcreative.com",
+        "instagram": "https://instagram.com/ktm_creative",
+        "behance": "https://behance.net/ktmcreative",
+        "linkedin": "https://linkedin.com/company/kathmandu-creative-agency",
+        "youtube": "https://youtube.com/@ktmcreative"
+      }
+    },
+    {
+      "full_name": "Mountain View Hospital",
+      "username": "mountain_view_hospital",
+      "email": "info@mountainviewhospital.com",
+      "phone_number": "9801200036",
+      "type": "organization",
+      "industries": ["Healthcare"],
+      "bio": "<p>Mountain View Hospital is a 150-bed tertiary care facility in Pokhara, serving the healthcare needs of the Gandaki Province and beyond. Established in 2008, we offer comprehensive medical services including emergency care, surgery, cardiology, orthopedics, pediatrics, gynecology, and mental health services. Our team of 120 doctors, 250 nurses, and 80 support staff is dedicated to providing compassionate, patient-centered care.</p><p>We're equipped with modern medical technology including a 128-slice CT scanner, MRI, digital X-ray, ultrasound, and fully equipped operation theaters. We also operate a 24-hour emergency and ambulance service, and we're a designated COVID-19 treatment center. We believe that healthcare should be accessible to all, and we operate a subsidized care program for patients from low-income backgrounds.</p><p>Mountain View Hospital is also actively involved in medical education—we're affiliated with the Nepal Medical Council and offer residency programs in several specialties. We conduct regular health camps in rural communities and partner with international organizations on public health initiatives.</p>",
+      "employees_count": 450,
+      "founded_at": "2008-11-22",
+      "address": "Mangalbazar, Pokhara, Gandaki Province, Nepal",
+      "tax_id": "301234582",
+      "is_verified": true,
+      "social_links": {
+        "website": "https://mountainviewhospital.com",
+        "linkedin": "https://linkedin.com/company/mountain-view-hospital",
+        "facebook": "https://facebook.com/mountainviewhospital"
+      }
+    },
+    {
+      "full_name": "Nepal Fintech Solutions",
+      "username": "nepal_fintech",
+      "email": "contact@nepalfintech.com",
+      "phone_number": "9801200037",
+      "type": "organization",
+      "industries": ["Technology", "Finance"],
+      "bio": "<p>Nepal Fintech Solutions is a leading financial technology company that's transforming how Nepalis manage, save, and transfer money. Since our founding in 2018, we've built a suite of digital financial products including a mobile wallet, peer-to-peer lending platform, and merchant payment solutions. Our flagship product, 'PaisaPay,' has over 2 million active users and is used by more than 15,000 merchants across Nepal.</p><p>We're a team of 65 passionate professionals—engineers, product managers, compliance officers, and customer support specialists—who are driven by a mission to bring financial inclusion to every Nepali. We've partnered with major banks and microfinance institutions to expand access to financial services, especially in rural and remote areas where traditional banking infrastructure is limited.</p><p>We're regulated by Nepal Rastra Bank and maintain the highest standards of security and compliance. We've been recognized as the 'Best Fintech Startup' at the Nepal Startup Awards and have raised over $5 million in funding from regional investors. We're also committed to financial literacy, running free workshops across the country to help people understand digital finance and make informed decisions.</p>",
+      "employees_count": 65,
+      "founded_at": "2018-04-05",
+      "address": "Hattisar, Kathmandu, Bagmati Province, Nepal",
+      "tax_id": "301234583",
+      "is_verified": true,
+      "social_links": {
+        "website": "https://nepalfintech.com",
+        "linkedin": "https://linkedin.com/company/nepal-fintech-solutions",
+        "facebook": "https://facebook.com/nepalfintech",
+        "twitter": "https://twitter.com/nepal_fintech"
       }
     }
   ],

@@ -1,33 +1,131 @@
 {
   "categories": [
-    {"name": "Software Development", "icon": "code-2", "description": "Roles building and maintaining software products.", "color": "#2563eb"},
-    {"name": "Design", "icon": "palette", "description": "Roles focused on visual and product design.", "color": "#db2777"},
-    {"name": "Marketing", "icon": "megaphone", "description": "Roles driving brand awareness and growth.", "color": "#f59e0b"},
-    {"name": "Sales", "icon": "trending-up", "description": "Roles focused on revenue and client acquisition.", "color": "#16a34a"},
-    {"name": "Customer Support", "icon": "headphones", "description": "Roles helping customers resolve issues.", "color": "#0891b2"},
-    {"name": "Finance", "icon": "landmark", "description": "Roles managing budgets, reporting, and analysis.", "color": "#65a30d"},
-    {"name": "Operations", "icon": "settings", "description": "Roles keeping day-to-day operations running smoothly.", "color": "#64748b"},
-    {"name": "HR", "icon": "users", "description": "Roles managing people, hiring, and culture.", "color": "#7c3aed"},
-    {"name": "Education", "icon": "graduation-cap", "description": "Roles focused on teaching and training.", "color": "#0d9488"},
-    {"name": "Healthcare", "icon": "heart-pulse", "description": "Roles focused on patient care and medical support.", "color": "#e11d48"},
-    {"name": "Construction", "icon": "hard-hat", "description": "Roles building and managing physical infrastructure.", "color": "#ea580c"},
-    {"name": "Logistics", "icon": "truck", "description": "Roles managing supply chain and delivery.", "color": "#4338ca"},
-    {"name": "Hospitality", "icon": "concierge-bell", "description": "Roles delivering guest and hospitality services.", "color": "#c026d3"},
-    {"name": "Media", "icon": "camera", "description": "Roles producing content and media.", "color": "#9333ea"},
-    {"name": "Security", "icon": "shield", "description": "Roles focused on safety and security.", "color": "#334155"},
-    {"name": "Data & Analytics", "icon": "bar-chart-3", "description": "Roles that extract insights and build data solutions.", "color": "#d946ef"},
-    {"name": "Legal", "icon": "scale", "description": "Roles providing legal advice, compliance, and representation.", "color": "#f43f5e"},
-    {"name": "Real Estate", "icon": "home", "description": "Roles managing property, sales, and leasing.", "color": "#14b8a6"}
+    {
+      "name": "Software Development",
+      "icon": "code-2",
+      "description": "Roles building and maintaining software products.",
+      "color": "#2563eb"
+    },
+    {
+      "name": "Design",
+      "icon": "palette",
+      "description": "Roles focused on visual and product design.",
+      "color": "#db2777"
+    },
+    {
+      "name": "Marketing",
+      "icon": "megaphone",
+      "description": "Roles driving brand awareness and growth.",
+      "color": "#f59e0b"
+    },
+    {
+      "name": "Sales",
+      "icon": "trending-up",
+      "description": "Roles focused on revenue and client acquisition.",
+      "color": "#16a34a"
+    },
+    {
+      "name": "Customer Support",
+      "icon": "headphones",
+      "description": "Roles helping customers resolve issues.",
+      "color": "#0891b2"
+    },
+    {
+      "name": "Finance",
+      "icon": "landmark",
+      "description": "Roles managing budgets, reporting, and analysis.",
+      "color": "#65a30d"
+    },
+    {
+      "name": "Operations",
+      "icon": "settings",
+      "description": "Roles keeping day-to-day operations running smoothly.",
+      "color": "#64748b"
+    },
+    {
+      "name": "HR",
+      "icon": "users",
+      "description": "Roles managing people, hiring, and culture.",
+      "color": "#7c3aed"
+    },
+    {
+      "name": "Education",
+      "icon": "graduation-cap",
+      "description": "Roles focused on teaching and training.",
+      "color": "#0d9488"
+    },
+    {
+      "name": "Healthcare",
+      "icon": "heart-pulse",
+      "description": "Roles focused on patient care and medical support.",
+      "color": "#e11d48"
+    },
+    {
+      "name": "Construction",
+      "icon": "hard-hat",
+      "description": "Roles building and managing physical infrastructure.",
+      "color": "#ea580c"
+    },
+    {
+      "name": "Logistics",
+      "icon": "truck",
+      "description": "Roles managing supply chain and delivery.",
+      "color": "#4338ca"
+    },
+    {
+      "name": "Hospitality",
+      "icon": "concierge-bell",
+      "description": "Roles delivering guest and hospitality services.",
+      "color": "#c026d3"
+    },
+    {
+      "name": "Media",
+      "icon": "camera",
+      "description": "Roles producing content and media.",
+      "color": "#9333ea"
+    },
+    {
+      "name": "Security",
+      "icon": "shield",
+      "description": "Roles focused on safety and security.",
+      "color": "#334155"
+    },
+    {
+      "name": "Data & Analytics",
+      "icon": "bar-chart-3",
+      "description": "Roles that extract insights and build data solutions.",
+      "color": "#d946ef"
+    },
+    {
+      "name": "Legal",
+      "icon": "scale",
+      "description": "Roles providing legal advice, compliance, and representation.",
+      "color": "#f43f5e"
+    },
+    {
+      "name": "Real Estate",
+      "icon": "home",
+      "description": "Roles managing property, sales, and leasing.",
+      "color": "#14b8a6"
+    }
   ],
   "jobs": [
     {
-      "title": "Backend Developer",
+      "title": "Senior Backend Software Engineer",
       "category": "Software Development",
-      "description": "Design, build, and maintain the server-side logic and databases that power our applications. You will collaborate with frontend developers and product managers to deliver scalable, secure APIs and services. Your work ensures our platform stays fast, reliable, and ready to handle millions of requests. We value clean code, thorough testing, and proactive performance optimization.",
-      "skills": ["programming", "api-development", "database-management", "problem-solving", "security"],
+      "description": "<h2>Job Description</h2><p>We are looking for an experienced Backend Software Engineer to join our growing engineering team. In this role, you will be responsible for designing, building, and maintaining robust server-side logic and scalable database architectures that power our core applications. You will work closely with frontend developers, product managers, and other engineers to deliver high-performance, secure APIs and microservices that handle millions of daily requests.</p><p>You will own the entire lifecycle of backend features — from technical design and implementation to deployment and monitoring. We value clean, maintainable code, comprehensive testing, and proactive performance optimization. You will participate in code reviews, mentor junior engineers, and help shape our technical roadmap.</p><h2>Key Responsibilities</h2><ul><li>Design, develop, and maintain scalable backend services and APIs using modern frameworks.</li><li>Optimize database schemas and queries for performance and reliability.</li><li>Implement security best practices to protect user data and prevent vulnerabilities.</li><li>Collaborate with cross-functional teams to define technical requirements and architecture.</li><li>Monitor system performance, troubleshoot issues, and ensure high availability.</li><li>Write unit, integration, and end-to-end tests to ensure code quality.</li><li>Participate in on-call rotation to support production systems.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Bachelor's degree in Computer Science, Software Engineering, or related field (or equivalent practical experience).</li><li><strong>Experience:</strong> 4+ years of professional experience building backend systems with Python (Django/Flask), Java (Spring Boot), or Node.js (Express/NestJS).</li><li><strong>Technical Skills:</strong> Deep understanding of RESTful API design, database design (PostgreSQL, MySQL, or NoSQL), and cloud platforms (AWS, GCP, or Azure). Experience with containerization (Docker) and orchestration (Kubernetes) is a plus.</li><li><strong>Soft Skills:</strong> Strong problem-solving abilities, excellent communication skills, and a collaborative mindset.</li><li><strong>Certifications:</strong> Relevant cloud or software certifications (e.g., AWS Certified Developer, Oracle Certified Professional) are a plus.</li></ul><h2>What We Offer</h2><ul><li>Competitive salary and performance-based bonuses.</li><li>Comprehensive health, dental, and vision coverage.</li><li>20 days paid vacation plus sick leave.</li><li>Hybrid or fully remote options available.</li><li>Flexible working hours.</li><li>Annual training budget and conference attendance.</li><li>Equity grants for qualified candidates.</li><li>401(k) with company match.</li></ul>",
+      "skills": [
+        "programming",
+        "api-development",
+        "database-management",
+        "problem-solving",
+        "security",
+        "cloud-services",
+        "microservices"
+      ],
       "requirements": {
         "education": "Bachelor's degree in Computer Science, Engineering, or related field (or equivalent practical experience)",
-        "experience": "2+ years building backend systems with Python, Java, or Node.js",
+        "experience": "4+ years building backend systems with Python, Java, or Node.js",
         "skills": "Strong understanding of RESTful APIs, database design, and cloud platforms like AWS/GCP",
         "certifications": "Relevant cloud or software certifications are a plus"
       },
@@ -42,13 +140,21 @@
       }
     },
     {
-      "title": "Frontend Developer",
+      "title": "Senior Frontend Engineer - React",
       "category": "Software Development",
-      "description": "Translate beautiful designs into responsive, high-performance user interfaces using modern JavaScript frameworks. You will work closely with designers and backend engineers to craft seamless, accessible web experiences. Attention to detail and a passion for user experience are essential. Join a team that values code quality, reusable components, and iterative improvement.",
-      "skills": ["programming", "ui-development", "web-performance", "accessibility", "communication"],
+      "description": "<h2>Job Description</h2><p>We are seeking a talented Frontend Engineer to translate beautiful designs into responsive, high-performance user interfaces using modern JavaScript frameworks. You will work closely with designers and backend engineers to craft seamless, accessible web experiences that delight our users. Attention to detail and a passion for user experience are essential.</p><p>In this role, you will be responsible for building reusable components, optimizing frontend performance, and ensuring cross-browser compatibility. You will participate in architectural decisions, code reviews, and contribute to our component library. We value code quality, iterative improvement, and a user-first mindset.</p><h2>Key Responsibilities</h2><ul><li>Develop and maintain responsive web applications using React (or Vue/Angular).</li><li>Collaborate with UX designers to implement pixel-perfect designs and interactive prototypes.</li><li>Optimize web performance through lazy loading, code splitting, and efficient rendering.</li><li>Ensure accessibility standards (WCAG) are met across all user interfaces.</li><li>Write clean, modular, and well-documented code.</li><li>Conduct code reviews and provide constructive feedback to peers.</li><li>Stay up-to-date with the latest frontend trends and best practices.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Bachelor's degree in Computer Science or related field preferred, or strong portfolio of past projects.</li><li><strong>Experience:</strong> 3+ years of professional frontend development experience with React, Vue, or Angular.</li><li><strong>Technical Skills:</strong> Proficiency in HTML/CSS, modern JavaScript (ES6+), responsive design, and state management (Redux, Context API). Experience with Next.js or Gatsby is a plus.</li><li><strong>Portfolio:</strong> GitHub or live project links required.</li><li><strong>Soft Skills:</strong> Strong communication skills, attention to detail, and ability to work in an agile environment.</li></ul><h2>What We Offer</h2><ul><li>Medical, dental, and vision insurance.</li><li>Work from anywhere policy.</li><li>Flexible schedule with core overlap hours.</li><li>Latest MacBook Pro and peripherals provided.</li><li>Learning stipend for courses and certifications.</li><li>Career growth opportunities in a fast-paced environment.</li></ul>",
+      "skills": [
+        "programming",
+        "ui-development",
+        "web-performance",
+        "accessibility",
+        "communication",
+        "react",
+        "javascript"
+      ],
       "requirements": {
         "education": "Bachelor's degree preferred, or strong portfolio of past projects",
-        "experience": "2+ years developing with React, Vue, or Angular",
+        "experience": "3+ years developing with React, Vue, or Angular",
         "skills": "Proficiency in HTML/CSS, modern JavaScript, and responsive design",
         "portfolio": "GitHub or live project links required"
       },
@@ -61,13 +167,21 @@
       }
     },
     {
-      "title": "Full Stack Developer",
+      "title": "Full Stack Developer - Python/React",
       "category": "Software Development",
-      "description": "Build features end-to-end, from database schema to user interface. You'll take ownership of projects in a fast-paced, agile environment. We need someone comfortable with both frontend frameworks and backend architecture, who can also contribute to DevOps and deployment pipelines. Your ability to quickly switch context and solve problems across the stack is key.",
-      "skills": ["full-stack", "programming", "api-development", "database-management", "troubleshooting"],
+      "description": "<h2>Job Description</h2><p>We are looking for a versatile Full Stack Developer to build features end-to-end, from database schema to user interface. You will take ownership of projects in a fast-paced, agile environment. We need someone comfortable with both frontend frameworks and backend architecture, who can also contribute to DevOps and deployment pipelines. Your ability to quickly switch context and solve problems across the stack is key.</p><p>In this role, you will work on high-impact projects, collaborating with product managers, designers, and other engineers to deliver value to our customers. You will write clean, testable code on both the frontend and backend, and contribute to infrastructure automation.</p><h2>Key Responsibilities</h2><ul><li>Design and implement full-stack features from database models to UI components.</li><li>Build and maintain RESTful APIs and microservices.</li><li>Develop responsive user interfaces using React (or similar frameworks).</li><li>Optimize applications for maximum speed and scalability.</li><li>Implement CI/CD pipelines and manage deployments on cloud platforms.</li><li>Participate in code reviews, sprint planning, and architectural discussions.</li><li>Troubleshoot and debug issues across the entire stack.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Bachelor's degree in Computer Science or equivalent bootcamp + experience.</li><li><strong>Experience:</strong> 4+ years building and shipping full stack applications.</li><li><strong>Technical Skills:</strong> Proficient in at least one backend language (Python, Java, Node.js) and one modern frontend framework (React, Vue, Angular).</li><li><strong>Other Skills:</strong> Experience with containerization (Docker), CI/CD pipelines, and cloud platforms (AWS, GCP) is preferred.</li><li><strong>Soft Skills:</strong> Strong problem-solving abilities, self-motivation, and excellent communication.</li></ul><h2>What We Offer</h2><ul><li>Full family medical, dental, and vision.</li><li>Unlimited PTO policy.</li><li>Fully remote team.</li><li>Budget for online courses, books, and conferences.</li><li>Meaningful equity package.</li><li>Wellness allowance for gym or meditation apps.</li></ul>",
+      "skills": [
+        "full-stack",
+        "programming",
+        "api-development",
+        "database-management",
+        "troubleshooting",
+        "devops",
+        "react"
+      ],
       "requirements": {
         "education": "Bachelor's degree in CS or equivalent bootcamp + experience",
-        "experience": "3+ years building and shipping full stack applications",
+        "experience": "4+ years building and shipping full stack applications",
         "skills": "Proficient in at least one backend language and one modern frontend framework",
         "other": "Experience with containerization (Docker) and CI/CD preferred"
       },
@@ -81,13 +195,21 @@
       }
     },
     {
-      "title": "Mobile App Developer",
+      "title": "Mobile Application Developer - iOS/Android",
       "category": "Software Development",
-      "description": "Develop native iOS and Android applications that delight our users. You'll work on new features from concept to App Store release, optimizing for performance and battery life. We encourage creative solutions and clean code that passes rigorous testing. Help shape a product used by millions daily.",
-      "skills": ["mobile-development", "programming", "ui-development", "testing", "performance"],
+      "description": "<h2>Job Description</h2><p>We are seeking a skilled Mobile App Developer to develop native iOS and Android applications that delight our users. You will work on new features from concept to App Store release, optimizing for performance and battery life. We encourage creative solutions and clean code that passes rigorous testing. Help shape a product used by millions daily.</p><p>In this role, you will collaborate with designers, product managers, and backend engineers to deliver high-quality mobile experiences. You will be responsible for the full mobile development lifecycle, including design, development, testing, and deployment.</p><h2>Key Responsibilities</h2><ul><li>Develop and maintain native iOS (Swift) and/or Android (Kotlin) applications.</li><li>Collaborate with cross-functional teams to define and implement new features.</li><li>Optimize app performance, memory usage, and battery life.</li><li>Implement mobile UI/UX designs with attention to platform guidelines.</li><li>Write unit and UI tests to ensure app reliability and quality.</li><li>Participate in code reviews and contribute to team best practices.</li><li>Stay up-to-date with the latest mobile development trends and technologies.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Bachelor's degree in Computer Science or equivalent technical training.</li><li><strong>Experience:</strong> 3+ years of professional mobile development experience with Swift/Kotlin or React Native.</li><li><strong>Technical Skills:</strong> Strong understanding of mobile UI guidelines, offline storage, and networking. Experience with Core Data/Realm, Push Notifications, and performance optimization is a plus.</li><li><strong>Portfolio:</strong> Apps published in App Store/Google Play are a strong plus.</li><li><strong>Soft Skills:</strong> Strong problem-solving abilities, attention to detail, and collaborative mindset.</li></ul><h2>What We Offer</h2><ul><li>Comprehensive health benefits.</li><li>Remote-friendly work environment.</li><li>Choose your own schedule.</li><li>Choice of Mac or PC setup.</li><li>Reimbursement for developer conferences.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "mobile-development",
+        "programming",
+        "ui-development",
+        "testing",
+        "performance",
+        "swift",
+        "kotlin"
+      ],
       "requirements": {
         "education": "Bachelor's degree or equivalent technical training",
-        "experience": "2+ years with Swift/Kotlin or React Native",
+        "experience": "3+ years with Swift/Kotlin or React Native",
         "skills": "Strong understanding of mobile UI guidelines and offline storage",
         "portfolio": "Apps published in App Store/Google Play a plus"
       },
@@ -100,13 +222,21 @@
       }
     },
     {
-      "title": "DevOps Engineer",
+      "title": "Cloud Infrastructure Engineer",
       "category": "Software Development",
-      "description": "Bridge development and operations by automating infrastructure, deployments, and monitoring. You'll maintain CI/CD pipelines, manage cloud resources, and improve system reliability. Your work empowers the entire engineering team to ship faster and more safely. We value a culture of shared responsibility and blameless post-mortems.",
-      "skills": ["devops", "automation", "cloud-services", "monitoring", "security"],
+      "description": "<h2>Job Description</h2><p>We are looking for a skilled DevOps Engineer to bridge development and operations by automating infrastructure, deployments, and monitoring. You will maintain CI/CD pipelines, manage cloud resources, and improve system reliability. Your work empowers the entire engineering team to ship faster and more safely.</p><p>In this role, you will collaborate with developers to ensure infrastructure is scalable, secure, and cost-effective. You will implement monitoring and alerting systems, respond to incidents, and contribute to a culture of shared responsibility and blameless post-mortems.</p><h2>Key Responsibilities</h2><ul><li>Design, implement, and manage CI/CD pipelines for automated build, test, and deployment.</li><li>Provision and manage cloud infrastructure using Infrastructure-as-Code (Terraform, CloudFormation).</li><li>Monitor system health, performance, and security using observability tools (Prometheus, Grafana, ELK stack).</li><li>Automate repetitive tasks and improve operational efficiency.</li><li>Respond to and resolve production incidents, conducting root cause analysis.</li><li>Collaborate with engineering teams to define and enforce security best practices.</li><li>Participate in on-call rotation to ensure 24/7 system availability.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Bachelor's degree in Computer Science, IT, or related field.</li><li><strong>Experience:</strong> 4+ years in DevOps or SRE role.</li><li><strong>Technical Skills:</strong> Expertise with Docker, Kubernetes, Terraform, and major cloud providers (AWS, Azure, GCP).</li><li><strong>Certifications:</strong> AWS/Azure/GCP certification preferred.</li><li><strong>Soft Skills:</strong> Strong problem-solving abilities, excellent communication, and collaboration skills.</li></ul><h2>What We Offer</h2><ul><li>Premium medical, dental, and vision.</li><li>100% remote option.</li><li>401(k) with generous employer match.</li><li>26 days annual leave.</li><li>Compensated on-call rotation with additional time off.</li><li>Growth and learning opportunities.</li></ul>",
+      "skills": [
+        "devops",
+        "automation",
+        "cloud-services",
+        "monitoring",
+        "security",
+        "kubernetes",
+        "terraform"
+      ],
       "requirements": {
         "education": "Bachelor's degree in CS, IT, or related field",
-        "experience": "3+ years in DevOps or SRE role",
+        "experience": "4+ years in DevOps or SRE role",
         "skills": "Expertise with Docker, Kubernetes, Terraform, and major cloud providers",
         "certifications": "AWS/Azure/GCP certification preferred"
       },
@@ -119,13 +249,21 @@
       }
     },
     {
-      "title": "Software QA Engineer",
+      "title": "Senior Quality Assurance Engineer",
       "category": "Software Development",
-      "description": "Ensure our applications perform flawlessly by designing test strategies, writing automated test scripts, and performing manual exploratory testing. You'll work alongside developers to catch regressions early and advocate for quality throughout the development lifecycle. We believe testing is a shared responsibility and you'll help foster that culture.",
-      "skills": ["testing", "automation", "programming", "analytical", "communication"],
+      "description": "<h2>Job Description</h2><p>We are looking for a Quality Assurance Engineer to ensure our applications perform flawlessly by designing test strategies, writing automated test scripts, and performing manual exploratory testing. You will work alongside developers to catch regressions early and advocate for quality throughout the development lifecycle. We believe testing is a shared responsibility and you will help foster that culture.</p><p>In this role, you will be responsible for building and maintaining automated test frameworks, creating test plans, and ensuring our products meet the highest quality standards before release.</p><h2>Key Responsibilities</h2><ul><li>Develop and maintain automated test scripts using Selenium, Cypress, or similar tools.</li><li>Design and execute comprehensive test plans, including functional, regression, integration, and performance testing.</li><li>Perform manual exploratory testing to identify edge cases and usability issues.</li><li>Collaborate with developers to integrate testing into the CI/CD pipeline.</li><li>Track and report bugs, working closely with developers to resolve issues.</li><li>Advocate for quality best practices and foster a culture of testing within the team.</li><li>Continuously improve test coverage and automation efficiency.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Bachelor's degree in Computer Science or related field.</li><li><strong>Experience:</strong> 3+ years in software testing/QA.</li><li><strong>Technical Skills:</strong> Experience with Selenium, Cypress, or similar tools; scripting in Python or JavaScript.</li><li><strong>Mindset:</strong> Passion for breaking things and improving user experience.</li><li><strong>Soft Skills:</strong> Strong analytical and communication skills.</li></ul><h2>What We Offer</h2><ul><li>Health, dental, vision.</li><li>Hybrid work model.</li><li>Core hours with flexibility.</li><li>Certification support (ISTQB etc.).</li><li>Dual monitor setup provided.</li><li>Growth opportunities in a supportive environment.</li></ul>",
+      "skills": [
+        "testing",
+        "automation",
+        "programming",
+        "analytical",
+        "communication",
+        "selenium",
+        "cypress"
+      ],
       "requirements": {
         "education": "Bachelor's in Computer Science or related field",
-        "experience": "2+ years in software testing/QA",
+        "experience": "3+ years in software testing/QA",
         "skills": "Experience with Selenium, Cypress, or similar tools; scripting in Python or JavaScript",
         "mindset": "Passion for breaking things and improving user experience"
       },
@@ -138,13 +276,21 @@
       }
     },
     {
-      "title": "Embedded Systems Engineer",
+      "title": "Embedded Software Engineer - IoT",
       "category": "Software Development",
-      "description": "Develop firmware and software for microcontrollers and IoT devices. You'll work close to the hardware, optimizing for memory, power, and real-time constraints. We're building the next generation of connected devices, and your deep understanding of C/C++ and hardware interfaces will be critical.",
-      "skills": ["embedded-systems", "programming", "hardware-interface", "optimization", "debugging"],
+      "description": "<h2>Job Description</h2><p>We are seeking an experienced Embedded Systems Engineer to develop firmware and software for microcontrollers and IoT devices. You will work close to the hardware, optimizing for memory, power, and real-time constraints. We are building the next generation of connected devices, and your deep understanding of C/C++ and hardware interfaces will be critical.</p><p>In this role, you will design, implement, and test firmware for embedded systems, collaborating with hardware engineers to bring products to market. You will be involved in the entire product lifecycle, from concept to production.</p><h2>Key Responsibilities</h2><ul><li>Design and develop firmware for microcontrollers (ARM, PIC, etc.) using C/C++.</li><li>Implement communication protocols (UART, SPI, I2C, CAN, BLE, WiFi).</li><li>Optimize code for memory, power, and real-time constraints.</li><li>Work closely with hardware engineers to debug and validate hardware designs.</li><li>Develop and execute test plans for embedded software.</li><li>Create technical documentation and maintain version control.</li><li>Participate in code reviews and contribute to team best practices.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Bachelor's degree in Electrical Engineering, Computer Engineering, or equivalent.</li><li><strong>Experience:</strong> 3+ years of embedded software development.</li><li><strong>Technical Skills:</strong> Proficient in C/C++, RTOS (FreeRTOS, Zephyr), and reading schematics.</li><li><strong>Tools:</strong> Experience with oscilloscopes and logic analyzers.</li><li><strong>Soft Skills:</strong> Strong problem-solving abilities, attention to detail, and collaborative mindset.</li></ul><h2>What We Offer</h2><ul><li>Comprehensive insurance.</li><li>State-of-the-art lab and equipment.</li><li>20 PTO days + public holidays.</li><li>Funding for professional memberships and courses.</li><li>Opportunities for career growth.</li></ul>",
+      "skills": [
+        "embedded-systems",
+        "programming",
+        "hardware-interface",
+        "optimization",
+        "debugging",
+        "c++",
+        "rtos"
+      ],
       "requirements": {
         "education": "Bachelor's in Electrical Engineering, Computer Engineering, or equivalent",
-        "experience": "2+ years of embedded software development",
+        "experience": "3+ years of embedded software development",
         "skills": "Proficient in C/C++, RTOS, and reading schematics",
         "tools": "Experience with oscilloscopes and logic analyzers"
       },
@@ -156,13 +302,21 @@
       }
     },
     {
-      "title": "Security Engineer",
+      "title": "Information Security Engineer",
       "category": "Software Development",
-      "description": "Protect our products and infrastructure from threats by designing secure architectures, conducting penetration tests, and building security tooling. You'll work across teams to embed security into the SDLC and respond to incidents. We're committed to creating a security-first culture.",
-      "skills": ["cybersecurity", "programming", "networking", "risk-assessment", "incident-response"],
+      "description": "<h2>Job Description</h2><p>We are looking for a Security Engineer to protect our products and infrastructure from threats by designing secure architectures, conducting penetration tests, and building security tooling. You will work across teams to embed security into the SDLC and respond to incidents. We are committed to creating a security-first culture.</p><p>In this role, you will conduct security assessments, develop security controls, and educate developers on secure coding practices. You will also be responsible for incident response and continuous improvement of our security posture.</p><h2>Key Responsibilities</h2><ul><li>Design and implement security architecture for cloud-native applications.</li><li>Conduct vulnerability assessments and penetration tests on systems and applications.</li><li>Develop and maintain security tooling, automation, and monitoring solutions.</li><li>Respond to security incidents and conduct post-incident analysis.</li><li>Collaborate with developers to integrate security into the SDLC (DevSecOps).</li><li>Stay up-to-date with the latest security threats and trends.</li><li>Develop and deliver security training to engineering teams.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Bachelor's degree in Cybersecurity, Computer Science, or related field.</li><li><strong>Experience:</strong> 4+ years in a security-focused role.</li><li><strong>Certifications:</strong> CISSP, CEH, or OSCP strongly preferred.</li><li><strong>Technical Skills:</strong> Deep knowledge of network protocols, encryption, and cloud security (AWS, GCP, Azure).</li><li><strong>Soft Skills:</strong> Strong analytical and communication skills, and a collaborative mindset.</li></ul><h2>What We Offer</h2><ul><li>Executive-level health plan.</li><li>Remote work supported.</li><li>Significant equity.</li><li>Annual budget for security conferences (BlackHat, Defcon).</li><li>Company-wide annual security offsite.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "cybersecurity",
+        "programming",
+        "networking",
+        "risk-assessment",
+        "incident-response",
+        "cloud-security",
+        "penetration-testing"
+      ],
       "requirements": {
         "education": "Bachelor's degree in Cybersecurity, CS, or related field",
-        "experience": "3+ years in a security-focused role",
+        "experience": "4+ years in a security-focused role",
         "certifications": "CISSP, CEH, or OSCP strongly preferred",
         "skills": "Deep knowledge of network protocols, encryption, and cloud security"
       },
@@ -175,13 +329,21 @@
       }
     },
     {
-      "title": "UI/UX Designer",
+      "title": "Senior UI/UX Designer",
       "category": "Design",
-      "description": "Craft intuitive, beautiful experiences for our digital products. You'll conduct user research, create wireframes and prototypes, and hand off pixel-perfect designs. We look for designers who balance aesthetics with usability and data-driven decisions. Your designs will shape the way thousands of users interact with our platform every day.",
-      "skills": ["ui-design", "ux-research", "prototyping", "design-systems", "collaboration"],
+      "description": "<h2>Job Description</h2><p>We are looking for a talented UX/UI Designer to craft intuitive, beautiful experiences for our digital products. You will conduct user research, create wireframes and prototypes, and hand off pixel-perfect designs. We look for designers who balance aesthetics with usability and data-driven decisions. Your designs will shape the way thousands of users interact with our platform every day.</p><p>In this role, you will lead the design process for new features and improvements, collaborating with product managers and engineers to ensure seamless user experiences. You will help define our design system and ensure consistency across all touchpoints.</p><h2>Key Responsibilities</h2><ul><li>Lead the end-to-end design process from research to high-fidelity mockups.</li><li>Conduct user research, interviews, and usability testing to gather insights.</li><li>Create wireframes, user flows, prototypes, and design specifications.</li><li>Develop and maintain design systems and UI component libraries.</li><li>Collaborate with product managers and engineers to define and validate features.</li><li>Analyze user feedback and data to iteratively improve designs.</li><li>Present design concepts to stakeholders and incorporate feedback.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Degree in Design, HCI, or equivalent experience.</li><li><strong>Experience:</strong> 3+ years designing digital products.</li><li><strong>Technical Skills:</strong> Expert in Figma, Sketch, or Adobe XD; experience with user testing and design systems.</li><li><strong>Portfolio:</strong> Portfolio showcasing problem-solving and design process.</li><li><strong>Soft Skills:</strong> Strong communication, collaboration, and creative thinking.</li></ul><h2>What We Offer</h2><ul><li>Health and wellness benefits.</li><li>Remote-first culture.</li><li>Work when you're most creative.</li><li>Design conference and workshop budget.</li><li>Premium design hardware.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "ui-design",
+        "ux-research",
+        "prototyping",
+        "design-systems",
+        "collaboration",
+        "figma",
+        "user-testing"
+      ],
       "requirements": {
         "education": "Degree in Design, HCI, or equivalent experience",
-        "experience": "2+ years designing digital products",
+        "experience": "3+ years designing digital products",
         "skills": "Expert in Figma; experience with user testing and design systems",
         "portfolio": "Portfolio showcasing problem-solving and design process"
       },
@@ -194,13 +356,20 @@
       }
     },
     {
-      "title": "Graphic Designer",
+      "title": "Graphic Designer - Brand & Marketing",
       "category": "Design",
-      "description": "Create compelling visual assets for marketing campaigns, social media, and brand identity. You'll develop concepts that communicate our brand values and engage audiences across multiple channels. A strong eye for typography, color, and composition is essential, as is the ability to manage multiple projects with quick turnarounds.",
-      "skills": ["graphic-design", "branding", "typography", "creativity", "attention-to-detail"],
+      "description": "<h2>Job Description</h2><p>We are seeking a creative Graphic Designer to create compelling visual assets for marketing campaigns, social media, and brand identity. You will develop concepts that communicate our brand values and engage audiences across multiple channels. A strong eye for typography, color, and composition is essential, as is the ability to manage multiple projects with quick turnarounds.</p><p>In this role, you will work closely with the marketing team to ensure brand consistency and visual impact across all touchpoints. You will create graphics for digital advertising, social media, email campaigns, and print materials.</p><h2>Key Responsibilities</h2><ul><li>Design visually engaging graphics for marketing campaigns, social media, and advertisements.</li><li>Maintain and evolve our brand identity across all visual assets.</li><li>Create layouts for landing pages, email templates, and presentations.</li><li>Collaborate with copywriters and marketers to develop creative concepts.</li><li>Manage multiple projects simultaneously and meet deadlines.</li><li>Stay up-to-date with design trends and tools.</li><li>Prepare files for print and digital production.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Bachelor's degree in Graphic Design or related field.</li><li><strong>Experience:</strong> 3+ years in a design studio or agency.</li><li><strong>Technical Skills:</strong> Advanced skills in Adobe Creative Suite (Photoshop, Illustrator, InDesign).</li><li><strong>Portfolio:</strong> Strong portfolio demonstrating branding and campaign work.</li><li><strong>Soft Skills:</strong> Creativity, attention to detail, and ability to work under tight deadlines.</li></ul><h2>What We Offer</h2><ul><li>Health insurance.</li><li>Hybrid schedule.</li><li>Flexible work hours.</li><li>Adobe CC license provided.</li><li>18 days paid leave.</li><li>Career development opportunities.</li></ul>",
+      "skills": [
+        "graphic-design",
+        "branding",
+        "typography",
+        "creativity",
+        "attention-to-detail",
+        "adobe-creative-suite"
+      ],
       "requirements": {
         "education": "Bachelor's degree in Graphic Design or related field",
-        "experience": "2+ years in a design studio or agency",
+        "experience": "3+ years in a design studio or agency",
         "skills": "Advanced skills in Adobe Creative Suite (Photoshop, Illustrator, InDesign)",
         "portfolio": "Strong portfolio demonstrating branding and campaign work"
       },
@@ -213,13 +382,21 @@
       }
     },
     {
-      "title": "Product Designer",
+      "title": "Senior Product Designer - Digital Products",
       "category": "Design",
-      "description": "Own the end-to-end design process for new features, from discovery and ideation to high-fidelity mockups and usability testing. You'll partner with product managers and engineers to balance user needs with business goals. We value designers who think strategically and iterate quickly based on feedback.",
-      "skills": ["product-design", "ux-research", "wireframing", "prototyping", "data-analysis"],
+      "description": "<h2>Job Description</h2><p>We are seeking a Product Designer to own the end-to-end design process for new features, from discovery and ideation to high-fidelity mockups and usability testing. You will partner with product managers and engineers to balance user needs with business goals. We value designers who think strategically and iterate quickly based on feedback.</p><p>In this role, you will lead the product design for key initiatives, ensuring that our products are both delightful and functional. You will work on cross-functional teams and influence the product roadmap with your insights.</p><h2>Key Responsibilities</h2><ul><li>Own the design process for new features and product improvements.</li><li>Conduct user research, competitive analysis, and usability testing.</li><li>Create wireframes, interactive prototypes, and high-fidelity visual designs.</li><li>Collaborate with product managers to define and validate product requirements.</li><li>Work closely with engineers to ensure seamless implementation of designs.</li><li>Define and maintain design standards and guidelines.</li><li>Analyze user feedback and metrics to improve designs iteratively.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Degree in Design, HCI, or comparable experience.</li><li><strong>Experience:</strong> 4+ years in product design.</li><li><strong>Technical Skills:</strong> Expert in Figma, prototyping tools, and user research methods.</li><li><strong>Portfolio:</strong> Must include case studies with measurable impact.</li><li><strong>Soft Skills:</strong> Strong strategic thinking, communication, and collaboration skills.</li></ul><h2>What We Offer</h2><ul><li>Comprehensive medical plan.</li><li>Remote or office options.</li><li>Unlimited PTO.</li><li>Equity.</li><li>Personal learning budget.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "product-design",
+        "ux-research",
+        "wireframing",
+        "prototyping",
+        "data-analysis",
+        "figma",
+        "design-systems"
+      ],
       "requirements": {
         "education": "Degree in Design, HCI, or comparable experience",
-        "experience": "3+ years in product design",
+        "experience": "4+ years in product design",
         "skills": "Expert in Figma, prototyping tools, and user research methods",
         "portfolio": "Must include case studies with measurable impact"
       },
@@ -232,13 +409,21 @@
       }
     },
     {
-      "title": "Motion Designer",
+      "title": "Motion Designer / Animator",
       "category": "Design",
-      "description": "Bring our brand to life through animation and motion graphics for product demos, advertisements, and social content. You'll collaborate with video editors and marketers to create cohesive storytelling that captivates viewers. A strong grasp of timing, easing, and visual narrative is required.",
-      "skills": ["motion-graphics", "animation", "video-editing", "storytelling", "creativity"],
+      "description": "<h2>Job Description</h2><p>We are looking for a talented Motion Designer to bring our brand to life through animation and motion graphics for product demos, advertisements, and social content. You will collaborate with video editors and marketers to create cohesive storytelling that captivates viewers. A strong grasp of timing, easing, and visual narrative is required.</p><p>In this role, you will create animated content that communicates complex ideas simply and engages our audience. You will work on a variety of projects, from short social media clips to longer-form product demos.</p><h2>Key Responsibilities</h2><ul><li>Design and animate motion graphics for product demos, social media, and advertising.</li><li>Collaborate with designers and copywriters to develop storyboards and concepts.</li><li>Create explainer videos that simplify complex product features.</li><li>Edit and animate video content for social media platforms.</li><li>Ensure visual consistency with brand guidelines.</li><li>Stay up-to-date with motion design trends and tools.</li><li>Manage multiple projects and deliver high-quality work on time.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Bachelor's degree in Motion Design, Animation, or related field.</li><li><strong>Experience:</strong> 3+ years of motion design experience.</li><li><strong>Technical Skills:</strong> Expert in After Effects, Premiere Pro, and Cinema 4D/Blender.</li><li><strong>Portfolio:</strong> Showreel demonstrating diverse animation styles.</li><li><strong>Soft Skills:</strong> Creativity, storytelling ability, and excellent collaboration.</li></ul><h2>What We Offer</h2><ul><li>Medical and dental.</li><li>Remote possible.</li><li>High-performance workstation.</li><li>Access to animation courses.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "motion-graphics",
+        "animation",
+        "video-editing",
+        "storytelling",
+        "creativity",
+        "after-effects",
+        "cinema-4d"
+      ],
       "requirements": {
         "education": "Bachelor's degree in Motion Design, Animation, or related field",
-        "experience": "2+ years of motion design experience",
+        "experience": "3+ years of motion design experience",
         "skills": "Expert in After Effects, Premiere Pro, and Cinema 4D/Blender",
         "portfolio": "Showreel demonstrating diverse animation styles"
       },
@@ -250,13 +435,21 @@
       }
     },
     {
-      "title": "UX Researcher",
+      "title": "User Experience Researcher",
       "category": "Design",
-      "description": "Lead user research initiatives to uncover deep insights about our customers. You'll design and conduct usability studies, interviews, and surveys, then synthesize findings into actionable recommendations. Your work will directly influence product strategy and feature prioritization.",
-      "skills": ["user-research", "usability-testing", "data-synthesis", "communication", "empathy"],
+      "description": "<h2>Job Description</h2><p>We are seeking a UX Researcher to lead user research initiatives to uncover deep insights about our customers. You will design and conduct usability studies, interviews, and surveys, then synthesize findings into actionable recommendations. Your work will directly influence product strategy and feature prioritization.</p><p>In this role, you will be the voice of the user within the organization, working closely with product designers, managers, and engineers to ensure user-centered design decisions.</p><h2>Key Responsibilities</h2><ul><li>Plan and conduct qualitative and quantitative user research studies.</li><li>Design and execute usability tests to evaluate prototypes and existing features.</li><li>Conduct user interviews, field studies, and surveys to gather insights.</li><li>Synthesize research findings into clear, actionable insights.</li><li>Create personas, journey maps, and other artifacts to communicate user needs.</li><li>Collaborate with product teams to prioritize research findings and inform product roadmap.</li><li>Present research findings to stakeholders across the organization.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Master's degree in HCI, Psychology, Anthropology, or related field preferred.</li><li><strong>Experience:</strong> 3+ years in UX research or similar role.</li><li><strong>Technical Skills:</strong> Mixed-methods expertise, statistical analysis, and storytelling.</li><li><strong>Portfolio:</strong> Research case studies required.</li><li><strong>Soft Skills:</strong> Strong communication, empathy, and analytical thinking.</li></ul><h2>What We Offer</h2><ul><li>Full health coverage.</li><li>Work from anywhere.</li><li>Flexible schedule.</li><li>Conference and training funds.</li><li>Mental health support subscription.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "user-research",
+        "usability-testing",
+        "data-synthesis",
+        "communication",
+        "empathy",
+        "qualitative-research",
+        "quantitative-research"
+      ],
       "requirements": {
         "education": "Master's degree in HCI, Psychology, Anthropology, or related field preferred",
-        "experience": "2+ years in UX research or similar role",
+        "experience": "3+ years in UX research or similar role",
         "skills": "Mixed-methods expertise, statistical analysis, and storytelling",
         "portfolio": "Research case studies required"
       },
@@ -269,13 +462,21 @@
       }
     },
     {
-      "title": "Digital Marketing Specialist",
+      "title": "Digital Marketing Specialist - SEM/SEO",
       "category": "Marketing",
-      "description": "Plan and execute digital campaigns across SEO, SEM, email, and social media to drive traffic and conversions. You'll analyze performance data, optimize spend, and experiment with new channels. We need someone data-driven yet creative, ready to manage multiple campaigns simultaneously.",
-      "skills": ["digital-marketing", "seo", "analytics", "campaign-management", "creativity"],
+      "description": "<h2>Job Description</h2><p>We are seeking a Digital Marketing Specialist to plan and execute digital campaigns across SEO, SEM, email, and social media to drive traffic and conversions. You will analyze performance data, optimize spend, and experiment with new channels. We need someone data-driven yet creative, ready to manage multiple campaigns simultaneously.</p><p>In this role, you will manage paid advertising campaigns, optimize website content for search engines, and analyze campaign performance to maximize ROI. You will work closely with the marketing team to achieve our growth targets.</p><h2>Key Responsibilities</h2><ul><li>Plan and execute SEM campaigns (Google Ads, Bing Ads) to drive traffic and conversions.</li><li>Optimize website content and structure for SEO (keyword research, on-page optimization).</li><li>Manage email marketing campaigns, including content creation and A/B testing.</li><li>Analyze campaign performance using analytics tools and make data-driven recommendations.</li><li>Monitor and optimize paid campaigns to improve ROI and conversion rates.</li><li>Stay up-to-date with digital marketing trends and algorithm changes.</li><li>Collaborate with content creators and designers to develop marketing assets.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Bachelor's degree in Marketing, Business, or Communications.</li><li><strong>Experience:</strong> 3+ years in digital marketing.</li><li><strong>Technical Skills:</strong> Proficient in Google Analytics, Google Ads, and marketing automation tools (HubSpot, Marketo).</li><li><strong>Certifications:</strong> Google Ads/Analytics certification a plus.</li><li><strong>Soft Skills:</strong> Data-driven, creative, and excellent project management skills.</li></ul><h2>What We Offer</h2><ul><li>Health, dental, vision.</li><li>Hybrid work.</li><li>Flexible hours.</li><li>Marketing conference budget.</li><li>Performance-based quarterly bonus.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "digital-marketing",
+        "seo",
+        "analytics",
+        "campaign-management",
+        "creativity",
+        "google-ads",
+        "sem"
+      ],
       "requirements": {
         "education": "Bachelor's degree in Marketing, Business, or Communications",
-        "experience": "2+ years in digital marketing",
+        "experience": "3+ years in digital marketing",
         "skills": "Proficient in Google Analytics, Ads, and marketing automation tools",
         "certifications": "Google Ads/Analytics certification a plus"
       },
@@ -288,13 +489,21 @@
       }
     },
     {
-      "title": "SEO Specialist",
+      "title": "SEO Strategy Manager",
       "category": "Marketing",
-      "description": "Improve organic search visibility and ranking through technical audits, keyword research, and content optimization. You'll monitor algorithm changes, analyze competitors, and collaborate with content teams to increase targeted traffic. Your strategies will directly impact revenue growth.",
-      "skills": ["seo", "keyword-research", "analytics", "content-strategy", "technical-audit"],
+      "description": "<h2>Job Description</h2><p>We are looking for an SEO Specialist to improve organic search visibility and ranking through technical audits, keyword research, and content optimization. You will monitor algorithm changes, analyze competitors, and collaborate with content teams to increase targeted traffic. Your strategies will directly impact revenue growth.</p><p>In this role, you will develop and implement SEO strategies that drive organic traffic, lead generation, and brand visibility. You will work closely with content creators and developers to ensure SEO best practices are implemented across the website.</p><h2>Key Responsibilities</h2><ul><li>Conduct comprehensive SEO audits and provide actionable recommendations.</li><li>Perform keyword research to identify high-value opportunities.</li><li>Optimize on-page content, meta tags, and site structure for search engines.</li><li>Monitor rankings, traffic, and conversions using SEO tools (Ahrefs, SEMrush).</li><li>Analyze competitors and market trends to inform strategy.</li><li>Collaborate with content creators to develop SEO-optimized content.</li><li>Stay up-to-date with search engine algorithm updates and adapt strategies.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Bachelor's degree or relevant experience.</li><li><strong>Experience:</strong> 3+ years in SEO role.</li><li><strong>Technical Skills:</strong> Mastery of SEO tools (Ahrefs, SEMrush), HTML/CSS basics, and Google Search Console.</li><li><strong>Soft Skills:</strong> Data-driven, strategic thinker, and strong communication skills.</li></ul><h2>What We Offer</h2><ul><li>Insurance benefits.</li><li>Fully remote eligible.</li><li>22 days PTO.</li><li>Annual performance bonus.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "seo",
+        "keyword-research",
+        "analytics",
+        "content-strategy",
+        "technical-audit",
+        "ahrefs",
+        "semrush"
+      ],
       "requirements": {
         "education": "Bachelor's degree or relevant experience",
-        "experience": "2+ years in SEO role",
+        "experience": "3+ years in SEO role",
         "skills": "Mastery of SEO tools (Ahrefs, SEMrush), HTML/CSS basics, and Google Search Console"
       },
       "benefits": {
@@ -305,13 +514,21 @@
       }
     },
     {
-      "title": "Content Marketing Manager",
+      "title": "Content Marketing Manager - B2B",
       "category": "Marketing",
-      "description": "Develop and execute a content strategy that educates our audience and generates leads. You'll oversee blog posts, whitepapers, case studies, and videos, managing a team of writers and freelancers. Success is measured by engagement, lead quality, and brand authority growth.",
-      "skills": ["content-strategy", "writing", "editing", "seo", "team-management"],
+      "description": "<h2>Job Description</h2><p>We are looking for a Content Marketing Manager to develop and execute a content strategy that educates our audience and generates leads. You will oversee blog posts, whitepapers, case studies, and videos, managing a team of writers and freelancers. Success is measured by engagement, lead quality, and brand authority growth.</p><p>In this role, you will lead the content strategy and production, ensuring that all content aligns with our brand and business goals. You will manage a content calendar, work with subject matter experts, and analyze content performance.</p><h2>Key Responsibilities</h2><ul><li>Develop and execute a comprehensive content marketing strategy.</li><li>Manage the content production process, from idea generation to publication.</li><li>Write and edit high-quality blog posts, whitepapers, case studies, and more.</li><li>Manage a team of writers and freelancers, ensuring quality and consistency.</li><li>Optimize content for SEO and lead generation.</li><li>Collaborate with marketing and sales to align content with campaigns.</li><li>Analyze content performance and iterate based on data.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Bachelor's degree in Journalism, Marketing, or English.</li><li><strong>Experience:</strong> 5+ years in content marketing.</li><li><strong>Technical Skills:</strong> Exceptional writing/editing, project management, and familiarity with CMS platforms (WordPress, HubSpot).</li><li><strong>Soft Skills:</strong> Strong leadership, strategic thinking, and collaboration.</li></ul><h2>What We Offer</h2><ul><li>Medical, dental.</li><li>Remote-first.</li><li>Equity.</li><li>Unlimited PTO.</li><li>Professional development budget.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "content-strategy",
+        "writing",
+        "editing",
+        "seo",
+        "team-management",
+        "cms",
+        "project-management"
+      ],
       "requirements": {
         "education": "Bachelor's in Journalism, Marketing, or English",
-        "experience": "4+ years in content marketing",
+        "experience": "5+ years in content marketing",
         "skills": "Exceptional writing/editing, project management, and familiarity with CMS platforms"
       },
       "benefits": {
@@ -323,13 +540,21 @@
       }
     },
     {
-      "title": "Social Media Manager",
+      "title": "Social Media & Community Manager",
       "category": "Marketing",
-      "description": "Grow our brand's presence across Instagram, TikTok, LinkedIn, and Twitter through engaging content and community interaction. You'll plan monthly calendars, analyze metrics, and jump on trends while maintaining brand voice. You're the voice of the company online.",
-      "skills": ["social-media", "community-engagement", "content-creation", "analytics", "trend-spotting"],
+      "description": "<h2>Job Description</h2><p>We are seeking a Social Media Manager to grow our brand's presence across Instagram, TikTok, LinkedIn, and Twitter through engaging content and community interaction. You will plan monthly calendars, analyze metrics, and jump on trends while maintaining brand voice. You are the voice of the company online.</p><p>In this role, you will create and curate content, engage with our community, and analyze social media data to inform strategy. You will work closely with marketing, design, and product teams to amplify our brand.</p><h2>Key Responsibilities</h2><ul><li>Develop and execute social media strategies across platforms (Instagram, TikTok, LinkedIn, Twitter).</li><li>Create engaging content including copy, images, and short videos.</li><li>Manage community engagement, responding to comments and messages.</li><li>Analyze social media metrics and optimize content based on performance.</li><li>Stay up-to-date with trends and identify opportunities for brand growth.</li><li>Collaborate with the marketing team on campaigns and initiatives.</li><li>Manage social media advertising to boost reach and engagement.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Bachelor's degree in Marketing or related field.</li><li><strong>Experience:</strong> 3+ years managing brand social accounts.</li><li><strong>Technical Skills:</strong> Strong copywriting, basic graphic/video editing, and platform analytics.</li><li><strong>Soft Skills:</strong> Creative, organized, and excellent communication skills.</li></ul><h2>What We Offer</h2><ul><li>Health and wellness plan.</li><li>Remote option.</li><li>Flexible schedule.</li><li>Provided smartphone and laptop.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "social-media",
+        "community-engagement",
+        "content-creation",
+        "analytics",
+        "trend-spotting",
+        "copywriting",
+        "platform-analytics"
+      ],
       "requirements": {
         "education": "Bachelor's degree in Marketing or related field",
-        "experience": "2+ years managing brand social accounts",
+        "experience": "3+ years managing brand social accounts",
         "skills": "Strong copywriting, basic graphic/video editing, platform analytics"
       },
       "benefits": {
@@ -340,13 +565,21 @@
       }
     },
     {
-      "title": "Growth Marketing Manager",
+      "title": "Growth Marketing Manager - Performance",
       "category": "Marketing",
-      "description": "Drive rapid user acquisition through experimentation across channels, including paid ads, referrals, and viral loops. You'll build growth models, run A/B tests, and optimize the entire funnel. We need a data-obsessed marketer who isn't afraid to fail fast and scale what works.",
-      "skills": ["growth-marketing", "data-analysis", "a-b-testing", "paid-acquisition", "creativity"],
+      "description": "<h2>Job Description</h2><p>We are looking for a Growth Marketing Manager to drive rapid user acquisition through experimentation across channels, including paid ads, referrals, and viral loops. You will build growth models, run A/B tests, and optimize the entire funnel. We need a data-obsessed marketer who is not afraid to fail fast and scale what works.</p><p>In this role, you will own the growth strategy, working cross-functionally to identify and execute opportunities for user acquisition and retention. You will use data to drive decisions and experiment with new channels and tactics.</p><h2>Key Responsibilities</h2><ul><li>Develop and execute growth strategies to acquire and retain users.</li><li>Manage and optimize paid acquisition campaigns (Facebook Ads, Google Ads).</li><li>Design and run A/B tests to optimize conversion rates across the funnel.</li><li>Build and analyze growth models to identify opportunities.</li><li>Collaborate with product and engineering to implement viral loops and referrals.</li><li>Analyze data to identify trends, opportunities, and areas for improvement.</li><li>Report on growth metrics to stakeholders and leadership.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Bachelor's degree in Marketing, Statistics, or Business.</li><li><strong>Experience:</strong> 4+ years in growth or performance marketing.</li><li><strong>Technical Skills:</strong> SQL, Excel, BI tools, and hands-on experience with ad platforms.</li><li><strong>Soft Skills:</strong> Data-driven, creative, and strong communication skills.</li></ul><h2>What We Offer</h2><ul><li>Top-tier health coverage.</li><li>Hybrid/remote.</li><li>Generous equity.</li><li>Growth milestone bonuses.</li><li>25 days PTO.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "growth-marketing",
+        "data-analysis",
+        "a-b-testing",
+        "paid-acquisition",
+        "creativity",
+        "sql",
+        "growth-models"
+      ],
       "requirements": {
         "education": "Bachelor's degree in Marketing, Statistics, or Business",
-        "experience": "3+ years in growth or performance marketing",
+        "experience": "4+ years in growth or performance marketing",
         "skills": "SQL, Excel, BI tools, and hands-on experience with ad platforms"
       },
       "benefits": {
@@ -358,13 +591,21 @@
       }
     },
     {
-      "title": "Sales Executive",
+      "title": "Enterprise Sales Executive",
       "category": "Sales",
-      "description": "Prospect, pitch, and close deals with mid-market and enterprise clients. You'll manage the entire sales cycle, from lead qualification to contract signing. We provide extensive training and a supportive team environment. Your results directly fuel company growth.",
-      "skills": ["sales", "negotiation", "crm", "communication", "resilience"],
+      "description": "<h2>Job Description</h2><p>We are seeking a Sales Executive to prospect, pitch, and close deals with mid-market and enterprise clients. You will manage the entire sales cycle, from lead qualification to contract signing. We provide extensive training and a supportive team environment. Your results directly fuel company growth.</p><p>In this role, you will build a pipeline of qualified leads, conduct product demonstrations, and negotiate contracts with key decision-makers. You will work closely with the sales team to achieve revenue targets.</p><h2>Key Responsibilities</h2><ul><li>Identify and prospect new business opportunities within target accounts.</li><li>Conduct product demonstrations and presentations to potential clients.</li><li>Manage the full sales cycle from lead generation to closing deals.</li><li>Negotiate contracts and pricing to maximize revenue.</li><li>Build and maintain relationships with key decision-makers.</li><li>Collaborate with marketing and customer success to drive revenue growth.</li><li>Meet or exceed quarterly sales targets and KPIs.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Bachelor's degree or equivalent experience in sales.</li><li><strong>Experience:</strong> 3+ years B2B sales experience with a track record of meeting quotas.</li><li><strong>Technical Skills:</strong> Strong negotiation and presentation abilities; CRM proficiency (Salesforce).</li><li><strong>Soft Skills:</strong> Resilient, persuasive, and excellent communication skills.</li></ul><h2>What We Offer</h2><ul><li>Medical, dental, vision.</li><li>Uncapped commission structure.</li><li>Quarterly and annual bonuses.</li><li>Car allowance or travel stipend.</li><li>Sales training and leadership programs.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "sales",
+        "negotiation",
+        "crm",
+        "communication",
+        "resilience",
+        "b2b-sales",
+        "prospecting"
+      ],
       "requirements": {
         "education": "Bachelor's degree or equivalent experience in sales",
-        "experience": "2+ years B2B sales experience with a track record of meeting quotas",
+        "experience": "3+ years B2B sales experience with a track record of meeting quotas",
         "skills": "Strong negotiation and presentation abilities; CRM proficiency (Salesforce)"
       },
       "benefits": {
@@ -376,13 +617,21 @@
       }
     },
     {
-      "title": "Account Manager",
+      "title": "Key Account Manager",
       "category": "Sales",
-      "description": "Nurture relationships with existing clients, ensuring they receive maximum value from our products. You'll identify upsell opportunities, handle renewals, and act as the voice of the customer internally. Building trust and long-term partnerships is the core of this role.",
-      "skills": ["account-management", "customer-service", "upselling", "communication", "problem-solving"],
+      "description": "<h2>Job Description</h2><p>We are seeking an Account Manager to nurture relationships with existing clients, ensuring they receive maximum value from our products. You will identify upsell opportunities, handle renewals, and act as the voice of the customer internally. Building trust and long-term partnerships is the core of this role.</p><p>In this role, you will be the primary point of contact for a portfolio of key accounts, ensuring their success and satisfaction. You will work cross-functionally to address customer needs and drive revenue growth through upsells and renewals.</p><h2>Key Responsibilities</h2><ul><li>Manage a portfolio of client accounts, ensuring high levels of satisfaction and retention.</li><li>Identify upsell and cross-sell opportunities to drive revenue growth.</li><li>Handle contract renewals and negotiate terms.</li><li>Serve as the primary point of contact for client inquiries and escalations.</li><li>Conduct regular business reviews with clients to discuss goals and progress.</li><li>Collaborate with customer success, sales, and product teams to address client needs.</li><li>Provide feedback to product teams based on client insights.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Bachelor's degree in Business or related field.</li><li><strong>Experience:</strong> 4+ years in account management or customer success.</li><li><strong>Technical Skills:</strong> Excellent interpersonal skills and experience with CRM software.</li><li><strong>Soft Skills:</strong> Strong communication, problem-solving, and relationship-building skills.</li></ul><h2>What We Offer</h2><ul><li>Full benefits package.</li><li>401(k) match.</li><li>Retention and upsell bonuses.</li><li>Flexible location.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "account-management",
+        "customer-service",
+        "upselling",
+        "communication",
+        "problem-solving",
+        "crm",
+        "client-relations"
+      ],
       "requirements": {
         "education": "Bachelor's degree in Business or related field",
-        "experience": "3+ years in account management or customer success",
+        "experience": "4+ years in account management or customer success",
         "skills": "Excellent interpersonal skills and experience with CRM software"
       },
       "benefits": {
@@ -395,8 +644,16 @@
     {
       "title": "Business Development Representative",
       "category": "Sales",
-      "description": "Generate pipeline by researching and contacting potential clients through cold calls, emails, and social outreach. You'll qualify leads and set meetings for senior sales executives. This role offers a clear path to a closing position.",
-      "skills": ["prospecting", "cold-calling", "email-outreach", "persistence", "research"],
+      "description": "<h2>Job Description</h2><p>We are seeking a Business Development Representative to generate pipeline by researching and contacting potential clients through cold calls, emails, and social outreach. You will qualify leads and set meetings for senior sales executives. This role offers a clear path to a closing position.</p><p>In this role, you will be the first touchpoint for potential customers, building a strong foundation for the sales pipeline. You will learn the sales process from the ground up and develop your sales skills.</p><h2>Key Responsibilities</h2><ul><li>Identify and research target accounts and contacts.</li><li>Conduct outbound prospecting through cold calls, emails, and social outreach.</li><li>Qualify leads and schedule meetings for senior sales executives.</li><li>Maintain accurate records of all activities in the CRM.</li><li>Collaborate with marketing to optimize lead generation efforts.</li><li>Meet and exceed monthly targets for qualified leads and meetings.</li><li>Learn and master the sales process and product knowledge.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Bachelor's degree preferred.</li><li><strong>Experience:</strong> 0-2 years; entry-level welcome.</li><li><strong>Technical Skills:</strong> Strong communication, resilience, and organizational skills.</li><li><strong>Soft Skills:</strong> Self-motivated, persistent, and eager to learn.</li></ul><h2>What We Offer</h2><ul><li>Health coverage.</li><li>Performance-based bonuses.</li><li>Structured career progression.</li><li>Comprehensive sales training.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "prospecting",
+        "cold-calling",
+        "email-outreach",
+        "persistence",
+        "research",
+        "lead-generation",
+        "crm"
+      ],
       "requirements": {
         "education": "Bachelor's degree preferred",
         "experience": "0-2 years; entry-level welcome",
@@ -410,10 +667,18 @@
       }
     },
     {
-      "title": "Customer Support Representative",
+      "title": "Customer Support Representative (Tier 1)",
       "category": "Customer Support",
-      "description": "Provide world-class support via phone, chat, and email, resolving customer issues with empathy and efficiency. You'll troubleshoot problems, document solutions, and escalate when necessary. We're looking for patient problem-solvers who truly enjoy helping others.",
-      "skills": ["customer-service", "troubleshooting", "empathy", "communication", "multitasking"],
+      "description": "<h2>Job Description</h2><p>We are seeking a Customer Support Representative to provide world-class support via phone, chat, and email, resolving customer issues with empathy and efficiency. You will troubleshoot problems, document solutions, and escalate when necessary. We are looking for patient problem-solvers who truly enjoy helping others.</p><p>In this role, you will be the frontline of customer service, ensuring every customer interaction is positive and effective. You will develop deep product knowledge and become an expert in our support processes.</p><h2>Key Responsibilities</h2><ul><li>Provide excellent customer support via phone, email, and chat.</li><li>Troubleshoot customer issues and provide effective solutions.</li><li>Document interactions and solutions accurately in the CRM.</li><li>Escalate complex issues to technical support or engineering when necessary.</li><li>Maintain a high level of customer satisfaction (CSAT).</li><li>Stay up-to-date with product features and updates.</li><li>Contribute to the knowledge base and help articles.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> High school diploma; some college preferred.</li><li><strong>Experience:</strong> Previous customer service experience a plus.</li><li><strong>Technical Skills:</strong> Strong written and verbal communication; basic technical aptitude.</li><li><strong>Soft Skills:</strong> Empathetic, patient, and problem-solving oriented.</li></ul><h2>What We Offer</h2><ul><li>Health, dental, vision.</li><li>Work-from-home opportunities.</li><li>Shift flexibility.</li><li>Internal career path to advanced support or management.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "customer-service",
+        "troubleshooting",
+        "empathy",
+        "communication",
+        "multitasking",
+        "crm",
+        "problem-solving"
+      ],
       "requirements": {
         "education": "High school diploma; some college preferred",
         "experience": "Previous customer service experience a plus",
@@ -427,13 +692,21 @@
       }
     },
     {
-      "title": "Technical Support Specialist",
+      "title": "Technical Support Engineer - Level 2",
       "category": "Customer Support",
-      "description": "Assist users with complex technical issues, reproducing bugs and guiding them through advanced troubleshooting. You'll bridge the gap between customers and engineering, ensuring issues are resolved accurately and promptly. A curious mind and love for technology are essential.",
-      "skills": ["technical-support", "troubleshooting", "coding-basics", "communication", "documentation"],
+      "description": "<h2>Job Description</h2><p>We are seeking a Technical Support Specialist to assist users with complex technical issues, reproducing bugs and guiding them through advanced troubleshooting. You will bridge the gap between customers and engineering, ensuring issues are resolved accurately and promptly. A curious mind and love for technology are essential.</p><p>In this role, you will handle escalations from Tier 1 support, perform root cause analysis, and collaborate with engineering to resolve complex technical issues. You will be a key player in maintaining customer satisfaction.</p><h2>Key Responsibilities</h2><ul><li>Provide advanced technical support for customers via phone, email, and chat.</li><li>Reproduce and troubleshoot complex technical issues.</li><li>Document issues, workarounds, and solutions for the knowledge base.</li><li>Collaborate with engineering to escalate and resolve bugs and feature requests.</li><li>Analyze logs, databases, and code to identify root causes.</li><li>Mentor and support Tier 1 support representatives.</li><li>Continuously improve technical knowledge and skills.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Associate's degree or technical certifications.</li><li><strong>Experience:</strong> 3+ years in technical support.</li><li><strong>Technical Skills:</strong> Familiarity with command line, SQL queries, and reading logs.</li><li><strong>Soft Skills:</strong> Strong problem-solving, communication, and analytical skills.</li></ul><h2>What We Offer</h2><ul><li>Comprehensive benefits.</li><li>Remote-friendly.</li><li>Paid certifications (CompTIA, ITIL).</li><li>Home office stipend.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "technical-support",
+        "troubleshooting",
+        "coding-basics",
+        "communication",
+        "documentation",
+        "sql",
+        "log-analysis"
+      ],
       "requirements": {
         "education": "Associate's degree or technical certifications",
-        "experience": "2+ years in technical support",
+        "experience": "3+ years in technical support",
         "skills": "Familiarity with command line, SQL queries, and reading logs"
       },
       "benefits": {
@@ -444,13 +717,21 @@
       }
     },
     {
-      "title": "Customer Success Manager",
+      "title": "Customer Success Manager - Enterprise",
       "category": "Customer Support",
-      "description": "Proactively ensure customers achieve their desired outcomes using our product. You'll onboard new accounts, conduct regular check-ins, and drive product adoption. Your success is measured by customer retention and satisfaction scores.",
-      "skills": ["customer-success", "product-training", "account-management", "data-analysis", "communication"],
+      "description": "<h2>Job Description</h2><p>We are seeking a Customer Success Manager to proactively ensure customers achieve their desired outcomes using our product. You will onboard new accounts, conduct regular check-ins, and drive product adoption. Your success is measured by customer retention and satisfaction scores.</p><p>In this role, you will build strong relationships with key stakeholders in your portfolio, ensuring they are realizing value from our product. You will work cross-functionally to address challenges and identify growth opportunities.</p><h2>Key Responsibilities</h2><ul><li>Onboard new clients and ensure a smooth implementation process.</li><li>Conduct regular check-ins and business reviews with clients.</li><li>Drive product adoption and ensure clients are achieving their goals.</li><li>Identify upsell and cross-sell opportunities.</li><li>Manage renewals and mitigate churn risk.</li><li>Serve as the voice of the customer, providing feedback to product teams.</li><li>Analyze customer data to identify trends and insights.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Bachelor's degree in Business or related field.</li><li><strong>Experience:</strong> 4+ years in customer success or account management.</li><li><strong>Technical Skills:</strong> Strong analytical, presentation, and relationship-building skills.</li><li><strong>Soft Skills:</strong> Excellent communication, empathy, and problem-solving abilities.</li></ul><h2>What We Offer</h2><ul><li>Full health coverage.</li><li>Remote work option.</li><li>Equity.</li><li>Retention-based bonus.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "customer-success",
+        "product-training",
+        "account-management",
+        "data-analysis",
+        "communication",
+        "client-relations",
+        "retention"
+      ],
       "requirements": {
         "education": "Bachelor's degree in Business or related field",
-        "experience": "3+ years in customer success or account management",
+        "experience": "4+ years in customer success or account management",
         "skills": "Strong analytical, presentation, and relationship-building skills"
       },
       "benefits": {
@@ -461,13 +742,21 @@
       }
     },
     {
-      "title": "Finance Analyst",
+      "title": "Financial Planning & Analysis (FP&A) Analyst",
       "category": "Finance",
-      "description": "Support budgeting, forecasting, and financial reporting to drive strategic decisions. You'll build financial models, analyze variances, and prepare presentations for leadership. We need someone with strong analytical skills and attention to detail.",
-      "skills": ["financial-modeling", "excel", "reporting", "analytical-skills", "attention-to-detail"],
+      "description": "<h2>Job Description</h2><p>We are seeking a Finance Analyst to support budgeting, forecasting, and financial reporting to drive strategic decisions. You will build financial models, analyze variances, and prepare presentations for leadership. We need someone with strong analytical skills and attention to detail.</p><p>In this role, you will be responsible for analyzing financial data to support decision-making and drive business performance. You will work closely with various departments to ensure accurate budgeting and forecasting.</p><h2>Key Responsibilities</h2><ul><li>Develop and maintain financial models for budgeting and forecasting.</li><li>Analyze financial variances and provide insights to management.</li><li>Prepare monthly, quarterly, and annual financial reports.</li><li>Assist in the preparation of presentations for the board and executive team.</li><li>Support strategic planning and ad-hoc financial analysis.</li><li>Collaborate with cross-functional teams to understand financial drivers.</li><li>Continuously improve financial processes and reporting.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Bachelor's degree in Finance, Accounting, or Economics.</li><li><strong>Experience:</strong> 3+ years in financial analysis.</li><li><strong>Technical Skills:</strong> Advanced Excel, PowerPoint; experience with ERP systems a plus.</li><li><strong>Certifications:</strong> CFA or CPA candidate preferred.</li><li><strong>Soft Skills:</strong> Analytical, detail-oriented, and strong communication skills.</li></ul><h2>What We Offer</h2><ul><li>Medical, dental.</li><li>401(k) with company match.</li><li>22 days PTO.</li><li>Support for professional certifications.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "financial-modeling",
+        "excel",
+        "reporting",
+        "analytical-skills",
+        "attention-to-detail",
+        "forecasting",
+        "budgeting"
+      ],
       "requirements": {
         "education": "Bachelor's degree in Finance, Accounting, or Economics",
-        "experience": "2+ years in financial analysis",
+        "experience": "3+ years in financial analysis",
         "skills": "Advanced Excel, PowerPoint; experience with ERP systems a plus",
         "certifications": "CFA or CPA candidate preferred"
       },
@@ -479,13 +768,21 @@
       }
     },
     {
-      "title": "Accountant",
+      "title": "Senior Accountant - General Ledger",
       "category": "Finance",
-      "description": "Maintain financial records, prepare monthly closing entries, and reconcile accounts. You'll ensure compliance with GAAP and support external audits. We value meticulousness and a proactive approach to process improvement.",
-      "skills": ["accounting", "reconciliation", "gaap", "excel", "organization"],
+      "description": "<h2>Job Description</h2><p>We are seeking an Accountant to maintain financial records, prepare monthly closing entries, and reconcile accounts. You will ensure compliance with GAAP and support external audits. We value meticulousness and a proactive approach to process improvement.</p><p>In this role, you will be responsible for the accuracy and integrity of our financial records. You will work closely with other finance team members to ensure timely and accurate financial reporting.</p><h2>Key Responsibilities</h2><ul><li>Prepare monthly, quarterly, and annual financial statements.</li><li>Manage the general ledger, including journal entries and reconciliations.</li><li>Ensure compliance with GAAP and internal policies.</li><li>Assist with external audits and tax preparation.</li><li>Identify and implement process improvements to enhance efficiency.</li><li>Perform account analysis and resolve discrepancies.</li><li>Maintain fixed asset records and depreciation schedules.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Bachelor's degree in Accounting.</li><li><strong>Experience:</strong> 3+ years in general ledger accounting.</li><li><strong>Technical Skills:</strong> Proficiency in QuickBooks or NetSuite; strong Excel skills.</li><li><strong>Soft Skills:</strong> Detail-oriented, organized, and proactive.</li></ul><h2>What We Offer</h2><ul><li>Health, dental, vision.</li><li>401(k) matching.</li><li>Paid vacation and sick leave.</li><li>Annual performance bonus.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "accounting",
+        "reconciliation",
+        "gaap",
+        "excel",
+        "organization",
+        "general-ledger",
+        "financial-reporting"
+      ],
       "requirements": {
         "education": "Bachelor's degree in Accounting",
-        "experience": "2+ years in general ledger accounting",
+        "experience": "3+ years in general ledger accounting",
         "skills": "Proficiency in QuickBooks or NetSuite; strong Excel skills"
       },
       "benefits": {
@@ -496,13 +793,21 @@
       }
     },
     {
-      "title": "Operations Coordinator",
+      "title": "Operations Coordinator - Administration",
       "category": "Operations",
-      "description": "Keep our internal processes running like a well-oiled machine. You'll handle scheduling, vendor coordination, and administrative projects. You thrive in a role that demands organization and the ability to juggle multiple priorities calmly.",
-      "skills": ["coordination", "organization", "problem-solving", "communication", "time-management"],
+      "description": "<h2>Job Description</h2><p>We are seeking an Operations Coordinator to keep our internal processes running like a well-oiled machine. You will handle scheduling, vendor coordination, and administrative projects. You thrive in a role that demands organization and the ability to juggle multiple priorities calmly.</p><p>In this role, you will be the central point of contact for various operational tasks, ensuring smooth day-to-day operations. You will support the operations team and contribute to a productive work environment.</p><h2>Key Responsibilities</h2><ul><li>Coordinate scheduling for meetings, events, and travel.</li><li>Manage vendor relationships and purchase orders.</li><li>Maintain and organize company documents and records.</li><li>Provide administrative support to various departments.</li><li>Assist with onboarding and offboarding of employees.</li><li>Manage office supplies and equipment.</li><li>Support special projects and initiatives as needed.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Bachelor's degree in Business Administration or related field.</li><li><strong>Experience:</strong> 2+ years in an operations or administrative role.</li><li><strong>Technical Skills:</strong> Excellent Excel, project management tools, and written communication.</li><li><strong>Soft Skills:</strong> Organized, proactive, and a strong communicator.</li></ul><h2>What We Offer</h2><ul><li>Health insurance.</li><li>18 days PTO.</li><li>Flexible start/end times.</li><li>Cross-training opportunities.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "coordination",
+        "organization",
+        "problem-solving",
+        "communication",
+        "time-management",
+        "vendor-management",
+        "excel"
+      ],
       "requirements": {
         "education": "Bachelor's degree in Business Administration or related field",
-        "experience": "1+ years in an operations or administrative role",
+        "experience": "2+ years in an operations or administrative role",
         "skills": "Excellent Excel, project management tools, and written communication"
       },
       "benefits": {
@@ -513,13 +818,21 @@
       }
     },
     {
-      "title": "Project Manager",
+      "title": "Technical Project Manager - Software",
       "category": "Operations",
-      "description": "Lead cross-functional projects from initiation to closure, ensuring they stay on schedule and within budget. You'll coordinate resources, manage risks, and communicate status to stakeholders. PMP or agile certification is strongly preferred.",
-      "skills": ["project-management", "leadership", "risk-management", "communication", "budgeting"],
+      "description": "<h2>Job Description</h2><p>We are seeking a Project Manager to lead cross-functional projects from initiation to closure, ensuring they stay on schedule and within budget. You will coordinate resources, manage risks, and communicate status to stakeholders. PMP or agile certification is strongly preferred.</p><p>In this role, you will be responsible for the successful delivery of complex projects, working with engineering, product, and design teams. You will ensure projects are delivered on time, within scope, and with high quality.</p><h2>Key Responsibilities</h2><ul><li>Define project scope, goals, and deliverables.</li><li>Develop and manage project plans, timelines, and budgets.</li><li>Coordinate resources and manage dependencies.</li><li>Identify and mitigate project risks and issues.</li><li>Communicate project status to stakeholders and leadership.</li><li>Facilitate agile ceremonies (stand-ups, sprint planning, retrospectives).</li><li>Ensure project deliverables meet quality standards.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Bachelor's degree in Business or technical field.</li><li><strong>Experience:</strong> 4+ years managing complex projects.</li><li><strong>Technical Skills:</strong> Proficient with Jira, Asana, or MS Project.</li><li><strong>Certifications:</strong> PMP, PRINCE2, or Scrum Master certification preferred.</li><li><strong>Soft Skills:</strong> Strong leadership, communication, and problem-solving abilities.</li></ul><h2>What We Offer</h2><ul><li>Full benefits.</li><li>Hybrid work.</li><li>25 days PTO.</li><li>Project completion bonuses.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "project-management",
+        "leadership",
+        "risk-management",
+        "communication",
+        "budgeting",
+        "agile",
+        "jira"
+      ],
       "requirements": {
         "education": "Bachelor's degree in Business or technical field",
-        "experience": "3+ years managing complex projects",
+        "experience": "4+ years managing complex projects",
         "skills": "Proficient with Jira, Asana, or MS Project",
         "certifications": "PMP, PRINCE2, or Scrum Master certification preferred"
       },
@@ -531,13 +844,21 @@
       }
     },
     {
-      "title": "Supply Chain Analyst",
+      "title": "Supply Chain Analyst - Demand Planning",
       "category": "Operations",
-      "description": "Analyze supply chain data to improve efficiency, reduce costs, and ensure timely delivery. You'll forecast demand, track inventory levels, and collaborate with suppliers. Your insights will directly impact our bottom line.",
-      "skills": ["supply-chain", "data-analysis", "forecasting", "inventory-management", "excel"],
+      "description": "<h2>Job Description</h2><p>We are seeking a Supply Chain Analyst to analyze supply chain data to improve efficiency, reduce costs, and ensure timely delivery. You will forecast demand, track inventory levels, and collaborate with suppliers. Your insights will directly impact our bottom line.</p><p>In this role, you will be responsible for optimizing the supply chain, ensuring we have the right products at the right time. You will use data to identify opportunities and drive improvements.</p><h2>Key Responsibilities</h2><ul><li>Analyze supply chain data to identify trends and opportunities.</li><li>Develop and maintain demand forecasts and inventory models.</li><li>Monitor inventory levels and optimize safety stock.</li><li>Collaborate with suppliers to ensure timely delivery and quality.</li><li>Identify and implement cost reduction initiatives.</li><li>Track and report key supply chain metrics.</li><li>Support the development of supply chain strategies.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Bachelor's degree in Supply Chain, Logistics, or Business.</li><li><strong>Experience:</strong> 3+ years in supply chain or logistics analysis.</li><li><strong>Technical Skills:</strong> Advanced Excel, ERP systems (SAP/Oracle), and analytical modeling.</li><li><strong>Soft Skills:</strong> Analytical, detail-oriented, and strong communication skills.</li></ul><h2>What We Offer</h2><ul><li>Insurance.</li><li>401(k).</li><li>Paid time off.</li><li>APICS certification support.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "supply-chain",
+        "data-analysis",
+        "forecasting",
+        "inventory-management",
+        "excel",
+        "demand-planning",
+        "erp"
+      ],
       "requirements": {
         "education": "Bachelor's degree in Supply Chain, Logistics, or Business",
-        "experience": "2+ years in supply chain or logistics analysis",
+        "experience": "3+ years in supply chain or logistics analysis",
         "skills": "Advanced Excel, ERP systems (SAP/Oracle), and analytical modeling"
       },
       "benefits": {
@@ -548,10 +869,18 @@
       }
     },
     {
-      "title": "HR Assistant",
+      "title": "Human Resources Assistant - Onboarding",
       "category": "HR",
-      "description": "Support the HR team with recruitment coordination, onboarding paperwork, and employee record management. You'll be the first friendly face new hires see. Attention to detail and confidentiality are crucial.",
-      "skills": ["hr-support", "recruitment-coordination", "documentation", "organization", "communication"],
+      "description": "<h2>Job Description</h2><p>We are seeking an HR Assistant to support the HR team with recruitment coordination, onboarding paperwork, and employee record management. You will be the first friendly face new hires see. Attention to detail and confidentiality are crucial.</p><p>In this role, you will be responsible for ensuring a smooth onboarding experience for new employees and providing administrative support to the HR team. You will help maintain an organized and efficient HR department.</p><h2>Key Responsibilities</h2><ul><li>Coordinate and conduct new hire orientations and onboarding activities.</li><li>Prepare and process new hire paperwork and employment forms.</li><li>Maintain accurate and confidential employee records in the HRIS.</li><li>Provide administrative support to the HR team.</li><li>Assist with recruitment coordination (scheduling interviews, posting jobs).</li><li>Respond to employee inquiries regarding HR policies and procedures.</li><li>Support HR projects and initiatives as needed.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Bachelor's degree in HR or related field.</li><li><strong>Experience:</strong> 1+ year in administrative or HR role.</li><li><strong>Technical Skills:</strong> Proficiency in MS Office and HRIS systems.</li><li><strong>Soft Skills:</strong> Organized, detail-oriented, and strong communication skills.</li></ul><h2>What We Offer</h2><ul><li>Health, dental.</li><li>20 days PTO.</li><li>SHRM-CP preparation support.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "hr-support",
+        "recruitment-coordination",
+        "documentation",
+        "organization",
+        "communication",
+        "onboarding",
+        "hris"
+      ],
       "requirements": {
         "education": "Bachelor's degree in HR or related field",
         "experience": "1+ year in administrative or HR role",
@@ -564,13 +893,21 @@
       }
     },
     {
-      "title": "Recruiter",
+      "title": "Talent Acquisition Specialist",
       "category": "HR",
-      "description": "Source, screen, and attract top talent to join our company. You'll partner with hiring managers, manage the full recruitment cycle, and build a strong employer brand. We value creative sourcing strategies and excellent candidate experience.",
-      "skills": ["recruitment", "sourcing", "interviewing", "stakeholder-management", "negotiation"],
+      "description": "<h2>Job Description</h2><p>We are seeking a Recruiter to source, screen, and attract top talent to join our company. You will partner with hiring managers, manage the full recruitment cycle, and build a strong employer brand. We value creative sourcing strategies and excellent candidate experience.</p><p>In this role, you will be responsible for finding the best talent for our open positions. You will build a strong pipeline of candidates and ensure a positive candidate experience throughout the process.</p><h2>Key Responsibilities</h2><ul><li>Manage the full recruitment lifecycle from sourcing to offer.</li><li>Partner with hiring managers to understand hiring needs and develop job descriptions.</li><li>Source candidates using various channels (LinkedIn, job boards, referrals).</li><li>Screen resumes and conduct initial phone interviews.</li><li>Coordinate interviews and provide feedback to candidates.</li><li>Build and maintain a pipeline of qualified candidates.</li><li>Promote employer brand through recruitment marketing and events.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Bachelor's degree in HR, Business, or Psychology.</li><li><strong>Experience:</strong> 3+ years in corporate or agency recruiting.</li><li><strong>Technical Skills:</strong> ATS proficiency (Greenhouse/Lever), LinkedIn Recruiter expertise.</li><li><strong>Soft Skills:</strong> Strong communication, negotiation, and stakeholder management.</li></ul><h2>What We Offer</h2><ul><li>Medical, dental.</li><li>Hybrid schedule.</li><li>Hiring target bonuses.</li><li>Recruitment conference attendance.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "recruitment",
+        "sourcing",
+        "interviewing",
+        "stakeholder-management",
+        "negotiation",
+        "linkedin-recruiter",
+        "ats"
+      ],
       "requirements": {
         "education": "Bachelor's degree in HR, Business, or Psychology",
-        "experience": "2+ years in corporate or agency recruiting",
+        "experience": "3+ years in corporate or agency recruiting",
         "skills": "ATS proficiency (Greenhouse/Lever), LinkedIn Recruiter expertise"
       },
       "benefits": {
@@ -581,13 +918,21 @@
       }
     },
     {
-      "title": "Teacher",
+      "title": "Elementary School Teacher - STEM",
       "category": "Education",
-      "description": "Deliver engaging lessons, assess student progress, and foster a positive learning environment. You'll adapt curriculum to diverse learning styles and collaborate with parents. A passion for inspiring young minds is non-negotiable.",
-      "skills": ["teaching", "classroom-management", "lesson-planning", "communication", "patience"],
+      "description": "<h2>Job Description</h2><p>We are seeking a passionate Teacher to deliver engaging lessons, assess student progress, and foster a positive learning environment. You will adapt curriculum to diverse learning styles and collaborate with parents. A passion for inspiring young minds is non-negotiable.</p><p>In this role, you will create a nurturing and stimulating classroom environment where students can thrive academically and personally. You will be a mentor and role model for your students.</p><h2>Key Responsibilities</h2><ul><li>Plan and deliver engaging lessons aligned with the curriculum.</li><li>Assess student progress and provide constructive feedback.</li><li>Differentiate instruction to meet diverse learning needs.</li><li>Create a positive and inclusive classroom environment.</li><li>Communicate effectively with parents and guardians.</li><li>Participate in school events and professional development.</li><li>Maintain accurate records of student attendance and performance.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Bachelor's degree in Education or subject area; state teaching license.</li><li><strong>Experience:</strong> 2+ years in classroom setting.</li><li><strong>Technical Skills:</strong> Strong presentation and behavior management skills.</li><li><strong>Soft Skills:</strong> Passionate, patient, and adaptable.</li></ul><h2>What We Offer</h2><ul><li>Comprehensive benefits.</li><li>Pension plan.</li><li>School holidays plus personal days.</li><li>Professional development funds.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "teaching",
+        "classroom-management",
+        "lesson-planning",
+        "communication",
+        "patience",
+        "differentiation",
+        "curriculum"
+      ],
       "requirements": {
         "education": "Bachelor's degree in Education or subject area; state teaching license",
-        "experience": "1+ years in classroom setting",
+        "experience": "2+ years in classroom setting",
         "skills": "Strong presentation and behavior management skills"
       },
       "benefits": {
@@ -598,13 +943,21 @@
       }
     },
     {
-      "title": "Corporate Trainer",
+      "title": "Corporate Learning & Development Trainer",
       "category": "Education",
-      "description": "Design and deliver training programs that enhance employee skills and leadership capabilities. You'll assess training needs, develop engaging content, and measure effectiveness. Join a team that believes continuous learning is a competitive advantage.",
-      "skills": ["training", "instructional-design", "facilitation", "needs-assessment", "public-speaking"],
+      "description": "<h2>Job Description</h2><p>We are seeking a Corporate Trainer to design and deliver training programs that enhance employee skills and leadership capabilities. You will assess training needs, develop engaging content, and measure effectiveness. Join a team that believes continuous learning is a competitive advantage.</p><p>In this role, you will be responsible for developing and delivering training programs to support employee growth and performance. You will work with various departments to identify learning needs and create impactful solutions.</p><h2>Key Responsibilities</h2><ul><li>Assess training needs across the organization.</li><li>Design and develop engaging training content (courses, workshops, eLearning).</li><li>Deliver training sessions in-person and virtually.</li><li>Evaluate training effectiveness and measure ROI.</li><li>Manage the learning management system (LMS).</li><li>Stay up-to-date with learning trends and best practices.</li><li>Collaborate with subject matter experts to develop content.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Bachelor's degree in Education, HR, or related field.</li><li><strong>Experience:</strong> 4+ years in corporate training or L&D.</li><li><strong>Technical Skills:</strong> Experience with LMS platforms and content authoring tools.</li><li><strong>Soft Skills:</strong> Excellent presentation, facilitation, and communication skills.</li></ul><h2>What We Offer</h2><ul><li>Health insurance.</li><li>Flexible location.</li><li>Annual learning stipend.</li><li>Unlimited PTO.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "training",
+        "instructional-design",
+        "facilitation",
+        "needs-assessment",
+        "public-speaking",
+        "lms",
+        "e-learning"
+      ],
       "requirements": {
         "education": "Bachelor's degree in Education, HR, or related field",
-        "experience": "3+ years in corporate training or L&D",
+        "experience": "4+ years in corporate training or L&D",
         "skills": "Experience with LMS platforms and content authoring tools"
       },
       "benefits": {
@@ -615,13 +968,21 @@
       }
     },
     {
-      "title": "Registered Nurse",
+      "title": "Registered Nurse - Medical/Surgical",
       "category": "Healthcare",
-      "description": "Provide compassionate patient care including assessment, medication administration, and treatment planning. You'll collaborate with physicians and educate patients and families. A valid nursing license and commitment to patient advocacy are required.",
-      "skills": ["patient-care", "clinical-skills", "medication-administration", "communication", "empathy"],
+      "description": "<h2>Job Description</h2><p>We are seeking a compassionate Registered Nurse to provide patient care including assessment, medication administration, and treatment planning. You will collaborate with physicians and educate patients and families. A valid nursing license and commitment to patient advocacy are required.</p><p>In this role, you will be a vital member of the healthcare team, providing high-quality care to patients. You will use your clinical skills and compassion to make a difference in patients' lives.</p><h2>Key Responsibilities</h2><ul><li>Assess patient health status and develop care plans.</li><li>Administer medications and treatments as prescribed.</li><li>Monitor patient progress and response to treatment.</li><li>Educate patients and families on health management and disease prevention.</li><li>Collaborate with physicians and other healthcare professionals.</li><li>Maintain accurate and up-to-date patient records.</li><li>Provide compassionate and empathetic care.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> BSN or ADN from accredited program; active RN license.</li><li><strong>Experience:</strong> 2+ years in a clinical setting.</li><li><strong>Certifications:</strong> BLS and ACLS certifications required.</li><li><strong>Technical Skills:</strong> Strong clinical judgment and electronic health record proficiency.</li><li><strong>Soft Skills:</strong> Compassionate, empathetic, and excellent communication skills.</li></ul><h2>What We Offer</h2><ul><li>Excellent medical, dental, vision.</li><li>403(b) with match.</li><li>Generous PTO and paid sick leave.</li><li>Evening and weekend differentials.</li><li>Tuition reimbursement for advanced degrees.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "patient-care",
+        "clinical-skills",
+        "medication-administration",
+        "communication",
+        "empathy",
+        "ehr",
+        "care-planning"
+      ],
       "requirements": {
         "education": "BSN or ADN from accredited program; active RN license",
-        "experience": "1+ years in a clinical setting",
+        "experience": "2+ years in a clinical setting",
         "certifications": "BLS and ACLS certifications required",
         "skills": "Strong clinical judgment and electronic health record proficiency"
       },
@@ -634,10 +995,18 @@
       }
     },
     {
-      "title": "Medical Assistant",
+      "title": "Certified Medical Assistant - Outpatient",
       "category": "Healthcare",
-      "description": "Support clinical operations by rooming patients, taking vitals, administering injections, and maintaining electronic health records. You'll be the backbone of a busy practice, ensuring patients feel comfortable and well-informed.",
-      "skills": ["patient-care", "vital-signs", "ehr", "phlebotomy", "customer-service"],
+      "description": "<h2>Job Description</h2><p>We are seeking a Medical Assistant to support clinical operations by rooming patients, taking vitals, administering injections, and maintaining electronic health records. You will be the backbone of a busy practice, ensuring patients feel comfortable and well-informed.</p><p>In this role, you will provide essential clinical and administrative support to the healthcare team, ensuring smooth patient flow and high-quality care.</p><h2>Key Responsibilities</h2><ul><li>Room patients and take vital signs.</li><li>Administer injections and assist with minor procedures.</li><li>Maintain accurate and up-to-date electronic health records.</li><li>Perform phlebotomy and collect lab specimens.</li><li>Prepare exam rooms and maintain cleanliness.</li><li>Answer patient inquiries and provide information.</li><li>Schedule appointments and manage patient flow.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Medical Assistant certification from accredited program.</li><li><strong>Experience:</strong> 0-2 years, clinical externship preferred.</li><li><strong>Technical Skills:</strong> CPR certified, comfortable with EMR systems.</li><li><strong>Soft Skills:</strong> Compassionate, organized, and strong communication skills.</li></ul><h2>What We Offer</h2><ul><li>Medical, dental.</li><li>Paid time off.</li><li>Cross-training for specialized clinics.</li><li>Scrubs allowance.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "patient-care",
+        "vital-signs",
+        "ehr",
+        "phlebotomy",
+        "customer-service",
+        "injections",
+        "clinical-support"
+      ],
       "requirements": {
         "education": "Medical Assistant certification from accredited program",
         "experience": "0-2 years, clinical externship preferred",
@@ -651,13 +1020,21 @@
       }
     },
     {
-      "title": "Pharmacist",
+      "title": "Clinical Pharmacist",
       "category": "Healthcare",
-      "description": "Dispense medications accurately, counsel patients on proper usage, and monitor for drug interactions. You'll oversee pharmacy technicians and ensure compliance with all regulations. A Doctor of Pharmacy (Pharm.D.) and active license are required.",
-      "skills": ["pharmacology", "patient-counseling", "dispensing", "regulatory-compliance", "attention-to-detail"],
+      "description": "<h2>Job Description</h2><p>We are seeking a Pharmacist to dispense medications accurately, counsel patients on proper usage, and monitor for drug interactions. You will oversee pharmacy technicians and ensure compliance with all regulations. A Doctor of Pharmacy (Pharm.D.) and active license are required.</p><p>In this role, you will be responsible for the safe and effective delivery of pharmaceutical care to patients. You will work in a collaborative environment with other healthcare professionals.</p><h2>Key Responsibilities</h2><ul><li>Review prescriptions for accuracy and appropriateness.</li><li>Dispense medications and provide counseling to patients.</li><li>Monitor for drug interactions and adverse reactions.</li><li>Supervise pharmacy technicians and support staff.</li><li>Ensure compliance with all pharmacy laws and regulations.</li><li>Maintain accurate patient records and medication profiles.</li><li>Provide drug information to healthcare providers.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Pharm.D. degree; state pharmacy license.</li><li><strong>Experience:</strong> 2+ years in retail or hospital pharmacy.</li><li><strong>Technical Skills:</strong> Strong clinical knowledge and communication.</li><li><strong>Soft Skills:</strong> Detail-oriented, patient-focused, and collaborative.</li></ul><h2>What We Offer</h2><ul><li>Health, dental, vision.</li><li>401(k) match.</li><li>24 days PTO.</li><li>Annual performance bonus.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "pharmacology",
+        "patient-counseling",
+        "dispensing",
+        "regulatory-compliance",
+        "attention-to-detail",
+        "medication-therapy-management",
+        "pharmacy-law"
+      ],
       "requirements": {
         "education": "Pharm.D. degree; state pharmacy license",
-        "experience": "1+ years in retail or hospital pharmacy",
+        "experience": "2+ years in retail or hospital pharmacy",
         "skills": "Strong clinical knowledge and communication"
       },
       "benefits": {
@@ -668,10 +1045,18 @@
       }
     },
     {
-      "title": "Physical Therapist",
+      "title": "Physical Therapist - Orthopedic",
       "category": "Healthcare",
-      "description": "Evaluate and treat patients with movement disorders, creating personalized rehabilitation plans. You'll help patients regain mobility, reduce pain, and prevent further injury. A DPT degree and state licensure are mandatory.",
-      "skills": ["physical-therapy", "rehabilitation", "manual-therapy", "exercise-prescription", "patient-education"],
+      "description": "<h2>Job Description</h2><p>We are seeking a Physical Therapist to evaluate and treat patients with movement disorders, creating personalized rehabilitation plans. You will help patients regain mobility, reduce pain, and prevent further injury. A DPT degree and state licensure are mandatory.</p><p>In this role, you will work with patients of all ages to improve their physical function and quality of life. You will be a key member of the rehabilitation team.</p><h2>Key Responsibilities</h2><ul><li>Evaluate and assess patient conditions and functional limitations.</li><li>Develop individualized treatment plans and goals.</li><li>Implement evidence-based interventions (manual therapy, exercise).</li><li>Educate patients and families on injury prevention and self-management.</li><li>Document patient progress and adjust treatment plans as needed.</li><li>Collaborate with physicians and other healthcare professionals.</li><li>Maintain a clean and safe treatment environment.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Doctor of Physical Therapy (DPT) degree.</li><li><strong>Experience:</strong> Clinical rotations; new grads welcome.</li><li><strong>Certifications:</strong> State PT license; CPR.</li><li><strong>Soft Skills:</strong> Compassionate, patient-centered, and strong communication skills.</li></ul><h2>What We Offer</h2><ul><li>Comprehensive benefits.</li><li>Paid leave.</li><li>Continuing education allowance.</li><li>Student loan repayment assistance.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "physical-therapy",
+        "rehabilitation",
+        "manual-therapy",
+        "exercise-prescription",
+        "patient-education",
+        "treatment-planning",
+        "orthopedic"
+      ],
       "requirements": {
         "education": "Doctor of Physical Therapy (DPT) degree",
         "experience": "Clinical rotations; new grads welcome",
@@ -685,10 +1070,18 @@
       }
     },
     {
-      "title": "Lab Technician",
+      "title": "Medical Laboratory Technician",
       "category": "Healthcare",
-      "description": "Perform diagnostic tests on patient samples, operate lab analyzers, and maintain quality control records. Accuracy and speed are crucial in this fast-paced environment. An associate degree in medical lab technology is the minimum.",
-      "skills": ["lab-testing", "equipment-calibration", "quality-control", "sample-handling", "data-entry"],
+      "description": "<h2>Job Description</h2><p>We are seeking a Lab Technician to perform diagnostic tests on patient samples, operate lab analyzers, and maintain quality control records. Accuracy and speed are crucial in this fast-paced environment. An associate degree in medical lab technology is the minimum.</p><p>In this role, you will be responsible for performing laboratory tests that are critical for patient diagnosis and treatment. You will work in a clinical laboratory setting, ensuring high-quality results.</p><h2>Key Responsibilities</h2><ul><li>Perform diagnostic tests on patient samples (blood, urine, tissue).</li><li>Operate and maintain laboratory analyzers and equipment.</li><li>Ensure quality control and accuracy of test results.</li><li>Record and report test results accurately.</li><li>Maintain laboratory inventory and supplies.</li><li>Follow all safety protocols and regulations.</li><li>Assist with laboratory quality assurance programs.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Associate's degree in Medical Laboratory Technology.</li><li><strong>Experience:</strong> 1+ year in a clinical lab.</li><li><strong>Certifications:</strong> ASCP certification preferred.</li><li><strong>Soft Skills:</strong> Detail-oriented, accurate, and organized.</li></ul><h2>What We Offer</h2><ul><li>Insurance.</li><li>Pension.</li><li>Paid holidays and vacation.</li><li>Shift differential for nights/weekends.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "lab-testing",
+        "equipment-calibration",
+        "quality-control",
+        "sample-handling",
+        "data-entry",
+        "diagnostic-testing",
+        "laboratory-safety"
+      ],
       "requirements": {
         "education": "Associate's degree in Medical Laboratory Technology",
         "experience": "1+ year in a clinical lab",
@@ -702,13 +1095,21 @@
       }
     },
     {
-      "title": "Civil Engineer",
+      "title": "Civil Engineer - Infrastructure Design",
       "category": "Construction",
-      "description": "Design and oversee infrastructure projects such as roads, bridges, and water systems. You'll perform structural calculations, prepare drawings, and ensure compliance with regulations. A PE license or progress toward it is highly valued.",
-      "skills": ["civil-engineering", "design", "project-management", "site-inspection", "cad"],
+      "description": "<h2>Job Description</h2><p>We are seeking a Civil Engineer to design and oversee infrastructure projects such as roads, bridges, and water systems. You will perform structural calculations, prepare drawings, and ensure compliance with regulations. A PE license or progress toward it is highly valued.</p><p>In this role, you will be responsible for the design and delivery of civil engineering projects, ensuring they meet safety, quality, and regulatory standards. You will work on projects that have a significant impact on communities.</p><h2>Key Responsibilities</h2><ul><li>Design and plan civil engineering projects (roads, bridges, drainage).</li><li>Perform structural calculations and analysis.</li><li>Prepare detailed drawings and specifications using CAD software.</li><li>Conduct site inspections and ensure compliance with regulations.</li><li>Coordinate with clients, contractors, and regulatory agencies.</li><li>Manage project timelines and budgets.</li><li>Review and approve materials and construction methods.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Bachelor's degree in Civil Engineering.</li><li><strong>Experience:</strong> 3+ years in civil design or construction.</li><li><strong>Certifications:</strong> EIT certification; PE preferred.</li><li><strong>Technical Skills:</strong> Proficient in AutoCAD Civil 3D and hydraulic modeling.</li><li><strong>Soft Skills:</strong> Strong analytical, problem-solving, and communication skills.</li></ul><h2>What We Offer</h2><ul><li>Medical, dental.</li><li>401(k) with match.</li><li>Vehicle allowance or company truck.</li><li>PE exam fees and study materials covered.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "civil-engineering",
+        "design",
+        "project-management",
+        "site-inspection",
+        "cad",
+        "structural-analysis",
+        "hydraulic-modeling"
+      ],
       "requirements": {
         "education": "Bachelor's degree in Civil Engineering",
-        "experience": "2+ years in civil design or construction",
+        "experience": "3+ years in civil design or construction",
         "certifications": "EIT certification; PE preferred",
         "skills": "Proficient in AutoCAD Civil 3D and hydraulic modeling"
       },
@@ -720,10 +1121,18 @@
       }
     },
     {
-      "title": "Site Supervisor",
+      "title": "Construction Site Supervisor",
       "category": "Construction",
-      "description": "Lead daily operations on construction sites, managing crews, schedules, and safety compliance. You'll coordinate subcontractors and ensure work meets quality standards and deadlines. Strong leadership and problem-solving on your feet are a must.",
-      "skills": ["supervision", "construction-safety", "scheduling", "quality-control", "leadership"],
+      "description": "<h2>Job Description</h2><p>We are seeking a Site Supervisor to lead daily operations on construction sites, managing crews, schedules, and safety compliance. You will coordinate subcontractors and ensure work meets quality standards and deadlines. Strong leadership and problem-solving on your feet are a must.</p><p>In this role, you will be responsible for the on-site execution of construction projects, ensuring they are completed safely, on time, and within budget. You will be a leader and mentor for the construction crew.</p><h2>Key Responsibilities</h2><ul><li>Supervise daily construction activities and crew performance.</li><li>Coordinate subcontractors and ensure efficient workflow.</li><li>Enforce safety protocols and OSHA compliance.</li><li>Monitor project progress and quality of work.</li><li>Manage project schedules and resolve conflicts.</li><li>Communicate with project managers and clients.</li><li>Maintain accurate daily logs and reports.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> High school diploma; trade school or degree preferred.</li><li><strong>Experience:</strong> 5+ years in construction with 2+ in supervisory role.</li><li><strong>Certifications:</strong> OSHA 30 certification required.</li><li><strong>Soft Skills:</strong> Strong leadership, problem-solving, and communication skills.</li></ul><h2>What We Offer</h2><ul><li>Health coverage.</li><li>Company vehicle.</li><li>Project completion bonuses.</li><li>Overtime pay.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "supervision",
+        "construction-safety",
+        "scheduling",
+        "quality-control",
+        "leadership",
+        "osha",
+        "project-coordination"
+      ],
       "requirements": {
         "education": "High school diploma; trade school or degree preferred",
         "experience": "5+ years in construction with 2+ in supervisory role",
@@ -737,10 +1146,18 @@
       }
     },
     {
-      "title": "Electrician",
+      "title": "Journeyman Electrician",
       "category": "Construction",
-      "description": "Install, maintain, and repair electrical systems in residential, commercial, or industrial settings. You'll read blueprints, troubleshoot faults, and ensure code compliance. A journeyman license is preferred.",
-      "skills": ["electrical-work", "wiring", "troubleshooting", "safety", "blueprint-reading"],
+      "description": "<h2>Job Description</h2><p>We are seeking an Electrician to install, maintain, and repair electrical systems in residential, commercial, or industrial settings. You will read blueprints, troubleshoot faults, and ensure code compliance. A journeyman license is preferred.</p><p>In this role, you will be responsible for the safe and reliable installation and maintenance of electrical systems. You will work on a variety of projects, from residential homes to commercial buildings.</p><h2>Key Responsibilities</h2><ul><li>Install, maintain, and repair electrical wiring, fixtures, and equipment.</li><li>Read and interpret blueprints, technical diagrams, and specifications.</li><li>Troubleshoot electrical problems and perform repairs.</li><li>Ensure all work complies with electrical codes and safety regulations.</li><li>Inspect electrical systems and components for safety and functionality.</li><li>Collaborate with other trades on construction sites.</li><li>Maintain a clean and organized work area.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Completed apprenticeship or technical school.</li><li><strong>Experience:</strong> 3+ years as an electrician.</li><li><strong>Licensure:</strong> Journeyman or master electrician license.</li><li><strong>Soft Skills:</strong> Detail-oriented, safety-conscious, and problem-solving skills.</li></ul><h2>What We Offer</h2><ul><li>Medical, dental.</li><li>Pension plan.</li><li>Take-home van.</li><li>Double-time on Sundays.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "electrical-work",
+        "wiring",
+        "troubleshooting",
+        "safety",
+        "blueprint-reading",
+        "code-compliance",
+        "panel-installation"
+      ],
       "requirements": {
         "education": "Completed apprenticeship or technical school",
         "experience": "3+ years as an electrician",
@@ -754,13 +1171,21 @@
       }
     },
     {
-      "title": "Plumber",
+      "title": "Master Plumber - Commercial",
       "category": "Construction",
-      "description": "Install and repair piping, fixtures, and appliances for water, gas, and drainage. You'll diagnose issues, cut and solder pipe, and ensure all work meets plumbing codes. A stable, in-demand career with excellent pay.",
-      "skills": ["plumbing", "pipefitting", "troubleshooting", "safety", "customer-service"],
+      "description": "<h2>Job Description</h2><p>We are seeking a Plumber to install and repair piping, fixtures, and appliances for water, gas, and drainage. You will diagnose issues, cut and solder pipe, and ensure all work meets plumbing codes. A stable, in-demand career with excellent pay.</p><p>In this role, you will be responsible for the installation, maintenance, and repair of plumbing systems in residential and commercial settings. You will use your skills to solve complex plumbing problems.</p><h2>Key Responsibilities</h2><ul><li>Install and repair piping, fixtures, and appliances for water, gas, and drainage.</li><li>Diagnose plumbing issues and perform repairs.</li><li>Read and interpret blueprints and specifications.</li><li>Ensure all work meets plumbing codes and regulations.</li><li>Maintain and repair plumbing equipment and tools.</li><li>Collaborate with other trades on construction sites.</li><li>Provide excellent customer service and communication.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Apprenticeship completion.</li><li><strong>Experience:</strong> 3+ years in plumbing.</li><li><strong>Licensure:</strong> Plumber's license or apprentice registration.</li><li><strong>Soft Skills:</strong> Customer-focused, problem-solving, and detail-oriented.</li></ul><h2>What We Offer</h2><ul><li>Health insurance.</li><li>Company vehicle.</li><li>Overtime pay.</li><li>Annual tool allowance.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "plumbing",
+        "pipefitting",
+        "troubleshooting",
+        "safety",
+        "customer-service",
+        "soldering",
+        "drainage"
+      ],
       "requirements": {
         "education": "Apprenticeship completion",
-        "experience": "2+ years in plumbing",
+        "experience": "3+ years in plumbing",
         "licensure": "Plumber's license or apprentice registration"
       },
       "benefits": {
@@ -771,13 +1196,21 @@
       }
     },
     {
-      "title": "Architect",
+      "title": "Architect - Commercial Projects",
       "category": "Construction",
-      "description": "Design functional, sustainable buildings and spaces, from concept sketches to detailed construction documents. You'll coordinate with engineers and clients, ensuring aesthetic and regulatory requirements are met. Proficiency in BIM software is required.",
-      "skills": ["architectural-design", "cad", "bim", "project-management", "creativity"],
+      "description": "<h2>Job Description</h2><p>We are seeking an Architect to design functional, sustainable buildings and spaces, from concept sketches to detailed construction documents. You will coordinate with engineers and clients, ensuring aesthetic and regulatory requirements are met. Proficiency in BIM software is required.</p><p>In this role, you will be responsible for leading the design and planning of architectural projects, ensuring they meet client needs and regulatory standards. You will work on a variety of projects, from commercial buildings to public spaces.</p><h2>Key Responsibilities</h2><ul><li>Lead the design and planning of architectural projects.</li><li>Develop conceptual designs, schematic drawings, and construction documents.</li><li>Coordinate with engineers and consultants to integrate systems.</li><li>Ensure compliance with building codes and zoning regulations.</li><li>Manage client relationships and communicate design intent.</li><li>Oversee the construction administration process.</li><li>Stay up-to-date with sustainable design practices and technologies.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Professional degree in Architecture (B.Arch/M.Arch).</li><li><strong>Experience:</strong> 4+ years in an architectural firm.</li><li><strong>Licensure:</strong> Working toward ARE licensure; LEED accreditation a plus.</li><li><strong>Technical Skills:</strong> Expert in Revit, AutoCAD, and rendering software.</li><li><strong>Soft Skills:</strong> Creative, strong communication, and project management skills.</li></ul><h2>What We Offer</h2><ul><li>Full benefits.</li><li>Hybrid schedule.</li><li>ARE exam fees covered.</li><li>Paid time off.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "architectural-design",
+        "cad",
+        "bim",
+        "project-management",
+        "creativity",
+        "revit",
+        "construction-documents"
+      ],
       "requirements": {
         "education": "Professional degree in Architecture (B.Arch/M.Arch)",
-        "experience": "3+ years in an architectural firm",
+        "experience": "4+ years in an architectural firm",
         "licensure": "Working toward ARE licensure; LEED accreditation a plus",
         "skills": "Expert in Revit, AutoCAD, and rendering software"
       },
@@ -789,10 +1222,18 @@
       }
     },
     {
-      "title": "Warehouse Supervisor",
+      "title": "Warehouse Operations Manager",
       "category": "Logistics",
-      "description": "Oversee warehouse operations including receiving, storage, picking, and shipping. You'll lead a team, enforce safety protocols, and meet daily productivity targets. We need a hands-on leader who can thrive in a fast-paced environment.",
-      "skills": ["warehouse-management", "inventory-control", "team-leadership", "safety", "forklift-operation"],
+      "description": "<h2>Job Description</h2><p>We are seeking a Warehouse Supervisor to oversee warehouse operations including receiving, storage, picking, and shipping. You will lead a team, enforce safety protocols, and meet daily productivity targets. We need a hands-on leader who can thrive in a fast-paced environment.</p><p>In this role, you will be responsible for the efficient and safe operation of the warehouse. You will lead a team of warehouse associates to meet productivity and quality goals.</p><h2>Key Responsibilities</h2><ul><li>Oversee all warehouse activities (receiving, storage, picking, shipping).</li><li>Lead and motivate a team of warehouse associates.</li><li>Enforce safety protocols and ensure a safe work environment.</li><li>Monitor and improve key performance indicators (KPIs).</li><li>Manage inventory accuracy and conduct cycle counts.</li><li>Coordinate with logistics and transportation teams.</li><li>Implement process improvements to increase efficiency.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> High school diploma; associate's degree preferred.</li><li><strong>Experience:</strong> 3+ years in warehouse operations, 1+ in supervisory role.</li><li><strong>Technical Skills:</strong> Familiarity with WMS and forklift certification.</li><li><strong>Soft Skills:</strong> Strong leadership, communication, and problem-solving skills.</li></ul><h2>What We Offer</h2><ul><li>Health, dental.</li><li>Paid vacation.</li><li>Productivity bonus.</li><li>Shift transport provided.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "warehouse-management",
+        "inventory-control",
+        "team-leadership",
+        "safety",
+        "forklift-operation",
+        "wms",
+        "kpi-management"
+      ],
       "requirements": {
         "education": "High school diploma; associate's degree preferred",
         "experience": "3+ years in warehouse operations, 1+ in supervisory role",
@@ -806,10 +1247,18 @@
       }
     },
     {
-      "title": "Truck Driver",
+      "title": "CDL Truck Driver - Regional Routes",
       "category": "Logistics",
-      "description": "Safely transport goods over local or regional routes, adhering to all traffic laws and delivery schedules. You'll perform vehicle inspections and maintain accurate logs. A CDL and clean driving record are essential.",
-      "skills": ["driving", "safety", "time-management", "vehicle-maintenance", "navigation"],
+      "description": "<h2>Job Description</h2><p>We are seeking a Truck Driver to safely transport goods over local or regional routes, adhering to all traffic laws and delivery schedules. You will perform vehicle inspections and maintain accurate logs. A CDL and clean driving record are essential.</p><p>In this role, you will be responsible for the safe and timely delivery of goods to customers. You will be an essential part of the logistics team, ensuring supply chain efficiency.</p><h2>Key Responsibilities</h2><ul><li>Safely operate commercial vehicles over designated routes.</li><li>Adhere to all traffic laws and DOT regulations.</li><li>Perform pre-trip and post-trip vehicle inspections.</li><li>Maintain accurate driving logs and delivery records.</li><li>Ensure timely and accurate delivery of goods.</li><li>Communicate effectively with dispatch and customers.</li><li>Report any vehicle issues or accidents promptly.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> High school diploma; CDL class A required.</li><li><strong>Experience:</strong> 1+ year of verifiable driving experience.</li><li><strong>Technical Skills:</strong> Clean driving record; ability to pass DOT physical.</li><li><strong>Soft Skills:</strong> Reliable, safety-conscious, and good time management.</li></ul><h2>What We Offer</h2><ul><li>Medical, dental.</li><li>401(k) with match.</li><li>Paid time off.</li><li>Safety and mileage bonuses.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "driving",
+        "safety",
+        "time-management",
+        "vehicle-maintenance",
+        "navigation",
+        "dot-regulations",
+        "logistics"
+      ],
       "requirements": {
         "education": "High school diploma; CDL class A required",
         "experience": "1+ year of verifiable driving experience",
@@ -823,13 +1272,21 @@
       }
     },
     {
-      "title": "Supply Chain Manager",
+      "title": "Director of Supply Chain & Logistics",
       "category": "Logistics",
-      "description": "Strategically oversee end-to-end supply chain activities, from procurement to last-mile delivery. You'll optimize costs, mitigate risks, and build strong vendor relationships. This role directly impacts customer satisfaction and profitability.",
-      "skills": ["supply-chain-management", "negotiation", "logistics", "erp", "leadership"],
+      "description": "<h2>Job Description</h2><p>We are seeking a Supply Chain Manager to strategically oversee end-to-end supply chain activities, from procurement to last-mile delivery. You will optimize costs, mitigate risks, and build strong vendor relationships. This role directly impacts customer satisfaction and profitability.</p><p>In this role, you will lead the supply chain function, developing strategies to improve efficiency, reduce costs, and ensure customer satisfaction. You will be a key member of the leadership team.</p><h2>Key Responsibilities</h2><ul><li>Develop and implement supply chain strategies to optimize cost and service.</li><li>Manage relationships with key suppliers and vendors.</li><li>Oversee procurement, logistics, and inventory management.</li><li>Identify and mitigate supply chain risks.</li><li>Analyze supply chain data to identify opportunities for improvement.</li><li>Lead and develop a high-performing supply chain team.</li><li>Collaborate with sales and operations to align supply chain with business goals.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Bachelor's degree in Supply Chain, Logistics, or Business.</li><li><strong>Experience:</strong> 6+ years in supply chain management.</li><li><strong>Technical Skills:</strong> Experience with SAP or Oracle SCM; strong analytical abilities.</li><li><strong>Soft Skills:</strong> Strategic thinking, leadership, and excellent communication skills.</li></ul><h2>What We Offer</h2><ul><li>Executive health package.</li><li>Annual performance bonus up to 20%.</li><li>Equity.</li><li>Hybrid work.</li><li>Executive education programs.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "supply-chain-management",
+        "negotiation",
+        "logistics",
+        "erp",
+        "leadership",
+        "strategic-planning",
+        "vendor-management"
+      ],
       "requirements": {
         "education": "Bachelor's degree in Supply Chain, Logistics, or Business",
-        "experience": "5+ years in supply chain management",
+        "experience": "6+ years in supply chain management",
         "skills": "Experience with SAP or Oracle SCM; strong analytical abilities"
       },
       "benefits": {
@@ -841,13 +1298,21 @@
       }
     },
     {
-      "title": "Logistics Coordinator",
+      "title": "Logistics Coordinator - Freight Operations",
       "category": "Logistics",
-      "description": "Coordinate shipments, track inventory, and communicate with carriers and customers to ensure on-time delivery. You'll solve routing issues and handle documentation. Fast-paced role ideal for a detail-oriented multitasker.",
-      "skills": ["logistics-coordination", "communication", "problem-solving", "scheduling", "data-entry"],
+      "description": "<h2>Job Description</h2><p>We are seeking a Logistics Coordinator to coordinate shipments, track inventory, and communicate with carriers and customers to ensure on-time delivery. You will solve routing issues and handle documentation. Fast-paced role ideal for a detail-oriented multitasker.</p><p>In this role, you will be the central point of contact for logistics operations, ensuring that goods are shipped and delivered efficiently. You will work with carriers, customers, and internal teams to optimize logistics processes.</p><h2>Key Responsibilities</h2><ul><li>Coordinate shipments and schedule transportation.</li><li>Track shipments and provide updates to customers.</li><li>Communicate with carriers and resolve any issues.</li><li>Process shipping documentation and maintain accurate records.</li><li>Identify and resolve routing and delivery problems.</li><li>Collaborate with warehouse and supply chain teams.</li><li>Optimize shipping costs and efficiency.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Associate's degree or equivalent experience.</li><li><strong>Experience:</strong> 2+ years in logistics or dispatching.</li><li><strong>Technical Skills:</strong> Proficient in TMS and MS Office.</li><li><strong>Soft Skills:</strong> Organized, detail-oriented, and excellent communication skills.</li></ul><h2>What We Offer</h2><ul><li>Health insurance.</li><li>Paid leave.</li><li>Shift flexibility.</li><li>Tuition assistance.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "logistics-coordination",
+        "communication",
+        "problem-solving",
+        "scheduling",
+        "data-entry",
+        "tms",
+        "carrier-relations"
+      ],
       "requirements": {
         "education": "Associate's degree or equivalent experience",
-        "experience": "1+ years in logistics or dispatching",
+        "experience": "2+ years in logistics or dispatching",
         "skills": "Proficient in TMS and MS Office"
       },
       "benefits": {
@@ -858,10 +1323,18 @@
       }
     },
     {
-      "title": "Hotel Receptionist",
+      "title": "Front Desk Receptionist - Luxury Hotel",
       "category": "Hospitality",
-      "description": "Welcome guests, manage check-ins/outs, answer inquiries, and handle reservations. You are the face of the hotel, creating a warm first impression. We seek a friendly, organized individual who can multitask under pressure.",
-      "skills": ["guest-service", "front-desk-operations", "communication", "multitasking", "problem-solving"],
+      "description": "<h2>Job Description</h2><p>We are seeking a Hotel Receptionist to welcome guests, manage check-ins/outs, answer inquiries, and handle reservations. You are the face of the hotel, creating a warm first impression. We seek a friendly, organized individual who can multitask under pressure.</p><p>In this role, you will be the first point of contact for guests, ensuring they have a positive experience from check-in to check-out. You will provide exceptional customer service and create lasting impressions.</p><h2>Key Responsibilities</h2><ul><li>Welcome guests and manage the check-in and check-out process.</li><li>Handle guest inquiries and provide information about the hotel and area.</li><li>Process reservations and manage room assignments.</li><li>Answer phone calls and manage guest requests.</li><li>Maintain accurate guest records and accounts.</li><li>Resolve guest issues and complaints in a professional manner.</li><li>Coordinate with other departments to ensure guest satisfaction.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> High school diploma; hospitality degree a plus.</li><li><strong>Experience:</strong> 1+ year in customer service.</li><li><strong>Technical Skills:</strong> Proficient in property management systems like Opera.</li><li><strong>Soft Skills:</strong> Friendly, organized, and excellent communication skills.</li></ul><h2>What We Offer</h2><ul><li>Medical.</li><li>Paid vacation.</li><li>Hotel and F&B discounts.</li><li>Uniforms provided.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "guest-service",
+        "front-desk-operations",
+        "communication",
+        "multitasking",
+        "problem-solving",
+        "opera",
+        "reservations"
+      ],
       "requirements": {
         "education": "High school diploma; hospitality degree a plus",
         "experience": "1+ year in customer service",
@@ -875,13 +1348,21 @@
       }
     },
     {
-      "title": "Restaurant Manager",
+      "title": "Restaurant Manager - Fine Dining",
       "category": "Hospitality",
-      "description": "Manage daily restaurant operations including staff scheduling, inventory, and ensuring an exceptional dining experience. You'll uphold health codes, handle customer feedback, and drive revenue targets. A passion for food and leadership is key.",
-      "skills": ["restaurant-management", "team-leadership", "customer-service", "inventory", "p&l-management"],
+      "description": "<h2>Job Description</h2><p>We are seeking a Restaurant Manager to manage daily restaurant operations including staff scheduling, inventory, and ensuring an exceptional dining experience. You will uphold health codes, handle customer feedback, and drive revenue targets. A passion for food and leadership is key.</p><p>In this role, you will be responsible for the overall success of the restaurant, leading a team to deliver exceptional guest experiences. You will manage operations, staff, and financial performance.</p><h2>Key Responsibilities</h2><ul><li>Oversee daily restaurant operations and staff management.</li><li>Create and manage staff schedules and labor costs.</li><li>Manage inventory, ordering, and supplier relationships.</li><li>Ensure compliance with health and safety regulations.</li><li>Handle customer feedback and resolve complaints.</li><li>Drive revenue and manage budgets (P&L).</li><li>Train and develop staff to deliver excellent service.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Associate's degree in Hospitality or equivalent experience.</li><li><strong>Experience:</strong> 4+ years in restaurant management.</li><li><strong>Certifications:</strong> Food Safety Manager certification.</li><li><strong>Soft Skills:</strong> Strong leadership, communication, and problem-solving skills.</li></ul><h2>What We Offer</h2><ul><li>Health, dental.</li><li>Quarterly performance bonus.</li><li>Complimentary meals on shift.</li><li>Paid time off.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "restaurant-management",
+        "team-leadership",
+        "customer-service",
+        "inventory",
+        "p&l-management",
+        "staff-scheduling",
+        "food-safety"
+      ],
       "requirements": {
         "education": "Associate's degree in Hospitality or equivalent experience",
-        "experience": "3+ years in restaurant management",
+        "experience": "4+ years in restaurant management",
         "certifications": "Food Safety Manager certification"
       },
       "benefits": {
@@ -892,13 +1373,21 @@
       }
     },
     {
-      "title": "Chef",
+      "title": "Executive Chef - Modern Cuisine",
       "category": "Hospitality",
-      "description": "Lead the kitchen team, design menus, and ensure every dish meets high standards. You'll manage food costs, order supplies, and maintain a clean, safe kitchen. Creativity and consistency define success.",
-      "skills": ["cooking", "menu-planning", "kitchen-management", "food-safety", "creativity"],
+      "description": "<h2>Job Description</h2><p>We are seeking a Chef to lead the kitchen team, design menus, and ensure every dish meets high standards. You will manage food costs, order supplies, and maintain a clean, safe kitchen. Creativity and consistency define success.</p><p>In this role, you will be the culinary leader, responsible for menu development, kitchen operations, and staff management. You will create exceptional dishes that delight our guests.</p><h2>Key Responsibilities</h2><ul><li>Lead and manage the kitchen team.</li><li>Design and develop creative menus that reflect the restaurant's concept.</li><li>Oversee food preparation and ensure quality and consistency.</li><li>Manage food costs, inventory, and ordering.</li><li>Maintain a clean and organized kitchen environment.</li><li>Ensure compliance with health and safety regulations.</li><li>Train and mentor kitchen staff.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Culinary degree or equivalent apprenticeship.</li><li><strong>Experience:</strong> 5+ years in a professional kitchen, 2 as sous chef.</li><li><strong>Certifications:</strong> ServSafe certification.</li><li><strong>Soft Skills:</strong> Creative, leadership, and strong communication skills.</li></ul><h2>What We Offer</h2><ul><li>Insurance.</li><li>Free meals.</li><li>Culinary workshop opportunities.</li><li>Profit-sharing.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "cooking",
+        "menu-planning",
+        "kitchen-management",
+        "food-safety",
+        "creativity",
+        "food-cost-control",
+        "team-leadership"
+      ],
       "requirements": {
         "education": "Culinary degree or equivalent apprenticeship",
-        "experience": "4+ years in a professional kitchen, 2 as sous chef",
+        "experience": "5+ years in a professional kitchen, 2 as sous chef",
         "certifications": "ServSafe certification"
       },
       "benefits": {
@@ -909,13 +1398,21 @@
       }
     },
     {
-      "title": "Event Coordinator",
+      "title": "Event Coordinator - Corporate & Social",
       "category": "Hospitality",
-      "description": "Plan and execute flawless events—from corporate conferences to wedding receptions. You'll coordinate vendors, manage budgets, and ensure every detail is perfect. Your ability to stay calm under pressure makes events memorable.",
-      "skills": ["event-planning", "vendor-coordination", "budgeting", "communication", "multitasking"],
+      "description": "<h2>Job Description</h2><p>We are seeking an Event Coordinator to plan and execute flawless events—from corporate conferences to wedding receptions. You will coordinate vendors, manage budgets, and ensure every detail is perfect. Your ability to stay calm under pressure makes events memorable.</p><p>In this role, you will be responsible for the end-to-end planning and execution of events, ensuring they meet client expectations and are delivered smoothly. You will be a creative problem-solver and a master of organization.</p><h2>Key Responsibilities</h2><ul><li>Plan and coordinate all aspects of events (corporate, social, weddings).</li><li>Manage event budgets and ensure cost-effectiveness.</li><li>Coordinate vendors, venues, and catering.</li><li>Communicate with clients to understand their vision and needs.</li><li>Manage event timelines and on-site logistics.</li><li>Handle on-site issues and ensure seamless execution.</li><li>Conduct post-event evaluations and follow-ups.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Bachelor's degree in Event Management or Hospitality.</li><li><strong>Experience:</strong> 3+ years in event planning.</li><li><strong>Technical Skills:</strong> Strong organizational and negotiation skills.</li><li><strong>Soft Skills:</strong> Calm under pressure, creative, and excellent communication.</li></ul><h2>What We Offer</h2><ul><li>Medical.</li><li>Hybrid possible.</li><li>Event success bonuses.</li><li>Venue discounts.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "event-planning",
+        "vendor-coordination",
+        "budgeting",
+        "communication",
+        "multitasking",
+        "logistics",
+        "client-relations"
+      ],
       "requirements": {
         "education": "Bachelor's degree in Event Management or Hospitality",
-        "experience": "2+ years in event planning",
+        "experience": "3+ years in event planning",
         "skills": "Strong organizational and negotiation skills"
       },
       "benefits": {
@@ -926,10 +1423,18 @@
       }
     },
     {
-      "title": "Housekeeping Supervisor",
+      "title": "Executive Housekeeping Manager",
       "category": "Hospitality",
-      "description": "Lead the housekeeping team to maintain the highest standards of cleanliness in guest rooms and public areas. You'll inspect rooms, manage linen inventory, and train staff. A keen eye for detail ensures every guest enjoys a pristine environment.",
-      "skills": ["housekeeping", "supervision", "quality-control", "inventory-management", "training"],
+      "description": "<h2>Job Description</h2><p>We are seeking a Housekeeping Supervisor to lead the housekeeping team to maintain the highest standards of cleanliness in guest rooms and public areas. You will inspect rooms, manage linen inventory, and train staff. A keen eye for detail ensures every guest enjoys a pristine environment.</p><p>In this role, you will be responsible for the cleanliness and appearance of the hotel, leading a team to deliver high-quality housekeeping services. You will ensure that all areas meet the hotel's high standards.</p><h2>Key Responsibilities</h2><ul><li>Supervise and train the housekeeping team.</li><li>Inspect rooms and public areas to ensure cleanliness standards.</li><li>Manage linen inventory and supplies.</li><li>Coordinate with front desk and maintenance for room availability.</li><li>Ensure compliance with health and safety regulations.</li><li>Maintain accurate records and reports.</li><li>Provide excellent service to guests and address their needs.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> High school diploma.</li><li><strong>Experience:</strong> 2+ years in housekeeping, with supervisory experience.</li><li><strong>Technical Skills:</strong> Knowledge of cleaning chemicals and protocols.</li><li><strong>Soft Skills:</strong> Detail-oriented, leadership, and communication skills.</li></ul><h2>What We Offer</h2><ul><li>Health insurance.</li><li>Uniform allowance.</li><li>Paid leave.</li><li>Hospitality certification programs.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "housekeeping",
+        "supervision",
+        "quality-control",
+        "inventory-management",
+        "training",
+        "cleaning-protocols",
+        "guest-service"
+      ],
       "requirements": {
         "education": "High school diploma",
         "experience": "2+ years in housekeeping, with supervisory experience",
@@ -943,13 +1448,21 @@
       }
     },
     {
-      "title": "Content Creator",
+      "title": "Digital Content Creator - Video & Social",
       "category": "Media",
-      "description": "Produce engaging video and written content for platforms like YouTube, TikTok, and our website. You'll brainstorm ideas, film, edit, and analyze performance metrics. We need a creative storyteller who understands viral trends.",
-      "skills": ["video-production", "editing", "storytelling", "social-media", "creativity"],
+      "description": "<h2>Job Description</h2><p>We are seeking a Content Creator to produce engaging video and written content for platforms like YouTube, TikTok, and our website. You will brainstorm ideas, film, edit, and analyze performance metrics. We need a creative storyteller who understands viral trends.</p><p>In this role, you will be responsible for creating content that engages and grows our audience. You will be a creative force, producing content that resonates with our target demographic.</p><h2>Key Responsibilities</h2><ul><li>Brainstorm and develop creative content ideas for social media and video platforms.</li><li>Produce, film, and edit engaging video content.</li><li>Write compelling scripts and captions.</li><li>Manage content calendars and publishing schedules.</li><li>Analyze content performance and optimize based on metrics.</li><li>Stay up-to-date with trends and viral content strategies.</li><li>Collaborate with marketing and design teams.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Degree in Media, Communications, or equivalent experience.</li><li><strong>Experience:</strong> 2+ year as a content creator.</li><li><strong>Technical Skills:</strong> Proficient in Premiere Pro, After Effects, and on-camera presence.</li><li><strong>Portfolio:</strong> Showreel or channel required.</li><li><strong>Soft Skills:</strong> Creative, storytelling ability, and strong communication.</li></ul><h2>What We Offer</h2><ul><li>Health and dental.</li><li>Fully remote.</li><li>Creative schedule.</li><li>Production gear stipend.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "video-production",
+        "editing",
+        "storytelling",
+        "social-media",
+        "creativity",
+        "premiere-pro",
+        "content-strategy"
+      ],
       "requirements": {
         "education": "Degree in Media, Communications, or equivalent experience",
-        "experience": "1+ year as a content creator",
+        "experience": "2+ year as a content creator",
         "skills": "Proficient in Premiere Pro, After Effects, and on-camera presence",
         "portfolio": "Showreel or channel required"
       },
@@ -961,13 +1474,21 @@
       }
     },
     {
-      "title": "Video Editor",
+      "title": "Video Editor - Post Production",
       "category": "Media",
-      "description": "Transform raw footage into polished, compelling videos for marketing, social media, and internal communications. You'll handle color grading, sound mixing, and motion graphics. Efficiency and storytelling sense are critical.",
-      "skills": ["video-editing", "post-production", "color-grading", "sound-design", "creativity"],
+      "description": "<h2>Job Description</h2><p>We are seeking a Video Editor to transform raw footage into polished, compelling videos for marketing, social media, and internal communications. You will handle color grading, sound mixing, and motion graphics. Efficiency and storytelling sense are critical.</p><p>In this role, you will be responsible for the post-production of video content, ensuring high quality and creative impact. You will work closely with producers and content creators to bring their vision to life.</p><h2>Key Responsibilities</h2><ul><li>Edit raw footage into engaging video content for various platforms.</li><li>Perform color grading, sound mixing, and audio synchronization.</li><li>Add motion graphics and visual effects to enhance storytelling.</li><li>Manage video assets and maintain project organization.</li><li>Collaborate with producers and creatives to understand project goals.</li><li>Ensure final videos meet quality and brand standards.</li><li>Stay up-to-date with video editing trends and techniques.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Bachelor's degree in Film, Media, or related field.</li><li><strong>Experience:</strong> 3+ years of professional editing experience.</li><li><strong>Technical Skills:</strong> Expert in Adobe Premiere Pro, DaVinci Resolve, and After Effects.</li><li><strong>Soft Skills:</strong> Creative, detail-oriented, and strong communication skills.</li></ul><h2>What We Offer</h2><ul><li>Medical, vision.</li><li>Remote work.</li><li>Flexible deadlines.</li><li>Editing workshop fees covered.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "video-editing",
+        "post-production",
+        "color-grading",
+        "sound-design",
+        "creativity",
+        "premiere-pro",
+        "after-effects"
+      ],
       "requirements": {
         "education": "Bachelor's degree in Film, Media, or related field",
-        "experience": "2+ years of professional editing experience",
+        "experience": "3+ years of professional editing experience",
         "skills": "Expert in Adobe Premiere Pro, DaVinci Resolve, and After Effects"
       },
       "benefits": {
@@ -978,13 +1499,21 @@
       }
     },
     {
-      "title": "Journalist",
+      "title": "Investigative Reporter - Digital News",
       "category": "Media",
-      "description": "Research, write, and report on breaking news and feature stories across digital and print platforms. You'll conduct interviews, verify facts, and meet tight deadlines. A nose for news and impeccable writing ethics are essential.",
-      "skills": ["journalism", "writing", "interviewing", "fact-checking", "storytelling"],
+      "description": "<h2>Job Description</h2><p>We are seeking a Journalist to research, write, and report on breaking news and feature stories across digital and print platforms. You will conduct interviews, verify facts, and meet tight deadlines. A nose for news and impeccable writing ethics are essential.</p><p>In this role, you will be responsible for uncovering and telling compelling stories that matter to our audience. You will be a trusted voice in the newsroom, delivering accurate and engaging journalism.</p><h2>Key Responsibilities</h2><ul><li>Research and report on news stories and feature articles.</li><li>Conduct interviews and gather information from sources.</li><li>Verify facts and ensure accuracy of information.</li><li>Write clear, engaging, and accurate news articles.</li><li>Meet tight deadlines and work under pressure.</li><li>Collaborate with editors and other reporters.</li><li>Stay up-to-date with current events and news trends.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Bachelor's degree in Journalism or Communications.</li><li><strong>Experience:</strong> 3+ years in a newsroom or similar environment.</li><li><strong>Technical Skills:</strong> Strong AP style writing and multimedia storytelling.</li><li><strong>Soft Skills:</strong> Ethical, curious, and excellent communication skills.</li></ul><h2>What We Offer</h2><ul><li>Health insurance.</li><li>Field-based flexibility.</li><li>Paid holidays and personal days.</li><li>Press conference and travel opportunities.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "journalism",
+        "writing",
+        "interviewing",
+        "fact-checking",
+        "storytelling",
+        "ap-style",
+        "news-reporting"
+      ],
       "requirements": {
         "education": "Bachelor's degree in Journalism or Communications",
-        "experience": "2+ years in a newsroom or similar environment",
+        "experience": "3+ years in a newsroom or similar environment",
         "skills": "Strong AP style writing and multimedia storytelling"
       },
       "benefits": {
@@ -995,13 +1524,21 @@
       }
     },
     {
-      "title": "Photographer",
+      "title": "Commercial Photographer",
       "category": "Media",
-      "description": "Capture high-quality images for editorial, commercial, or portrait use. You'll operate professional camera equipment, edit photos in Lightroom/Photoshop, and manage digital asset libraries. A strong portfolio that demonstrates creative range is a must.",
-      "skills": ["photography", "photo-editing", "lighting", "composition", "creativity"],
+      "description": "<h2>Job Description</h2><p>We are seeking a Photographer to capture high-quality images for editorial, commercial, or portrait use. You will operate professional camera equipment, edit photos in Lightroom/Photoshop, and manage digital asset libraries. A strong portfolio that demonstrates creative range is a must.</p><p>In this role, you will be responsible for creating visual content that tells a story and engages our audience. You will work on a variety of projects, from product shoots to portraits.</p><h2>Key Responsibilities</h2><ul><li>Capture high-quality photographs for various purposes (commercial, editorial, portrait).</li><li>Operate professional camera equipment and manage lighting setups.</li><li>Edit and retouch photos using Lightroom and Photoshop.</li><li>Manage digital asset libraries and maintain organization.</li><li>Collaborate with creative teams to understand project requirements.</li><li>Ensure final images meet brand and quality standards.</li><li>Stay up-to-date with photography trends and techniques.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Degree in Photography or equivalent experience.</li><li><strong>Experience:</strong> 3+ years as a professional photographer.</li><li><strong>Technical Skills:</strong> Proficient in DSLR/mirrorless systems and Adobe Creative Suite.</li><li><strong>Portfolio:</strong> Online portfolio required.</li><li><strong>Soft Skills:</strong> Creative, detail-oriented, and strong communication skills.</li></ul><h2>What We Offer</h2><ul><li>Insurance.</li><li>Camera and lens allowance.</li><li>On-location and studio mix.</li><li>Photography workshop support.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "photography",
+        "photo-editing",
+        "lighting",
+        "composition",
+        "creativity",
+        "lightroom",
+        "photoshop"
+      ],
       "requirements": {
         "education": "Degree in Photography or equivalent experience",
-        "experience": "2+ years as a professional photographer",
+        "experience": "3+ years as a professional photographer",
         "skills": "Proficient in DSLR/mirrorless systems and Adobe Creative Suite",
         "portfolio": "Online portfolio required"
       },
@@ -1013,13 +1550,21 @@
       }
     },
     {
-      "title": "Podcast Producer",
+      "title": "Podcast Producer & Audio Editor",
       "category": "Media",
-      "description": "Manage the end-to-end production of our podcast series, from booking guests to editing episodes and publishing. You'll ensure high audio quality, consistent branding, and engaging show notes. Experience with remote recording tools is a plus.",
-      "skills": ["audio-production", "editing", "scheduling", "storytelling", "marketing"],
+      "description": "<h2>Job Description</h2><p>We are seeking a Podcast Producer to manage the end-to-end production of our podcast series, from booking guests to editing episodes and publishing. You will ensure high audio quality, consistent branding, and engaging show notes. Experience with remote recording tools is a plus.</p><p>In this role, you will be responsible for the production of a podcast that engages and grows our audience. You will manage the entire process, from guest booking to publishing.</p><h2>Key Responsibilities</h2><ul><li>Manage all aspects of podcast production from pre-production to publishing.</li><li>Book guests and coordinate recording schedules.</li><li>Record and edit audio, ensuring high-quality sound.</li><li>Write engaging show notes and episode descriptions.</li><li>Publish episodes to podcast platforms.</li><li>Manage podcast marketing and promotion.</li><li>Stay up-to-date with podcast trends and best practices.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Bachelor's degree in Media or Communications.</li><li><strong>Experience:</strong> 3+ years in podcast or radio production.</li><li><strong>Technical Skills:</strong> ProTools or Audition expertise, strong organizational skills.</li><li><strong>Soft Skills:</strong> Creative, organized, and excellent communication skills.</li></ul><h2>What We Offer</h2><ul><li>Health, dental.</li><li>Fully remote.</li><li>Flexible recording schedule.</li><li>Home studio budget.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "audio-production",
+        "editing",
+        "scheduling",
+        "storytelling",
+        "marketing",
+        "protools",
+        "podcast-production"
+      ],
       "requirements": {
         "education": "Bachelor's degree in Media or Communications",
-        "experience": "2+ years in podcast or radio production",
+        "experience": "3+ years in podcast or radio production",
         "skills": "ProTools or Audition expertise, strong organizational skills"
       },
       "benefits": {
@@ -1030,10 +1575,18 @@
       }
     },
     {
-      "title": "Security Guard",
+      "title": "Security Guard - Patrol & Access Control",
       "category": "Security",
-      "description": "Protect property, personnel, and assets by patrolling premises, monitoring surveillance equipment, and controlling access points. You'll respond to incidents and write detailed reports. Reliability and a calm demeanor are crucial.",
-      "skills": ["patrolling", "surveillance", "access-control", "report-writing", "crisis-management"],
+      "description": "<h2>Job Description</h2><p>We are seeking a Security Guard to protect property, personnel, and assets by patrolling premises, monitoring surveillance equipment, and controlling access points. You will respond to incidents and write detailed reports. Reliability and a calm demeanor are crucial.</p><p>In this role, you will be responsible for maintaining a safe and secure environment for our employees and assets. You will be a visible and proactive presence.</p><h2>Key Responsibilities</h2><ul><li>Patrol premises to ensure the safety and security of the facility.</li><li>Monitor surveillance equipment and access control systems.</li><li>Control access to the facility and verify credentials.</li><li>Respond to incidents and emergencies in a timely manner.</li><li>Write detailed incident and daily reports.</li><li>Maintain a visible and approachable presence.</li><li>Follow all security protocols and procedures.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> High school diploma; security license required.</li><li><strong>Experience:</strong> 0-2 years; prior military or law enforcement a plus.</li><li><strong>Technical Skills:</strong> Strong observational skills and physical fitness.</li><li><strong>Soft Skills:</strong> Reliable, calm under pressure, and excellent communication.</li></ul><h2>What We Offer</h2><ul><li>Medical coverage.</li><li>Paid leave.</li><li>Uniform provided.</li><li>Overtime available.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "patrolling",
+        "surveillance",
+        "access-control",
+        "report-writing",
+        "crisis-management",
+        "security-protocols",
+        "emergency-response"
+      ],
       "requirements": {
         "education": "High school diploma; security license required",
         "experience": "0-2 years; prior military or law enforcement a plus",
@@ -1047,13 +1600,21 @@
       }
     },
     {
-      "title": "Cybersecurity Analyst",
+      "title": "Cybersecurity Analyst - SOC",
       "category": "Security",
-      "description": "Monitor networks for security breaches, investigate incidents, and implement protective measures. You'll conduct vulnerability assessments and help develop security policies. A CEH, Sec+, or CISSP certification is highly valued.",
-      "skills": ["cybersecurity", "threat-analysis", "network-monitoring", "incident-response", "vulnerability-assessment"],
+      "description": "<h2>Job Description</h2><p>We are seeking a Cybersecurity Analyst to monitor networks for security breaches, investigate incidents, and implement protective measures. You will conduct vulnerability assessments and help develop security policies. A CEH, Sec+, or CISSP certification is highly valued.</p><p>In this role, you will be a key member of our security team, protecting our organization from cyber threats. You will monitor, detect, and respond to security incidents.</p><h2>Key Responsibilities</h2><ul><li>Monitor network traffic and security logs for suspicious activity.</li><li>Investigate security incidents and conduct root cause analysis.</li><li>Perform vulnerability assessments and penetration tests.</li><li>Implement and maintain security tools and controls.</li><li>Develop and enforce security policies and procedures.</li><li>Stay up-to-date with the latest security threats and trends.</li><li>Provide security awareness training to employees.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Bachelor's degree in Cybersecurity or IT.</li><li><strong>Experience:</strong> 3+ years in a SOC or security analyst role.</li><li><strong>Certifications:</strong> CompTIA Security+; CISSP or CEH preferred.</li><li><strong>Soft Skills:</strong> Analytical, detail-oriented, and strong problem-solving skills.</li></ul><h2>What We Offer</h2><ul><li>Premium health plan.</li><li>Hybrid/remote.</li><li>Certification and training reimbursements.</li><li>Equity.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "cybersecurity",
+        "threat-analysis",
+        "network-monitoring",
+        "incident-response",
+        "vulnerability-assessment",
+        "soc",
+        "security-policies"
+      ],
       "requirements": {
         "education": "Bachelor's degree in Cybersecurity or IT",
-        "experience": "2+ years in a SOC or security analyst role",
+        "experience": "3+ years in a SOC or security analyst role",
         "certifications": "CompTIA Security+; CISSP or CEH preferred"
       },
       "benefits": {
@@ -1064,13 +1625,21 @@
       }
     },
     {
-      "title": "Data Analyst",
+      "title": "Data Analyst - Business Intelligence",
       "category": "Data & Analytics",
-      "description": "Turn raw data into actionable insights by building dashboards, running SQL queries, and performing statistical analysis. You'll work closely with business stakeholders to answer key questions and drive data-informed decisions. Strong storytelling with data is essential.",
-      "skills": ["data-analysis", "sql", "visualization", "statistics", "communication"],
+      "description": "<h2>Job Description</h2><p>We are seeking a Data Analyst to turn raw data into actionable insights by building dashboards, running SQL queries, and performing statistical analysis. You will work closely with business stakeholders to answer key questions and drive data-informed decisions. Strong storytelling with data is essential.</p><p>In this role, you will be responsible for analyzing data to support business decisions and improve performance. You will work with cross-functional teams to provide data-driven insights.</p><h2>Key Responsibilities</h2><ul><li>Gather and analyze data from multiple sources to answer business questions.</li><li>Build interactive dashboards and visualizations using Tableau/Power BI.</li><li>Write and optimize SQL queries to extract and analyze data.</li><li>Perform statistical analysis to identify trends and patterns.</li><li>Communicate insights and recommendations to stakeholders.</li><li>Collaborate with data engineering to improve data quality.</li><li>Stay up-to-date with data analysis tools and techniques.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Bachelor's degree in Statistics, Math, CS, or Economics.</li><li><strong>Experience:</strong> 3+ years in data analysis.</li><li><strong>Technical Skills:</strong> Expert in SQL, Tableau/Power BI, and Excel; Python/R a plus.</li><li><strong>Soft Skills:</strong> Strong communication, storytelling, and analytical thinking.</li></ul><h2>What We Offer</h2><ul><li>Full health coverage.</li><li>Remote-first.</li><li>Equity.</li><li>Data science learning budget.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "data-analysis",
+        "sql",
+        "visualization",
+        "statistics",
+        "communication",
+        "tableau",
+        "business-intelligence"
+      ],
       "requirements": {
         "education": "Bachelor's degree in Statistics, Math, CS, or Economics",
-        "experience": "2+ years in data analysis",
+        "experience": "3+ years in data analysis",
         "skills": "Expert in SQL, Tableau/Power BI, and Excel; Python/R a plus"
       },
       "benefits": {
@@ -1081,13 +1650,21 @@
       }
     },
     {
-      "title": "Data Scientist",
+      "title": "Data Scientist - Machine Learning",
       "category": "Data & Analytics",
-      "description": "Develop machine learning models and advanced analytics to solve complex business problems. You'll work with large datasets, design experiments, and deploy models to production. A strong foundation in statistics and programming is required.",
-      "skills": ["machine-learning", "python", "statistics", "data-modeling", "experimentation"],
+      "description": "<h2>Job Description</h2><p>We are seeking a Data Scientist to develop machine learning models and advanced analytics to solve complex business problems. You will work with large datasets, design experiments, and deploy models to production. A strong foundation in statistics and programming is required.</p><p>In this role, you will be responsible for building and deploying machine learning models that drive business value. You will work on challenging problems and collaborate with cross-functional teams.</p><h2>Key Responsibilities</h2><ul><li>Develop and deploy machine learning models to solve business problems.</li><li>Design and analyze experiments to measure impact.</li><li>Work with large datasets to extract insights and build features.</li><li>Implement and maintain data pipelines and model infrastructure.</li><li>Collaborate with product and engineering teams to integrate models.</li><li>Stay up-to-date with the latest ML research and techniques.</li><li>Communicate results and recommendations to stakeholders.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Master's or PhD in a quantitative field.</li><li><strong>Experience:</strong> 4+ years in data science.</li><li><strong>Technical Skills:</strong> Proficient in Python (scikit-learn, TensorFlow), SQL, and cloud ML platforms.</li><li><strong>Soft Skills:</strong> Strong analytical, communication, and problem-solving skills.</li></ul><h2>What We Offer</h2><ul><li>Executive health package.</li><li>Remote flexible.</li><li>Generous equity.</li><li>Conference and publication support.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "machine-learning",
+        "python",
+        "statistics",
+        "data-modeling",
+        "experimentation",
+        "tensorflow",
+        "cloud-ml"
+      ],
       "requirements": {
         "education": "Master's or PhD in a quantitative field",
-        "experience": "3+ years in data science",
+        "experience": "4+ years in data science",
         "skills": "Proficient in Python (scikit-learn, TensorFlow), SQL, and cloud ML platforms"
       },
       "benefits": {
@@ -1098,13 +1675,21 @@
       }
     },
     {
-      "title": "Business Intelligence Analyst",
+      "title": "Business Intelligence Developer - Data Warehousing",
       "category": "Data & Analytics",
-      "description": "Design and maintain BI solutions that provide visibility into company performance. You'll gather requirements, build ETL pipelines, and create dashboards. Help leaders see the numbers that matter most.",
-      "skills": ["bi-development", "sql", "etl", "dashboards", "requirements-gathering"],
+      "description": "<h2>Job Description</h2><p>We are seeking a Business Intelligence Analyst to design and maintain BI solutions that provide visibility into company performance. You will gather requirements, build ETL pipelines, and create dashboards. Help leaders see the numbers that matter most.</p><p>In this role, you will be responsible for building and maintaining BI solutions that enable data-driven decision-making. You will work with stakeholders to understand their needs and deliver actionable insights.</p><h2>Key Responsibilities</h2><ul><li>Design and develop BI solutions and data models.</li><li>Build and maintain ETL pipelines to integrate data from various sources.</li><li>Create dashboards and reports to provide visibility into business performance.</li><li>Gather requirements from stakeholders and translate them into technical solutions.</li><li>Ensure data quality and accuracy across BI systems.</li><li>Optimize data warehouse performance.</li><li>Collaborate with data engineering and analytics teams.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Bachelor's in Information Systems or Business.</li><li><strong>Experience:</strong> 3+ years in BI development.</li><li><strong>Technical Skills:</strong> Power BI/Looker/Tableau expert, SQL, data modeling.</li><li><strong>Soft Skills:</strong> Strong communication, problem-solving, and stakeholder management.</li></ul><h2>What We Offer</h2><ul><li>Health insurance.</li><li>Hybrid.</li><li>25 days PTO.</li><li>Performance bonus.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "bi-development",
+        "sql",
+        "etl",
+        "dashboards",
+        "requirements-gathering",
+        "power-bi",
+        "data-warehousing"
+      ],
       "requirements": {
         "education": "Bachelor's in Information Systems or Business",
-        "experience": "2+ years in BI development",
+        "experience": "3+ years in BI development",
         "skills": "Power BI/Looker/Tableau expert, SQL, data modeling"
       },
       "benefits": {
@@ -1115,13 +1700,21 @@
       }
     },
     {
-      "title": "Legal Counsel",
+      "title": "Corporate Counsel - Commercial Contracts",
       "category": "Legal",
-      "description": "Advise the company on contracts, compliance, intellectual property, and risk management. You'll draft and negotiate agreements, and work with external counsel when needed. A strong business acumen combined with legal expertise is critical.",
-      "skills": ["legal-advice", "contract-negotiation", "compliance", "risk-assessment", "communication"],
+      "description": "<h2>Job Description</h2><p>We are seeking a Legal Counsel to advise the company on contracts, compliance, intellectual property, and risk management. You will draft and negotiate agreements, and work with external counsel when needed. A strong business acumen combined with legal expertise is critical.</p><p>In this role, you will be a trusted advisor to the business, providing legal guidance and support on a wide range of matters. You will help the company navigate legal complexities and mitigate risk.</p><h2>Key Responsibilities</h2><ul><li>Draft, review, and negotiate commercial contracts and agreements.</li><li>Provide legal advice on compliance, intellectual property, and risk management.</li><li>Manage litigation and work with external counsel.</li><li>Develop and implement legal policies and procedures.</li><li>Advise on data privacy and security matters.</li><li>Support M&A activities and other strategic transactions.</li><li>Stay up-to-date with relevant laws and regulations.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Juris Doctor (JD) and active bar membership.</li><li><strong>Experience:</strong> 5+ years in corporate law, either in-house or at a firm.</li><li><strong>Technical Skills:</strong> Excellent drafting and negotiation skills.</li><li><strong>Soft Skills:</strong> Strong business acumen, communication, and analytical thinking.</li></ul><h2>What We Offer</h2><ul><li>Comprehensive benefits.</li><li>Hybrid schedule.</li><li>Equity eligible.</li><li>Bar dues and CLE covered.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "legal-advice",
+        "contract-negotiation",
+        "compliance",
+        "risk-assessment",
+        "communication",
+        "corporate-law",
+        "intellectual-property"
+      ],
       "requirements": {
         "education": "Juris Doctor (JD) and active bar membership",
-        "experience": "4+ years in corporate law, either in-house or at a firm",
+        "experience": "5+ years in corporate law, either in-house or at a firm",
         "skills": "Excellent drafting and negotiation skills"
       },
       "benefits": {
@@ -1132,13 +1725,21 @@
       }
     },
     {
-      "title": "Paralegal",
+      "title": "Paralegal - Corporate & Litigation",
       "category": "Legal",
-      "description": "Support attorneys by conducting legal research, drafting documents, and organizing case files. You'll manage deadlines and assist with trial preparation. A paralegal certificate and meticulous organizational skills are required.",
-      "skills": ["legal-research", "document-drafting", "case-management", "organization", "attention-to-detail"],
+      "description": "<h2>Job Description</h2><p>We are seeking a Paralegal to support attorneys by conducting legal research, drafting documents, and organizing case files. You will manage deadlines and assist with trial preparation. A paralegal certificate and meticulous organizational skills are required.</p><p>In this role, you will be a crucial member of the legal team, providing essential support to attorneys and ensuring the smooth operation of the legal department.</p><h2>Key Responsibilities</h2><ul><li>Conduct legal research and prepare summaries for attorneys.</li><li>Draft and review legal documents, contracts, and correspondence.</li><li>Organize and maintain case files and legal records.</li><li>Manage deadlines and assist with trial preparation.</li><li>File documents with courts and administrative agencies.</li><li>Assist with discovery, including document production and review.</li><li>Communicate with clients, opposing counsel, and court personnel.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Associate's degree or paralegal certificate.</li><li><strong>Experience:</strong> 3+ years in a law firm or legal department.</li><li><strong>Technical Skills:</strong> Proficiency with legal research tools (Westlaw, LexisNexis).</li><li><strong>Soft Skills:</strong> Meticulous, organized, and strong communication skills.</li></ul><h2>What We Offer</h2><ul><li>Medical, dental.</li><li>Paid time off.</li><li>Paralegal conference allowance.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "legal-research",
+        "document-drafting",
+        "case-management",
+        "organization",
+        "attention-to-detail",
+        "westlaw",
+        "litigation-support"
+      ],
       "requirements": {
         "education": "Associate's degree or paralegal certificate",
-        "experience": "2+ years in a law firm or legal department",
+        "experience": "3+ years in a law firm or legal department",
         "skills": "Proficiency with legal research tools (Westlaw, LexisNexis)"
       },
       "benefits": {
@@ -1148,10 +1749,18 @@
       }
     },
     {
-      "title": "Real Estate Agent",
+      "title": "Licensed Real Estate Agent - Residential",
       "category": "Real Estate",
-      "description": "Guide buyers and sellers through property transactions, from listing to closing. You'll prospect for clients, host open houses, and negotiate offers. An active real estate license and a passion for helping people are essential.",
-      "skills": ["sales", "negotiation", "real-estate-law", "marketing", "customer-service"],
+      "description": "<h2>Job Description</h2><p>We are seeking a Real Estate Agent to guide buyers and sellers through property transactions, from listing to closing. You will prospect for clients, host open houses, and negotiate offers. An active real estate license and a passion for helping people are essential.</p><p>In this role, you will be responsible for helping clients navigate the real estate market and achieve their property goals. You will be a trusted advisor and advocate for your clients.</p><h2>Key Responsibilities</h2><ul><li>Prospect for new clients and generate leads.</li><li>Assist buyers in finding and purchasing properties.</li><li>Help sellers list and market their properties.</li><li>Host open houses and property showings.</li><li>Negotiate offers and contracts on behalf of clients.</li><li>Guide clients through the closing process.</li><li>Maintain knowledge of local market trends.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> High school diploma; state real estate license.</li><li><strong>Experience:</strong> 0-2 years; training provided.</li><li><strong>Technical Skills:</strong> Strong networking and communication abilities.</li><li><strong>Soft Skills:</strong> Sales-oriented, customer-focused, and persuasive.</li></ul><h2>What We Offer</h2><ul><li>High commission splits.</li><li>Set your own schedule.</li><li>Mentorship and lead generation tools.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "sales",
+        "negotiation",
+        "real-estate-law",
+        "marketing",
+        "customer-service",
+        "property-showings",
+        "lead-generation"
+      ],
       "requirements": {
         "education": "High school diploma; state real estate license",
         "experience": "0-2 years; training provided",
@@ -1164,13 +1773,21 @@
       }
     },
     {
-      "title": "Property Manager",
+      "title": "Property Manager - Multifamily",
       "category": "Real Estate",
-      "description": "Oversee residential or commercial properties, handling tenant relations, maintenance requests, and lease renewals. You'll coordinate with contractors and ensure properties are well-maintained and profitable.",
-      "skills": ["property-management", "tenant-relations", "maintenance-coordination", "leasing", "financial-reporting"],
+      "description": "<h2>Job Description</h2><p>We are seeking a Property Manager to oversee residential or commercial properties, handling tenant relations, maintenance requests, and lease renewals. You will coordinate with contractors and ensure properties are well-maintained and profitable.</p><p>In this role, you will be responsible for the overall management of properties, ensuring they are well-maintained, financially successful, and compliant with regulations. You will be the primary point of contact for tenants and owners.</p><h2>Key Responsibilities</h2><ul><li>Manage day-to-day operations of residential or commercial properties.</li><li>Handle tenant relations and resolve complaints.</li><li>Coordinate maintenance and repair requests.</li><li>Manage lease renewals and negotiate terms.</li><li>Oversee financial reporting and budgeting.</li><li>Ensure compliance with housing regulations and safety standards.</li><li>Coordinate with contractors and vendors.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> Bachelor's degree or equivalent experience.</li><li><strong>Experience:</strong> 3+ years in property management.</li><li><strong>Certifications:</strong> CPM or CAM certification a plus.</li><li><strong>Soft Skills:</strong> Strong communication, problem-solving, and organizational skills.</li></ul><h2>What We Offer</h2><ul><li>Health plan.</li><li>Leasing bonuses.</li><li>Rent discount at managed properties.</li><li>Mileage reimbursement.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "property-management",
+        "tenant-relations",
+        "maintenance-coordination",
+        "leasing",
+        "financial-reporting",
+        "budgeting",
+        "regulatory-compliance"
+      ],
       "requirements": {
         "education": "Bachelor's degree or equivalent experience",
-        "experience": "2+ years in property management",
+        "experience": "3+ years in property management",
         "certifications": "CPM or CAM certification a plus"
       },
       "benefits": {
@@ -1181,10 +1798,18 @@
       }
     },
     {
-      "title": "Leasing Consultant",
+      "title": "Leasing Consultant - Apartment Communities",
       "category": "Real Estate",
-      "description": "Show apartments, process applications, and build relationships with current and prospective residents. You'll help maintain high occupancy rates through excellent customer service and follow-up. Ideal for outgoing, sales-minded individuals.",
-      "skills": ["sales", "customer-service", "property-tours", "leasing-software", "communication"],
+      "description": "<h2>Job Description</h2><p>We are seeking a Leasing Consultant to show apartments, process applications, and build relationships with current and prospective residents. You will help maintain high occupancy rates through excellent customer service and follow-up. Ideal for outgoing, sales-minded individuals.</p><p>In this role, you will be the face of the community, helping prospective residents find their new home and ensuring current residents are satisfied. You will be a key driver of occupancy and resident satisfaction.</p><h2>Key Responsibilities</h2><ul><li>Show apartments and community amenities to prospective residents.</li><li>Process lease applications and conduct background checks.</li><li>Maintain high occupancy rates through effective sales and marketing.</li><li>Build relationships with current residents and address their needs.</li><li>Manage lease renewals and paperwork.</li><li>Respond to inquiries from prospective residents.</li><li>Maintain a clean and professional sales office.</li></ul><h2>Requirements</h2><ul><li><strong>Education:</strong> High school diploma.</li><li><strong>Experience:</strong> 1+ year in sales or customer service.</li><li><strong>Technical Skills:</strong> Proficient in property management software (Yardi, Entrata).</li><li><strong>Soft Skills:</strong> Outgoing, sales-oriented, and excellent communication skills.</li></ul><h2>What We Offer</h2><ul><li>Medical insurance.</li><li>Leasing commissions.</li><li>Apartment discount.</li><li>Paid vacation.</li><li>Career growth opportunities.</li></ul>",
+      "skills": [
+        "sales",
+        "customer-service",
+        "property-tours",
+        "leasing-software",
+        "communication",
+        "applications-processing",
+        "resident-relations"
+      ],
       "requirements": {
         "education": "High school diploma",
         "experience": "1+ year in sales or customer service",

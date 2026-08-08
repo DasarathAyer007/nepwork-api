@@ -10,7 +10,7 @@ from apps.skill.models import Skill
 from apps.users.models.user import User
 from apps.users.tests.factories import UserFactory
 
-# python manage.py seed --services 30
+# uv run manage.py seed --services 30
 
 
 class Command(BaseCommand):

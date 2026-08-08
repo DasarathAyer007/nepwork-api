@@ -7,12 +7,14 @@ from factory.declarations import (
     LazyAttribute,
     LazyFunction,
     PostGenerationMethodCall,
+    SubFactory,
 )
 from factory.django import DjangoModelFactory
 from factory.faker import Faker
 from factory.helpers import post_generation
 from faker import Faker as FakerProvider
 
+from apps.locations.tests.factories import LocationFactory
 from apps.skill.models import Skill
 from apps.skill.tests.factories import SkillFactory
 from apps.users.models import User
@@ -37,14 +39,23 @@ def _parse_date(value):
     return datetime.date.fromisoformat(value)
 
 
+def _age_from_date(dob):
+    if not dob:
+        return None
+    today = datetime.date.today()
+    return (
+        today.year
+        - dob.year
+        - ((today.month, today.day) < (dob.month, dob.day))
+    )
+
+
 class UserFactory(DjangoModelFactory):
     class Meta:
         model = User
         django_get_or_create = ("username",)
         exclude = ("seed_entry",)
 
-    # Cycles through every seed entry before repeating, so batches up to
-    # len(USERS) never collide on username/email.
     seed_entry = Iterator(USERS)
 
     full_name = LazyAttribute(lambda o: o.seed_entry["full_name"])
@@ -98,7 +109,7 @@ class UserFactory(DjangoModelFactory):
         chance_of_getting_true=30,
     )
 
-    location = None
+    location = SubFactory(LocationFactory)
 
     @post_generation
     def create_profile(self, create, extracted, **kwargs):
@@ -121,9 +132,11 @@ class UserFactory(DjangoModelFactory):
                 }
                 if seed_entry.get("gender"):
                     kwargs["gender"] = seed_entry["gender"]
-                date_of_birth = _parse_date(seed_entry.get("date_of_birth"))
-                if date_of_birth:
-                    kwargs["date_of_birth"] = date_of_birth
+                age = _age_from_date(
+                    _parse_date(seed_entry.get("date_of_birth"))
+                )
+                if age is not None:
+                    kwargs["age"] = age
                 PersonalProfileFactory(**kwargs)
 
         elif self.account_type == User.AccountType.ORGANIZATION:
@@ -157,10 +170,10 @@ class PersonalProfileFactory(DjangoModelFactory):
 
     user = None  # IMPORTANT: set by UserFactory
 
-    date_of_birth = Faker(
-        "date_of_birth",
-        minimum_age=18,
-        maximum_age=60,
+    age = Faker(
+        "random_int",
+        min=18,
+        max=60,
     )
 
     gender = Faker(
