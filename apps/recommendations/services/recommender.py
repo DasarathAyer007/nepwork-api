@@ -19,9 +19,9 @@ from apps.user_activity.constants import (
 
 from .cache import RecommendationCache
 
-ACTIVITY_LOOKBACK_LIMIT = 500  # most recent N events considered per user
+ACTIVITY_LOOKBACK_LIMIT = 100
 MAX_CANDIDATES_PER_FEED = getattr(
-    settings, "RECOMMENDATION_CANDIDATE_POOL_SIZE", 500
+    settings, "RECOMMENDATION_CANDIDATE_POOL_SIZE", 100
 )
 
 # How much weight decays for older events, so recent behaviour dominates.
@@ -239,7 +239,7 @@ def _get_candidates(feed_type, preference, limit=MAX_CANDIDATES_PER_FEED):
     category_ids = list(preference[f"{prefix}_categories"].keys())
     if not category_ids:
         return []
-    excluded_ids = preference[f"{prefix}_ids_seen"] | (
+    excluded_ids = (
         preference["job_ids_applied"]
         if feed_type == "jobs"
         else preference["service_ids_requested"]
@@ -278,24 +278,22 @@ def _score(feed_type, candidates, preference):
     prefix = config["prefix"]
     category_scores = preference[f"{prefix}_categories"]
     skill_scores = preference[f"{prefix}_skills"]
-    seen = preference[f"{prefix}_ids_seen"]
     skills_field = config["skills_field"]
     popularity_field = config["popularity_field"]
-
-    pool = [c for c in candidates if str(c.id) not in seen]
-    if not pool:
-        return []
 
     max_category = max(category_scores.values(), default=0) or 1
     max_skill = max(skill_scores.values(), default=0) or 1
     max_popularity = (
-        max((getattr(c, popularity_field, 0) or 0 for c in pool), default=0)
+        max(
+            (getattr(c, popularity_field, 0) or 0 for c in candidates),
+            default=0,
+        )
         or 1
     )
     now = timezone.now()
 
     results = []
-    for candidate in pool:
+    for candidate in candidates:
         category_score = (
             category_scores.get(candidate.category_id, 0) / max_category
         )

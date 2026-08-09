@@ -1,8 +1,11 @@
 # jobs/query_service.py
+from datetime import timedelta
+
 from django.contrib.gis.db.models.functions import Distance
 from django.contrib.gis.geos import Point
 from django.contrib.gis.measure import D
-from django.db.models import Count, Q, QuerySet
+from django.db.models import Case, Count, IntegerField, Q, QuerySet, Value, When
+from django.utils import timezone
 from rest_framework.exceptions import ValidationError
 
 from ..models import Job
@@ -11,6 +14,7 @@ from ..selectors import job as selectors
 
 class JobQueryService:
     ALLOWED_ORDERING = {
+        "relevant",
         "salary_min",
         "-salary_min",
         "salary_max",
@@ -23,7 +27,9 @@ class JobQueryService:
         "-experience_years",
         "distance",
     }
-    DEFAULT_ORDERING = "-created_at"
+    DEFAULT_ORDERING = "relevant"
+    RECOMMENDATION_POOL_SIZE = 100
+    TRENDING_WINDOW_DAYS = 7
 
     def __init__(self, user=None, params: dict | None = None):
         self.user = user
@@ -222,7 +228,64 @@ class JobQueryService:
             ordering = self.DEFAULT_ORDERING
         if ordering == "distance" and not self._has_geo_params():
             ordering = self.DEFAULT_ORDERING
+        if ordering == "relevant":
+            return self._apply_relevance_ordering(qs)
         return qs.order_by(ordering)
+
+    def _apply_relevance_ordering(self, qs):
+        """
+        Recommended jobs first (personalized, if the user has one), then
+        trending jobs (recent application activity), then latest.
+        """
+        recommended_ids = []
+        if self.user and self.user.is_authenticated:
+            from apps.recommendations.services.cache import get_ranked_ids
+
+            recommended_ids = [
+                str(pk)
+                for pk in get_ranked_ids(
+                    self.user.id, "jobs", top_n=self.RECOMMENDATION_POOL_SIZE
+                )
+            ]
+
+        since = timezone.now() - timedelta(days=self.TRENDING_WINDOW_DAYS)
+        qs = qs.annotate(
+            recent_applications=Count(
+                "applications",
+                filter=Q(applications__created_at__gte=since),
+                distinct=True,
+            )
+        )
+
+        tier_cases = (
+            [When(id__in=recommended_ids, then=Value(0))]
+            if recommended_ids
+            else []
+        )
+        rank_cases = [
+            When(id=pk, then=Value(pos))
+            for pos, pk in enumerate(recommended_ids)
+        ]
+
+        qs = qs.annotate(
+            relevance_tier=Case(
+                *tier_cases,
+                When(recent_applications__gt=0, then=Value(1)),
+                default=Value(2),
+                output_field=IntegerField(),
+            ),
+            relevance_rank=Case(
+                *rank_cases,
+                default=Value(0),
+                output_field=IntegerField(),
+            ),
+        )
+        return qs.order_by(
+            "relevance_tier",
+            "relevance_rank",
+            "-recent_applications",
+            "-created_at",
+        )
 
     # ── Geo helpers ──────────────────────────────────────────
     def _get_user_location_point(self):

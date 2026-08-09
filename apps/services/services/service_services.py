@@ -1,9 +1,19 @@
 # services/query_service.py
+from datetime import timedelta
 
 from django.contrib.gis.db.models.functions import Distance
 from django.contrib.gis.geos import Point
 from django.contrib.gis.measure import D
-from django.db.models import Count, F, Q, QuerySet
+from django.db.models import (
+    Case,
+    Count,
+    F,
+    IntegerField,
+    Q,
+    QuerySet,
+    Value,
+    When,
+)
 from django.utils import timezone
 from rest_framework.exceptions import ValidationError
 
@@ -13,6 +23,7 @@ from ..selectors import services_selectors as selectors
 
 class ServiceQueryService:
     ALLOWED_ORDERINGS = {
+        "relevant",
         "price",
         "-price",
         "created_at",
@@ -23,7 +34,9 @@ class ServiceQueryService:
         "-total_applies",
         "distance",
     }
-    DEFAULT_ORDERING = "-created_at"
+    DEFAULT_ORDERING = "relevant"
+    RECOMMENDATION_POOL_SIZE = 100
+    TRENDING_WINDOW_DAYS = 7
 
     def __init__(self, user=None, params: dict | None = None):
         self.user = user
@@ -206,7 +219,66 @@ class ServiceQueryService:
             ordering = self.DEFAULT_ORDERING
         if ordering == "distance" and not self._has_geo_params():
             ordering = self.DEFAULT_ORDERING
+        if ordering == "relevant":
+            return self._apply_relevance_ordering(qs)
         return qs.order_by(ordering)
+
+    def _apply_relevance_ordering(self, qs):
+        """
+        Recommended services first (personalized, if the user has one), then
+        trending services (recent request activity), then latest.
+        """
+        recommended_ids = []
+        if self.user and self.user.is_authenticated:
+            from apps.recommendations.services.cache import get_ranked_ids
+
+            recommended_ids = [
+                str(pk)
+                for pk in get_ranked_ids(
+                    self.user.id,
+                    "services",
+                    top_n=self.RECOMMENDATION_POOL_SIZE,
+                )
+            ]
+
+        since = timezone.now() - timedelta(days=self.TRENDING_WINDOW_DAYS)
+        qs = qs.annotate(
+            recent_requests=Count(
+                "service_requests",
+                filter=Q(service_requests__created_at__gte=since),
+                distinct=True,
+            )
+        )
+
+        tier_cases = (
+            [When(id__in=recommended_ids, then=Value(0))]
+            if recommended_ids
+            else []
+        )
+        rank_cases = [
+            When(id=pk, then=Value(pos))
+            for pos, pk in enumerate(recommended_ids)
+        ]
+
+        qs = qs.annotate(
+            relevance_tier=Case(
+                *tier_cases,
+                When(recent_requests__gt=0, then=Value(1)),
+                default=Value(2),
+                output_field=IntegerField(),
+            ),
+            relevance_rank=Case(
+                *rank_cases,
+                default=Value(0),
+                output_field=IntegerField(),
+            ),
+        )
+        return qs.order_by(
+            "relevance_tier",
+            "relevance_rank",
+            "-recent_requests",
+            "-created_at",
+        )
 
     #  Geo helpers for location filter
     def _apply_geo(self, qs):
