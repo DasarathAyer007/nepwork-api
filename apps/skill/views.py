@@ -25,7 +25,28 @@ def annotated_skill_queryset():
 
 
 @extend_schema(tags=["Skills"])
-class SkillListView(ListCreateAPIView):
+class SkillListView(ListAPIView):
+    """Plain, unpaginated list of skills used across the public app (e.g.
+    onboarding skill search/suggestions). Always returns a bare array."""
+
+    permission_classes = [IsAdminOrReadOnly("skills")]
+
+    serializer_class = SkillUsageSerializer
+
+    filter_backends = [SearchFilter]
+
+    search_fields = ["name"]
+
+    pagination_class = None
+
+    def get_queryset(self):
+        return annotated_skill_queryset().order_by("name")
+
+
+@extend_schema(tags=["Skills"])
+class SkillAdminListView(ListCreateAPIView):
+    """Paginated, sortable skill list for the admin dashboard."""
+
     permission_classes = [IsAdminOrReadOnly("skills")]
 
     filter_backends = [SearchFilter, OrderingFilter]
@@ -70,11 +91,6 @@ class SkillListView(ListCreateAPIView):
             )
             return queryset.order_by(*self.SORTBY_MAP[sortby])
         return super().filter_queryset(queryset)
-
-    def paginate_queryset(self, queryset):
-        if self.request.query_params.get("paginate") == "false":
-            return None
-        return super().paginate_queryset(queryset)
 
 
 @extend_schema(tags=["Skills"])
