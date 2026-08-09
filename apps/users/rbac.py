@@ -16,6 +16,7 @@ RESOURCES = [
     "audit_logs",
     "sliding_images",
     "analytics",
+    "reviews",
 ]
 
 ACTIONS = ["view", "edit", "delete"]
@@ -52,6 +53,7 @@ ROLE_MATRIX: dict[str, dict[str, set[str]]] = {
         "audit_logs": set(_ALL_ACTIONS),
         "sliding_images": set(_ALL_ACTIONS),
         "analytics": set(_VIEW_ONLY),
+        "reviews": set(_ALL_ACTIONS),
     },
     "moderator": {
         "users": set(),
@@ -65,6 +67,7 @@ ROLE_MATRIX: dict[str, dict[str, set[str]]] = {
         "audit_logs": set(),
         "sliding_images": set(_VIEW_ONLY),
         "analytics": set(_VIEW_ONLY),
+        "reviews": set(_ALL_ACTIONS),
     },
     "developer": {resource: set(_VIEW_ONLY) for resource in RESOURCES},
 }

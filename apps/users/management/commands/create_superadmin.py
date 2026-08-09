@@ -8,9 +8,9 @@ from django.db import transaction
 from apps.users.models import AdminProfile, Role, User
 
 # Examples:
-# python manage.py create_superadmin
-# python manage.py create_superadmin --username admin
-# python manage.py create_superadmin --username admin --email admin@example.com
+# uv run manage.py create_superadmin
+# uv run manage.py create_superadmin --username admin
+# uv run manage.py create_superadmin --username admin --email admin@example.com
 
 
 class Command(BaseCommand):

@@ -1,4 +1,3 @@
-# jobs/views_applications.py
 from django.db import transaction
 from drf_spectacular.utils import extend_schema
 from rest_framework import viewsets

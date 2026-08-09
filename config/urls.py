@@ -22,6 +22,7 @@ urlpatterns = [
     path("api/analytics/", include("apps.analytics.urls")),
     path("api/user-activities/", include("apps.user_activity.urls")),
     path("api/", include("apps.admin_panel.urls")),
+    path("api/reviews/", include("apps.reviews.urls")),
 ]
 
 # API Documentation
