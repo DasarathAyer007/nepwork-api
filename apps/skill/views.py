@@ -1,11 +1,16 @@
 from django.db.models import Count, F
 from drf_spectacular.utils import extend_schema
 from rest_framework.filters import OrderingFilter, SearchFilter
-from rest_framework.generics import ListAPIView
-from rest_framework.permissions import AllowAny
+from rest_framework.generics import (
+    ListAPIView,
+    ListCreateAPIView,
+    RetrieveUpdateDestroyAPIView,
+)
 
 from apps.skill.models import Skill
-from apps.skill.serializer import SkillUsageSerializer
+from apps.skill.serializer import SkillSerializer, SkillUsageSerializer
+from apps.users.permissions import IsAdminOrReadOnly
+from apps.utils.pagination import CustomPageNumberPagination
 
 
 def annotated_skill_queryset():
@@ -20,16 +25,15 @@ def annotated_skill_queryset():
 
 
 @extend_schema(tags=["Skills"])
-class SkillListView(ListAPIView):
-    serializer_class = SkillUsageSerializer
-
-    permission_classes = [AllowAny]
+class SkillListView(ListCreateAPIView):
+    permission_classes = [IsAdminOrReadOnly("skills")]
 
     filter_backends = [SearchFilter, OrderingFilter]
 
     search_fields = ["name"]
 
     ordering_fields = [
+        "id",
         "name",
         "personal_count",
         "job_count",
@@ -37,12 +41,55 @@ class SkillListView(ListAPIView):
         "total_count",
     ]
 
-    pagination_class = None
+    pagination_class = CustomPageNumberPagination
 
     ordering = ["name"]
 
+    SORTBY_MAP = {
+        "newest": ["-id"],
+        "popular": ["-total_count", "name"],
+        "popular:job": ["-job_count", "name"],
+        "popular:service": ["-service_count", "name"],
+        "popular:user": ["-personal_count", "name"],
+    }
+
+    def get_serializer_class(self):
+        if self.request.method == "POST":
+            return SkillSerializer
+        return SkillUsageSerializer
+
     def get_queryset(self):
         return annotated_skill_queryset()
+
+    def filter_queryset(self, queryset):
+        sortby = self.request.query_params.get("sortby")
+        if sortby and sortby in self.SORTBY_MAP:
+            # Filter by search fields first
+            queryset = SearchFilter().filter_queryset(
+                self.request, queryset, self
+            )
+            return queryset.order_by(*self.SORTBY_MAP[sortby])
+        return super().filter_queryset(queryset)
+
+    def paginate_queryset(self, queryset):
+        if self.request.query_params.get("paginate") == "false":
+            return None
+        return super().paginate_queryset(queryset)
+
+
+@extend_schema(tags=["Skills"])
+class SkillDetailView(RetrieveUpdateDestroyAPIView):
+    permission_classes = [IsAdminOrReadOnly("skills")]
+
+    def get_queryset(self):
+        if self.request.method == "GET":
+            return annotated_skill_queryset()
+        return Skill.objects.all()
+
+    def get_serializer_class(self):
+        if self.request.method == "GET":
+            return SkillUsageSerializer
+        return SkillSerializer
 
 
 @extend_schema(tags=["Skills"])
@@ -56,7 +103,7 @@ class PopularSkillsView(ListAPIView):
 
     serializer_class = SkillUsageSerializer
 
-    permission_classes = [AllowAny]
+    # permission_classes = [AllowAny]
 
     filter_backends = [SearchFilter]
 

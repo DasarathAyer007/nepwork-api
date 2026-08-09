@@ -1,6 +1,8 @@
 from django.urls import path
 
 from .views import (
+    AdminNotificationDetailView,
+    AdminNotificationListView,
     NotificationDeleteView,
     NotificationLatestView,
     NotificationListView,
@@ -11,6 +13,16 @@ from .views import (
 
 urlpatterns = [
     path("", NotificationListView.as_view(), name="notification-list"),
+    path(
+        "admin/",
+        AdminNotificationListView.as_view(),
+        name="admin-notification-list",
+    ),
+    path(
+        "admin/<int:pk>/",
+        AdminNotificationDetailView.as_view(),
+        name="admin-notification-detail",
+    ),
     path(
         "latest/",
         NotificationLatestView.as_view(),

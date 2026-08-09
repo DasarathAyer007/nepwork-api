@@ -10,6 +10,7 @@ class LocationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Location
         fields = (
+            "id",
             "point",
             "address",
             "city",
@@ -35,8 +36,17 @@ class LocationSerializer(serializers.ModelSerializer):
         is_owner = (
             user and user.is_authenticated and user.location_id == instance.id
         )
+        is_admin = (
+            user
+            and user.is_authenticated
+            and (
+                user.is_staff
+                or user.is_superuser
+                or getattr(user, "account_type", None) == "admin"
+            )
+        )
 
-        if is_owner:
+        if is_owner or is_admin:
             return self._filter_by_level(
                 instance, Location.VisibilityLevel.EXACT
             )
@@ -48,13 +58,18 @@ class LocationSerializer(serializers.ModelSerializer):
             return None
 
         if level == Location.VisibilityLevel.HIDDEN:
-            return {"label": obj.label, "type": "hidden"}
+            return {"id": str(obj.id), "label": obj.label, "type": "hidden"}
 
         if level == Location.VisibilityLevel.COUNTRY:
-            return {"country": obj.country, "type": "country"}
+            return {
+                "id": str(obj.id),
+                "country": obj.country,
+                "type": "country",
+            }
 
         if level == Location.VisibilityLevel.STATE:
             return {
+                "id": str(obj.id),
                 "country": obj.country,
                 "state": obj.state,
                 "type": "state",
@@ -62,6 +77,7 @@ class LocationSerializer(serializers.ModelSerializer):
 
         if level == Location.VisibilityLevel.CITY:
             return {
+                "id": str(obj.id),
                 "country": obj.country,
                 "state": obj.state,
                 "city": obj.city,
@@ -70,6 +86,7 @@ class LocationSerializer(serializers.ModelSerializer):
 
         if level == Location.VisibilityLevel.AREA:
             return {
+                "id": str(obj.id),
                 "country": obj.country,
                 "state": obj.state,
                 "city": obj.city,
@@ -79,6 +96,7 @@ class LocationSerializer(serializers.ModelSerializer):
 
         if level == Location.VisibilityLevel.STREET:
             return {
+                "id": str(obj.id),
                 "address": obj.address,
                 "country": obj.country,
                 "city": obj.city,
@@ -89,15 +107,18 @@ class LocationSerializer(serializers.ModelSerializer):
 
         if level == Location.VisibilityLevel.EXACT:
             return {
+                "id": str(obj.id),
                 "address": obj.address,
                 "city": obj.city,
                 "state": obj.state,
                 "country": obj.country,
                 "postal_code": obj.postal_code,
                 "point": {
-                    "lat": obj.point.y,
-                    "lng": obj.point.x,
-                },
+                    "lat": obj.point.y if obj.point else None,
+                    "lng": obj.point.x if obj.point else None,
+                }
+                if obj.point
+                else None,
                 "type": "exact",
             }
 

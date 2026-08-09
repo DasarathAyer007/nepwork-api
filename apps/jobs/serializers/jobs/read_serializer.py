@@ -23,7 +23,7 @@ class JobPosterSerializer(serializers.ModelSerializer):
 
 class JobListSerializer(serializers.ModelSerializer):
     location = LocationReadSerializer(read_only=True, allow_null=True)
-    posted_by = serializers.StringRelatedField()
+    posted_by = JobPosterSerializer()
     category = JobCategorySerializer(read_only=True)
     skills_required = serializers.SlugRelatedField(
         many=True, read_only=True, slug_field="name"

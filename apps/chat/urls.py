@@ -1,14 +1,11 @@
-# from django.urls import path
-# from . import views
-
-# urlpatterns = [
-#     path("", views.ChatListCreateView.as_view()),
-#     path("<uuid:chat_id>/messages/", views.MessageListCreateView.as_view()),
-#     path("<uuid:chat_id>/read/", views.MarkReadView.as_view()),
-# ]
 from django.urls import path
 
 from .views import (
+    AdminChatDetailView,
+    AdminChatListView,
+    AdminChatMessageDeleteView,
+    AdminChatMessageListView,
+    AdminChatMessageSendView,
     ChatDetailView,
     ChatListCreateView,
     MarkChatReadView,
@@ -19,6 +16,27 @@ from .views import (
 
 urlpatterns = [
     path("", ChatListCreateView.as_view(), name="chat-list"),
+    path("admin/", AdminChatListView.as_view(), name="admin-chat-list"),
+    path(
+        "admin/<uuid:pk>/",
+        AdminChatDetailView.as_view(),
+        name="admin-chat-detail",
+    ),
+    path(
+        "admin/<uuid:chat_id>/messages/",
+        AdminChatMessageListView.as_view(),
+        name="admin-message-list",
+    ),
+    path(
+        "admin/<uuid:chat_id>/messages/send/",
+        AdminChatMessageSendView.as_view(),
+        name="admin-message-send",
+    ),
+    path(
+        "admin/messages/<uuid:message_id>/",
+        AdminChatMessageDeleteView.as_view(),
+        name="admin-message-delete",
+    ),
     path(
         "unread-count/",
         MessageUnreadCountView.as_view(),

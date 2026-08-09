@@ -1,5 +1,6 @@
 from asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
+from django.db.models import Q
 from django.shortcuts import get_object_or_404
 from rest_framework import generics, status
 from rest_framework.exceptions import NotFound
@@ -7,9 +8,14 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from apps.users.permissions import HasPermission
+
 from .models import Chat, Message
 from .permission import IsChatMember
 from .serializers import (
+    AdminChatCreateSerializer,
+    AdminChatSerializer,
+    AdminChatUpdateSerializer,
     ChatSerializer,
     MessageSerializer,
     SendMessageSerializer,
@@ -80,11 +86,6 @@ class MessageListView(generics.ListAPIView):
 class MessageSendView(APIView):
     """
     POST /api/chats/<chat_id>/messages/send/
-
-    HTTP fallback for sending a message (e.g. file uploads, offline queuing).
-    Goes through the same ChatService call and broadcast as the WebSocket
-    `chat.send` path, so recipients get it live regardless of which path
-    the sender used.
     """
 
     permission_classes = [IsAuthenticated, IsChatMember]
@@ -114,10 +115,6 @@ class MessageSendView(APIView):
 class MarkChatReadView(APIView):
     """
     POST /api/chats/<chat_id>/read/   mark all messages in a chat as read
-
-    Goes through the same ChatService call and broadcast as the WebSocket
-    `chat.read` path, so every member's badge updates live regardless of
-    which path the reader used.
     """
 
     permission_classes = [IsAuthenticated]
@@ -179,4 +176,147 @@ class MessageUnreadCountView(APIView):
     def get(self, request):
         return Response(
             {"unread_count": ChatService.get_unread_count_sync(request.user)}
+        )
+
+
+# ==========================================
+# Admin Chat Endpoints (RBAC Managed)
+# ==========================================
+
+
+class AdminChatListView(generics.ListCreateAPIView):
+    """
+    GET  /api/chats/admin/ - List all system conversations with search & member filtering
+    POST /api/chats/admin/ - Admin create new chat / conversation
+    """
+
+    permission_classes = [IsAuthenticated, HasPermission("communication.view")]
+
+    def get_serializer_class(self):
+        if self.request.method == "POST":
+            return AdminChatCreateSerializer
+        return AdminChatSerializer
+
+    def get_permissions(self):
+        if self.request.method == "POST":
+            return [IsAuthenticated(), HasPermission("communication.edit")()]
+        return [permission() for permission in self.permission_classes]
+
+    def get_queryset(self):
+        qs = Chat.objects.prefetch_related("members", "messages").order_by(
+            "-updated_at"
+        )
+
+        member_id = self.request.query_params.get("member_id")
+        search = self.request.query_params.get(
+            "search"
+        ) or self.request.query_params.get("q")
+
+        if member_id:
+            qs = qs.filter(members__id=member_id)
+
+        if search:
+            search = search.strip()
+            qs = qs.filter(
+                Q(name__icontains=search)
+                | Q(members__username__icontains=search)
+                | Q(members__full_name__icontains=search)
+                | Q(members__email__icontains=search)
+            ).distinct()
+
+        return qs
+
+
+class AdminChatDetailView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    GET    /api/chats/admin/<id>/ - Retrieve conversation metadata
+    PATCH  /api/chats/admin/<id>/ - Update chat (rename or change members)
+    DELETE /api/chats/admin/<id>/ - Delete chat
+    """
+
+    queryset = Chat.objects.prefetch_related("members", "messages")
+
+    def get_serializer_class(self):
+        if self.request.method in ["PUT", "PATCH"]:
+            return AdminChatUpdateSerializer
+        return AdminChatSerializer
+
+    def get_permissions(self):
+        if self.request.method in ["PUT", "PATCH"]:
+            return [IsAuthenticated(), HasPermission("communication.edit")()]
+        if self.request.method == "DELETE":
+            return [IsAuthenticated(), HasPermission("communication.delete")()]
+        return [IsAuthenticated(), HasPermission("communication.view")()]
+
+
+class AdminChatMessageListView(generics.ListAPIView):
+    """
+    GET /api/chats/admin/<chat_id>/messages/ - Paginated message list for admin view
+    """
+
+    serializer_class = MessageSerializer
+    permission_classes = [IsAuthenticated, HasPermission("communication.view")]
+    pagination_class = None
+
+    def get_queryset(self):
+        chat_id = self.kwargs["chat_id"]
+        get_object_or_404(Chat, id=chat_id)
+        return (
+            Message.objects.filter(chat_id=chat_id)
+            .select_related("sender")
+            .order_by("created_at")
+        )
+
+
+class AdminChatMessageSendView(APIView):
+    """
+    POST /api/chats/admin/<chat_id>/messages/send/ - Admin sends a message into chat
+    """
+
+    permission_classes = [IsAuthenticated, HasPermission("communication.edit")]
+
+    def post(self, request, chat_id):
+        chat = get_object_or_404(Chat, id=chat_id)
+
+        # Automatically add admin user to chat members if not already present
+        if not chat.members.filter(id=request.user.id).exists():
+            chat.members.add(request.user)
+
+        serializer = SendMessageSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
+        message = ChatService.create_message_sync(
+            sender=request.user,
+            chat_id=chat_id,
+            content=serializer.validated_data["content"],
+        )
+
+        member_ids = ChatService.get_member_ids_sync(chat_id)
+        channel_layer = get_channel_layer()
+        for member_id in member_ids:
+            async_to_sync(channel_layer.group_send)(
+                f"user_{member_id}",
+                {"type": "chat_message", "payload": message},
+            )
+
+        return Response(message, status=status.HTTP_201_CREATED)
+
+
+class AdminChatMessageDeleteView(APIView):
+    """
+    DELETE /api/chats/admin/messages/<message_id>/ - Delete specific message
+    """
+
+    permission_classes = [
+        IsAuthenticated,
+        HasPermission("communication.delete"),
+    ]
+
+    def delete(self, request, message_id):
+        msg = get_object_or_404(Message, id=message_id)
+        msg.delete()
+        return Response(
+            status=status.HTTP_24_NO_CONTENT
+            if hasattr(status, "HTTP_24_NO_CONTENT")
+            else status.HTTP_204_NO_CONTENT
         )

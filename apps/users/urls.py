@@ -3,7 +3,14 @@ from django.urls import path
 from apps.users.views.profile import UpdateProfileView
 
 from .views.admin_user import (
+    AdminAllUsersListView,
+    AdminCreateUserView,
+    AdminIndividualsListView,
+    AdminManageUserView,
+    AdminOrganizationsListView,
+    AdminUserDetailView,
     AdminUserListView,
+    AdminUserStatsView,
     AdminUserUpdateView,
     CandidateUserListView,
 )
@@ -13,6 +20,7 @@ from .views.auth import (
     GoogleLoginView,
     LogoutView,
 )
+from .views.autocomplete import UserAutocompleteView
 from .views.permission import (
     PermissionListView,
     UserPermissionGrantView,
@@ -41,6 +49,41 @@ urlpatterns = [
     path("resend-otp", ResendOTPView.as_view()),
     path("onboarding", OnboardingView.as_view()),
     path("me", MeView.as_view()),
+    path(
+        "autocomplete", UserAutocompleteView.as_view(), name="user-autocomplete"
+    ),
+    # Admin User Management Routes
+    path("stats", AdminUserStatsView.as_view(), name="admin-user-stats"),
+    path(
+        "admin/all-users",
+        AdminAllUsersListView.as_view(),
+        name="admin-all-users",
+    ),
+    path(
+        "admin/individuals",
+        AdminIndividualsListView.as_view(),
+        name="admin-individuals",
+    ),
+    path(
+        "admin/organizations",
+        AdminOrganizationsListView.as_view(),
+        name="admin-organizations",
+    ),
+    path(
+        "admin/detail/<uuid:id>",
+        AdminUserDetailView.as_view(),
+        name="admin-user-detail",
+    ),
+    path(
+        "admin/create-user",
+        AdminCreateUserView.as_view(),
+        name="admin-create-user",
+    ),
+    path(
+        "admin/manage-user/<uuid:id>",
+        AdminManageUserView.as_view(),
+        name="admin-manage-user",
+    ),
     path("admin/create", AdminCreateView.as_view()),
     path("admin/users", AdminUserListView.as_view()),
     path("admin/users/<uuid:id>", AdminUserUpdateView.as_view()),
