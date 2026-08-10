@@ -316,6 +316,7 @@ class PersonalProfileWriteSerializer(BaseProfileWriteSerializer):
             "gender",
             "skills",
             "interests",
+            "resume",
         ]
         read_only_fields = ["id"]
 

@@ -33,7 +33,8 @@ class PersonalProfile(TimeStampedModel):
         choices=Gender.choices,
         default=Gender.NOT_SPECIFIED,
     )
-
+    resume = models.FileField(upload_to="resumes/", blank=True, null=True)
+    
     skills = models.ManyToManyField(Skill, blank=True)
 
     interests = models.JSONField(default=list, blank=True)

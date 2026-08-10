@@ -135,6 +135,17 @@ class JobApplicationWriteSerializer(serializers.ModelSerializer):
         else:
             applicant = attrs.get("applicant", self.instance.applicant)
 
+        resume = attrs.get("resume")
+        # If no resume is uploaded in the request, try to use their profile resume
+        if not resume:
+            target_user = applicant or user
+            if hasattr(target_user, "personal_profile") and target_user.personal_profile.resume:
+                attrs["resume"] = target_user.personal_profile.resume
+            else:
+                raise serializers.ValidationError(
+                    {"resume": "Please upload a resume or add one to your profile."}
+                )
+
         job = attrs.get("job", self.instance.job if self.instance else None)
 
         if job and applicant:

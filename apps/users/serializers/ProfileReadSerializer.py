@@ -150,18 +150,21 @@ class PersonalProfileSerializer(BaseProfileSerializer):
             "gender",
             "skills",
             "interests",
+             "resume", 
         ),
         "public": (
             "age",
             "gender",
             "skills",
             "interests",
+            "resume",
         ),
         "limited": (
             "age",
             "gender",
             "skills",
             "interests",
+            "resume",
         ),
         "private": (),
     }
@@ -174,6 +177,7 @@ class PersonalProfileSerializer(BaseProfileSerializer):
             "gender",
             "skills",
             "interests",
+            "resume",
         )
 
 

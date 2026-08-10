@@ -331,3 +331,4 @@ uv run  manage.py seed_roles_permissions
 un run manage.py create_superadmin --username admin --email admin@example.com --full-name "Site Admin"
 
 uv run manage.py flush
+uv run celery -A config worker -l info --pool=solo
