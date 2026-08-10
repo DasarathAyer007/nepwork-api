@@ -23,6 +23,7 @@ urlpatterns = [
     path("api/user-activities/", include("apps.user_activity.urls")),
     path("api/", include("apps.admin_panel.urls")),
     path("api/reviews/", include("apps.reviews.urls")),
+    path("api/payments/", include("apps.payment.urls")),
 ]
 
 # API Documentation
