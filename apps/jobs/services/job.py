@@ -70,10 +70,9 @@ class JobQueryService:
 
     def trending(self) -> QuerySet:
         qs = selectors.get_trending_jobs(
-            self.user, user_point=self._get_user_location_point()
+            self.user, user_point=self._trending_location_point()
         )
-        qs = self._apply_filters(qs, skip_ordering=True)
-        return self._apply_geo_if_provided(qs)
+        return self._apply_filters(qs, skip_ordering=True)
 
     def saved(self) -> QuerySet:
         if not self.user or not self.user.is_authenticated:
@@ -107,6 +106,7 @@ class JobQueryService:
         qs = self._filter_deadline(qs)
         qs = self._filter_search(qs)
         qs = self._filter_organization(qs)
+        qs = self._filter_posted_by(qs)
         qs = self._filter_has_location(qs)
         if not skip_ordering:
             qs = self._apply_ordering(qs)
@@ -214,6 +214,11 @@ class JobQueryService:
             qs = qs.filter(organization_id=org_id)
         return qs
 
+    def _filter_posted_by(self, qs):
+        if username := self.params.get("posted_by"):
+            qs = qs.filter(posted_by__username=username)
+        return qs
+
     def _filter_has_location(self, qs):
         val = self.params.get("has_location")
         if val is None:
@@ -296,6 +301,21 @@ class JobQueryService:
         if not location or not location.point:
             return None
         return location.point
+
+    def _trending_location_point(self):
+        point = self._get_user_location_point()
+        if point:
+            return point
+        lat, lng = self.params.get("lat"), self.params.get("lng")
+        if not lat or not lng:
+            return None
+        try:
+            lat_f, lng_f = float(lat), float(lng)
+        except (TypeError, ValueError):
+            return None
+        if not (-90 <= lat_f <= 90 and -180 <= lng_f <= 180):
+            return None
+        return Point(lng_f, lat_f, srid=4326)
 
     def _apply_geo(self, qs):
         lat = float(self.params["lat"])

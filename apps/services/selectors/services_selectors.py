@@ -1,3 +1,6 @@
+from datetime import timedelta
+
+from django.contrib.gis.db.models.functions import Distance
 from django.db.models import (
     Count,
     Exists,
@@ -6,6 +9,7 @@ from django.db.models import (
     QuerySet,
     Subquery,
 )
+from django.utils import timezone
 
 from ..models import Service, ServiceRequest, ServiceSaved
 
@@ -70,11 +74,18 @@ def get_saved_services(user) -> QuerySet:
     return get_active_services(user).filter(id__in=saved_ids)
 
 
-def get_trending_services(user=None, days=7) -> QuerySet:
-    """
-    Not implmented
-    """
-    return get_active_services(user).order_by("-total_applies", "-created_at")
+def get_trending_services(user=None, days=7, user_point=None) -> QuerySet:
+    since = timezone.now() - timedelta(days=days)
+    qs = get_active_services(user).annotate(
+        recent_requests=Count(
+            "service_requests",
+            filter=Q(service_requests__created_at__gte=since),
+        )
+    )
+    if user_point:
+        qs = qs.annotate(distance=Distance("location__point", user_point))
+        return qs.order_by("-recent_requests", "distance", "-created_at")
+    return qs.order_by("-recent_requests", "-created_at")
 
 
 def get_similar_services(service, user=None) -> QuerySet:

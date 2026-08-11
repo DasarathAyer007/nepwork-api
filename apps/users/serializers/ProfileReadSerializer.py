@@ -84,6 +84,7 @@ class BaseProfileSerializer(serializers.ModelSerializer):
         "private": (
             "id",
             "username",
+            "full_name",
             "profile_picture",
             "cover_photo",
             "bio",
@@ -151,7 +152,7 @@ class PersonalProfileSerializer(BaseProfileSerializer):
             "gender",
             "skills",
             "interests",
-             "resume", 
+            "resume",
         ),
         "public": (
             "age",
