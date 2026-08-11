@@ -65,6 +65,7 @@ class BaseProfileSerializer(serializers.ModelSerializer):
         "public": (
             "id",
             "username",
+            "email",
             "full_name",
             "profile_picture",
             "cover_photo",
