@@ -12,6 +12,7 @@ from apps.user_activity.mixins import ActivityTrackingMixin
 from ..permissions import IsJobApplicationOwnerOrAdmin
 from ..selectors.application import get_applications_base
 from ..serializers.job_application import (
+    ApplicantDecisionSerializer,
     EmptyActionSerializer,
     JobApplicationReadSerializer,
     JobApplicationWriteSerializer,
@@ -36,6 +37,8 @@ class JobApplicationViewSet(ActivityTrackingMixin, viewsets.ModelViewSet):
             return StatusChangeSerializer
         if self.action == "withdraw":
             return EmptyActionSerializer
+        if self.action in ("accept", "reject"):
+            return ApplicantDecisionSerializer
         return JobApplicationReadSerializer
 
     def get_queryset(self):
@@ -90,4 +93,40 @@ class JobApplicationViewSet(ActivityTrackingMixin, viewsets.ModelViewSet):
     def withdraw(self, request, pk=None):
         instance = self.get_object()
         updated = ApplicationTransitionService.withdraw(instance, request.user)
+        return Response(JobApplicationReadSerializer(updated).data)
+
+    # Applicant accepts a job offer, optionally notifying the employer via
+    # chat and/or email.
+    @action(detail=True, methods=["post"])
+    def accept(self, request, pk=None):
+        instance = self.get_object()
+        serializer = ApplicantDecisionSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        data = serializer.validated_data
+
+        updated = ApplicationTransitionService.accept_offer(
+            instance,
+            request.user,
+            message=data.get("message", ""),
+            send_message=data.get("send_message", True),
+            send_email=data.get("send_email", True),
+        )
+        return Response(JobApplicationReadSerializer(updated).data)
+
+    # Applicant rejects a job offer, optionally notifying the employer via
+    # chat and/or email.
+    @action(detail=True, methods=["post"])
+    def reject(self, request, pk=None):
+        instance = self.get_object()
+        serializer = ApplicantDecisionSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        data = serializer.validated_data
+
+        updated = ApplicationTransitionService.decline_offer(
+            instance,
+            request.user,
+            message=data.get("message", ""),
+            send_message=data.get("send_message", True),
+            send_email=data.get("send_email", True),
+        )
         return Response(JobApplicationReadSerializer(updated).data)

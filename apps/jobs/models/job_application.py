@@ -18,6 +18,8 @@ class JobApplication(TimeStampedModel, SoftDeleteModel):
         OFFERED = "offered", "Offered"
         REJECTED = "rejected", "Rejected"
         WITHDRAWN = "withdrawn", "Withdrawn"
+        ACCEPTED = "accepted", "Accepted"
+        DECLINED = "declined", "Declined"
 
     id = models.UUIDField(primary_key=True, default=uuid7, editable=False)
 

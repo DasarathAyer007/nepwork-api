@@ -80,7 +80,32 @@ def notify_job_application_status_changed(self, application_id):
 
 
 @shared_task(bind=True, max_retries=3, default_retry_delay=10)
-def notify_service_request_status_changed(self, request_id):
+def notify_job_application_offer_decision(self, application_id):
+    from apps.jobs.models import JobApplication
+
+    try:
+        application = JobApplication.objects.select_related(
+            "job", "job__posted_by", "applicant"
+        ).get(id=application_id)
+    except ObjectDoesNotExist:
+        logger.warning(
+            "notify_job_application_offer_decision: application %s not found",
+            application_id,
+        )
+        return
+
+    try:
+        NotificationService.notify_job_application_offer_decision(application)
+    except Exception as exc:
+        logger.exception(
+            "notify_job_application_offer_decision failed for application %s",
+            application_id,
+        )
+        raise self.retry(exc=exc)
+
+
+@shared_task(bind=True, max_retries=3, default_retry_delay=10)
+def notify_service_request_status_changed(self, request_id, actor_id=None):
     from apps.services.models import ServiceRequest
 
     try:
@@ -96,7 +121,7 @@ def notify_service_request_status_changed(self, request_id):
 
     try:
         NotificationService.notify_service_request_status_changed(
-            service_request
+            service_request, actor_id=actor_id
         )
     except Exception as exc:
         logger.exception(

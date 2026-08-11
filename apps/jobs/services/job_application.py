@@ -4,11 +4,17 @@ from django.db.models import Count, Q
 from jsonschema import ValidationError
 from rest_framework.exceptions import PermissionDenied
 
-from apps.notifications.tasks import notify_job_application_status_changed
+from apps.notifications.tasks import (
+    notify_job_application_offer_decision,
+    notify_job_application_status_changed,
+)
 
 from ..models import JobApplication
 from ..selectors.application import get_applications_base
-from .application_notifications import notify_application_status_change
+from .application_notifications import (
+    notify_applicant_decision,
+    notify_application_status_change,
+)
 
 
 class JobApplicationQueryService:
@@ -80,6 +86,8 @@ class ApplicationTransitionService:
     TERMINAL_STATUSES = {
         JobApplication.ApplicationStatus.REJECTED,
         JobApplication.ApplicationStatus.WITHDRAWN,
+        JobApplication.ApplicationStatus.ACCEPTED,
+        JobApplication.ApplicationStatus.DECLINED,
     }
 
     # Statuses an employer may move an application into.
@@ -148,6 +156,67 @@ class ApplicationTransitionService:
         return application
 
     @classmethod
+    def accept_offer(
+        cls,
+        application,
+        user,
+        message: str = "",
+        send_message: bool = True,
+        send_email: bool = True,
+    ):
+        cls._authorize_applicant(application, user)
+        cls._validate_offer_response(application)
+        application.status = JobApplication.ApplicationStatus.ACCEPTED
+        application.save(update_fields=["status", "updated_at"])
+        cls._notify_employer_of_decision(
+            application, user, "Accepted", message, send_message, send_email
+        )
+        return application
+
+    @classmethod
+    def decline_offer(
+        cls,
+        application,
+        user,
+        message: str = "",
+        send_message: bool = True,
+        send_email: bool = True,
+    ):
+        cls._authorize_applicant(application, user)
+        cls._validate_offer_response(application)
+        application.status = JobApplication.ApplicationStatus.DECLINED
+        application.save(update_fields=["status", "updated_at"])
+        cls._notify_employer_of_decision(
+            application, user, "Declined", message, send_message, send_email
+        )
+        return application
+
+    @classmethod
+    def _notify_employer_of_decision(
+        cls,
+        application,
+        applicant,
+        decision_label,
+        message,
+        send_message,
+        send_email,
+    ):
+        message = (message or "").strip()
+        if message:
+            notify_applicant_decision(
+                application,
+                applicant=applicant,
+                decision_label=decision_label,
+                message=message,
+                send_message=send_message,
+                send_email=send_email,
+            )
+        application_id = str(application.id)
+        transaction.on_commit(
+            lambda: notify_job_application_offer_decision.delay(application_id)
+        )
+
+    @classmethod
     def _authorize_employer(cls, application, user):
         if user.account_type != "admin" and user != application.job.posted_by:
             raise PermissionDenied(
@@ -158,7 +227,7 @@ class ApplicationTransitionService:
     def _authorize_applicant(cls, application, user):
         if user != application.applicant:
             raise PermissionDenied(
-                "Only the applicant can withdraw this application."
+                "Only the applicant can perform this action on this application."
             )
 
     @classmethod
@@ -174,7 +243,14 @@ class ApplicationTransitionService:
 
     @classmethod
     def _validate_withdraw(cls, application):
-        if application.status in cls.TERMINAL_STATUSES:
+        if application.status != JobApplication.ApplicationStatus.APPLIED:
             raise ValidationError(
-                f"Cannot withdraw an application that is already {application.status}."
+                "An application can only be withdrawn while it is still Applied."
+            )
+
+    @classmethod
+    def _validate_offer_response(cls, application):
+        if application.status != JobApplication.ApplicationStatus.OFFERED:
+            raise ValidationError(
+                "You can only accept or decline an application that has been offered."
             )

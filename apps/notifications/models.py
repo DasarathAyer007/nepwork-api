@@ -22,6 +22,10 @@ class Notification(SoftDeleteModel, TimeStampedModel):
             "service_request_status_changed",
             "Service Request Status Changed",
         )
+        JOB_APPLICATION_OFFER_DECISION = (
+            "job_application_offer_decision",
+            "Job Application Offer Decision",
+        )
 
     recipient = models.ForeignKey(
         "users.User", on_delete=models.CASCADE, related_name="notifications"
@@ -46,10 +50,6 @@ class Notification(SoftDeleteModel, TimeStampedModel):
 
     message = models.TextField()
 
-    # Generic pointer to the resource this notification is about, e.g.
-    # entity_type="job_application", entity_id=<application uuid>. The
-    # frontend resolves this (plus `data`) into a route — the backend never
-    # hands out a URL.
     entity_type = models.CharField(max_length=50, blank=True, default="")
 
     entity_id = models.CharField(max_length=64, blank=True, default="")

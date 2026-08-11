@@ -221,3 +221,11 @@ class StatusChangeSerializer(serializers.Serializer):
     )
     send_message = serializers.BooleanField(required=False, default=True)
     send_email = serializers.BooleanField(required=False, default=True)
+
+
+class ApplicantDecisionSerializer(serializers.Serializer):
+    message = serializers.CharField(
+        required=False, allow_blank=True, max_length=5000
+    )
+    send_message = serializers.BooleanField(required=False, default=True)
+    send_email = serializers.BooleanField(required=False, default=True)

@@ -30,7 +30,7 @@ class IsJobApplicationOwnerOrAdmin(BasePermission):
                 return True
             action = action_for_method(request.method)
             # Custom status change action is treated as edit
-            if view.action in ("change_status", "withdraw"):
+            if view.action in ("change_status", "withdraw", "accept", "reject"):
                 action = "edit"
             code = f"jobs.{action}"
             return code in get_effective_permission_codes(user)
@@ -48,7 +48,8 @@ class IsJobApplicationOwnerOrAdmin(BasePermission):
         # Non-admins:
         # Check if they are the applicant
         if obj.applicant == user and (
-            request.method in SAFE_METHODS or view.action == "withdraw"
+            request.method in SAFE_METHODS
+            or view.action in ("withdraw", "accept", "reject")
         ):
             return True
 

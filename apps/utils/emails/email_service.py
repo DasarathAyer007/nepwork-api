@@ -90,6 +90,35 @@ class EmailService:
         message.send()
 
     @staticmethod
+    def send_applicant_decision_email(
+        employer, applicant_name, job_title, decision_label, message
+    ):
+        html = render_to_string(
+            "emails/application_applicant_decision.html",
+            {
+                "name": employer.full_name or employer.username,
+                "applicant_name": applicant_name,
+                "job_title": job_title,
+                "decision_label": decision_label,
+                "message": message,
+            },
+        )
+
+        email = EmailMultiAlternatives(
+            subject=f"{applicant_name} {decision_label.lower()} the offer for {job_title}",
+            body=(
+                f"{applicant_name} has {decision_label.lower()} your offer "
+                f"for {job_title}.\n\n{message}"
+            ),
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            to=[employer.email],
+        )
+
+        email.attach_alternative(html, "text/html")
+
+        email.send()
+
+    @staticmethod
     def send_application_status_email(
         applicant, job_title, status_label, message
     ):

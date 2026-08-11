@@ -111,19 +111,57 @@ class NotificationService:
         )
 
     @staticmethod
-    def notify_service_request_status_changed(service_request) -> Notification:
+    def notify_job_application_offer_decision(application) -> Notification:
+        job = application.job
+        status_label = application.ApplicationStatus(application.status).label
+        return NotificationService.create_and_push(
+            recipient_id=job.posted_by_id,
+            sender=application.applicant,
+            notification_type=Notification.NotificationType.JOB_APPLICATION_OFFER_DECISION,
+            title="Offer response received",
+            message=(
+                f"{application.applicant.username} has {status_label.lower()} "
+                f'your offer for "{job.title}".'
+            ),
+            entity_type="job_application",
+            entity_id=application.id,
+            data={"job_id": str(job.id), "status": application.status},
+        )
+
+    @staticmethod
+    def notify_service_request_status_changed(
+        service_request, actor_id=None
+    ) -> Notification:
         service = service_request.service
         status_label = service_request.ServiceRequestStatus(
             service_request.status
         ).label
+
+        requester = service_request.user
+        provider = service.user
+
+        # Notify whichever party did NOT perform the transition — e.g. either
+        # side can cancel/complete, so the actor already knows what happened.
+        # Defaults to notifying the requester (the historical behavior) when
+        # the actor is unknown or is the provider.
+        if actor_id is not None and str(actor_id) == str(requester.id):
+            recipient, sender = provider, requester
+            message = (
+                f'The service request for "{service.title}" from '
+                f"{requester.username} is now {status_label}."
+            )
+        else:
+            recipient, sender = requester, provider
+            message = (
+                f'Your service request "{service.title}" is now {status_label}.'
+            )
+
         return NotificationService.create_and_push(
-            recipient_id=service_request.user_id,
-            sender=service.user,
+            recipient_id=recipient.id,
+            sender=sender,
             notification_type=Notification.NotificationType.SERVICE_REQUEST_STATUS_CHANGED,
             title="Service request updated",
-            message=(
-                f'Your service request "{service.title}" is now {status_label}.'
-            ),
+            message=message,
             entity_type="service_request",
             entity_id=service_request.id,
             data={

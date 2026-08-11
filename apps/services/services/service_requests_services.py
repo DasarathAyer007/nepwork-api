@@ -85,10 +85,9 @@ class ServiceRequestTransitionService:
         ServiceRequest.ServiceRequestStatus.ACCEPTED: [
             ServiceRequest.ServiceRequestStatus.IN_PROGRESS,
             ServiceRequest.ServiceRequestStatus.CANCELLED,
+            ServiceRequest.ServiceRequestStatus.COMPLETED,
         ],
         ServiceRequest.ServiceRequestStatus.IN_PROGRESS: [
-            # Once work has started, the requester can no longer cancel —
-            # only the provider can mark it complete.
             ServiceRequest.ServiceRequestStatus.COMPLETED,
         ],
     }
@@ -109,8 +108,11 @@ class ServiceRequestTransitionService:
         request_instance.save(update_fields=["status", "completed_at"])
 
         request_id = str(request_instance.id)
+        actor_id = str(user.id)
         transaction.on_commit(
-            lambda: notify_service_request_status_changed.delay(request_id)
+            lambda: notify_service_request_status_changed.delay(
+                request_id, actor_id
+            )
         )
 
         return request_instance
@@ -120,17 +122,19 @@ class ServiceRequestTransitionService:
         """Check whether the user can perform this transition."""
         allowed = False
 
-        # Service owner can accept / reject / complete / start progress
+        # Service owner can accept / reject / start progress
         if new_status in (
             ServiceRequest.ServiceRequestStatus.ACCEPTED,
             ServiceRequest.ServiceRequestStatus.REJECTED,
-            ServiceRequest.ServiceRequestStatus.COMPLETED,
             ServiceRequest.ServiceRequestStatus.IN_PROGRESS,
         ):
             allowed = user == request_instance.service.user
 
-        # Both service owner and requester can cancel
-        elif new_status == ServiceRequest.ServiceRequestStatus.CANCELLED:
+        # Either party can mark the request as completed
+        elif (
+            new_status == ServiceRequest.ServiceRequestStatus.COMPLETED
+            or new_status == ServiceRequest.ServiceRequestStatus.CANCELLED
+        ):
             allowed = (
                 user == request_instance.user
                 or user == request_instance.service.user
