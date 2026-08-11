@@ -1,3 +1,11 @@
+from .AccountSerializer import (
+    ChangePasswordSerializer,
+    ConfirmOTPSerializer,
+    ForgotPasswordRequestSerializer,
+    ForgotPasswordResetSerializer,
+    ForgotPasswordVerifyOTPSerializer,
+    RequestEmailChangeSerializer,
+)
 from .PermissionSerializer import (
     PermissionSerializer,
     UserPermissionGrantSerializer,
@@ -22,12 +30,18 @@ from .UserSerializer import (
 __all__ = [
     "AdminCreateSerializer",
     "AdminUpdateSerializer",
+    "ChangePasswordSerializer",
+    "ConfirmOTPSerializer",
     "CustomTokenObtainPairSerializer",
     "CustomTokenRefreshSerializer",
+    "ForgotPasswordRequestSerializer",
+    "ForgotPasswordResetSerializer",
+    "ForgotPasswordVerifyOTPSerializer",
     "OrganizationProfileWriteSerializer",
     "PermissionSerializer",
     "PersonalProfileWriteSerializer",
     "ProfileReadSerializer",
+    "RequestEmailChangeSerializer",
     "RolePermissionUpdateSerializer",
     "RoleSerializer",
     "UserPermissionGrantSerializer",

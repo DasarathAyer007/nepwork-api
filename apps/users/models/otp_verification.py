@@ -9,13 +9,27 @@ from .user import User
 
 
 class OTPVerification(models.Model):
+    class Purpose(models.TextChoices):
+        SIGNUP = "signup", "Signup"
+        CHANGE_EMAIL = "change_email", "Change Email"
+        DELETE_ACCOUNT = "delete_account", "Delete Account"
+        FORGOT_PASSWORD = "forgot_password", "Forgot Password"
+
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
         related_name="otps",
     )
 
+    purpose = models.CharField(
+        max_length=20,
+        choices=Purpose.choices,
+        default=Purpose.SIGNUP,
+    )
+
     otp_hash = models.CharField(max_length=255)
+
+    new_email = models.EmailField(blank=True, default="")
 
     expires_at = models.DateTimeField()
 
@@ -24,6 +38,13 @@ class OTPVerification(models.Model):
     is_used = models.BooleanField(default=False)
 
     created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["user", "purpose"], name="unique_otp_per_user_purpose"
+            )
+        ]
 
     def is_expired(self):
         return timezone.now() > self.expires_at

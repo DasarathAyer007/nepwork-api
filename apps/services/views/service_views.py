@@ -27,10 +27,6 @@ from ..services.service_services import SearchService, ServiceQueryService
 
 @extend_schema(tags=["Services"])
 class ServiceViewSet(ActivityTrackingMixin, viewsets.ModelViewSet):
-    """
-    Basic CRUD with listing .
-    """
-
     queryset = Service.objects.filter(deleted_at__isnull=True)
     permission_classes = [IsServiceOwnerOrAdmin]
     lookup_field = "pk"

@@ -26,6 +26,70 @@ class EmailService:
         email.send()
 
     @staticmethod
+    def send_change_email_otp(full_name, new_email, otp):
+        html = render_to_string(
+            "emails/change_email.html",
+            {
+                "name": full_name,
+                "new_email": new_email,
+                "otp": otp,
+            },
+        )
+
+        email = EmailMultiAlternatives(
+            subject="Confirm your new NepWork email address",
+            body=f"Your email change verification code is {otp}",
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            to=[new_email],
+        )
+
+        email.attach_alternative(html, "text/html")
+
+        email.send()
+
+    @staticmethod
+    def send_account_deletion_otp(full_name, email, otp):
+        html = render_to_string(
+            "emails/delete_account.html",
+            {
+                "name": full_name,
+                "otp": otp,
+            },
+        )
+
+        message = EmailMultiAlternatives(
+            subject="Confirm deletion of your NepWork account",
+            body=f"Your account deletion verification code is {otp}",
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            to=[email],
+        )
+
+        message.attach_alternative(html, "text/html")
+
+        message.send()
+
+    @staticmethod
+    def send_forgot_password_otp(full_name, email, otp):
+        html = render_to_string(
+            "emails/forgot_password.html",
+            {
+                "name": full_name,
+                "otp": otp,
+            },
+        )
+
+        message = EmailMultiAlternatives(
+            subject="Reset your NepWork password",
+            body=f"Your password reset code is {otp}",
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            to=[email],
+        )
+
+        message.attach_alternative(html, "text/html")
+
+        message.send()
+
+    @staticmethod
     def send_application_status_email(
         applicant, job_title, status_label, message
     ):

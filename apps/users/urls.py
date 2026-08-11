@@ -2,6 +2,12 @@ from django.urls import path
 
 from apps.users.views.profile import UpdateProfileView
 
+from .views.account import (
+    ConfirmAccountDeletionView,
+    ConfirmEmailChangeView,
+    RequestAccountDeletionView,
+    RequestEmailChangeView,
+)
 from .views.admin_user import (
     AdminAllUsersListView,
     AdminCreateUserView,
@@ -15,8 +21,12 @@ from .views.admin_user import (
     CandidateUserListView,
 )
 from .views.auth import (
+    ChangePasswordView,
     CustomTokenRefreshView,
     FacebookLoginView,
+    ForgotPasswordRequestView,
+    ForgotPasswordResetView,
+    ForgotPasswordVerifyOTPView,
     GoogleLoginView,
     LogoutView,
 )
@@ -45,8 +55,28 @@ urlpatterns = [
     path("login", LoginView.as_view()),
     path("token/refresh", CustomTokenRefreshView.as_view()),
     path("logout", LogoutView.as_view()),
+    path("change-password", ChangePasswordView.as_view()),
+    path("forgot-password/request", ForgotPasswordRequestView.as_view()),
+    path("forgot-password/verify-otp", ForgotPasswordVerifyOTPView.as_view()),
+    path("forgot-password/reset", ForgotPasswordResetView.as_view()),
     path("verify-otp", VerifyOTPView.as_view()),
     path("resend-otp", ResendOTPView.as_view()),
+    path(
+        "account/email/change/request",
+        RequestEmailChangeView.as_view(),
+    ),
+    path(
+        "account/email/change/confirm",
+        ConfirmEmailChangeView.as_view(),
+    ),
+    path(
+        "account/delete/request",
+        RequestAccountDeletionView.as_view(),
+    ),
+    path(
+        "account/delete/confirm",
+        ConfirmAccountDeletionView.as_view(),
+    ),
     path("onboarding", OnboardingView.as_view()),
     path("me", MeView.as_view()),
     path(

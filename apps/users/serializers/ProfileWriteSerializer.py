@@ -57,9 +57,16 @@ class BaseProfileWriteSerializer(
     ImageUploadMixin,
     serializers.ModelSerializer,
 ):
+    full_name = serializers.CharField(
+        required=False,
+        max_length=100,
+        trim_whitespace=True,
+        write_only=True,
+    )
+
     bio = serializers.CharField(
         required=False,
-        max_length=500,
+        max_length=1000,
         trim_whitespace=True,
         write_only=True,
     )
@@ -141,6 +148,14 @@ class BaseProfileWriteSerializer(
 
         return super().to_internal_value(data)
 
+    def validate_full_name(
+        self,
+        value: str,
+    ) -> str:
+        if not value.strip():
+            raise serializers.ValidationError("Full name cannot be blank.")
+        return value.strip()
+
     def validate_bio(
         self,
         value: str,
@@ -193,6 +208,11 @@ class BaseProfileWriteSerializer(
                 {"user": "User instance not found."}
             )
 
+        full_name = validated_data.pop(
+            "full_name",
+            None,
+        )
+
         bio = validated_data.pop(
             "bio",
             None,
@@ -224,6 +244,9 @@ class BaseProfileWriteSerializer(
         )
 
         user_updates = {}
+
+        if full_name is not None:
+            user_updates["full_name"] = full_name
 
         if bio is not None:
             user_updates["bio"] = bio

@@ -18,12 +18,34 @@ class ServiceRequestUserSerializer(serializers.ModelSerializer):
         fields = ["id", "username", "full_name", "profile_picture"]
 
 
+class ServiceRequestProviderSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ["id", "username", "full_name", "email", "profile_picture"]
+
+
 class ServiceRequestServiceSerializer(serializers.ModelSerializer):
-    user = ServiceRequestUserSerializer(read_only=True)
+    user = ServiceRequestProviderSerializer(read_only=True)
+    category = serializers.CharField(
+        source="category.name", read_only=True, allow_null=True
+    )
 
     class Meta:
         model = Service
-        fields = ["id", "title", "slug", "thumbnail", "status", "user"]
+        fields = [
+            "id",
+            "title",
+            "slug",
+            "thumbnail",
+            "status",
+            "user",
+            "category",
+            "price",
+            "price_type",
+            "currency",
+            "availability_status",
+            "created_at",
+        ]
 
 
 class ServiceRequestReadSerializer(serializers.ModelSerializer):

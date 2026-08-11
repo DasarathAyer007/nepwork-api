@@ -16,8 +16,16 @@ RESUME_ALLOWED_CONTENT_TYPES = [
 ]
 
 
+class JobApplicationEmployerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ["id", "username", "full_name", "email", "profile_picture"]
+
+
 class JobApplicationJobSerializer(serializers.ModelSerializer):
-    posted_by_name = serializers.SerializerMethodField()
+    employer = JobApplicationEmployerSerializer(
+        source="posted_by", read_only=True
+    )
 
     class Meta:
         model = Job
@@ -28,11 +36,10 @@ class JobApplicationJobSerializer(serializers.ModelSerializer):
             "thumbnail",
             "status",
             "posted_by",
-            "posted_by_name",
+            "employer",
+            "created_at",
+            "deadline",
         ]
-
-    def get_posted_by_name(self, obj):
-        return str(obj.posted_by) if obj.posted_by else None
 
 
 class JobApplicationUserSerializer(serializers.ModelSerializer):
@@ -139,11 +146,16 @@ class JobApplicationWriteSerializer(serializers.ModelSerializer):
         # If no resume is uploaded in the request, try to use their profile resume
         if not resume:
             target_user = applicant or user
-            if hasattr(target_user, "personal_profile") and target_user.personal_profile.resume:
+            if (
+                hasattr(target_user, "personal_profile")
+                and target_user.personal_profile.resume
+            ):
                 attrs["resume"] = target_user.personal_profile.resume
             else:
                 raise serializers.ValidationError(
-                    {"resume": "Please upload a resume or add one to your profile."}
+                    {
+                        "resume": "Please upload a resume or add one to your profile."
+                    }
                 )
 
         job = attrs.get("job", self.instance.job if self.instance else None)
@@ -204,9 +216,6 @@ class StatusChangeSerializer(serializers.Serializer):
     status = serializers.ChoiceField(
         choices=ApplicationTransitionService.EMPLOYER_STATUSES
     )
-    # Always optional — sending a message to the applicant is never required,
-    # only offered as an option for certain statuses (see
-    # ApplicationTransitionService.MESSAGE_CAPABLE_STATUSES on the frontend).
     message = serializers.CharField(
         required=False, allow_blank=True, max_length=5000
     )
