@@ -28,10 +28,6 @@ class NotificationHandler(BaseHandler):
         else:
             await self.send_error(f"Unknown notification action: {action}")
 
-    # ------------------------------------------------------------------ #
-    #  notification.read                                                   #
-    # ------------------------------------------------------------------ #
-
     async def _handle_read(self, data: dict):
         notification_id = data.get("notification_id")
 
@@ -60,10 +56,6 @@ class NotificationHandler(BaseHandler):
                 "unread_count": unread_count,
             },
         )
-
-    # ------------------------------------------------------------------ #
-    #  notification.read_all                                               #
-    # ------------------------------------------------------------------ #
 
     async def _handle_read_all(self, data: dict):
         updated_count = await NotificationService.mark_all_as_read(self.user)

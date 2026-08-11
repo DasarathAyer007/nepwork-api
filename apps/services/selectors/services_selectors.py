@@ -15,11 +15,6 @@ from ..models import Service, ServiceRequest, ServiceSaved
 
 
 def get_base_service_queryset(user=None) -> QuerySet:
-    """
-    Annotated base queryset shared by all selectors.
-    Annotations: avg_rating, total_applies (from ServiceRequest),
-    is_saved (via ServiceSaved), has_applied (via ServiceRequest).
-    """
     qs = (
         Service.objects.filter(deleted_at__isnull=True)
         .select_related("user", "category", "location")

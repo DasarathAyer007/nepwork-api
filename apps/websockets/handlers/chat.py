@@ -46,9 +46,6 @@ class ChatHandler(BaseHandler):
             )
             return
 
-        # Direct chats are strictly two-person: dedupe out self-references
-        # and reject anything that doesn't resolve to exactly one other
-        # member (0 -> self-chat request, 2+ -> group chat request).
         other_member_ids = {str(m) for m in member_ids} - {str(self.user.id)}
         if len(other_member_ids) != 1:
             await self.send_error(
@@ -59,10 +56,6 @@ class ChatHandler(BaseHandler):
 
         all_member_ids = [str(self.user.id), *other_member_ids]
 
-        # MUST be concurrency-safe (unique constraint on a sorted member-set
-        # hash, or select_for_update inside a transaction) — otherwise two
-        # near-simultaneous first messages (double click, two tabs) still
-        # race past a plain "does this chat exist" SELECT and create two rows.
         chat, created = await ChatService.get_or_create_direct_chat(
             all_member_ids
         )
@@ -83,8 +76,6 @@ class ChatHandler(BaseHandler):
 
         for member_id in member_ids_final:
             if created:
-                # Every member — sender included — needs the chat object
-                # itself so their sidebar can render it with zero refetch.
                 await self.send_to_user(
                     user_id=member_id,
                     event_type="chat_created",  # → AppConsumer.chat_created()
@@ -97,17 +88,10 @@ class ChatHandler(BaseHandler):
                 payload=message,
             )
 
-        # Direct ack to the sender, tied to client_ref, so their own UI can
-        # resolve the draft→existing transition immediately instead of
-        # waiting on the fan-out loop / a second event.
         await self.reply(
             "chat.started",
             {"chat": chat, "message": message, "client_ref": client_ref},
         )
-
-    # ------------------------------------------------------------------ #
-    #  chat.send                                                           #
-    # ------------------------------------------------------------------ #
 
     async def _handle_send(self, data: dict):
         chat_id = data.get("chat_id")
@@ -135,17 +119,8 @@ class ChatHandler(BaseHandler):
             content=content,
         )
 
-        # Deliver via each member's PERSONAL group (user_{id}), not a
-        # chat-room group. Personal groups are joined once at connect() and
-        # never go stale — so this works identically whether the chat is
-        # brand new (just created via HTTP, this is its first message) or
-        # years old. No group-membership bookkeeping needed anywhere.
         member_ids = await ChatService.get_member_ids(chat_id)
         for member_id in member_ids:
-            # client_ref only means anything to the sender's own connection
-            # — it lets their UI swap the optimistic/pending bubble for the
-            # real, server-assigned message instead of showing a duplicate.
-            # Other members simply ignore the extra field.
             is_sender = member_id == self.user.id
             payload = (
                 {**message, "client_ref": client_ref}
@@ -157,10 +132,6 @@ class ChatHandler(BaseHandler):
                 event_type="chat_message",  # → AppConsumer.chat_message()
                 payload=payload,
             )
-
-    # ------------------------------------------------------------------ #
-    #  chat.typing                                                         #
-    # ------------------------------------------------------------------ #
 
     async def _handle_typing(self, data: dict):
         chat_id = data.get("chat_id")
@@ -191,10 +162,6 @@ class ChatHandler(BaseHandler):
                     "chat_id": str(chat_id),
                 },
             )
-
-    # ------------------------------------------------------------------ #
-    #  chat.read                                                           #
-    # ------------------------------------------------------------------ #
 
     async def _handle_read(self, data: dict):
         chat_id = data.get("chat_id")

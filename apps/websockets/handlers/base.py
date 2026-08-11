@@ -19,10 +19,6 @@ class BaseHandler:
     async def handle(self, data: dict):
         raise NotImplementedError("Each handler must implement handle()")
 
-    # ------------------------------------------------------------------ #
-    #  Outbound helpers                                                    #
-    # ------------------------------------------------------------------ #
-
     async def reply(self, msg_type: str, payload: dict):
         """Send a message back to THIS specific socket only."""
         await self.consumer.send(

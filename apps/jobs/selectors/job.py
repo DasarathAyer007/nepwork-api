@@ -63,12 +63,6 @@ def get_saved_jobs(user) -> QuerySet:
 
 
 def get_trending_jobs(user=None, days=7, user_point=None) -> QuerySet:
-    """Jobs with most recent applications - placeholder.
-
-    `user_point` (if given) nudges ordering toward jobs closer to the
-    user's saved location, but only as a tie-breaker after recency of
-    applications - it never outranks a genuinely more trending job.
-    """
     since = timezone.now() - timedelta(days=days)
     qs = get_active_jobs(user).annotate(
         recent_applications=Count(

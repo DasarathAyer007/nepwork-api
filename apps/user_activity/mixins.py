@@ -11,13 +11,6 @@ class ActivityTrackingMixin:
     """
     Mixin for DRF ViewSets that need to record user activity. Feature-agnostic:
     it knows nothing about Jobs/Services, it just forwards to ActivityTracker.
-
-        class JobViewSet(ActivityTrackingMixin, ModelViewSet):
-            activity_object_type = ObjectType.JOB
-
-            def perform_create(self, serializer):
-                serializer.save(...)
-                self.track_activity(ActivityType.APPLY, object_id=serializer.instance.job_id)
     """
 
     activity_object_type = None
@@ -29,10 +22,6 @@ class ActivityTrackingMixin:
         """
         Records a user activity. Never raises — tracking must not break or
         delay the actual API response.
-
-        `object_type` defaults to `self.activity_object_type` when omitted;
-        pass `object_type=None` explicitly for activities with no associated
-        object (e.g. a SEARCH event that isn't about one specific item).
         """
         request = self.request
         if self.activity_requires_auth and not (

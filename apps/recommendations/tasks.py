@@ -12,8 +12,7 @@ def update_user_recommendations(self, user_id):
     """
     Triggered by user_activity.tasks.create_user_activity after every
     relevant event. Recomputes and overwrites the user's cached
-    recommendation feeds in Redis. Never touches Postgres for storage —
-    read-only queries against Job/Service only.
+    recommendation feeds in Redis
     """
     from .services.recommender import generate_for_user
 

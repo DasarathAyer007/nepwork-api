@@ -30,12 +30,6 @@ def get_redis_client():
 
 
 class RecommendationCache:
-    """
-    Thin key-value wrapper. Nothing else in the project should build
-    recommendation:* keys directly — always go through this class so the
-    key format can change in one place later.
-    """
-
     KEY_TEMPLATE = "recommendation:user:{user_id}:{feed_type}"
 
     def __init__(self, redis_client=None):

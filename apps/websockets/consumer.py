@@ -23,10 +23,6 @@ class AppConsumer(AsyncWebsocketConsumer):
 
     router = WebSocketRouter()
 
-    # ------------------------------------------------------------------ #
-    #  Lifecycle                                                           #
-    # ------------------------------------------------------------------ #
-
     async def connect(self):
         self.user = self.scope["user"]
 
@@ -34,19 +30,11 @@ class AppConsumer(AsyncWebsocketConsumer):
             await self.close(code=4001)
             return
 
-        # Personal group — the ONLY group this consumer joins. All chat
-        # messages, typing indicators, and notifications are delivered here.
-        # This means a brand-new chat (created mid-session, after connect())
-        # works identically to an old one — there's no per-chat group to go
-        # stale, no membership bookkeeping needed when a chat is created.
         self.user_group = f"user_{self.user.id}"
         await self.channel_layer.group_add(self.user_group, self.channel_name)
 
         await self.accept()
 
-        # Send initial unread counts on connect — lets the frontend hydrate
-        # chatSlice/notificationsSlice from this one event instead of a
-        # separate HTTP call for each.
         unread_notifications = await NotificationService.get_unread_count(
             self.user
         )
@@ -91,11 +79,6 @@ class AppConsumer(AsyncWebsocketConsumer):
             return
 
         await self.router.dispatch(data, consumer=self)
-
-    # ------------------------------------------------------------------ #
-    #  Outbound event methods (called BY the channel layer)               #
-    #  Method name = event["type"] with dots replaced by underscores      #
-    # ------------------------------------------------------------------ #
 
     async def chat_message(self, event):
         """Broadcast a new chat message to all members of a chat group."""
@@ -173,10 +156,6 @@ class AppConsumer(AsyncWebsocketConsumer):
                 }
             )
         )
-
-    # ------------------------------------------------------------------ #
-    #  Utility                                                             #
-    # ------------------------------------------------------------------ #
 
     async def send_json_error(self, message: str, code: str = "error"):
         await self.send(

@@ -1,10 +1,3 @@
-"""
-Recommendation pipeline: recent activity -> weighted preference -> candidate
-pool -> scored ranking -> cached result.
-
-Single entry point: generate_for_user(user_id, top_n=20)
-"""
-
 from collections import defaultdict
 
 from django.conf import settings
@@ -224,7 +217,7 @@ def _lookup_maps(prefix, object_ids: set) -> tuple[dict, dict]:
     return category_map, dict(skill_map)
 
 
-# ── Candidates + scoring, per feed ─────────────────────────────────────────
+# Candidates + scoring, per feed
 
 
 def _rank_feed(feed_type, preference, top_n):
